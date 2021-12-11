@@ -1,11 +1,11 @@
 controllers:
     resource: ../../src/Controller/
     type: annotation
-    prefix: /{_locale}
-    requirements:
-        _locale: '%app_locales%'
-    defaults:
-        _locale: '%locale%'
+    # prefix: _locale
+    # name_prefix: locale
+    # trailing_slash_on_root: false
+    # requirements:
+    #    _locale: 'en|da|sv|no'
 
 
 kernel:

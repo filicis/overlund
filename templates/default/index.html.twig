@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center">
+	<div class="card" style="width: 40rem;">
+		<h1 class="card-header text-center">Overlund</h1>
+		<div class="card-body" >
+			<h3 class="card-title text-center"> {{ 'Web-based gedcom editor' | trans }}</h3>
+			<h4 class="card-subtitle text-center"> {{ 'In development' | trans }}... </h4>
+			<p>
+
+				<ul class="list-group list-group-flush">
+        <!--
+					{# % for tree in trees % }
+            { % set _url = tree.url % }
+            { % set _title = tree.title % }
+
+					  <a href="{{ url('tree', {'project': _url}) }}"
+					  	 class="list-group-item list-group-item-action">{{ tree.title }}
+					  </a>
+					{ % endfor % #}
+        -->>
+				</ul>
+
+			</p>
+
+
+		</div>
+		<div class="card-footer text-center">(c) 2021 Filicis software - Michael Lindhardt Rasmussen</div>
+	</div>
+</div>
+
+{% endblock %}

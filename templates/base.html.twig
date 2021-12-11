@@ -1,19 +1,165 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<html lang={{ app.request.getLocale() }}>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="application-name" content="Overlund">
+    <meta name="description" content="Overlund Gedcom Editor">
+  	<meta name="author" content="Michael Lindhardt Rasmussen">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+      {{ encore_entry_link_tags('app') }}
+
+	    <!-- Vi benytter os af Bootstrap -->
+
+	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+	      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    {% endblock %}
+
+    {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+
+			<!-- Bootstrap relaterede scripts -->
+
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    {% endblock %}
+
+  </head>
+
+  <body>
+
+        <!-- NAVBAR Start under revision -->
+    <!-- Programmets Hovedmenu -->
+
+	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <div class="container-fluid">
+  		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    		  <span class="navbar-toggler-icon"></span>
+  		  </button>
+
+   		  <!-- Selve menu strukturen -->
+
+  		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    		  <a class="navbar-brand" href="https://github.com/filicis/overlund">Filicis</a>
+
+    		  <div class="navbar-nav me_auto mb-2 mb-lg-0">
+
+      		  <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+
+					  <div class= "nav-item dropdown">
+						  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown01" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Project</a>
+      			  <div class="dropdown-menu" aria-labelledby="navbarDropdown01">
+        			  <a class="dropdown-item" href="#">New Project</a>
+        			  <a class="dropdown-item" href="#">Open Project</a>
+        			  <div class="dropdown-divider"></div>
+        			  <a class="dropdown-item" href="#">Import GEDCOM file</a>
+        			  <a class="dropdown-item" href="#">Export file</a>
+        			  <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Show GEDCOM file</a>
+        			  <a class="dropdown-item" href="test">Something else here</a>
+      			  </div>
+      		  </div>
+
+					  <div class= "nav-item dropdown">
+						  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown02" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Editors</a>
+      			  <div class="dropdown-menu" aria-labelledby="navbarDropdown02">
+        			  <a class="dropdown-item" href="#">Standard Editor</a>
+        			  <a class="dropdown-item" href="noteeditor">Note Editor</a>
+        			  <a class="dropdown-item" href="nameeditor">Name Editor</a>
+        			  <a class="dropdown-item" href="indievent">Individual Event</a>
+        			  <a class="dropdown-item" href="famevent">Family Event</a>
+        			  <a class="dropdown-item" href="indicitation">Individual Citation</a>
+        			  <a class="dropdown-item" href="famcitation">Family Citation</a>
+        			  <div class="dropdown-divider"></div>
+        			  <a class="dropdown-item" href="about">Something else here</a>
+      			  </div>
+      		  </div>
+
+					  <div class= "nav-item dropdown">
+						  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown03" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Library</a>
+      			  <div class="dropdown-menu" aria-labelledby="navbarDropdown03">
+        			  <a class="dropdown-item" href="sourcerecords">Source Records</a>
+        			  <a class="dropdown-item" href="repositaryrecords">Repository Records</a>
+        			  <a class="dropdown-item" href="noterecords">Note Records</a>
+        			  <div class="dropdown-divider"></div>
+        			  <a class="dropdown-item" href="about">All Media</a>
+        			  <a class="dropdown-item" href="about">All Places</a>
+      			  </div>
+      		  </div>
+
+            {% if is_granted('ROLE_ADMIN') %}
+
+            <div class= "nav.item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown04" role="button" data-bs-toggle="dropdown">Admin</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown04">
+                <a class="dropdown-item" href="#">Website</a>
+                <a class="dropdown-item" href="#">Projects</a>
+                <a class="dropdown-item" href="#">Users</a>
+                <a class="dropdown-item" href="#">Map</a>
+              </div>
+            </div>
+
+            {% endif %}
+
+
+            <div class= "nav.item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown05" role="button" data-bs-toggle="dropdown">Help</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown05">
+                <a class="dropdown-item" href="#">Gedcom Validator</a>
+                <hr class="dropdown-divider">
+                <a class="dropdown-item" href="about">About</a>
+              </div>
+            </div>
+
+    		  </div>
+  		  </div>
+  		  <div class="navbar-expand d-flex flex-row-reverse" id="navbarNavAltMarkup" >
+  		    <!-- div class="navbar-expand justify-content-end" id="navbarNavAltMarkup" -->
+    		  <div class="navbar-nav mr_auto">
+
+          {% set locale= app.request.getLocale() %}
+
+         <div class= 'nav-item dropdown'>
+          	<!-- a class="nav-link dropdown-toggle" href="#" id="navbarDropdown06" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sprog</a -->
+          	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown06" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.request.locale | locale_name(app.request.locale) | u.title }}</a>
+          	<div class="dropdown-menu" aria-labelledby="navbarDropdown06">
+
+            	<a class="dropdown-item {% if locale == 'da' %} active {% endif %}" href="{{ path('default', {_locale: 'da'}) }}">Dansk</a>
+            	<a class="dropdown-item {% if locale == 'sv' %} active {% endif %}" href="{{ path('default', {_locale: 'sv'}) }}">Svensk</a>
+            	<a class="dropdown-item {% if locale == 'no' %} active {% endif %}" href="{{ path('default', {_locale: 'no'}) }}">Norsk</a>
+            	<a class="dropdown-item {% if locale == 'en' %} active {% endif %}" href="{{ path('default', {_locale: 'en'}) }}">Engelsk</a>
+
+            	<div class="dropdown-divider"></div>
+          	</div>
+          </div>
+
+
+
+					  {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+     				  <span class= "navbar-text"> {{ 'User' | trans }}: {{ app.user.username }} </span>
+        		  <a class="nav-item nav-link" href="{{ path('app_logout') }}">logout</a>
+ 					  {% else %}
+      			  <a class="nav-item nav-link" href="{{ path('login') }}">Login</a>
+					  {% endif %}
+				  </div>
+  		  </div>
+  	  </div> <!-- Container -->
+	  </nav>
+  <!-- NAVBAR Slut -->
+
+
+    {% block body %}{% endblock %}
+
+
+  </body>
+
 </html>

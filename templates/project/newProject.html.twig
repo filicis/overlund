@@ -12,8 +12,8 @@
 
 
 
-      <form action="/" method="post">
-
+      <!-- form action="/" method="post"-->
+      {{ form_start(form)}}
 
         {# % if error %}
           <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -21,25 +21,31 @@
 
         <p>
 
-    		<div class= 'input-group'>
-          <label for="title">Project title:</label>
-          <input class="form-control" type="text" id="title" name="_title" value=""/>
+         {{ form_row(form.title) }}
+         {{ form_row(form.url) }}
+
+    		<!--div class= 'input-group'>
+          <label for="form_title">Project title:</label>
+          <input class="form-control" type="text" id="form_title" name="form[title]" value=""/>
         </div>
 
     		<div class= 'input-group'>
-          <label for="url">URL:</label>
+          <label for="form_url">URL:</label>
            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-          <input class="form-control" type="text" id="url" name="_url"/>
-        </div>
+          <input class="form-control" type="text" id="form_url" name="form[url]"/>
+        </div-->
 
       </p>
 
         <div class="card-footer d-grid gap-2 d-md-flex justify-content-md-end">
+         {{ form_row(form.save) }}
           <button class="btn btn-lg btn-primary"  type="submit">Yes</button>
           <button class="btn btn-lg btn-primary"  type="submit">No</button>
           <button class="btn btn-lg btn-primary"  type="submit">Help</button>
         </div>
-      </form>
+      <!--/form-->
+      {{ form_end(form) }}
+
 
     </div>
   </div>

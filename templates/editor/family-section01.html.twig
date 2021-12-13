@@ -1,0 +1,97 @@
+{# templates/editor/family-section01.html.twig #}
+
+{#
+
+#}
+
+<div class="card-body">
+
+	<!-- Husmand -->
+
+	<div class="row">
+
+		<!-- Billede -->
+		<div class="col-2 align-self-center text-center">
+			<img src="\ludvig.jpg" class="img-thumbnail" height="50" width="50" alt="...">
+		</div>
+
+		<!-- Navn -->
+
+		<div class="col">
+			<div class="form-floating">
+				<input type="text" class="form-control" id="idHusband" onfocus='bohr()' placeholder="Tekst" value="Anders Hansen Nielsen" readonly>
+				<label for="idHusband">{{ 'Husband' | trans }}</label>
+
+			</div>
+		</div>
+
+		<!-- Reserveret til knap-apparat -->
+
+		<div class="col-2">
+
+		</div>
+	</div>
+
+	<!-- Wife -->
+
+	<div class="row">
+
+		<!-- Billede -->
+
+		<div class="col-2 align-self-center text-center">
+			<img src="\karen.jpg" class="img-thumbnail" height="50" width="50" alt="...">
+		</div>
+
+		<!-- Navn -->
+
+		<div class="col">
+			<div class="form-floating">
+				<input type="text" class="form-control" id="idWife" onfocus='bohr()' placeholder="Tekst" value="Anne Margrethe Sørensdatter" readonly>
+				<label for="idWife"> {{ 'Wife' | trans }}</label>
+
+			</div>
+		</div>
+
+		<!-- Reserveret knap-apparat -->
+
+		<div class="col-2">
+
+		</div>
+	</div>
+
+	<!-- Gennerelle oplysninger om forholdet -->
+
+	<div class="row">
+		<div class="col-2"></div>
+		<div class="col-2">
+			<div class="form-floating">
+				<input type="number" class="form-control" id="idNumber" placeholder="Tekst" value="8">
+				<label for="idNumber"> {{ 'Children' | trans }} </label>
+
+			</div>
+		</div>
+
+		<div class="col-6">
+			<div class="form-floating">
+				<select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+					<!-- option selected>Open this select menu</option -->
+					<option value="1" active> {{ 'Unknown' | trans }} </option>
+					<option value="2"> {{ 'Marriage' | trans }}</option>
+					<option value="3"> {{ 'Not Married' | trans }}</option>
+					<option value="4"> {{ 'Civil' | trans }} </option>
+					<option value="5"> {{ 'Religios' | trans }} </option>
+					<option value="6"> {{ 'Common law' | trans }} </option>
+					<option value="7"> {{ 'Partnership' | trans }} </option>
+					<option value="8"> {{ 'Registered partnership' | trans }}</option>
+					<option value="9"> {{ 'Living together' | trans }}</option>
+					<option value="10"> {{ 'Living apart together' | trans }} </option>
+				</select>
+				<label for="floatingSelect"> {{ 'Relationship' | trans }} </label>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+

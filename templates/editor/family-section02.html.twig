@@ -1,0 +1,84 @@
+
+{# templates/editor/family.html.twig #}
+
+{#
+
+#}
+
+{% set childlist= ["Maren Jensdatter Harboe Bols (1778-1843)",
+									"Christen Jensen Harboe (1780-1827)",
+									"Anne Jensdatter (1784)",
+									"Kirsten Jensdatter Harboe (1786)",
+									"Laurits Jensen Harboe (1791)",
+									"Bodil Jensdatter Harboe (1796)",
+									"Christen Jensen Harboe (1780-1827)",
+									] %}
+
+<div class="card-body">
+
+	<div class="row">
+		<div class="col-10">
+			<label for="XXXXXXX">Children:</label>
+			<select class="form-select" id="XXXXXXX" size=10 aria-label="Default select example">
+				<!-- option selected>Open this select menu</option- -->
+
+				{% for ch in childlist %}
+
+				<option value="1" onfocus='bohr()'>{{ ch }}</option>
+
+				{% endfor %}
+			</select>
+		</div>
+		<div class="col">
+
+		</div>
+
+	</div>
+</div>
+
+
+<div class="card-body">
+	<div class="row">
+
+		<div class="col">
+
+			<div class="btn-group" role="group" aria-label="Basic example">
+				<button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Events and Attributes">
+					<i class="bi bi-file-spreadsheet"></i>
+				</button>
+				<a role="button" href="noteeditor" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notes">
+					<i class="bi bi-file-text"></i>
+				</a>
+				<button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Source Citations">
+					<i class="bi bi-file-post"></i>
+				</button>
+				<button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Media">
+					<i class="bi bi-file-image"></i>
+				</button>
+				<button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Last Change / Restrictions">
+					<i class="bi bi-file-lock"></i>
+				</button>
+				<button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Researchers">
+					<i class="bi bi-file-person"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+
+	/**
+	 *	TODO: Ajax kald der ændrer individ kolonnen afhængig af kontekst
+	 *
+	 **/
+
+	function bohr()
+	{
+
+	}
+
+
+</script>

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{#
+    Definerer standard layout for vores gedcom editor
+    - Venstre kolonne som defaulter til en INDI structur
+    - Højre kolonne defaulter til en FAM structur
+
+    - Flere følger senere
+#}
+
+{% block title %}Editor{% endblock %}
+
+{% block body %}
+
+
+{{ form_start(form) }}
+
+
+<div class="row">
+
+    {% block toprow %}
+    {% endblock toprow %}
+
+</div>
+
+<div class="row">
+
+
+  <div class="col">
+    {% block lcol %}
+    	{{ include('editor/individual.html.twig') }}
+    {% endblock lcol %}
+  </div>
+
+  <div class="col">
+    {% block rcol %}
+  		{{ include('editor/family.html.twig') }}
+    {% endblock rcol %}
+  </div> <!-- End col -->
+
+
+</div> <!-- End row -->
+
+   {{ form_widget(form) }}
+
+  {{ form_end(form) }}
+
+
+
+{% endblock body %}

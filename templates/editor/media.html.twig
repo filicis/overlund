@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EditorMediaController!{% endblock %}
+
+{% block body %}
+
+
+{% set medialist= ["Ludvig Rasmussen",
+									"Ludvig Rasmussen",
+									"Ludvig",
+									"Ludvig på glatis",
+									"Margrethe og Ludvig Rasmussen",
+									"Ludvig Rasmussen med avis og barnebarn",
+									"Ludvig Rasmussen",
+									] %}
+
+
+<div>
+	<div class="card w-50 border-dark alert-primary shadow-sm p-3 mb-5  rounded">
+
+		<H5 class="card-header border-dark">
+			Media: [I15] Ludvig Rasmussen
+		</H5>
+
+		<!-- Indholdet -->
+
+		<div class="row">
+			<div class="col-md-4  align-self-center text-center" style="overflow: hidden;">
+				<img src="\ludvig.jpg" class="img-fluid rounded-start" alt="..." style="margin: -30% 0px -30% 0px; object-fit: cover;">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+
+					<label for="XXXXXXX">Media:</label>
+					<select class="form-select" id="XXXXXXX" size=10 aria-label="Default select example">
+						<!-- option selected>Open this select menu</option- -->
+
+						{% for ch in medialist %}
+
+						<option value="1">{{ ch }}</option>
+
+						{% endfor %}
+
+					</select>
+
+
+
+				</div>
+			</div>
+		</div>
+
+		<div class="card-footer border-dark">
+			<div class="btn-group" role="group" aria-label="Basic example">
+			<button type="button" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i></i></button>
+			<button type="button" class="btn btn-outline-primary"><i class="bi bi-binoculars"></i></i></button>
+				<button type="button" class="btn btn-outline-primary" disabled><i class="bi bi-arrow-left"></i></button>
+				<button type="button" class="btn btn-outline-primary"><i class="bi bi-arrow-right"></i></button>
+				<button type="button" class="btn btn-outline-primary"><i class="bi bi-person-x"></i></button>
+				<button type="button" class="btn btn-outline-primary"><i class="bi bi-file-lock"></i></button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+{% endblock %}

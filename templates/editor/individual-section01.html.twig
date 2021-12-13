@@ -1,0 +1,131 @@
+{# templates/editor/individual-section02.html.twig #}
+
+{#
+
+#}
+
+
+
+<div class="card-body">
+
+	<div class="row">
+
+			<!-- Billede -->
+
+		<div class="col-2 align-self-center text-center">
+			<img src="\ludvig.jpg" class="img-thumbnail img-fluid" height="100" width="100" alt="...">
+		</div>
+
+			<!-- Navne Struktur -->
+
+		<div class="col-10">
+
+				<!-- Fornavne -->
+
+			<div class="row">
+				<div class="col-3">
+					<div class="form-floating form-floating-height-sm form-floating-sm">
+						<input type="text" class="form-control form-control-sm" id="idXXX0" placeholder="Tekst" value="" readonly>
+						<label for="idXXX0"> {{ 'Prefix' | trans }} </label>
+					</div>
+				</div>
+				<div class="col-9">
+					<div class="form-floating form-floating-sm">
+						<input type="text" class="form-control form-control-sm" id="idXXX1" placeholder="Tekst" value="Anders" readonly>
+						<label for="idXXX1"> {{ 'First names' | trans }}</label>
+					</div>
+				</div>
+			</div>
+
+				<!-- Efternavn -->
+
+			<div class="row">
+				<div class="col-3">
+					<div class="form-floating">
+						<input type="text" class="form-control" id="idXXX2" placeholder="Tekst" readonly>
+						<label for="idXXX2"> {{ 'Prefix' | trans }}</label>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-floating">
+						<input type="text" class="form-control" id="idXXX3" placeholder="Tekst" value="Hansen Nielsen" readonly>
+						<label for="idXXX3"> {{ 'Last names' | trans }} </label>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="form-floating">
+						<input type="text" class="form-control" id="idXXX4" placeholder="Tekst" readonly>
+						<label for="idXXX4"> {{ 'Suffix' | trans }}</label>
+					</div>
+				</div>
+			</div>
+
+				<!-- Diverse navnestof, etc -->
+
+			<div class="row">
+				<div class="col-3">
+					<div class="form-floating">
+						<!-- input type="text" class="form-control" id="idXXX7" placeholder="Tekst" -->
+
+						<select class="form-select" id="idXXXXXX7" aria-label="Default select example" onChange='benny()'>
+							<!-- option >Køn</option -->
+							<option value="M" selected> {{ 'Male' | trans }} </option>
+							<option value="F"> {{ 'Female' | trans }} </option>
+              <option value="X"> {{ 'Intersex' | trans }} </option>
+              <option value="U"> {{ 'Unknown' | trans }} </option>
+              <option value="N"> {{ 'Not Recorded' | trans }} </option>
+						</select>
+
+						<label for="idXXX7"> {{ 'Sex' | trans }} </label>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-floating">
+						<input type="text" class="form-control" id="idXXX6" placeholder="Tekst" readonly>
+						<label for="idXXX6"> {{ 'Nicknames' | trans }} </label>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="form-floating">
+						<input type="text" class="form-control" id="idXXX5" placeholder="Tekst" readonly>
+						<label for="idXXX5"> {{ 'Type' | trans }} </label>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+	/**
+	 *	Implementerer køns-bestemt skift af baggrundsfarve i individ kolonnen
+	 *
+	 *	- TODO: Ajax kald til opdatering af bagvedliggende database
+	 **/
+
+
+	function benny()
+	{
+		document.getElementById("birger").classList.remove('alert-primary', 'alert-secondary', 'alert-danger', 'alert-alarm');
+		switch (document.getElementById("idXXXXXX7").value)
+		{
+			case 'M':
+			  document.getElementById("birger").classList.toggle("alert-primary");
+			  break;
+			case 'F':
+			  document.getElementById("birger").classList.toggle("alert-danger");
+			  break;
+			case 'U':
+      case 'N':
+			  document.getElementById("birger").classList.toggle("alert-secondary");
+			  break;
+			default:
+			  document.getElementById("birger").classList.toggle("alert-alarm");
+		}
+
+	}
+
+
+</script>

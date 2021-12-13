@@ -1,0 +1,187 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EditorMediaController!{% endblock %}
+
+
+ {% block stylesheets %}
+	    <!-- Vi benytter os af Bootstrap -->
+
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+      <!-- link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" -->
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+      <link rel="stylesheet" href="/cropper.min.css" />
+<script src="/path/to/dist/cropper.min.js"></script>
+
+{% endblock %}
+
+{% block body %}
+
+
+{% set medialist= ["Ludvig Rasmussen",
+									"Ludvig Rasmussen",
+									"Ludvig",
+									"Ludvig på glatis",
+									"Margrethe og Ludvig Rasmussen",
+									"Ludvig Rasmussen med avis og barnebarn",
+									"Ludvig Rasmussen",
+									] %}
+
+
+<div class="contents-justify-center">
+	<div class="card w-75 border-dark alert-primary shadow-sm p-3 mb-5  rounded">
+
+		<H5 class="card-header border-dark">
+			Media: [I15] Ludvig Rasmussen
+		</H5>
+
+		<!-- Indholdet -->
+
+		<div class="card-body">
+				<img src="\ludvig.jpg" id="mlrimage" class="img-fluid rounded-start mw-100" alt="..." >
+		</div>
+
+
+		<div class="card-footer border-dark">
+			<div class="btn-group" role="group" aria-label="Basic example">
+			<button type="button" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i></i></button>
+			<button type="button" class="btn btn-outline-primary"><i class="bi bi-binoculars"></i></i></button>
+				<button type="button" class="btn btn-outline-primary" disabled><i class="bi bi-arrow-left"></i></button>
+				<button type="button" class="btn btn-outline-primary"><i class="bi bi-arrow-right"></i></button>
+				<button type="button" class="btn btn-outline-primary"><i class="bi bi-person-x"></i></button>
+				<button type="button" class="btn btn-outline-primary"><i class="bi bi-file-lock"></i></button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+{% endblock %}
+
+
+  {% block javascripts %}
+			<!-- Bootstrap relaterede scripts -->
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+      <!  script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script-->
+
+
+		<script src="/cropper.min.js"></script>
+
+<script>
+		// As a Vanilla JS plugin
+const cropper = new Cropper(document.getElementById('image'), {
+      // options here
+
+// Define the view mode of the cropper
+viewMode: 0,
+
+// 0, 1, 2, 3
+// Define the dragging mode of the cropper
+dragMode: DRAG_MODE_CROP,
+
+// 'crop', 'move' or 'none'
+// Define the initial aspect ratio of the crop box
+initialAspectRatio: NaN,
+
+// Define the aspect ratio of the crop box
+aspectRatio: NaN,
+
+// An object with the previous cropping result data
+data: null,
+
+// A selector for adding extra containers to preview
+preview: '',
+
+// Re-render the cropper when resize the window
+responsive: true,
+
+// Restore the cropped area after resize the window
+restore: true,
+
+// Check if the current image is a cross-origin image
+checkCrossOrigin: true,
+
+// Check the current image's Exif Orientation information
+checkOrientation: true,
+
+// Show the black modal
+modal: true,
+
+// Show the dashed lines for guiding
+guides: true,
+
+// Show the center indicator for guiding
+center: true,
+
+// Show the white modal to highlight the crop box
+highlight: true,
+
+// Show the grid background
+background: true,
+
+// Enable to crop the image automatically when initialize
+autoCrop: true,
+
+// Define the percentage of automatic cropping area when initializes
+autoCropArea: 0.8,
+
+// Enable to move the image
+movable: true,
+
+// Enable to rotate the image
+rotatable: true,
+
+// Enable to scale the image
+scalable: true,
+
+// Enable to zoom the image
+zoomable: true,
+
+// Enable to zoom the image by dragging touch
+zoomOnTouch: true,
+
+// Enable to zoom the image by wheeling mouse
+zoomOnWheel: true,
+
+// Define zoom ratio when zoom the image by wheeling mouse
+wheel<a href="https://www.jqueryscript.net/zoom/">Zoom</a>Ratio: 0.1,
+
+// Enable to move the crop box
+cropBoxMovable: true,
+
+// Enable to resize the crop box
+cropBoxResizable: true,
+
+// Toggle drag mode between "crop" and "move" when click twice on the cropper
+toggleDragModeOnDblclick: true,
+
+// Size limitation
+minCanvasWidth: 0,
+minCanvasHeight: 0,
+minCropBoxWidth: 0,
+minCropBoxHeight: 0,
+minContainerWidth: 200,
+minContainerHeight: 100,
+
+// Shortcuts of events
+ready: null,
+cropstart: null,
+cropmove: null,
+cropend: null,
+crop: null,
+zoom: null
+});
+
+</script>
+
+    {% endblock %}

@@ -1,0 +1,56 @@
+{# templates/editor/individual-section03.html.twig #}
+
+{#
+
+#}
+
+
+
+{%
+	set iEvent= [
+			[ 'Birth',  '25 August 1893',  'Svinninge',],
+			[ 'Christening',  '24 September 1893',  'Nørre Asmindrup',],
+			[ 'Residense',  '1896',  'Nykøbing Sjælland',],
+			[ 'Census',  '1901',  'Algade 21',],
+			[ 'Census',  '1906',  'Algade 21',],
+			[ 'Census',  '1911',  'Algade 31',],
+			[ 'Occupation',  '',  ''],
+			[ 'Death',  '8 September 1974',  'Nykøbing Sjælland',],
+			[ 'Burrial',  '13 September 1974',  'Assistens Kirkegaard',],
+	]
+%}
+
+
+
+<div class="card-body">
+
+	<div class="row">
+		<div class="col  overflow-auto" style="max-height: 250px">
+			<table class="table table-sm border-dark table-light">
+
+				<thead style="position: sticky; top: 0">
+					<tr>
+						<th scope="col">Event</th>
+						<th scope="col">Date</th>
+						<th scope="col">Place</th>
+					</tr>
+				</thead>
+				<tbody>
+
+
+					{% for e in iEvent %}
+
+					<tr>
+						<td >{{ e[0] }}</td>
+						<td >{{ e[1] }}</td>
+						<td >{{ e[2] }}</td>
+					</tr>
+
+					{% endfor %}
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+

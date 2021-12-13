@@ -1,0 +1,108 @@
+
+
+{# templates/editor/individual-section02.html.twig #}
+
+{#
+
+#}
+
+{% set familylist= ["Ludvig Rasmussen + Karen Marie Jensen (1919)",
+									"Ludvig Rasmussen + Marie Elivira Bolette Andersen (1950)",
+									"Anne Jensdatter (1784)",
+									"Kirsten Jensdatter Harboe (1786)",
+									"Laurits Jensen Harboe (1791)",
+									"Bodil Jensdatter Harboe (1796)",
+									"Christen Jensen Harboe (1780-1827)",
+									] %}
+
+{% set parentlist= ["Peter Rasmussen og Cecilie Kristiane Larsen (1885)"
+									] %}
+
+
+<div class="card-body">
+	<div class="row">
+		<div class="col-10">
+			<label for="XXX"> {{ 'Families' | trans }}:</label>
+			<select class="form-select" id="XXX" size=4 aria-label="Default select example">
+				<!-- option selected>Open this select menu</option- -->
+
+				{% for f in familylist %}
+
+				<option value="1" onfocus='kilroy()'>{{ f }}</option>
+
+				{% endfor %}
+			</select>
+		</div>
+		<div class="col">
+
+		</div>
+
+	</div>
+</div>
+
+<div class=card-body>
+	<div class="row">
+		<div class="col-10">
+			<label for="XXX"> {{ 'Parents' | trans }} :</label>
+			<select class="form-select" id="XXX" size=3 aria-label="Default select example">
+				<!-- option selected>Open this select menu</option- -->
+
+				{% for p in parentlist %}
+
+				<option value="1"  onfocus='kilroy()'>{{ p }}</option>
+
+				{% endfor %}
+			</select>
+		</div>
+		<div class="col">
+
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+	/**
+	 *	TODO: Ajax kald der ændrer familien kolonnen afhængig af kontekst
+	 *
+	 **/
+
+	function kilroy()
+	{
+
+	}
+
+
+</script>
+
+
+
+<!--div class="row">
+<div class="col"-->
+<div class="card-body">
+	<div class="btn-group" role="group" aria-label="Basic example">
+		<button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Events and Attributes">
+			<i class="bi bi-file-spreadsheet"></i>
+		</button>
+		<a role="button" class="btn btn-outline-primary" href="noteeditor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notes">
+			<i class="bi bi-file-text"></i>
+		</a>
+		<button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Source Citations">
+			<i class="bi bi-file-post"></i>
+		</button>
+		<button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Media">
+			<i class="bi bi-file-image"></i>
+		</button>
+		<button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Last Change / Restrictions">
+			<i class="bi bi-file-lock"></i>
+		</button>
+		<button type="button" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Researchers">
+			<i class="bi bi-file-person"></i>
+		</button>
+	</div>
+</div>
+<!--/div>
+</div-->
+
+

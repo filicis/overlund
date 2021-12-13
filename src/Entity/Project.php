@@ -41,7 +41,7 @@ class Project
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", unique=true, length=30)
      */
     private $url;
 

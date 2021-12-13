@@ -21,6 +21,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\ORMException;
+
   /**
    *  ProjectController
    *  - Indeholder alle system administrative funktioner omkring projecter
@@ -45,7 +48,7 @@ class ProjectController extends AbstractController
      **/
 
   #[Route('/admin/newProject', name: 'adminNewProject')]
-  public function new(Request $request): Response
+  public function new(Request $request, ManagerRegistry $doctrine): Response
   {
     $project= new Project();
 
@@ -59,11 +62,21 @@ class ProjectController extends AbstractController
 
 		if ($form->isSubmitted() && $form->isValid())
 		{
+		  try
+		  {
+        $entityManager= $doctrine->getManager();
 
+              // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($project);
 
-			return $this->redirectToRoute('editor');
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
 
-
+			  return $this->redirectToRoute('/da');
+      }
+      catch(\Exception $e)
+      {
+      }
 		}
 
 

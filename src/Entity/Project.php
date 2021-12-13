@@ -12,7 +12,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
+use Symfony\Component\Uid\Ulid;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -45,7 +48,23 @@ class Project
      */
     private $url;
 
-    public function getId(): ?int
+    /**
+     * @ORM\OneToMany(targetEntity=Family::class, mappedBy="project")
+     */
+    private $families;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Individual::class, mappedBy="project")
+     */
+    private $individuals;
+
+    public function __construct()
+    {
+        $this->families = new ArrayCollection();
+        $this->individuals = new ArrayCollection();
+    }
+
+    public function getId(): ?Ulid
     {
         return $this->id;
     }
@@ -70,6 +89,66 @@ class Project
     public function setUrl(string $url): self
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Family[]
+     */
+    public function getFamilies(): Collection
+    {
+        return $this->families;
+    }
+
+    public function addFamily(Family $family): self
+    {
+        if (!$this->families->contains($family)) {
+            $this->families[] = $family;
+            $family->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFamily(Family $family): self
+    {
+        if ($this->families->removeElement($family)) {
+            // set the owning side to null (unless already changed)
+            if ($family->getProject() === $this) {
+                $family->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Individual[]
+     */
+    public function getIndividuals(): Collection
+    {
+        return $this->individuals;
+    }
+
+    public function addIndividual(Individual $individual): self
+    {
+        if (!$this->individuals->contains($individual)) {
+            $this->individuals[] = $individual;
+            $individual->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIndividual(Individual $individual): self
+    {
+        if ($this->individuals->removeElement($individual)) {
+            // set the owning side to null (unless already changed)
+            if ($individual->getProject() === $this) {
+                $individual->setProject(null);
+            }
+        }
 
         return $this;
     }

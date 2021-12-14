@@ -37,6 +37,11 @@ class Family
    */
   private $project;
 
+  /**
+   * @ORM\Column(type="string", length=20, nullable=true, options={"comment":"Friendly Identifier",})
+   */
+  private $xref;
+
   public function getId(): ?Ulid
   {
     return $this->id;
@@ -50,6 +55,18 @@ class Family
   public function setProject(?Project $project): self
   {
       $this->project = $project;
+
+      return $this;
+  }
+
+  public function getXref(): ?string
+  {
+      return $this->xref;
+  }
+
+  public function setXref(?string $xref): self
+  {
+      $this->xref = $xref;
 
       return $this;
   }

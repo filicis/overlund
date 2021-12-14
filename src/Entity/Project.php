@@ -58,10 +58,16 @@ class Project
      */
     private $individuals;
 
+    /**
+     * @ORM\OneToMany(targetEntity=SubmitterRecord::class, mappedBy="project")
+     */
+    private $submitterRecords;
+
     public function __construct()
     {
         $this->families = new ArrayCollection();
         $this->individuals = new ArrayCollection();
+        $this->submitterRecords = new ArrayCollection();
     }
 
     public function getId(): ?Ulid
@@ -147,6 +153,36 @@ class Project
             // set the owning side to null (unless already changed)
             if ($individual->getProject() === $this) {
                 $individual->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SubmitterRecord[]
+     */
+    public function getSubmitterRecords(): Collection
+    {
+        return $this->submitterRecords;
+    }
+
+    public function addSubmitterRecord(SubmitterRecord $submitterRecord): self
+    {
+        if (!$this->submitterRecords->contains($submitterRecord)) {
+            $this->submitterRecords[] = $submitterRecord;
+            $submitterRecord->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubmitterRecord(SubmitterRecord $submitterRecord): self
+    {
+        if ($this->submitterRecords->removeElement($submitterRecord)) {
+            // set the owning side to null (unless already changed)
+            if ($submitterRecord->getProject() === $this) {
+                $submitterRecord->setProject(null);
             }
         }
 

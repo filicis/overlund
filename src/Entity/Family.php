@@ -17,12 +17,16 @@ use Symfony\Component\Uid\Ulid;
 use App\Repository\FamilyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use App\Entity\Traits\XrefTrait;
+
   /**
    * @ORM\Entity(repositoryClass=FamilyRepository::class)
    **/
 
 class Family
 {
+  use XrefTrait;
+
   /**
    * @ORM\Id
    * @ORM\Column(type="ulid", unique=true)
@@ -37,10 +41,6 @@ class Family
    */
   private $project;
 
-  /**
-   * @ORM\Column(type="string", length=20, nullable=true, options={"comment":"Friendly Identifier",})
-   */
-  private $xref;
 
   public function getId(): ?Ulid
   {
@@ -59,15 +59,4 @@ class Family
       return $this;
   }
 
-  public function getXref(): ?string
-  {
-      return $this->xref;
-  }
-
-  public function setXref(?string $xref): self
-  {
-      $this->xref = $xref;
-
-      return $this;
-  }
 }

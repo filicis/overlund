@@ -21,12 +21,16 @@ use Symfony\Component\Uid\Ulid;
 use App\Repository\IndividualRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use App\Entity\Traits\XrefTrait;
+
   /**
    * @ORM\Entity(repositoryClass=IndividualRepository::class)
    **/
 
 class Individual
 {
+  use XrefTrait;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="ulid", unique=true)
@@ -41,10 +45,6 @@ class Individual
      */
     private $project;
 
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $xref;
 
     /**
      * @ORM\OneToMany(targetEntity=NameStructure::class, mappedBy="individual")
@@ -73,17 +73,6 @@ class Individual
         return $this;
     }
 
-    public function getXref(): ?string
-    {
-        return $this->xref;
-    }
-
-    public function setXref(?string $xref): self
-    {
-        $this->xref = $xref;
-
-        return $this;
-    }
 
     /**
      * @return Collection|NameStructure[]

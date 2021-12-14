@@ -12,29 +12,17 @@
 
 namespace App\Entity;
 
-use Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
-use Symfony\Component\Uid\Ulid;
 use App\Repository\FamilyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-use App\Entity\Traits\XrefTrait;
+use App\Entity\RecordSuperclass;
 
   /**
    * @ORM\Entity(repositoryClass=FamilyRepository::class)
    **/
 
-class Family
+class Family extends RecordSuperclass
 {
-  use XrefTrait;
-
-  /**
-   * @ORM\Id
-   * @ORM\Column(type="ulid", unique=true)
-   * @ORM\GeneratedValue(strategy="CUSTOM")
-   * @ORM\CustomIdGenerator(class=UlidGenerator::class)
-  **/
-
-  private $id;
 
   /**
    * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="families")
@@ -42,10 +30,6 @@ class Family
   private $project;
 
 
-  public function getId(): ?Ulid
-  {
-    return $this->id;
-  }
 
   public function getProject(): ?Project
   {

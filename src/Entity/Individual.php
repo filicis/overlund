@@ -16,29 +16,18 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
-use Symfony\Component\Uid\Ulid;
 use App\Repository\IndividualRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-use App\Entity\Traits\XrefTrait;
+use App\Entity\RecordSuperclass;
+
 
   /**
    * @ORM\Entity(repositoryClass=IndividualRepository::class)
    **/
 
-class Individual
+class Individual extends RecordSuperclass
 {
-  use XrefTrait;
-
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="ulid", unique=true)
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class=UlidGenerator::class)
-
-     */
-    private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="individuals")
@@ -56,10 +45,6 @@ class Individual
         $this->nameStructures = new ArrayCollection();
     }
 
-    public function getId(): ?Ulid
-    {
-        return $this->id;
-    }
 
     public function getProject(): ?Project
     {

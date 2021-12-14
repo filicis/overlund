@@ -36,7 +36,8 @@ use       App\Entity\Traits\XrefTrait;
    *
    * 	@ORM\MappedSuperclass
    *
-   *	@ ORM\HasLifecycleCallbacks()
+   *	@ORM\HasLifecycleCallbacks()
+   *
    *	@ ORM\Index(columns: ["xref", ])
    *  @ ORM\Table(indexes={@Index=(name="xref_idx", columns={"xref"}, options={"Length": 20})} )
    *	@ ORM\Index(fields: ["xref"])
@@ -64,10 +65,13 @@ class RecordSuperclass
 
 
   /**
-   * @ORM\Column(type="string", length=20, nullable=true)
-   **/
+   * @ORM\Column(type="datetime_immutable", nullable=true)
+   */
+  private $lastChange;
 
-  private $chan;
+
+
+
 
 
   /**
@@ -97,6 +101,42 @@ class RecordSuperclass
       return $this;
   }
 
+
+  public function getLastChange(): ?\DateTimeImmutable
+  {
+      return $this->lastChange;
+  }
+
+
+  public function setLastChange(?\DateTimeImmutable $lastChange): self
+  {
+      $this->lastChange = $lastChange;
+
+      return $this;
+  }
+
+
+
+  /**
+   *  myfunction
+   *  - sætter CreatedAt
+   *  - sætter xref
+   *
+   *  @ORM\PrePersist
+   **/
+
+  public function myfunction(PreUpdateEventArgs $event)
+  {
+    if (! $event->hasChangedField('lastChange'))
+    {
+      $this->lastChange= new \DateTimeImmutable();
+    }
+    if (! $event->hasChangedField('xref'))
+    {
+      $this->xref= 'Void';
+    }
+
+  }
 
 
   /**

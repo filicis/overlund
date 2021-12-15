@@ -14,8 +14,15 @@ namespace	App\Entity;
 
 use 			Doctrine\ORM\Mapping as ORM;
 use 			Doctrine\ORM\Mapping\Index;
+use       Doctrine\ORM\Event;
+use       Doctrine\ORM\Event\PrePersistEventArgs;
+use       Doctrine\ORM\Event\LifecycleEventArgs;
+use       Doctrine\ORM\Mapping\Entity;
+use       Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use       Doctrine\ORM\Mapping\PrePersist;
 use       Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
 use       Symfony\Component\Uid\Ulid;
+
 
 use       App\Entity\Traits\XrefTrait;
 
@@ -36,7 +43,7 @@ use       App\Entity\Traits\XrefTrait;
    *
    * 	@ORM\MappedSuperclass
    *
-   *	@ORM\HasLifecycleCallbacks()
+   *	@ORM\HasLifecycleCallbacks
    *
    *	@ ORM\Index(columns: ["xref", ])
    *  @ ORM\Table(indexes={@Index=(name="xref_idx", columns={"xref"}, options={"Length": 20})} )
@@ -125,16 +132,19 @@ class RecordSuperclass
    *  @ORM\PrePersist
    **/
 
-  public function myfunction(PreUpdateEventArgs $event)
+
+  public function myfunction()
   {
-    if (! $event->hasChangedField('lastChange'))
-    {
-      $this->lastChange= new \DateTimeImmutable();
-    }
-    if (! $event->hasChangedField('xref'))
-    {
+
+    //if (! $event->hasChangedField('lastChange'))
+    //{
+    //  $this->lastChange= new \DateTimeImmutable();
+    //}
+    //if (! $event->hasChangedField('xref'))
+    //{
       $this->xref= 'Void';
-    }
+    //}
+    $this->crea= date('Y-m-d H:i:s');
 
   }
 

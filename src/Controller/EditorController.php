@@ -13,6 +13,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Family;
+use App\Entity\Individual;
 use App\Entity\Project;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,8 +24,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Doctrine\Persistence\ManagerRegistry;
+
+
 class EditorController extends AbstractController
 {
+
+  /**
+   *
+   *
+   **/
+
+
   #[Route('/editor/{url}', name: 'editor')]
   public function index(Request $request, Project $project): Response
   {
@@ -59,4 +71,71 @@ class EditorController extends AbstractController
 
     ]);
   }
+
+
+  /**
+   *
+   *
+   **/
+
+  #[Route('/editor/{url}/newfamily', name: 'editorNewFamily')]
+  public function newFamily(Request $request, Project $project, ManagerRegistry $doctrine): Response
+  {
+    $fam= new Family();
+    $project->addFamily($fam);
+
+    		  try
+		  {
+        $entityManager= $doctrine->getManager();
+
+              // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($project);
+        $entityManager->persist($fam);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+			  return $this->redirectToRoute('editor', ['url' => 'familie']);
+      }
+      catch(\Exception $e)
+      {
+      }
+			return $this->redirectToRoute('editor', ['url' => 'familie' ]);
+
+
+  }
+
+
+  /**
+   *
+   *
+   **/
+
+  #[Route('/editor/{url}/newindividual', name: 'editorNewIndividual')]
+  public function newIndividual(Request $request, Project $project, ManagerRegistry $doctrine): Response
+  {
+    $indi= new Individual();
+    $project->addIndividual($indi);
+
+    		  try
+		  {
+        $entityManager= $doctrine->getManager();
+
+              // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($project);
+        $entityManager->persist($indi);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+			  return $this->redirectToRoute('editor', ['url' => 'familie' ]);
+      }
+      catch(\Exception $e)
+      {
+      }
+			return $this->redirectToRoute('editor', ['url' => 'familie' ]);
+
+
+  }
+
 }

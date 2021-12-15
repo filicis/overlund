@@ -55,7 +55,7 @@ class ProjectController extends AbstractController
     $form= $this->createFormBuilder($project)
       -> add('title', TextType::class)
       -> add('url', TextType::class)
-      ->add('save', SubmitType::class, ['label' => 'Create Task'])
+      -> add('save', SubmitType::class, ['label' => 'Create Task'])
       ->getForm();
 
     $form->handleRequest($request);

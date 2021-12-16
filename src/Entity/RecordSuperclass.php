@@ -12,6 +12,8 @@
 
 namespace	App\Entity;
 
+//use       App\Entity\
+
 use 			Doctrine\ORM\Mapping as ORM;
 use 			Doctrine\ORM\Mapping\Index;
 use       Doctrine\ORM\Event;
@@ -23,6 +25,7 @@ use       Doctrine\ORM\Mapping\PrePersist;
 use       Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
 use       Symfony\Component\Uid\Ulid;
 
+use Doctrine\Persistence\ManagerRegistry;
 
 use       App\Entity\Traits\XrefTrait;
 
@@ -41,7 +44,7 @@ use       App\Entity\Traits\XrefTrait;
    *  - SubmitterRecord
    *
    *
-   * 	@ORM\MappedSuperclass
+   * 	@ORM\MappedSuperclass(repositoryClass=RecordSuperclassRepository::class)
    *
    *	@ORM\HasLifecycleCallbacks
    *
@@ -52,6 +55,9 @@ use       App\Entity\Traits\XrefTrait;
 
 class RecordSuperclass
 {
+  const dummy= "SELECT xref FROM family where xref REGEXP 'F\d*' ORDER BY xref desc";
+  protected const XREF_PREFIX = '_';
+
   use XrefTrait;
 
 
@@ -133,17 +139,27 @@ class RecordSuperclass
    **/
 
 
-  public function myfunction()
+  public function myfunction(LifeCycleEventArgs $event )
   {
+    $sql= 'SELECT SUBSTRING(`xref`, 2) FROM '
+          . strtolower((new \ReflectionClass($this))->getShortName())
+          . ' where xref REGEXP "^[[:alpha:]][[:digit:]]+" ORDER BY xref DESC LIMIT 1';
 
-    //if (! $event->hasChangedField('lastChange'))
-    //{
-    //  $this->lastChange= new \DateTimeImmutable();
-    //}
-    //if (! $event->hasChangedField('xref'))
-    //{
-      $this->xref= 'Void';
-    //}
+    $em= $event->getEntityManager();
+
+    $conn= $em->getConnection();
+
+
+    $res= $conn->fetchOne($sql);
+
+    if ($res)
+      $this->xref= $this::XREF_PREFIX . ++$res;
+    else
+      $this->xref= $this::XREF_PREFIX . 1;
+
+      //$this->xref= (new \ReflectionClass($this))->getShortName();
+
+
     $this->crea= date('Y-m-d H:i:s');
 
   }

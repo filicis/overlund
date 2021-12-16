@@ -23,6 +23,7 @@ use App\Entity\RecordSuperclass;
 
 class Family extends RecordSuperclass
 {
+  protected const XREF_PREFIX = 'F';
 
   /**
    * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="families")

@@ -26,6 +26,9 @@ class SubmitterRecord extends RecordSuperclass
 {
   use AddressTrait;
 
+  protected const XREF_PREFIX = 'S';
+
+
   /**
    * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="submitterRecords")
    */

@@ -28,6 +28,8 @@ use App\Entity\RecordSuperclass;
 
 class Individual extends RecordSuperclass
 {
+    protected const XREF_PREFIX = 'I';
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="individuals")

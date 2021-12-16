@@ -84,8 +84,8 @@ class EditorController extends AbstractController
     $fam= new Family();
     $project->addFamily($fam);
 
-    		  try
-		  {
+    	//	  try
+		  //{
         $entityManager= $doctrine->getManager();
 
               // tell Doctrine you want to (eventually) save the Product (no queries yet)
@@ -96,11 +96,11 @@ class EditorController extends AbstractController
         $entityManager->flush();
 
 			  return $this->redirectToRoute('editor', ['url' => 'familie']);
-      }
-      catch(\Exception $e)
-      {
-      }
-			return $this->redirectToRoute('editor', ['url' => 'familie' ]);
+      //}
+      //catch(\Exception $e)
+      //{
+      //}
+			//return $this->redirectToRoute('editor', ['url' => 'familie' ]);
 
 
   }

@@ -63,11 +63,17 @@ class Project
      */
     private $submitterRecords;
 
+    /**
+     * @ORM\OneToMany(targetEntity=MediaRecord::class, mappedBy="project")
+     */
+    private $mediaRecords;
+
     public function __construct()
     {
         $this->families = new ArrayCollection();
         $this->individuals = new ArrayCollection();
         $this->submitterRecords = new ArrayCollection();
+        $this->mediaRecords = new ArrayCollection();
     }
 
     public function getId(): ?Ulid
@@ -183,6 +189,36 @@ class Project
             // set the owning side to null (unless already changed)
             if ($submitterRecord->getProject() === $this) {
                 $submitterRecord->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MediaRecord[]
+     */
+    public function getMediaRecords(): Collection
+    {
+        return $this->mediaRecords;
+    }
+
+    public function addMediaRecord(MediaRecord $mediaRecord): self
+    {
+        if (!$this->mediaRecords->contains($mediaRecord)) {
+            $this->mediaRecords[] = $mediaRecord;
+            $mediaRecord->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMediaRecord(MediaRecord $mediaRecord): self
+    {
+        if ($this->mediaRecords->removeElement($mediaRecord)) {
+            // set the owning side to null (unless already changed)
+            if ($mediaRecord->getProject() === $this) {
+                $mediaRecord->setProject(null);
             }
         }
 

@@ -53,6 +53,7 @@ use       App\Entity\Traits\XrefTrait;
    *	@ ORM\Index(fields: ["xref"])
    **/
 
+
 class RecordSuperclass
 {
   const dummy= "SELECT xref FROM family where xref REGEXP 'F\d*' ORDER BY xref desc";
@@ -143,7 +144,9 @@ class RecordSuperclass
   {
     $sql= 'SELECT SUBSTRING(`xref`, 2) FROM '
           . strtolower((new \ReflectionClass($this))->getShortName())
-          . ' where xref REGEXP "^[[:alpha:]][[:digit:]]+" ORDER BY xref DESC LIMIT 1';
+          . ' where (`project_id` in (\''
+          . $this->getProject()->getId()
+          . '\')) and (xref REGEXP "^[[:alpha:]][[:digit:]]+$") ORDER BY length(xref) DESC, xref DESC LIMIT 1';
 
     $em= $event->getEntityManager();
 
@@ -161,71 +164,27 @@ class RecordSuperclass
 
 
     $this->crea= date('Y-m-d H:i:s');
+    // $this->crea= $this->getProject()->getId();
+
+    $this->lastChange= new \DatetimeImmutable();
 
   }
 
 
   /**
-  *	function cb()
-  *
-  *	@ORM\PrePersist
-  **/
-/*
-  public function callback() : void
-  {
+   *  mymyfunction
+   *  - sætter CreatedAt
+   *  - sætter xref
+   *
+   *  @ORM\PreUpdate
+   **/
 
+
+  public function mymyfunction()
+  {
+    $this->lastChange= new \DatetimeImmutable();
   }
 
-  public function getIdentifierLink(): ?IdentifierLink
-  {
-      return $this->identifierLink;
-  }
-
-  public function setIdentifierLink(?IdentifierLink $identifierLink): self
-  {
-      $this->identifierLink = $identifierLink;
-
-      return $this;
-  }
-
-  public function getChan(): ?string
-  {
-      return $this->chan;
-  }
-
-  public function setChan(?string $chan): self
-  {
-      $this->chan = $chan;
-
-      return $this;
-  }
-
-  public function getCrea(): ?string
-  {
-      return $this->crea;
-  }
-
-  public function setCrea(?string $crea): self
-  {
-      $this->crea = $crea;
-
-      return $this;
-  }
-
-/*
-  public function getChannotes(): ?JoinNotes
-  {
-      return $this->channotes;
-  }
-
-  public function setChannotes(?JoinNotes $channotes): self
-  {
-      $this->channotes = $channotes;
-
-      return $this;
-  }
-
-*/
 
 
 }

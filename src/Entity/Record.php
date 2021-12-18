@@ -12,23 +12,29 @@
 
 namespace App\Entity;
 
-use App\Repository\RecordRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use       App\Repository\RecordRepository;
+use       Doctrine\Common\Collections\ArrayCollection;
+use       Doctrine\Common\Collections\Collection;
+use       Doctrine\ORM\Mapping as ORM;
+
+use       App\Entity\Traits\UlidIdTrait;
 
   /**
+   *  Record
+   *  - Basal funtionalitet der går igen i (næsten) alle Gedcom Records
+   *
+   *  Linker op til:
+   *  - IdentifierStructure
+   *  - NoteStructure
+   *  - SourceCitatation
+   *  - MediaLink
    * @ORM\Entity(repositoryClass=RecordRepository::class)
    **/
+
 class Record
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     **/
+  use UlidIdTrait;
 
-    private $id;
 
     /**
      * @ORM\OneToMany(targetEntity=IdentifierStructure::class, mappedBy="recordLinks")
@@ -41,16 +47,24 @@ class Record
      */
     private $noteRecords;
 
+    /**
+     * @ORM\OneToMany(targetEntity=SourceCitation::class, mappedBy="record")
+     */
+    private $sourceCitations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MediaLink::class, mappedBy="record")
+     */
+    private $mediaLinks;
+
     public function __construct()
     {
         $this->indentifierStructure = new ArrayCollection();
         $this->noteRecords = new ArrayCollection();
+        $this->sourceCitations = new ArrayCollection();
+        $this->mediaLinks = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     /**
      * @return Collection|IdentifierStructure[]
@@ -102,6 +116,66 @@ class Record
     public function removeNoteRecord(NoteRecord $noteRecord): self
     {
         $this->noteRecords->removeElement($noteRecord);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SourceCitation[]
+     */
+    public function getSourceCitations(): Collection
+    {
+        return $this->sourceCitations;
+    }
+
+    public function addSourceCitation(SourceCitation $sourceCitation): self
+    {
+        if (!$this->sourceCitations->contains($sourceCitation)) {
+            $this->sourceCitations[] = $sourceCitation;
+            $sourceCitation->setRecord($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSourceCitation(SourceCitation $sourceCitation): self
+    {
+        if ($this->sourceCitations->removeElement($sourceCitation)) {
+            // set the owning side to null (unless already changed)
+            if ($sourceCitation->getRecord() === $this) {
+                $sourceCitation->setRecord(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MediaLink[]
+     */
+    public function getMediaLinks(): Collection
+    {
+        return $this->mediaLinks;
+    }
+
+    public function addMediaLink(MediaLink $mediaLink): self
+    {
+        if (!$this->mediaLinks->contains($mediaLink)) {
+            $this->mediaLinks[] = $mediaLink;
+            $mediaLink->setRecord($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMediaLink(MediaLink $mediaLink): self
+    {
+        if ($this->mediaLinks->removeElement($mediaLink)) {
+            // set the owning side to null (unless already changed)
+            if ($mediaLink->getRecord() === $this) {
+                $mediaLink->setRecord(null);
+            }
+        }
 
         return $this;
     }

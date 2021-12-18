@@ -14,6 +14,8 @@
 namespace App\Entity;
 
 use App\Repository\MediaRecordRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +30,16 @@ class MediaRecord extends RecordSuperclass
    */
   private $project;
 
+  /**
+   * @ORM\OneToMany(targetEntity=MediaLink::class, mappedBy="mediaRecord")
+   */
+  private $mediaLinks;
+
+  public function __construct()
+  {
+      $this->mediaLinks = new ArrayCollection();
+  }
+
   public function getProject(): ?Project
   {
       return $this->project;
@@ -36,6 +48,36 @@ class MediaRecord extends RecordSuperclass
   public function setProject(?Project $project): self
   {
       $this->project = $project;
+
+      return $this;
+  }
+
+  /**
+   * @return Collection|MediaLink[]
+   */
+  public function getMediaLinks(): Collection
+  {
+      return $this->mediaLinks;
+  }
+
+  public function addMediaLink(MediaLink $mediaLink): self
+  {
+      if (!$this->mediaLinks->contains($mediaLink)) {
+          $this->mediaLinks[] = $mediaLink;
+          $mediaLink->setMediaRecord($this);
+      }
+
+      return $this;
+  }
+
+  public function removeMediaLink(MediaLink $mediaLink): self
+  {
+      if ($this->mediaLinks->removeElement($mediaLink)) {
+          // set the owning side to null (unless already changed)
+          if ($mediaLink->getMediaRecord() === $this) {
+              $mediaLink->setMediaRecord(null);
+          }
+      }
 
       return $this;
   }

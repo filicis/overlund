@@ -22,11 +22,12 @@ use       Doctrine\ORM\Event\LifecycleEventArgs;
 use       Doctrine\ORM\Mapping\Entity;
 use       Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use       Doctrine\ORM\Mapping\PrePersist;
-use       Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
-use       Symfony\Component\Uid\Ulid;
+//use       Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
+//use       Symfony\Component\Uid\Ulid;
 
 use Doctrine\Persistence\ManagerRegistry;
 
+use       App\Entity\Traits\UlidIdTrait;
 use       App\Entity\Traits\XrefTrait;
 
 
@@ -59,17 +60,9 @@ class RecordSuperclass
   const dummy= "SELECT xref FROM family where xref REGEXP 'F\d*' ORDER BY xref desc";
   protected const XREF_PREFIX = '_';
 
-  use XrefTrait;
+  use UlidIdTrait, XrefTrait;
 
 
-  /**
-   * @ORM\Id
-   * @ORM\Column(type="ulid", unique=true)
-   * @ORM\GeneratedValue(strategy="CUSTOM")
-   * @ORM\CustomIdGenerator(class=UlidGenerator::class)
-  **/
-
-  private $id;
 
 
   /**
@@ -94,11 +87,6 @@ class RecordSuperclass
 
   private $crea;
 
-
-  public function getId(): ?Ulid
-  {
-    return $this->id;
-  }
 
 
 

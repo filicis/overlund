@@ -36,9 +36,11 @@ class EditorController extends AbstractController
    **/
 
 
-  #[Route('/editor/{url}', name: 'editor')]
-  public function index(Request $request, Project $project): Response
+  #[Route('/editor/{url}', name: 'editor', defaults: ['p1' => null, 'p2' => null])]
+  public function index(Request $request, Project $project, ?string  $p1= null, ?string $p2= null): Response
   {
+    $family= null;
+    $individual= null;
 
         $form= $this->createFormBuilder($project)
       -> add('title', TextType::class)
@@ -65,7 +67,8 @@ class EditorController extends AbstractController
 
     return $this->render('editor/index.html.twig', [
 
-    'controller_name' => 'EditorController',
+      'controller_name' => 'EditorController',
+      'project' => $project,
     'form' => $form,
     'form' => $form->createView(),
 

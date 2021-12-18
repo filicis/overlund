@@ -1,4 +1,6 @@
 {
+    "name": "filicis/overlund",
+    "description": "Web-based Genealogy Applicarion",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "dev",

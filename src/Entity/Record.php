@@ -12,15 +12,15 @@
 
 namespace App\Entity;
 
-use App\Repository\RecordLinksRepository;
+use App\Repository\RecordRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
   /**
-   * @ORM\Entity(repositoryClass=RecordLinksRepository::class)
+   * @ORM\Entity(repositoryClass=RecordRepository::class)
    **/
-class RecordLinks
+class Record
 {
     /**
      * @ORM\Id
@@ -36,9 +36,15 @@ class RecordLinks
 
     private $indentifierStructure;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=NoteRecord::class, inversedBy="records")
+     */
+    private $noteRecords;
+
     public function __construct()
     {
         $this->indentifierStructure = new ArrayCollection();
+        $this->noteRecords = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,7 +64,7 @@ class RecordLinks
     {
         if (!$this->indentifierStructure->contains($indentifierStructure)) {
             $this->indentifierStructure[] = $indentifierStructure;
-            $indentifierStructure->setRecordLinks($this);
+            $indentifierStructure->setRecord($this);
         }
 
         return $this;
@@ -68,10 +74,34 @@ class RecordLinks
     {
         if ($this->indentifierStructure->removeElement($indentifierStructure)) {
             // set the owning side to null (unless already changed)
-            if ($indentifierStructure->getRecordLinks() === $this) {
-                $indentifierStructure->setRecordLinks(null);
+            if ($indentifierStructure->getRecord() === $this) {
+                $indentifierStructure->setRecord(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|NoteRecord[]
+     */
+    public function getNoteRecords(): Collection
+    {
+        return $this->noteRecords;
+    }
+
+    public function addNoteRecord(NoteRecord $noteRecord): self
+    {
+        if (!$this->noteRecords->contains($noteRecord)) {
+            $this->noteRecords[] = $noteRecord;
+        }
+
+        return $this;
+    }
+
+    public function removeNoteRecord(NoteRecord $noteRecord): self
+    {
+        $this->noteRecords->removeElement($noteRecord);
 
         return $this;
     }

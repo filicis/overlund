@@ -33,7 +33,7 @@ class IdentifierStructure
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity=RecordLinks::class, inversedBy="indentifierStructure")
+     * @ORM\ManyToOne(targetEntity=Record::class, inversedBy="indentifierStructure")
      */
     private $recordLinks;
 
@@ -78,12 +78,12 @@ class IdentifierStructure
         return $this;
     }
 
-    public function getRecordLinks(): ?RecordLinks
+    public function getRecord(): ?Record
     {
         return $this->recordLinks;
     }
 
-    public function setRecordLinks(?RecordLinks $recordLinks): self
+    public function setRecord(?Record $recordLinks): self
     {
         $this->recordLinks = $recordLinks;
 

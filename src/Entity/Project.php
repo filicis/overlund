@@ -68,12 +68,18 @@ class Project
      */
     private $mediaRecords;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PlaceRecord::class, mappedBy="project")
+     */
+    private $placeRecords;
+
     public function __construct()
     {
         $this->families = new ArrayCollection();
         $this->individuals = new ArrayCollection();
         $this->submitterRecords = new ArrayCollection();
         $this->mediaRecords = new ArrayCollection();
+        $this->placeRecords = new ArrayCollection();
     }
 
     public function getId(): ?Ulid
@@ -219,6 +225,36 @@ class Project
             // set the owning side to null (unless already changed)
             if ($mediaRecord->getProject() === $this) {
                 $mediaRecord->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PlaceRecord[]
+     */
+    public function getPlaceRecords(): Collection
+    {
+        return $this->placeRecords;
+    }
+
+    public function addPlaceRecord(PlaceRecord $placeRecord): self
+    {
+        if (!$this->placeRecords->contains($placeRecord)) {
+            $this->placeRecords[] = $placeRecord;
+            $placeRecord->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removePlaceRecord(PlaceRecord $placeRecord): self
+    {
+        if ($this->placeRecords->removeElement($placeRecord)) {
+            // set the owning side to null (unless already changed)
+            if ($placeRecord->getProject() === $this) {
+                $placeRecord->setProject(null);
             }
         }
 

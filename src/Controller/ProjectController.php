@@ -12,11 +12,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Project;
+use       App\Entity\Project;
+use       App\Form\ProjectType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -55,7 +57,6 @@ class ProjectController extends AbstractController
     $form= $this->createFormBuilder($project)
       -> add('title', TextType::class)
       -> add('url', TextType::class)
-      -> add('save', SubmitType::class, ['label' => 'Create Task'])
       ->getForm();
 
     $form->handleRequest($request);
@@ -84,11 +85,36 @@ class ProjectController extends AbstractController
     return $this->render('project/newProject.html.twig', [
     'form' => $form,
     'form' => $form->createView(),
+    'formTitle' => 'Create New Project',
     'controller_name' => 'ProjectController',
     ]);
   }
 
 
+  /**
+   *
+   **/
 
+  #[Route('/admin/openProject', name: 'adminOpenProject')]
+  public function open(Request $request, ManagerRegistry $doctrine) : Response
+  {
+    $projecter= $doctrine->getRepository(Project::class)->findAll();
+
+    $form= $this->createFormBuilder($projecter)
+      -> add('project', CollectionType::class, ['entry_type' => Text::class])
+      -> getForm();
+    ;  
+
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid())
+    {
+    }
+    return $this->render('card.html.twig', [
+      'form' => $form,
+      'form' => $form->createView(),
+      'formTitle' => 'Select Project'
+      ]);  
+  }  
 
 }

@@ -14,6 +14,7 @@ namespace App\Controller;
 
 use       App\Entity\Project;
 use       App\Form\ProjectType;
+use       App\Form\ProjectsType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -54,10 +55,14 @@ class ProjectController extends AbstractController
   {
     $project= new Project();
 
+    /*
     $form= $this->createFormBuilder($project)
       -> add('title', TextType::class)
       -> add('url', TextType::class)
       ->getForm();
+    */
+
+    $form= $this->createForm(ProjectType::class, $project);
 
     $form->handleRequest($request);
 
@@ -82,9 +87,8 @@ class ProjectController extends AbstractController
 
 
 
-    return $this->render('project/newProject.html.twig', [
+    return $this->renderForm('project/newProject.html.twig', [
     'form' => $form,
-    'form' => $form->createView(),
     'formTitle' => 'Create New Project',
     'controller_name' => 'ProjectController',
     ]);
@@ -100,21 +104,23 @@ class ProjectController extends AbstractController
   {
     $projecter= $doctrine->getRepository(Project::class)->findAll();
 
+    /*
     $form= $this->createFormBuilder($projecter)
       -> add('project', CollectionType::class, ['entry_type' => Text::class])
       -> getForm();
-    ;  
+    ; 
+     */
+    $form= $this->createForm(ProjectsType::class, $projecter); 
 
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid())
     {
     }
-    return $this->render('card.html.twig', [
+    return $this->renderForm('card1.html.twig', [
       'form' => $form,
-      'form' => $form->createView(),
       'formTitle' => 'Select Project'
       ]);  
   }  
-
+ 
 }

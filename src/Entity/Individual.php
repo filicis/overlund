@@ -36,16 +36,16 @@ class Individual extends RecordSuperclass
      */
     private $project;
 
-
     /**
-     * @ORM\OneToMany(targetEntity=NameStructure::class, mappedBy="individual")
+     * @ORM\OneToMany(targetEntity=PersonalNameStructure::class, mappedBy="individual")
      */
-    private $nameStructures;
+    private $personalNameStructures;
 
     public function __construct()
     {
-        $this->nameStructures = new ArrayCollection();
+        $this->personalNameStructures = new ArrayCollection();
     }
+
 
 
     public function getProject(): ?Project
@@ -60,34 +60,35 @@ class Individual extends RecordSuperclass
         return $this;
     }
 
-
     /**
-     * @return Collection|NameStructure[]
+     * @return Collection|PersonalNameStructure[]
      */
-    public function getNameStructures(): Collection
+    public function getPersonalNameStructures(): Collection
     {
-        return $this->nameStructures;
+        return $this->personalNameStructures;
     }
 
-    public function addNameStructure(NameStructure $nameStructure): self
+    public function addPersonalNameStructure(PersonalNameStructure $personalNameStructure): self
     {
-        if (!$this->nameStructures->contains($nameStructure)) {
-            $this->nameStructures[] = $nameStructure;
-            $nameStructure->setIndividual($this);
+        if (!$this->personalNameStructures->contains($personalNameStructure)) {
+            $this->personalNameStructures[] = $personalNameStructure;
+            $personalNameStructure->setIndividual($this);
         }
 
         return $this;
     }
 
-    public function removeNameStructure(NameStructure $nameStructure): self
+    public function removePersonalNameStructure(PersonalNameStructure $personalNameStructure): self
     {
-        if ($this->nameStructures->removeElement($nameStructure)) {
+        if ($this->personalNameStructures->removeElement($personalNameStructure)) {
             // set the owning side to null (unless already changed)
-            if ($nameStructure->getIndividual() === $this) {
-                $nameStructure->setIndividual(null);
+            if ($personalNameStructure->getIndividual() === $this) {
+                $personalNameStructure->setIndividual(null);
             }
         }
 
         return $this;
     }
+
+
 }

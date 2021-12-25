@@ -19,6 +19,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\Traits\UlidIdTrait;
+use       App\Entity\GedcomStructure;
 
 
   /**
@@ -30,7 +31,7 @@ use       App\Entity\Traits\UlidIdTrait;
 
 #[ORM\Entity(repositoryClass: GedcomRepository::class)]
 #[ORM\InheritanceType("SINGLE_TABLE")]
-#[ORM\DiscriminatorColumn(name: "discr", type: "string")]
+#[ORM\DiscriminatorColumn(name: 'discr', type: 'string', length: 20)]
 class GedcomStructure
 {
   use UlidIdTrait;
@@ -105,8 +106,6 @@ class GedcomStructure
   * @ORM\Column(type="string", length=20)
   */
 
-  #[ORM\Column(type: "string", length: 20)]
-  private $discr;
 
   public function __construct()
   {

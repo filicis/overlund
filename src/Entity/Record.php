@@ -41,7 +41,7 @@ class Record
      * @ORM\Entity(repositoryClass=RecordRepository::class)
      */
 
-    #[ORM\Entity(repositoryClass: RecordRepository::class)]
+    #[ORM\ManyToMany(targetEntity: IdentifierStructure::class, inversedBy: "recordLinks")]
     private $indentifierStructure;
 
     /**

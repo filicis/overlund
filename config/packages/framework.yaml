@@ -17,6 +17,10 @@ framework:
     php_errors:
         log: true
 
+    # Ændrer til nyere Form Validation Messages
+    form:
+        legacy_error_messages: false
+
 when@test:
     framework:
         test: true

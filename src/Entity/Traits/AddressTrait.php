@@ -35,61 +35,85 @@ trait AddressTrait
     /**
      * @ORM\Column(type="text", nullable=true)
      **/
+
+    #[ORM\Column(type: "text", nullable: true)]
     private $addr;
 
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
      **/
+
+    #[ORM\Column(type:"string", length: 60, nullable: true)]
     private $adr1;
 
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 60, nullable: true)]
     private $adr2;
 
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 60, nullable: true)]
     private $adr3;
 
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 60, nullable: true)]
     private $city;
 
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 60, nullable: true)]
     private $stae;
 
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 20, nullable: true)]
     private $post;
 
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 60, nullable: true)]
     private $ctry;
 
     /**
      * @ORM\Column(type="array", nullable=true)
      **/
+
+    #[ORM\Column(type: "array", nullable: true)]
     private $phon = [];
 
     /**
      * @ORM\Column(type="array", nullable=true)
      **/
+
+    #[ORM\Column(type: "array", nullable: true)]
     private $email = [];
 
     /**
      * @ORM\Column(type="array", nullable=true)
      **/
+
+    #[ORM\Column(type: "array", nullable: true)]
     private $fax = [];
 
     /**
      * @ORM\Column(type="array", nullable=true)
      **/
+
+    #[ORM\Column(type: "array", nullable: true)]
     private $www = [];
 
     /**

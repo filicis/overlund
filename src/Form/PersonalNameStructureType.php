@@ -16,6 +16,7 @@ use App\Entity\PersonalNameStructure;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use       Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class PersonalNameStructureType extends AbstractType
 {
@@ -27,12 +28,12 @@ class PersonalNameStructureType extends AbstractType
             // ->add('crea')
             // ->add('xref')
             ->add('personalName')
-            ->add('npfx')
-            ->add('givn')
-            ->add('nick')
-            ->add('spfx')
-            ->add('surn')
-            ->add('nsfx')
+            ->add('npfx', TextType::class, ['label' => 'Prefix:',])
+            ->add('givn', TextType::class, ['label' => 'First names:', 'help' => 'Fornavne'])
+            ->add('nick', TextType::class, ['label' => 'Nicknames:',])
+            ->add('spfx', TextType::class, ['label' => 'Prefix:',])
+            ->add('surn', TextType::class, ['label' => 'Last name:',])
+            ->add('nsfx', TextType::class, ['label' => 'Suffix:',])
             // ->add('individual')
         ;
     }

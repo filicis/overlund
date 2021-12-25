@@ -19,6 +19,8 @@ use Symfony\Component\Uid\Ulid;
 use App\Repository\ProjectRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use       App\Entity\Traits\UlidIdTrait;
+
   /**
    *  Project
    *  -
@@ -27,51 +29,67 @@ use Doctrine\ORM\Mapping as ORM;
    * @ORM\Entity(repositoryClass=ProjectRepository::class)
    **/
 
-
+#[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="ulid", unique=true)
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class=UlidGenerator::class)
-     */
-    private $id;
+  use UlidIdTrait;
+
 
     /**
      * @ORM\Column(type="string", length=80)
      */
+
+    #[ORM\Column(type: "string", length: 80)]
     private $title;
 
     /**
      * @ORM\Column(type="string", unique=true, length=30)
      */
+
+    #[ORM\Column(type: "string", unique: true, length: 30)]
     private $url;
 
     /**
      * @ORM\OneToMany(targetEntity=Family::class, mappedBy="project")
      */
+
+    #[ORM\OneToMany(targetEntity: Family::class, mappedBy: "project")]
     private $families;
 
     /**
      * @ORM\OneToMany(targetEntity=Individual::class, mappedBy="project")
      */
+
+    #[ORM\OneToMany(targetEntity: Individual::class, mappedBy: "project")]
     private $individuals;
 
     /**
      * @ORM\OneToMany(targetEntity=SubmitterRecord::class, mappedBy="project")
      */
+
+    #[ORM\OneToMany(targetEntity: SubmitterRecord::class, mappedBy: "project")]
     private $submitterRecords;
 
     /**
      * @ORM\OneToMany(targetEntity=MediaRecord::class, mappedBy="project")
      */
+
+    #[ORM\OneToMany(targetEntity: MediaRecord::class, mappedBy: "project")]
     private $mediaRecords;
 
     /**
      * @ORM\OneToMany(targetEntity=PlaceRecord::class, mappedBy="project")
      */
+
+    #[ORM\OneToMany(targetEntity: PlaceRecord::class, mappedBy: "project")]
     private $placeRecords;
+
+    /**
+     * @ORM\OneToMany(targetEntity=GedcomStructure::class, mappedBy="project", orphanRemoval=true)
+     */
+
+    #[ORM\OneToMany(targetEntity: GedcomStructure::class, mappedBy: "project", orphanRemoval: true)]
+    private $gedcomStructures;
 
     public function __construct()
     {
@@ -80,6 +98,7 @@ class Project
         $this->submitterRecords = new ArrayCollection();
         $this->mediaRecords = new ArrayCollection();
         $this->placeRecords = new ArrayCollection();
+        $this->gedcomStructures = new ArrayCollection();
     }
 
     public function getId(): ?Ulid
@@ -255,6 +274,36 @@ class Project
             // set the owning side to null (unless already changed)
             if ($placeRecord->getProject() === $this) {
                 $placeRecord->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|GedcomStructure[]
+     */
+    public function getGedcomStructures(): Collection
+    {
+        return $this->gedcomStructures;
+    }
+
+    public function addGedcomStructure(GedcomStructure $gedcomStructure): self
+    {
+        if (!$this->gedcomStructures->contains($gedcomStructure)) {
+            $this->gedcomStructures[] = $gedcomStructure;
+            $gedcomStructure->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGedcomStructure(GedcomStructure $gedcomStructure): self
+    {
+        if ($this->gedcomStructures->removeElement($gedcomStructure)) {
+            // set the owning side to null (unless already changed)
+            if ($gedcomStructure->getProject() === $this) {
+                $gedcomStructure->setProject(null);
             }
         }
 

@@ -29,6 +29,7 @@ trait XrefTrait
    * @ORM\Column(type="string", length=20, nullable=true, options={"comment":"Friendly Identifier",})
    */
 
+  #[ORM\Column(type: "string", length: 20, nullable: true)]
   private $xref;
 
 

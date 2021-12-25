@@ -1,0 +1,140 @@
+<?php
+
+
+/**
+ * This file is part of the Asmild package.
+ *
+ * (c) Michael Lindhardt Rasmussen <filicis@gmail.com>
+ *
+ * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @copyright 2020-2021 Filicis Software
+ * @license MIT
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ **/
+
+
+namespace App\Utils;
+
+use Symfony\Component\String\UnicodeString;
+
+use App\Utils\GedcomException;
+
+
+  /**
+   * GedRecord
+   *
+   * - Kender til Gedcom version 5.5, 5.5.1 og 5.5.5
+   *
+   **/
+
+class GedRecord
+{
+  private int $linenumber;
+  private UnicodeString $line;
+  private UnicodeString $record;
+  private int $level;
+  private UnicodeString $xref;
+  private UnicodeString $tag;
+  private UnicodeString $value;
+
+  // Regular Expressions
+
+  const LEVEL=     '(\d|[1-9]\d)';
+  const XREF=      '(?:\x20@([0-9a-zA-z]{1,20})@)?';
+  const TAG=       '\x20(\w{1,20})';
+  const ESCAPE=    '';
+  const VALUE=     '(?:\x20(.*))?';
+
+  const MATCH555= '';
+  const MATCH551= '';
+
+  /**
+   *  constructor
+   *
+   *  forventer en streng i UTF-8 format uden EOL
+   **/
+
+  function __construct(UnicodeString $line)
+  {
+    $this->line= $line;
+
+    $res= $line->split(' ', 3);
+    if (count($res) < 2)
+      throw new GedcomException("Syntax error: " . $line );
+
+    $this->level= intval((String) $res[0]->toByteString()) ;
+
+
+
+    $test= $res[1]->startsWith('@');
+    if ($test)
+    {
+      $res1=$res[2]->split(" ", 2);
+
+      $this->xref= $res[1];
+      $this->tag= $res1[0];
+      $this->value= (count($res1) == 2) ? $res1[1] : new UnicodeString("");
+
+  if ($this->level > 0)
+      throw new GedcomException('Gedcom Record - Level: ' . $this->level . ' -  Tag: ' . $this->tag . ' - xref: ' . $this->xref);
+
+    }
+    else
+    {
+      $this->xref= new UnicodeString("");
+      $this->tag= $res[1];
+      $this->value= (count($res) == 3) ? $res[2] : new UnicodeString("");
+    }
+
+    if ($this->level > 6)
+      throw new GedcomException('Gedcom Record - Level: ' . $this->level . ' - Tag: ' . $this->tag . ' - xref: ' . $this->xref);
+
+
+  }
+
+
+  public function getLevel() : int
+  {
+    return $this->level;
+  }
+
+
+  public function getLine() : UnicodeString
+  {
+    return $this->line;
+  }
+
+
+  public function getXref() : UnicodeString
+  {
+    return $this->xref;
+  }
+
+
+  public function getTag() : UnicodeString
+  {
+    return $this->tag;
+  }
+
+
+  public function getValue() : UnicodeString
+  {
+    return $this->value;
+  }
+
+  /**
+   *  SetRecord
+   *
+   **/
+
+  public function setRecord(int $linenumber, UnicodeString $rec)
+  {
+    $this->record= $rec;
+
+    $res= $g->match('/^' . self::LEVEL . self::XREF . self::TAG . self::XREF . self::VALUE . '/');
+
+
+  }
+}

@@ -21,6 +21,7 @@ use       App\Entity\Traits\UlidIdTrait;
    * @ORM\Entity(repositoryClass=MediaLinkRepository::class)
    **/
 
+#[ORM\Entity(repositoryClass: MediaLinkRepository::class)]
 class MediaLink
 {
   use UlidIdTrait;
@@ -29,21 +30,29 @@ class MediaLink
     /**
      * @ORM\ManyToOne(targetEntity=MediaRecord::class, inversedBy="mediaLinks")
      */
+
+    #[ORM\ManyToOne(targetEntity: MediaRecord::class, inversedBy: "mediaLinks")]
     private $mediaRecord;
 
     /**
      * @ORM\Column(type="string", length=80, nullable=true)
      */
+
+    #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $title;
 
     /**
      * @ORM\Column(type="string", length=80, nullable=true)
      */
+
+    #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $crop;
 
     /**
      * @ORM\ManyToOne(targetEntity=Record::class, inversedBy="mediaLinks")
      */
+
+    #[ORM\ManyToOne(targetEntity: Record::class, inversedBy: "mediaLinks")]
     private $record;
 
 

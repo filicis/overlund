@@ -19,6 +19,8 @@ use Doctrine\ORM\Mapping as ORM;
    * @ORM\Entity(repositoryClass=RepositoryRecordRepository::class)
    **/
 
+
+#[ORM\Entity(repositoryClass: RepositoryRecordRepository::class)]
 class RepositoryRecord
 {
   /**
@@ -27,18 +29,23 @@ class RepositoryRecord
    * @ORM\Column(type="integer")
    **/
 
+  #[ORM\Id]
+  #[ORM\GeneratedValue]
+  #[ORM\Column(type: 'integer')]
   private $id;
 
   /**
    * @ORM\Column(type="string", length=255)
    **/
 
+  #[ORM\Column(type: "string", length: 255)]
   private $repo;
 
   /**
    * @ORM\Column(type="string", length=255)
    **/
 
+  #[ORM\Column(type: "string", length: 255)]
   private $name;
 
   public function getId(): ?int

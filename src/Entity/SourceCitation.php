@@ -10,6 +10,8 @@ use       App\Entity\Traits\UlidIdTrait;
 /**
  * @ORM\Entity(repositoryClass=SourceCitationRepository::class)
  */
+
+#[ORM\Entity(repositoryClass: SourceCitationRepository::class)]
 class SourceCitation
 {
   use UlidIdTrait;
@@ -18,21 +20,29 @@ class SourceCitation
     /**
      * @ORM\ManyToOne(targetEntity=SourceRecord::class, inversedBy="sourceCitations")
      */
+
+    #[ORM\ManyToOne(targetEntity: SourceRecord::class, inversedBy: "sourceCitations")]
     private $sourceRecord;
 
     /**
      * @ORM\Column(type="string", length=80, nullable=true)
      */
+
+    #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $page;
 
     /**
      * @ORM\Column(type="string", length=80, nullable=true)
      */
+
+    #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $quality;
 
     /**
      * @ORM\ManyToOne(targetEntity=Record::class, inversedBy="sourceCitations")
      */
+
+    #[ORM\ManyToOne(targetEntity: Record::class, inversedBy: "sourceCitations")]
     private $record;
 
 

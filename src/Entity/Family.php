@@ -21,6 +21,7 @@ use App\Entity\RecordSuperclass;
    * @ORM\Entity(repositoryClass=FamilyRepository::class)
    **/
 
+#[ORM\Entity(repositoryClass: FamilyRepository::class)]
 class Family extends RecordSuperclass
 {
   protected const XREF_PREFIX = 'F';
@@ -28,6 +29,8 @@ class Family extends RecordSuperclass
   /**
    * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="families")
    */
+
+  #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "families")]
   private $project;
 
 

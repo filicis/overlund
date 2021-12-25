@@ -34,36 +34,48 @@ trait PersonalNamePieces
 {
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=80, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $npfx;
-    
+
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=80, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $givn;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=80, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $nick;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=80, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $spfx;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=80, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $surn;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=80, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $nsfx;
-    
-    
+
+
     public function getNpfx(): ?string
     {
         return $this->npfx;
@@ -135,5 +147,5 @@ trait PersonalNamePieces
 
         return $this;
     }
-    
-}    
+
+}

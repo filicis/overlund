@@ -31,30 +31,38 @@ use       App\Entity\Traits\UlidIdTrait;
    * @ORM\Entity(repositoryClass=RecordRepository::class)
    **/
 
+#[ORM\Entity(repositoryClass: RecordRepository::class)]
 class Record
 {
   use UlidIdTrait;
 
 
     /**
-     * @ORM\OneToMany(targetEntity=IdentifierStructure::class, mappedBy="recordLinks")
+     * @ORM\Entity(repositoryClass=RecordRepository::class)
      */
 
+    #[ORM\Entity(repositoryClass: RecordRepository::class)]
     private $indentifierStructure;
 
     /**
      * @ORM\ManyToMany(targetEntity=NoteRecord::class, inversedBy="records")
      */
+
+    #[ORM\ManyToMany(targetEntity: NoteRecord::class, inversedBy: "records")]
     private $noteRecords;
 
     /**
      * @ORM\OneToMany(targetEntity=SourceCitation::class, mappedBy="record")
      */
+
+    #[ORM\OneToMany(targetEntity: SourceCitation::class, mappedBy: "record")]
     private $sourceCitations;
 
     /**
      * @ORM\OneToMany(targetEntity=MediaLink::class, mappedBy="record")
      */
+
+    #[ORM\OneToMany(targetEntity: MediaLink::class, mappedBy: "record")]
     private $mediaLinks;
 
     public function __construct()

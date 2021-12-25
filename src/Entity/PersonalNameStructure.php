@@ -22,20 +22,25 @@ use       Doctrine\ORM\Mapping as ORM;
   /**
    * @ORM\Entity(repositoryClass=PersonalNameStructureRepository::class)
    **/
-   
+
+#[ORM\Entity(repositoryClass: PersonalNameStructureRepository::class)]
 class PersonalNameStructure extends RecordSuperclass
 {
   use PersonalNamePieces;
-  
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
     private $personalName;
 
     /**
      * @ORM\ManyToOne(targetEntity=Individual::class, inversedBy="personalNameStructures")
      */
+
+    #[ORM\ManyToOne(targetEntity: Individual::class, inversedBy: "personalNameStructures")]
     private $individual;
 
 

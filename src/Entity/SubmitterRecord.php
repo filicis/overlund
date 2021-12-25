@@ -22,6 +22,7 @@ use       App\Entity\Traits\AddressTrait;
    * @ORM\Entity(repositoryClass=SubmitterRecordRepository::class)
    **/
 
+#[ORM\Entity(repositoryClass: SubmitterRecordRepository::class)]
 class SubmitterRecord extends RecordSuperclass
 {
   use AddressTrait;
@@ -32,6 +33,8 @@ class SubmitterRecord extends RecordSuperclass
   /**
    * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="submitterRecords")
    */
+
+  #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "submitterRecords")]
   private $project;
 
   public function getProject(): ?Project

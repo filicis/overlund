@@ -18,6 +18,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use       Doctrine\ORM\Mapping as ORM;
 
+use       Symfony\Component\Validator\Constraints as Assert;
+
 use       App\Entity\RecordSuperclass;
 
   /**
@@ -25,6 +27,8 @@ use       App\Entity\RecordSuperclass;
    * @ORM\Table(indexes={@ORM\Index(name="search_idx", columns={"place", })})
    **/
 
+#[ORM\Entity(repositoryClass: PlaceRecordRepository::class)]
+// # [ORM\Table(indexes: {@ORM\Index(name: "search_idx", columns: {"place", })})]
 class PlaceRecord extends RecordSuperclass
 {
 
@@ -32,23 +36,40 @@ class PlaceRecord extends RecordSuperclass
    * @ORM\Column(type="string", length=255)
    **/
 
+  #[ORM\Column(type: "string", length: 255)]
   private $place;
 
-  /**
-   * @ORM\Column(type="string", length=80, nullable=true)
-   **/
-
-  private $map;
 
   /**
    * @ORM\OneToMany(targetEntity=EventStructure::class, mappedBy="place")
    */
+
+  #[ORM\OneToMany(targetEntity: EventStructure::class, mappedBy: "place")]
   private $eventStructures;
 
   /**
    * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="placeRecords")
    */
+
+  #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "placeRecords")]
   private $project;
+
+  /**
+   *
+   *  @Assert\Regex(pattern= "^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$", message="Ingen tal")
+   *  @ORM\Column(type="string", length=30, nullable=true)
+   */
+
+  #[ORM\Column(type: "string", length: 30, nullable: true)]
+  private $latitude;
+
+  /**
+   *  @Assert\Regex(pattern= "^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$")
+   *  @ORM\Column(type="string", length=30, nullable=true)
+   */
+
+  #[ORM\Column(type: "string", length: 30, nullable: true)]
+  private $longitude;
 
   public function __construct()
   {
@@ -68,17 +89,6 @@ class PlaceRecord extends RecordSuperclass
     return $this;
   }
 
-  public function getMap(): ?string
-  {
-    return $this->map;
-  }
-
-  public function setMap(?string $map): self
-  {
-    $this->map = $map;
-
-    return $this;
-  }
 
   /**
    * @return Collection|EventStructure[]
@@ -118,6 +128,30 @@ class PlaceRecord extends RecordSuperclass
   public function setProject(?Project $project): self
   {
       $this->project = $project;
+
+      return $this;
+  }
+
+  public function getLatitude(): ?string
+  {
+      return $this->latitude;
+  }
+
+  public function setLatitude(?string $latitude): self
+  {
+      $this->latitude = $latitude;
+
+      return $this;
+  }
+
+  public function getLongitude(): ?string
+  {
+      return $this->longitude;
+  }
+
+  public function setLongitude(?string $longitude): self
+  {
+      $this->longitude = $longitude;
 
       return $this;
   }

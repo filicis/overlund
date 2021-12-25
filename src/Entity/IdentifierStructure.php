@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=IdentifierStructureRepository::class)
  */
+
+#[ORM\Entity(repositoryClass: IdentifierStructureRepository::class)]
 class IdentifierStructure
 {
     /**
@@ -15,26 +17,39 @@ class IdentifierStructure
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+
     private $id;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
+
+    #[ORM\Column(type: "string", length: 20)]
     private $tag;
 
     /**
      * @ORM\Column(type="string", length=80)
      */
+
+    #[ORM\Column(type: "string", length: 80)]
     private $value;
 
     /**
      * @ORM\Column(type="string", length=80)
      */
+
+    #[ORM\Column(type: "string", length: 80)]
     private $type;
 
     /**
      * @ORM\ManyToOne(targetEntity=Record::class, inversedBy="indentifierStructure")
      */
+
+    #[ORM\ManyToOne(targetEntity: Record::class, inversedBy: "indentifierStructure")]
     private $recordLinks;
 
     public function getId(): ?int

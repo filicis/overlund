@@ -21,6 +21,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=MediaRecordRepository::class)
  */
+
+#[ORM\Entity(repositoryClass: MediaRecordRepository::class)]
 class MediaRecord extends RecordSuperclass
 {
   protected const XREF_PREFIX = 'M';
@@ -28,11 +30,15 @@ class MediaRecord extends RecordSuperclass
   /**
    * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="mediaRecords")
    */
+
+  #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "mediaRecords")]
   private $project;
 
   /**
    * @ORM\OneToMany(targetEntity=MediaLink::class, mappedBy="mediaRecord")
    */
+
+  #[ORM\OneToMany(targetEntity: MediaLink::class, mappedBy: "mediaRecord")]
   private $mediaLinks;
 
   public function __construct()

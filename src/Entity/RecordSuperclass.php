@@ -54,7 +54,8 @@ use       App\Entity\Traits\XrefTrait;
    *	@ ORM\Index(fields: ["xref"])
    **/
 
-
+#[ORM\MappedSuperclass(repositoryClass: RecordSuperclassRepository::class)]
+// # [ORM\HasLifecycleCallbacks]
 class RecordSuperclass
 {
   const dummy= "SELECT xref FROM family where xref REGEXP 'F\d*' ORDER BY xref desc";
@@ -68,12 +69,15 @@ class RecordSuperclass
   /**
   * @ORM\Column(type="string", length=12, nullable=true)
   */
+  #[ORM\Column(type: "string", length: 12, nullable: true)]
   private $rin;
 
 
   /**
    * @ORM\Column(type="datetime_immutable", nullable=true)
    */
+
+  #[ORM\Column(type: "datetime_immutable", nullable: true)]
   private $lastChange;
 
 
@@ -85,6 +89,7 @@ class RecordSuperclass
    * @ORM\Column(type="string", length=20, nullable=true)
    **/
 
+  #[ORM\Column(type: "string", length: 20, nullable: true)]
   private $crea;
 
 
@@ -127,7 +132,7 @@ class RecordSuperclass
    *  @ORM\PrePersist
    **/
 
-
+  #[ORM\PrePersist]
   public function myfunction(LifeCycleEventArgs $event )
   {
     $sql= 'SELECT SUBSTRING(`xref`, 2) FROM '
@@ -168,6 +173,7 @@ class RecordSuperclass
    **/
 
 
+  #[ORM\PreUpdate]
   public function mymyfunction()
   {
     $this->lastChange= new \DatetimeImmutable();

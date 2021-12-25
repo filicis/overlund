@@ -12,17 +12,23 @@ use       App\Entity\RecordSuperclass;
 /**
  * @ORM\Entity(repositoryClass=NoteRecordRepository::class)
  */
+
+#[ORM\Entity(repositoryClass: NoteRecordRepository::class)]
 class NoteRecord extends RecordSuperclass
 {
 
     /**
      * @ORM\Column(type="text")
      */
+
+    #[ORM\Column(type: "text")]
     private $note;
 
     /**
      * @ORM\ManyToMany(targetEntity=Record::class, mappedBy="noteRecords")
      */
+
+    #[ORM\ManyToMany(targetEntity: Record::class, mappedBy: "noteRecords")]
     private $records;
 
     public function __construct()

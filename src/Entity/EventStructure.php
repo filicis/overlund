@@ -21,37 +21,46 @@ use       App\Entity\RecordSuperclass;
    * @ORM\Entity(repositoryClass=EventStructureRepository::class)
    **/
 
+#[ORM\Entity(repositoryClass: EventStructureRepository::class)]
 class EventStructure extends RecordSuperclass
 {
 
   /**
   * @ORM\Column(type="string", length=80)
   */
+
+  #[ORM\Column(type: "string", length: 80)]
   private $agency;
 
   /**
   * @ORM\Column(type="string", length=80)
   */
+  #[ORM\Column(type: "string", length:80)]
   private $religion;
 
   /**
   * @ORM\Column(type="string", length=80)
   */
+  #[ORM\Column(type:"string", length: 80)]
   private $cause;
 
   /**
   * @ORM\Column(type="string", length=22)
   */
+  #[ORM\Column(type: "string", length: 22)]
   private $tag;
 
   /**
   * @ORM\Column(type="string", length=80, nullable=true)
   */
+  #[ORM\Column(type:"string", length:80, nullable:true)]
   private $text;
 
   /**
   * @ORM\ManyToOne(targetEntity=PlaceRecord::class, inversedBy="eventStructures")
   */
+
+  #[ORM\ManyToOne(targetEntity: PlaceRecord::class, inversedBy: "eventStructures")]
   private $place;
 
 

@@ -12,17 +12,23 @@ use App\Entity\RecordSuperclass;
 /**
  * @ORM\Entity(repositoryClass=SourceRecordRepository::class)
  */
+
+#[ORM\Entity(repositoryClass: SourceRecordRepository::class)]
 class SourceRecord extends RecordSuperclass
 {
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+
+    #[ORM\Column(type: "string", length: 255)]
     private $source;
 
     /**
      * @ORM\OneToMany(targetEntity=SourceCitation::class, mappedBy="sourceRecord")
      */
+
+    #[ORM\OneToMany(targetEntity: SourceCitation::class, mappedBy: "sourceRecord")]
     private $sourceCitations;
 
     public function __construct()

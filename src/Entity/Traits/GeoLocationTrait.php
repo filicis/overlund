@@ -35,11 +35,15 @@ trait GeoLocationTrait
     /**
      * @ORM\Column(type="text", nullable=true)
      **/
+
+    #[ORM\Column(type: "text", nullable: true)]
     private $lati;
 
     /**
      * @ORM\Column(type="string", length=60, nullable=true)
      **/
+
+    #[ORM\Column(type: "string", length: 60, nullable: true)]
     private $long;
 
 

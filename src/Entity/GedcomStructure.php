@@ -19,13 +19,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\Traits\UlidIdTrait;
-use       App\Entity\GedcomStructure;
+use       App\Entity\Project;
+// use       App\Entity\GedcomStructure;
 
 
   /**
-   * @ORM\Entity(repositoryClass=GedcomRepository::class)
-   * @ORM\InheritanceType("SINGLE_TABLE")
-   * @ORM\DiscriminatorColumn(name="discr", type="string")
    *
    **/
 
@@ -34,83 +32,86 @@ use       App\Entity\GedcomStructure;
 #[ORM\DiscriminatorColumn(name: 'discr', type: 'string', length: 20)]
 class GedcomStructure
 {
-  use UlidIdTrait;
+  // use UlidIdTrait;
+
+  #[ORM\Id]
+  #[ORM\GeneratedValue]
+  #[ORM\Column(type: 'integer')]
+  private $id;
 
 
   /**
-   * @ORM\Column(type="integer", nullable=true)
-   */
+  *  line
+  *  - linienummer på den aktuelle Gedcom struktur
+  */
 
   #[ORM\Column(type: "integer", nullable: true)]
   private $line;
 
   /**
-  * @ORM\Column(type="integer")
-  */
+   *  level
+   *  -
+   **/
 
   #[ORM\Column(type: "integer")]
   private $level;
 
   /**
-  * @ORM\Column(type="string", length=20, nullable=true)
   */
 
   #[ORM\Column(type: "string", length: 20, nullable: true)]
   private $xref;
 
   /**
-  * @ORM\Column(type="string", length=32)
   */
 
   #[ORM\Column(type: "string", length: 32)]
   private $tag;
 
   /**
-  * @ORM\Column(type="string", length=20, nullable=true)
   */
 
   #[ORM\Column(type: "string", length: 20, nullable: true)]
   private $pointer;
 
   /**
-  * @ORM\Column(type="string", length=255)
   */
 
-  #[ORM\Column(type: "string", length: 255)]
+  #[ORM\Column(type: "text")]
   private $value;
 
   /**
-  * @ORM\ManyToOne(targetEntity=GedcomStructure::class, inversedBy="subStructures")
   */
 
   #[ORM\ManyToOne(targetEntity: GedcomStructure::class, inversedBy: "subStructures")]
   private $superStructure;
 
   /**
-  * @ORM\OneToMany(targetEntity=GedcomStructure::class, mappedBy="superStructure")
   */
 
   #[ORM\OneToMany(targetEntity: GedcomStructure::class, mappedBy: "superStructure")]
   private $subStructures;
 
   /**
-  * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="gedcomStructures")
-  * @ORM\JoinColumn(nullable=false)
   */
 
   #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "gedcomStructures")]
   #[ORM\JoinColumn(nullable: false)]
   private $project;
 
-  /**
-  * @ORM\Column(type="string", length=20)
-  */
 
 
   public function __construct()
   {
     $this->subStructures = new ArrayCollection();
   }
+
+
+  public function getId(): ?int
+  {
+    return $this->id;
+  }
+
 
   public function getLine(): ?int
   {

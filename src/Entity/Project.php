@@ -20,6 +20,7 @@ use App\Repository\ProjectRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\Traits\UlidIdTrait;
+use       App\Entity\GedcomStructure;
 
   /**
    *  Project

@@ -30,6 +30,9 @@ use       App\Entity\Project;
 #[ORM\Entity(repositoryClass: GedcomRepository::class)]
 #[ORM\InheritanceType("SINGLE_TABLE")]
 #[ORM\DiscriminatorColumn(name: 'discr', type: 'string', length: 20)]
+#[ORM\Index(name: "xref_idx", columns:["xref"])]
+#[ORM\Index(name: "tag_idx", columns: ["tag"])]
+#[ORM\Intex(name: "pointer_idx", columns: ["pointer"])]
 class GedcomStructure
 {
   // use UlidIdTrait;
@@ -75,9 +78,16 @@ class GedcomStructure
   private $pointer;
 
   /**
+   *  escape
+   **/
+
+  #[ORM\COLUMN(type: "string", length: 35, nullable: true, options: ["comment" => "Gedcom Escape value"])]
+  private $escape;
+
+  /**
   */
 
-  #[ORM\Column(type: "text")]
+  #[ORM\Column(type: "text", nullable: true)]
   private $value;
 
   /**

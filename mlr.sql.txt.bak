@@ -1,0 +1,181 @@
+
+
+LOAD DATA LOCAL INFILE 'c:\\Users\\mlr\\Aner1.ged' INTO TABLE `Rådata` 
+CHARACTER SET UTF8  LINES TERMINATED BY '\r\n' (DATA);
+
+LOAD DATA LOCAL INFILE 'c:\\Users\\mlr\\Aner.ged' INTO TABLE test;
+
+SELECT data FROM `Rådata`LIMIT 500;
+
+
+select '/^(\d|[1-9]\d)' FROM SELECT data FROM `Rådata` LIMIT 500;
+
+
+SELECT data REGEXP '/^\\d|[1-9]\\d/' FROM `Rådata` LIMIT 500;
+
+
+SELECT regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})') 
+  FROM `Rådata`LIMIT 500;
+
+
+SELECT regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?=\\x20)') AS 'level',
+       regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?') AS 'xref',
+       regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20\\K(\\w{1,31})') AS 'tag',
+       regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?') AS 'pointer',
+       regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?\\K(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?') AS 'calendar',
+       regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?\\K(?:\\x20(.*))?') AS 'value'
+ FROM `Rådata`LIMIT 15000;
+
+
+SELECT regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?=\\x20)') AS 'level',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?')) AS 'xref',
+       regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20\\K(\\w{1,31})') AS 'tag',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?')) AS 'pointer',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?\\K(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?')) AS 'calendar',
+       substring(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?\\K(?:\\x20(.*))?') FROM 2) AS 'value'
+ FROM `Rådata`LIMIT 15000;
+
+
+
+
+
+SELECT regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\x20@([0-9a-zA-z]{1,20})@)?\x20(\w{1,31})')
+ FROM `Rådata`LIMIT 1500;
+
+
+
+
+DROP TABLE if EXISTS `dummy`;
+CREATE TABLE `dummy`
+ (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`line` INT(11) NULL DEFAULT NULL,
+	`level` INT(11) NOT NULL,
+	`xref` VARCHAR(22) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`tag` VARCHAR(32) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`pointer` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`value` VARCHAR(255) NULL COLLATE 'utf8mb4_unicode_ci',
+	`discr` VARCHAR(20) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	PRIMARY KEY (`id`) USING BTREE,
+)
+
+
+SELECT regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?=\\x20)') AS 'level',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?')) AS 'xref',
+       regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20\\K(\\w{1,31})') AS 'tag',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?')) AS 'pointer',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?\\K(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?')) AS 'calendar',
+       substring(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?\\K(?:\\x20(.*))?') FROM 2) AS 'value'
+ FROM `Rådata`;
+
+
+---000---
+
+
+DROP TABLE if EXISTS `dummy`;
+CREATE TABLE `dummy`
+ (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`line` INT(11) NULL DEFAULT NULL,
+	`level` VARCHAR(10) NOT NULL,
+	`xref` VARCHAR(22) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`tag` VARCHAR(32) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`pointer` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`value` TEXT NULL COLLATE 'utf8mb4_unicode_ci',
+	`discr` VARCHAR(20) NULL COLLATE 'utf8mb4_unicode_ci',
+	PRIMARY KEY (`id`) USING BTREE
+)
+
+
+SELECT regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?=\\x20)') AS 'level',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?')) AS 'xref',
+       regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20\\K(\\w{1,31})') AS 'tag',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?')) AS 'pointer',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?\\K(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?')) AS 'calendar',
+       substring(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?\\K(?:\\x20(.*))?') FROM 2) AS 'value'
+ FROM `Rådata`;
+
+
+---000---
+
+
+
+DROP TABLE if EXISTS `dummy1`;
+SET @lineno= 0;
+SET @LEVEL= 0;
+SET @TYPE= 'blob';
+CREATE TABLE `dummy1`
+ (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`line` INT(11) NULL DEFAULT NULL,
+	`level` INT4 NULL,
+	`xref` VARCHAR(22) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`tag` VARCHAR(32) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`pointer` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`value` TEXT NULL COLLATE 'utf8mb4_unicode_ci',
+	`discr` VARCHAR(20) NULL COLLATE 'utf8mb4_unicode_ci',
+	`parent` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE,
+	INDEX `Indeks 2` (`xref`) USING BTREE,
+	INDEX `Indeks 3` (`tag`) USING BTREE,
+	INDEX `Indeks 4` (`pointer`) USING BTREE,
+	INDEX `Indeks 5` (`level`) USING BTREE,
+	INDEX `Indeks 6` (`parent`) USING BTREE
+)
+
+
+SELECT (@lineno:= (@lineno + 1)) AS `line`, 
+		 (@LEVEL:= cast(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?=\\x20)') as INTEGER)) AS 'level',
+		 case @level when 0 then @0:= @lineno end
+		 COLUMN_CREATE(@LEVEL, @lineno) AS `blob`,
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?')) AS 'xref',
+       regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20\\K(\\w{1,31})') AS 'tag',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?')) AS 'pointer',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?\\K(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?')) AS 'calendar',
+       substring(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?\\K(?:\\x20(.*))?') FROM 2) AS 'value',
+       25 AS `parent`
+ FROM `Rådata`;
+ 
+ 
+ ---000---
+ 
+ 
+DROP TABLE if EXISTS `dummy2`;
+SET @lineno= 0;
+SET @LEVEL= 0;
+SET @`TYPE`= 'blob';
+CREATE TABLE `dummy2`
+ (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`line` INT(11) NULL DEFAULT NULL,
+	`level` INT4 NULL,
+	`xref` VARCHAR(22) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`tag` VARCHAR(32) NOT NULL COLLATE 'utf8mb4_unicode_ci',
+	`pointer` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`value` TEXT NULL COLLATE 'utf8mb4_unicode_ci',
+	`discr` VARCHAR(20) NULL COLLATE 'utf8mb4_unicode_ci',
+	`parent` INT(11) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE,
+	INDEX `Indeks 2` (`xref`) USING BTREE,
+	INDEX `Indeks 3` (`tag`) USING BTREE,
+	INDEX `Indeks 4` (`pointer`) USING BTREE,
+	INDEX `Indeks 5` (`level`) USING BTREE,
+	INDEX `Indeks 6` (`parent`) USING BTREE
+)
+
+
+SELECT (@lineno:= (@lineno + 1)) AS `line`, 
+		 (@LEVEL:= cast(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?=\\x20)') as INTEGER)) AS 'level',
+		 case @level when 0 then @0:= @lineno 
+		 				 when 1 then @1:= @lineno 
+						 when 2 then @2:= @lineno 
+						 when 3 then @3:= @lineno 
+						 when 4 then @4:= @lineno 
+						 when 5 then @5:= @lineno END AS birger,
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?')) AS 'xref',
+       regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20\\K(\\w{1,31})') AS 'tag',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})\\K(?:\\x20@([0-9a-zA-z]{1,20})@)?')) AS 'pointer',
+       ltrim(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?\\K(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?')) AS 'calendar',
+       substring(regexp_substr(DATA COLLATE UTF8_BIN, '^(\\d|[1-9]\\d)(?:\\x20@([0-9a-zA-z]{1,20})@)?\\x20(\\w{1,31})(?:\\x20@([0-9a-zA-z]{1,20})@)?(?:\\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?\\K(?:\\x20(.*))?') FROM 2) AS 'value',
+       case @level when 1 then @0 when 2 then @1 when 3 then @2 when 4 then @3 when 5 then @4 when 6 then @5 END AS `parent`
+ FROM `Rådata`;

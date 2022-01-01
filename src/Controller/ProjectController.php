@@ -15,6 +15,7 @@ namespace App\Controller;
 use       App\Entity\Project;
 use       App\Form\ProjectType;
 use       App\Form\ProjectsType;
+use	  App\Form\GedcomImportType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -122,5 +123,37 @@ class ProjectController extends AbstractController
       'formTitle' => 'Select Project'
       ]);  
   }  
- 
-}
+
+  /**
+   *
+   *
+   **/
+
+  #[Route('/editor/{url}/import', name: 'editorImport')]
+  public function import(Request $request, Project $project, ManagerRegistry $doctrine): Response
+  {
+    $form= $this->createForm(GedcomImportType::class, $project);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid())
+    {
+      try
+      {
+        $entityManager= $doctrine->getManager();
+              // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($project);
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return $this->redirectToRoute('/da');
+      }
+      catch(\Exception $e)
+      {
+      }	  
+    }
+     return $this->renderForm('card.html.twig', [                                                                                      
+       'form' => $form,                                                                                                                 
+      'formTitle' => 'Select Project'                                                                                                             ]);   
+
+  }
+}  

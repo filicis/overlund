@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c59b73b44174e70452cb289c622c9042",
+    "content-hash": "5131d2284b80ee19623ead0608ec858f",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -3675,12 +3675,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/framework-bundle.git",
-                "reference": "bf8541ff44b93dc886e36d3cbb530af851f94439"
+                "reference": "29227ebae3e6528fc29da2de6e55140c25912c54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/bf8541ff44b93dc886e36d3cbb530af851f94439",
-                "reference": "bf8541ff44b93dc886e36d3cbb530af851f94439",
+                "url": "https://api.github.com/repos/symfony/framework-bundle/zipball/29227ebae3e6528fc29da2de6e55140c25912c54",
+                "reference": "29227ebae3e6528fc29da2de6e55140c25912c54",
                 "shasum": ""
             },
             "require": {
@@ -3817,7 +3817,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-22T00:02:24+00:00"
+            "time": "2022-01-01T14:51:48+00:00"
         },
         {
             "name": "symfony/http-client",
@@ -4059,12 +4059,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "469451c8912257e4a97f142e7fb06af959fe05f8"
+                "reference": "743af0337bc81ba312e4faa2533725abb0716612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/469451c8912257e4a97f142e7fb06af959fe05f8",
-                "reference": "469451c8912257e4a97f142e7fb06af959fe05f8",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/743af0337bc81ba312e4faa2533725abb0716612",
+                "reference": "743af0337bc81ba312e4faa2533725abb0716612",
                 "shasum": ""
             },
             "require": {
@@ -4160,7 +4160,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-29T10:14:20+00:00"
+            "time": "2022-01-01T14:51:48+00:00"
         },
         {
             "name": "symfony/intl",
@@ -6163,12 +6163,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/serializer.git",
-                "reference": "998e37f2a1c92cf88ec230dd757cecd194cd585c"
+                "reference": "7314810e3cf0635786d3e9e1e5068e436a1e6be4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/serializer/zipball/998e37f2a1c92cf88ec230dd757cecd194cd585c",
-                "reference": "998e37f2a1c92cf88ec230dd757cecd194cd585c",
+                "url": "https://api.github.com/repos/symfony/serializer/zipball/7314810e3cf0635786d3e9e1e5068e436a1e6be4",
+                "reference": "7314810e3cf0635786d3e9e1e5068e436a1e6be4",
                 "shasum": ""
             },
             "require": {
@@ -6256,7 +6256,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-25T20:10:16+00:00"
+            "time": "2021-12-30T15:55:54+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -7366,6 +7366,87 @@
             "time": "2021-12-02T19:45:55+00:00"
         },
         {
+            "name": "symfony/workflow",
+            "version": "6.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/workflow.git",
+                "reference": "86e34d54ca4a2a6f4f4be674b4fb8b348cb1d320"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/workflow/zipball/86e34d54ca4a2a6f4f4be674b4fb8b348cb1d320",
+                "reference": "86e34d54ca4a2a6f4f4be674b4fb8b348cb1d320",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.2"
+            },
+            "conflict": {
+                "symfony/event-dispatcher": "<5.4"
+            },
+            "require-dev": {
+                "psr/log": "^1|^2|^3",
+                "symfony/dependency-injection": "^5.4|^6.0",
+                "symfony/event-dispatcher": "^5.4|^6.0",
+                "symfony/expression-language": "^5.4|^6.0",
+                "symfony/security-core": "^5.4|^6.0",
+                "symfony/validator": "^5.4|^6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Workflow\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Grégoire Pineau",
+                    "email": "lyrixx@lyrixx.info"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides tools for managing a workflow or finite state machine",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "petrinet",
+                "place",
+                "state",
+                "statemachine",
+                "transition",
+                "workflow"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/workflow/tree/6.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-12-17T16:25:31+00:00"
+        },
+        {
             "name": "symfony/yaml",
             "version": "6.1.x-dev",
             "source": {
@@ -7810,9 +7891,6 @@
             },
             "require": {
                 "php": "^7.1 || ^8.0"
-            },
-            "replace": {
-                "myclabs/deep-copy": "self.version"
             },
             "require-dev": {
                 "doctrine/collections": "^1.0",
@@ -10070,5 +10148,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }

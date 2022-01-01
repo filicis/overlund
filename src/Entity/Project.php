@@ -92,6 +92,9 @@ class Project
     #[ORM\OneToMany(targetEntity: GedcomStructure::class, mappedBy: "project", orphanRemoval: true)]
     private $gedcomStructures;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $GedcomFilename;
+
     public function __construct()
     {
         $this->families = new ArrayCollection();
@@ -307,6 +310,18 @@ class Project
                 $gedcomStructure->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGedcomFilename(): ?string
+    {
+        return $this->GedcomFilename;
+    }
+
+    public function setGedcomFilename(?string $GedcomFilename): self
+    {
+        $this->GedcomFilename = $GedcomFilename;
 
         return $this;
     }

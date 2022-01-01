@@ -109,11 +109,19 @@ class GedcomStructure
   #[ORM\JoinColumn(nullable: false)]
   private $project;
 
+  #[ORM\OneToMany(mappedBy: 'superStructure', targetEntity: Indi::class)]
+  private $individuals;
+
+  #[ORM\OneToMany(mappedBy: 'superStructure', targetEntity: Fam::class)]
+  private $fam;
+
 
 
   public function __construct()
   {
     $this->subStructures = new ArrayCollection();
+    $this->individuals = new ArrayCollection();
+    $this->fam = new ArrayCollection();
   }
 
 
@@ -259,5 +267,65 @@ class GedcomStructure
     $this->discr = $discr;
 
     return $this;
+  }
+
+  /**
+   * @return Collection|Indi[]
+   */
+  public function getIndividuals(): Collection
+  {
+      return $this->individuals;
+  }
+
+  public function addIndividual(Indi $individual): self
+  {
+      if (!$this->individuals->contains($individual)) {
+          $this->individuals[] = $individual;
+          $individual->setGedcomStructure($this);
+      }
+
+      return $this;
+  }
+
+  public function removeIndividual(Indi $individual): self
+  {
+      if ($this->individuals->removeElement($individual)) {
+          // set the owning side to null (unless already changed)
+          if ($individual->getGedcomStructure() === $this) {
+              $individual->setGedcomStructure(null);
+          }
+      }
+
+      return $this;
+  }
+
+  /**
+   * @return Collection|Fam[]
+   */
+  public function getFam(): Collection
+  {
+      return $this->fam;
+  }
+
+  public function addFam(Fam $fam): self
+  {
+      if (!$this->fam->contains($fam)) {
+          $this->fam[] = $fam;
+          $fam->setGedcomStructure($this);
+      }
+
+      return $this;
+  }
+
+  public function removeFam(Fam $fam): self
+  {
+      if ($this->fam->removeElement($fam)) {
+          // set the owning side to null (unless already changed)
+          if ($fam->getGedcomStructure() === $this) {
+              $fam->setGedcomStructure(null);
+          }
+      }
+
+      return $this;
   }
 }

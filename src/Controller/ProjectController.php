@@ -21,6 +21,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -105,20 +106,20 @@ class ProjectController extends AbstractController
   {
     $projecter= $doctrine->getRepository(Project::class)->findAll();
 
-    /*
+    
     $form= $this->createFormBuilder($projecter)
-      -> add('project', CollectionType::class, ['entry_type' => Text::class])
+      -> add('project', EntityType::class, ['class' => Project::class, 'multiple' => false, 'expanded' => false, 'help' => 'Hjælpetekst'])
       -> getForm();
     ; 
-     */
-    $form= $this->createForm(ProjectsType::class, $projecter); 
+     
+    //$form= $this->createForm(ProjectsType::class, $projecter); 
 
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid())
     {
     }
-    return $this->renderForm('card1.html.twig', [
+    return $this->renderForm('card.html.twig', [
       'form' => $form,
       'formTitle' => 'Select Project'
       ]);  

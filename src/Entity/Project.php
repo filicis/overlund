@@ -105,6 +105,20 @@ class Project
         $this->gedcomStructures = new ArrayCollection();
     }
 
+
+    /**
+     *
+     **/
+
+    public function __toString()
+    {
+      return $this->url . ' - ' . $this->title;        
+    }        
+
+    /**
+     *
+     **/
+
     public function getId(): ?Ulid
     {
         return $this->id;

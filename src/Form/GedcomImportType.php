@@ -15,9 +15,10 @@ class GedcomImportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-		->add('GedcomFilename', FileType::class, [
-		  'label' => "",
-		  'required' => false,
+		->add('gedcom', FileType::class, [
+		  'label' => "Gedcom file",
+          'required' => true,
+          'mapped' => false,
 		  'constraints' => [
                     new File([
                         'maxSize' => '1024k',

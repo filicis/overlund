@@ -3,16 +3,16 @@ controllers:
     type: annotation
     prefix: /{_locale}
     requirements:
-       _locale: 'en|da|sv|no'
+        _locale: 'en|da|sv|no'
 
 kernel:
     resource: ../src/Kernel.php
     type: annotation
 
 index:
-    path: /{_locale}
+    path: /
     controller: App\Controller\DefaultController::index
-    locale: da
+    locale: en
     requirements:
         _locale:  da|en|no|sv
 

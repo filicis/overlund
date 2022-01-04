@@ -8,6 +8,12 @@ parameters:
     app_locales: da|sv|no|en
     app.supported_locales: da|en|no|sv
 
+twig:
+    globals:
+        product: Overlund  
+        copyright: "© 2020-22 Filicis Software - Michael Lindhardt Rasmussen"  
+
+
 services:
     Symfony\Component\Uid\Command\GenerateUlidCommand: ~
     Symfony\Component\Uid\Command\GenerateUuidCommand: ~

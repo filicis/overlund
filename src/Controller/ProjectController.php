@@ -106,13 +106,13 @@ class ProjectController extends AbstractController
   {
     $projecter= $doctrine->getRepository(Project::class)->findAll();
 
-    
+
     $form= $this->createFormBuilder($projecter)
       -> add('project', EntityType::class, ['class' => Project::class, 'multiple' => false, 'expanded' => false, 'help' => 'Hjælpetekst'])
       -> getForm();
-    ; 
-     
-    //$form= $this->createForm(ProjectsType::class, $projecter); 
+    ;
+
+    //$form= $this->createForm(ProjectsType::class, $projecter);
 
     $form->handleRequest($request);
 
@@ -122,12 +122,12 @@ class ProjectController extends AbstractController
     return $this->renderForm('card.html.twig', [
       'form' => $form,
       'formTitle' => 'Select Project'
-      ]);  
-  }  
+      ]);
+  }
 
   /**
-   *
-   *
+   *  import
+   *  - Importerer en Gedcom fil til det aktuelle project
    **/
 
   #[Route('/editor/{url}/import', name: 'editorImport')]
@@ -150,11 +150,11 @@ class ProjectController extends AbstractController
       }
       catch(\Exception $e)
       {
-      }	  
+      }
     }
-     return $this->renderForm('card.html.twig', [                                                                                      
-       'form' => $form,                                                                                                                 
-      'formTitle' => 'Select Project'                                                                                                             ]);   
+     return $this->renderForm('card.html.twig', [
+       'form' => $form,
+      'formTitle' => 'Import GEDCOM file'                                                                                                             ]);
 
   }
-}  
+}

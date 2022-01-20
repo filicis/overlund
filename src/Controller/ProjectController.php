@@ -154,7 +154,9 @@ class ProjectController extends AbstractController
     }
      return $this->renderForm('card.html.twig', [
        'form' => $form,
-      'formTitle' => 'Import GEDCOM file'                                                                                                             ]);
+       'formTitle' => 'Import GEDCOM file',
+       'warning' => 'The will delete all the genealogy data and replace with data from a GEDCOM file',
+     ]);
 
   }
 }

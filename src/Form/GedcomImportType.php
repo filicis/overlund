@@ -54,7 +54,8 @@ class GedcomImportType extends AbstractType
         'expanded' => true,
         'multiple' => false,
         'choices' => ['Dos' => null, 'Unix' => true, 'Mac' => false]
-          ,])
+        ,])
+        
       ;
   }
 

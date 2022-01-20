@@ -1,2 +1,30 @@
 framework:
-    workflows: null
+    workflows:
+        project:
+            type: 'state_machine'
+            audit_trail:
+                enabled: true
+            marking_store:
+                type: 'method'
+                property: 'currentPlace'
+            supports:
+                - App\Entity\Project
+            initial_marking:  init
+            places:
+                - init
+                - import
+                - raweditor
+                - editor
+                - published
+            transitions:
+                to_import:
+                    from: init
+                    to:   import
+                to_editor:
+                    from: import
+                    to: editor
+                to_published:
+                    from: editor
+                    to: published
+
+

@@ -37,42 +37,42 @@ class Project
 
 
     /**
-     * @ORM\Column(type="string", length=80)
+     *
      */
 
     #[ORM\Column(type: "string", length: 80)]
     private $title;
 
     /**
-     * @ORM\Column(type="string", unique=true, length=30)
+     *
      */
 
     #[ORM\Column(type: "string", unique: true, length: 30)]
     private $url;
 
     /**
-     * @ORM\OneToMany(targetEntity=Family::class, mappedBy="project")
+     *
      */
 
     #[ORM\OneToMany(targetEntity: Family::class, mappedBy: "project")]
     private $families;
 
     /**
-     * @ORM\OneToMany(targetEntity=Individual::class, mappedBy="project")
+     *
      */
 
     #[ORM\OneToMany(targetEntity: Individual::class, mappedBy: "project")]
     private $individuals;
 
     /**
-     * @ORM\OneToMany(targetEntity=SubmitterRecord::class, mappedBy="project")
+     *
      */
 
     #[ORM\OneToMany(targetEntity: SubmitterRecord::class, mappedBy: "project")]
     private $submitterRecords;
 
     /**
-     * @ORM\OneToMany(targetEntity=MediaRecord::class, mappedBy="project")
+     *
      */
 
     #[ORM\OneToMany(targetEntity: MediaRecord::class, mappedBy: "project")]
@@ -86,7 +86,7 @@ class Project
     private $placeRecords;
 
     /**
-     * @ORM\OneToMany(targetEntity=GedcomStructure::class, mappedBy="project", orphanRemoval=true)
+     *
      */
 
     #[ORM\OneToMany(targetEntity: GedcomStructure::class, mappedBy: "project", orphanRemoval: true)]
@@ -112,8 +112,8 @@ class Project
 
     public function __toString()
     {
-      return $this->url . ' - ' . $this->title;        
-    }        
+      return $this->url . ' - ' . $this->title;
+    }
 
     /**
      *

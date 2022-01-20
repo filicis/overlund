@@ -15,7 +15,9 @@ namespace App\Form;
 
 use       App\Entity\Project;
 use       Symfony\Component\Form\AbstractType;
+use       Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use       Symfony\Component\Form\Extension\Core\Type\FileType;
+use       Symfony\Component\Form\Extension\Core\Type\TextType;
 use       Symfony\Component\Form\FormBuilderInterface;
 use       Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -41,8 +43,19 @@ class GedcomImportType extends AbstractType
               'application/pdf',
               'application/x-pdf',
             ],
-            'mimeTypesMessage' => 'Please upload a valid PDF document', ])],
-      ]);
+            'mimeTypesMessage' => 'Please upload a valid PDF document', ])],])
+      ->add('encoding', TextType::class, [
+        'label' => "Character Set",
+        'mapped' => false
+          ,])
+      ->add('terminator', ChoiceType::class, [
+        'label' => "Line Terminator",
+        'mapped' => false,
+        'expanded' => true,
+        'multiple' => false,
+        'choices' => ['Dos' => null, 'Unix' => true, 'Mac' => false]
+          ,])
+      ;
   }
 
 

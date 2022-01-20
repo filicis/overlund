@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="no" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="zh5oKD9" resname="This value should be false.">
+        <source>This value should be false.</source>
+        <target>Verdien må være usann.</target>
+      </trans-unit>
+      <trans-unit id="NN2_iru" resname="This value should be true.">
+        <source>This value should be true.</source>
+        <target>Verdien må være sann.</target>
+      </trans-unit>
+      <trans-unit id="OjM_kpf" resname="This value should be of type {{ type }}.">
+        <source>This value should be of type {{ type }}.</source>
+        <target>Verdien skal ha typen {{ type }}.</target>
+      </trans-unit>
+      <trans-unit id="f0P5pBD" resname="This value should be blank.">
+        <source>This value should be blank.</source>
+        <target>Verdien skal være blank.</target>
+      </trans-unit>
+      <trans-unit id="ih.4TRN" resname="The value you selected is not a valid choice.">
+        <source>The value you selected is not a valid choice.</source>
+        <target>Den valgte verdien er ikke gyldig.</target>
+      </trans-unit>
+      <trans-unit id="u81CkP8" resname="You must select at least {{ limit }} choice.|You must select at least {{ limit }} choices.">
+        <source>You must select at least {{ limit }} choice.|You must select at least {{ limit }} choices.</source>
+        <target>Du må velge minst {{ limit }} valg.</target>
+      </trans-unit>
+      <trans-unit id="nIvOQ_o" resname="You must select at most {{ limit }} choice.|You must select at most {{ limit }} choices.">
+        <source>You must select at most {{ limit }} choice.|You must select at most {{ limit }} choices.</source>
+        <target>Du kan maks velge {{ limit }} valg.</target>
+      </trans-unit>
+      <trans-unit id="87zjiHi" resname="One or more of the given values is invalid.">
+        <source>One or more of the given values is invalid.</source>
+        <target>En eller flere av de oppgitte verdiene er ugyldige.</target>
+      </trans-unit>
+      <trans-unit id="3NeQftv" resname="This field was not expected.">
+        <source>This field was not expected.</source>
+        <target>Dette feltet var ikke forventet.</target>
+      </trans-unit>
+      <trans-unit id="SwMV4zp" resname="This field is missing.">
+        <source>This field is missing.</source>
+        <target>Dette feltet mangler.</target>
+      </trans-unit>
+      <trans-unit id="LO2vFKN" resname="This value is not a valid date.">
+        <source>This value is not a valid date.</source>
+        <target>Verdien er ikke en gyldig dato.</target>
+      </trans-unit>
+      <trans-unit id="86dU_nv" resname="This value is not a valid datetime.">
+        <source>This value is not a valid datetime.</source>
+        <target>Verdien er ikke en gyldig dato/tid.</target>
+      </trans-unit>
+      <trans-unit id="PSvNXdi" resname="This value is not a valid email address.">
+        <source>This value is not a valid email address.</source>
+        <target>Verdien er ikke en gyldig e-postadresse.</target>
+      </trans-unit>
+      <trans-unit id="3KeHbZy" resname="The file could not be found.">
+        <source>The file could not be found.</source>
+        <target>Filen kunne ikke finnes.</target>
+      </trans-unit>
+      <trans-unit id="KtJhQZo" resname="The file is not readable.">
+        <source>The file is not readable.</source>
+        <target>Filen er ikke lesbar.</target>
+      </trans-unit>
+      <trans-unit id="JocOVM2" resname="The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.">
+        <source>The file is too large ({{ size }} {{ suffix }}). Allowed maximum size is {{ limit }} {{ suffix }}.</source>
+        <target>Filen er for stor ({{ size }} {{ suffix }}). Tilatte maksimale størrelse {{ limit }} {{ suffix }}.</target>
+      </trans-unit>
+      <trans-unit id="YW21SPH" resname="The mime type of the file is invalid ({{ type }}). Allowed mime types are {{ types }}.">
+        <source>The mime type of the file is invalid ({{ type }}). Allowed mime types are {{ types }}.</source>
+        <target>Mimetypen av filen er ugyldig ({{ type }}). Tilatte mimetyper er {{ types }}.</target>
+      </trans-unit>
+      <trans-unit id="NubOmrs" resname="This value should be {{ limit }} or less.">
+        <source>This value should be {{ limit }} or less.</source>
+        <target>Verdien må være {{ limit }} tegn lang eller mindre.</target>
+      </trans-unit>
+      <trans-unit id="HX7TOFm" resname="This value is too long. It should have {{ limit }} character or less.|This value is too long. It should have {{ limit }} characters or less.">
+        <source>This value is too long. It should have {{ limit }} character or less.|This value is too long. It should have {{ limit }} characters or less.</source>
+        <target>Verdien er for lang. Den må ha {{ limit }} tegn eller mindre.</target>
+      </trans-unit>
+      <trans-unit id="qgR8M_U" resname="This value should be {{ limit }} or more.">
+        <source>This value should be {{ limit }} or more.</source>
+        <target>Verdien må være {{ limit }} eller mer.</target>
+      </trans-unit>
+      <trans-unit id="ekfrU.c" resname="This value is too short. It should have {{ limit }} character or more.|This value is too short. It should have {{ limit }} characters or more.">
+        <source>This value is too short. It should have {{ limit }} character or more.|This value is too short. It should have {{ limit }} characters or more.</source>
+        <target>Verdien er for kort. Den må ha {{ limit }} tegn eller flere.</target>
+      </trans-unit>
+      <trans-unit id="1KV4L.t" resname="This value should not be blank.">
+        <source>This value should not be blank.</source>
+        <target>Verdien kan ikke være blank.</target>
+      </trans-unit>
+      <trans-unit id="2G4Vepm" resname="This value should not be null.">
+        <source>This value should not be null.</source>
+        <target>Verdien kan ikke være tom (null).</target>
+      </trans-unit>
+      <trans-unit id="yDc3m6E" resname="This value should be null.">
+        <source>This value should be null.</source>
+        <target>Verdien skal være tom (null).</target>
+      </trans-unit>
+      <trans-unit id="zKzWejA" resname="This value is not valid.">
+        <source>This value is not valid.</source>
+        <target>Verdien er ugyldig.</target>
+      </trans-unit>
+      <trans-unit id="HSuBZpQ" resname="This value is not a valid time.">
+        <source>This value is not a valid time.</source>
+        <target>Verdien er ikke en gyldig tid.</target>
+      </trans-unit>
+      <trans-unit id="snWc_QT" resname="This value is not a valid URL.">
+        <source>This value is not a valid URL.</source>
+        <target>Verdien er ikke en gyldig URL.</target>
+      </trans-unit>
+      <trans-unit id="jpaLsb2" resname="The two values should be equal.">
+        <source>The two values should be equal.</source>
+        <target>Verdiene skal være identiske.</target>
+      </trans-unit>
+      <trans-unit id="fIlB1B_" resname="The file is too large. Allowed maximum size is {{ limit }} {{ suffix }}.">
+        <source>The file is too large. Allowed maximum size is {{ limit }} {{ suffix }}.</source>
+        <target>Filen er for stor. Den maksimale størrelsen er {{ limit }} {{ suffix }}.</target>
+      </trans-unit>
+      <trans-unit id="tW7o0t9" resname="The file is too large.">
+        <source>The file is too large.</source>
+        <target>Filen er for stor.</target>
+      </trans-unit>
+      <trans-unit id=".exF5Ww" resname="The file could not be uploaded.">
+        <source>The file could not be uploaded.</source>
+        <target>Filen kunne ikke lastes opp.</target>
+      </trans-unit>
+      <trans-unit id="d7sS5yw" resname="This value should be a valid number.">
+        <source>This value should be a valid number.</source>
+        <target>Verdien skal være et gyldig tall.</target>
+      </trans-unit>
+      <trans-unit id="BS2Ez6i" resname="This file is not a valid image.">
+        <source>This file is not a valid image.</source>
+        <target>Denne filen er ikke et gyldig bilde.</target>
+      </trans-unit>
+      <trans-unit id="ydcT9kU" resname="This is not a valid IP address.">
+        <source>This is not a valid IP address.</source>
+        <target>Dette er ikke en gyldig IP adresse.</target>
+      </trans-unit>
+      <trans-unit id="lDOGNFX" resname="This value is not a valid language.">
+        <source>This value is not a valid language.</source>
+        <target>Verdien er ikke et gyldig språk.</target>
+      </trans-unit>
+      <trans-unit id="y9IdYkA" resname="This value is not a valid locale.">
+        <source>This value is not a valid locale.</source>
+        <target>Verdien er ikke en gyldig lokalitet.</target>
+      </trans-unit>
+      <trans-unit id="1YC0pOd" resname="This value is not a valid country.">
+        <source>This value is not a valid country.</source>
+        <target>Verdien er ikke et gyldig navn på land.</target>
+      </trans-unit>
+      <trans-unit id="B5ebaMp" resname="This value is already used.">
+        <source>This value is already used.</source>
+        <target>Verdien er allerede brukt.</target>
+      </trans-unit>
+      <trans-unit id="L6097a6" resname="The size of the image could not be detected.">
+        <source>The size of the image could not be detected.</source>
+        <target>Bildestørrelsen kunne ikke oppdages.</target>
+      </trans-unit>
+      <trans-unit id="zVtJJEa" resname="The image width is too big ({{ width }}px). Allowed maximum width is {{ max_width }}px.">
+        <source>The image width is too big ({{ width }}px). Allowed maximum width is {{ max_width }}px.</source>
+        <target>Bildebredden er for stor ({{ width }} piksler). Tillatt maksimumsbredde er {{ max_width }} piksler.</target>
+      </trans-unit>
+      <trans-unit id="s8LFQGC" resname="The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px.">
+        <source>The image width is too small ({{ width }}px). Minimum width expected is {{ min_width }}px.</source>
+        <target>Bildebredden er for liten ({{ width }} piksler). Forventet minimumsbredde er {{ min_width }} piksler.</target>
+      </trans-unit>
+      <trans-unit id="Z.NgqFj" resname="The image height is too big ({{ height }}px). Allowed maximum height is {{ max_height }}px.">
+        <source>The image height is too big ({{ height }}px). Allowed maximum height is {{ max_height }}px.</source>
+        <target>Bildehøyden er for stor ({{ height }} piksler). Tillatt maksimumshøyde er {{ max_height }} piksler.</target>
+      </trans-unit>
+      <trans-unit id="AW1lWVM" resname="The image height is too small ({{ height }}px). Minimum height expected is {{ min_height }}px.">
+        <source>The image height is too small ({{ height }}px). Minimum height expected is {{ min_height }}px.</source>
+        <target>Bildehøyden er for liten ({{ height }} piksler). Forventet minimumshøyde er {{ min_height }} piksler.</target>
+      </trans-unit>
+      <trans-unit id="PSdMNab" resname="This value should be the user's current password.">
+        <source>This value should be the user's current password.</source>
+        <target>Verdien skal være brukerens sitt nåværende passord.</target>
+      </trans-unit>
+      <trans-unit id="gYImVyV" resname="This value should have exactly {{ limit }} character.|This value should have exactly {{ limit }} characters.">
+        <source>This value should have exactly {{ limit }} character.|This value should have exactly {{ limit }} characters.</source>
+        <target>Verdien skal være nøyaktig {{ limit }} tegn.</target>
+      </trans-unit>
+      <trans-unit id="xJ2Bcr_" resname="The file was only partially uploaded.">
+        <source>The file was only partially uploaded.</source>
+        <target>Filen var kun delvis opplastet.</target>
+      </trans-unit>
+      <trans-unit id="HzkJDtF" resname="No file was uploaded.">
+        <source>No file was uploaded.</source>
+        <target>Ingen fil var lastet opp.</target>
+      </trans-unit>
+      <trans-unit id="mHfEaB3" resname="No temporary folder was configured in php.ini.">
+        <source>No temporary folder was configured in php.ini.</source>
+        <target>Den midlertidige mappen (tmp) er ikke konfigurert i php.ini.</target>
+      </trans-unit>
+      <trans-unit id="y9K3BGb" resname="Cannot write temporary file to disk.">
+        <source>Cannot write temporary file to disk.</source>
+        <target>Kan ikke skrive midlertidig fil til disk.</target>
+      </trans-unit>
+      <trans-unit id="kx3yHIM" resname="A PHP extension caused the upload to fail.">
+        <source>A PHP extension caused the upload to fail.</source>
+        <target>En PHP-utvidelse forårsaket en feil under opplasting.</target>
+      </trans-unit>
+      <trans-unit id="gTJYRl6" resname="This collection should contain {{ limit }} element or more.|This collection should contain {{ limit }} elements or more.">
+        <source>This collection should contain {{ limit }} element or more.|This collection should contain {{ limit }} elements or more.</source>
+        <target>Denne samlingen må inneholde {{ limit }} element eller flere.|Denne samlingen må inneholde {{ limit }} elementer eller flere.</target>
+      </trans-unit>
+      <trans-unit id="FFn3lVn" resname="This collection should contain {{ limit }} element or less.|This collection should contain {{ limit }} elements or less.">
+        <source>This collection should contain {{ limit }} element or less.|This collection should contain {{ limit }} elements or less.</source>
+        <target>Denne samlingen må inneholde {{ limit }} element eller færre.|Denne samlingen må inneholde {{ limit }} elementer eller færre.</target>
+      </trans-unit>
+      <trans-unit id="bSdilZv" resname="This collection should contain exactly {{ limit }} element.|This collection should contain exactly {{ limit }} elements.">
+        <source>This collection should contain exactly {{ limit }} element.|This collection should contain exactly {{ limit }} elements.</source>
+        <target>Denne samlingen må inneholde nøyaktig {{ limit }} element.|Denne samlingen må inneholde nøyaktig {{ limit }} elementer.</target>
+      </trans-unit>
+      <trans-unit id="MAzmID7" resname="Invalid card number.">
+        <source>Invalid card number.</source>
+        <target>Ugyldig kortnummer.</target>
+      </trans-unit>
+      <trans-unit id="c3REGK3" resname="Unsupported card type or invalid card number.">
+        <source>Unsupported card type or invalid card number.</source>
+        <target>Korttypen er ikke støttet eller kortnummeret er ugyldig.</target>
+      </trans-unit>
+      <trans-unit id="XSVzcbV" resname="This is not a valid International Bank Account Number (IBAN).">
+        <source>This is not a valid International Bank Account Number (IBAN).</source>
+        <target>Dette er ikke et gyldig IBAN-nummer.</target>
+      </trans-unit>
+      <trans-unit id="yHirwNr" resname="This value is not a valid ISBN-10.">
+        <source>This value is not a valid ISBN-10.</source>
+        <target>Verdien er ikke en gyldig ISBN-10.</target>
+      </trans-unit>
+      <trans-unit id="c_q0_ua" resname="This value is not a valid ISBN-13.">
+        <source>This value is not a valid ISBN-13.</source>
+        <target>Verdien er ikke en gyldig ISBN-13.</target>
+      </trans-unit>
+      <trans-unit id="M4FlD6n" resname="This value is neither a valid ISBN-10 nor a valid ISBN-13.">
+        <source>This value is neither a valid ISBN-10 nor a valid ISBN-13.</source>
+        <target>Verdien er hverken en gyldig ISBN-10 eller ISBN-13.</target>
+      </trans-unit>
+      <trans-unit id="cuct0Ow" resname="This value is not a valid ISSN.">
+        <source>This value is not a valid ISSN.</source>
+        <target>Verdien er ikke en gyldig ISSN.</target>
+      </trans-unit>
+      <trans-unit id="JBLs1a1" resname="This value is not a valid currency.">
+        <source>This value is not a valid currency.</source>
+        <target>Verdien er ikke gyldig valuta.</target>
+      </trans-unit>
+      <trans-unit id="c.WxzFW" resname="This value should be equal to {{ compared_value }}.">
+        <source>This value should be equal to {{ compared_value }}.</source>
+        <target>Verdien skal være lik {{ compared_value }}.</target>
+      </trans-unit>
+      <trans-unit id="_jdjkwq" resname="This value should be greater than {{ compared_value }}.">
+        <source>This value should be greater than {{ compared_value }}.</source>
+        <target>Verdien skal være større enn {{ compared_value }}.</target>
+      </trans-unit>
+      <trans-unit id="o8A8a0H" resname="This value should be greater than or equal to {{ compared_value }}.">
+        <source>This value should be greater than or equal to {{ compared_value }}.</source>
+        <target>Verdien skal være større enn eller lik {{ compared_value }}.</target>
+      </trans-unit>
+      <trans-unit id="bOF1fpm" resname="This value should be identical to {{ compared_value_type }} {{ compared_value }}.">
+        <source>This value should be identical to {{ compared_value_type }} {{ compared_value }}.</source>
+        <target>Verdien skal være identisk med {{ compared_value_type }} {{ compared_value }}.</target>
+      </trans-unit>
+      <trans-unit id="jG0QFKw" resname="This value should be less than {{ compared_value }}.">
+        <source>This value should be less than {{ compared_value }}.</source>
+        <target>Verdien skal være mindre enn {{ compared_value }}.</target>
+      </trans-unit>
+      <trans-unit id="9lWrKmm" resname="This value should be less than or equal to {{ compared_value }}.">
+        <source>This value should be less than or equal to {{ compared_value }}.</source>
+        <target>Verdien skal være mindre enn eller lik {{ compared_value }}.</target>
+      </trans-unit>
+      <trans-unit id="ftTwGs." resname="This value should not be equal to {{ compared_value }}.">
+        <source>This value should not be equal to {{ compared_value }}.</source>
+        <target>Verdien skal ikke være lik {{ compared_value }}.</target>
+      </trans-unit>
+      <trans-unit id="Bi22JLt" resname="This value should not be identical to {{ compared_value_type }} {{ compared_value }}.">
+        <source>This value should not be identical to {{ compared_value_type }} {{ compared_value }}.</source>
+        <target>Verdien skal ikke være identisk med {{ compared_value_type }} {{ compared_value }}.</target>
+      </trans-unit>
+      <trans-unit id="VczCWzQ" resname="The image ratio is too big ({{ ratio }}). Allowed maximum ratio is {{ max_ratio }}.">
+        <source>The image ratio is too big ({{ ratio }}). Allowed maximum ratio is {{ max_ratio }}.</source>
+        <target>Bildeforholdet er for stort ({{ ratio }}). Tillatt bildeforhold er maks {{ max_ratio }}.</target>
+      </trans-unit>
+      <trans-unit id="v57PXhq" resname="The image ratio is too small ({{ ratio }}). Minimum ratio expected is {{ min_ratio }}.">
+        <source>The image ratio is too small ({{ ratio }}). Minimum ratio expected is {{ min_ratio }}.</source>
+        <target>Bildeforholdet er for lite ({{ ratio }}). Forventet bildeforhold er minst {{ min_ratio }}.</target>
+      </trans-unit>
+      <trans-unit id="rpajj.a" resname="The image is square ({{ width }}x{{ height }}px). Square images are not allowed.">
+        <source>The image is square ({{ width }}x{{ height }}px). Square images are not allowed.</source>
+        <target>Bildet er en kvadrat ({{ width }}x{{ height }}px). Kvadratiske bilder er ikke tillatt.</target>
+      </trans-unit>
+      <trans-unit id="G_lu2qW" resname="The image is landscape oriented ({{ width }}x{{ height }}px). Landscape oriented images are not allowed.">
+        <source>The image is landscape oriented ({{ width }}x{{ height }}px). Landscape oriented images are not allowed.</source>
+        <target>Bildet er i liggende retning ({{ width }}x{{ height }}px). Bilder i liggende retning er ikke tillatt.</target>
+      </trans-unit>
+      <trans-unit id="sFyGx4B" resname="The image is portrait oriented ({{ width }}x{{ height }}px). Portrait oriented images are not allowed.">
+        <source>The image is portrait oriented ({{ width }}x{{ height }}px). Portrait oriented images are not allowed.</source>
+        <target>Bildet er i stående retning ({{ width }}x{{ height }}px). Bilder i stående retning er ikke tillatt.</target>
+      </trans-unit>
+      <trans-unit id="jZgqcpL" resname="An empty file is not allowed.">
+        <source>An empty file is not allowed.</source>
+        <target>Tomme filer er ikke tilatt.</target>
+      </trans-unit>
+      <trans-unit id="bcfVezI" resname="The host could not be resolved.">
+        <source>The host could not be resolved.</source>
+        <target>Vertsnavn kunne ikke løses.</target>
+      </trans-unit>
+      <trans-unit id="NtzKvgt" resname="This value does not match the expected {{ charset }} charset.">
+        <source>This value does not match the expected {{ charset }} charset.</source>
+        <target>Verdien samsvarer ikke med forventet tegnsett {{ charset }}.</target>
+      </trans-unit>
+      <trans-unit id="Wi2y9.N" resname="This is not a valid Business Identifier Code (BIC).">
+        <source>This is not a valid Business Identifier Code (BIC).</source>
+        <target>Dette er ikke en gyldig BIC.</target>
+      </trans-unit>
+      <trans-unit id="VKDowX6" resname="Error">
+        <source>Error</source>
+        <target>Feil</target>
+      </trans-unit>
+      <trans-unit id="8zqt0Ik" resname="This is not a valid UUID.">
+        <source>This is not a valid UUID.</source>
+        <target>Dette er ikke en gyldig UUID.</target>
+      </trans-unit>
+      <trans-unit id="ru.4wkH" resname="This value should be a multiple of {{ compared_value }}.">
+        <source>This value should be a multiple of {{ compared_value }}.</source>
+        <target>Verdien skal være flertall av {{ compared_value }}.</target>
+      </trans-unit>
+      <trans-unit id="M3vyK6s" resname="This Business Identifier Code (BIC) is not associated with IBAN {{ iban }}.">
+        <source>This Business Identifier Code (BIC) is not associated with IBAN {{ iban }}.</source>
+        <target>Business Identifier Code (BIC) er ikke tilknyttet en IBAN {{ iban }}.</target>
+      </trans-unit>
+      <trans-unit id="2v2xpAh" resname="This value should be valid JSON.">
+        <source>This value should be valid JSON.</source>
+        <target>Verdien er ikke gyldig JSON.</target>
+      </trans-unit>
+      <trans-unit id="9CWVEGq" resname="This collection should contain only unique elements.">
+        <source>This collection should contain only unique elements.</source>
+        <target>Samlingen kan kun inneholde unike elementer.</target>
+      </trans-unit>
+      <trans-unit id="WdvZfq." resname="This value should be positive.">
+        <source>This value should be positive.</source>
+        <target>Denne verdien må være positiv.</target>
+      </trans-unit>
+      <trans-unit id="ubHMK2q" resname="This value should be either positive or zero.">
+        <source>This value should be either positive or zero.</source>
+        <target>Denne verdien må være positiv eller null.</target>
+      </trans-unit>
+      <trans-unit id="IwNTzo_" resname="This value should be negative.">
+        <source>This value should be negative.</source>
+        <target>Denne verdien må være negativ.</target>
+      </trans-unit>
+      <trans-unit id="0GfwMfP" resname="This value should be either negative or zero.">
+        <source>This value should be either negative or zero.</source>
+        <target>Denne verdien må være negativ eller null.</target>
+      </trans-unit>
+      <trans-unit id="fs3qQZR" resname="This value is not a valid timezone.">
+        <source>This value is not a valid timezone.</source>
+        <target>Verdien er ikke en gyldig tidssone.</target>
+      </trans-unit>
+      <trans-unit id="40dnsod" resname="This password has been leaked in a data breach, it must not be used. Please use another password.">
+        <source>This password has been leaked in a data breach, it must not be used. Please use another password.</source>
+        <target>Dette passordet er lekket i et datainnbrudd, det må ikke tas i bruk. Vennligst bruk et annet passord.</target>
+      </trans-unit>
+      <trans-unit id="VvxxWas" resname="This value should be between {{ min }} and {{ max }}.">
+        <source>This value should be between {{ min }} and {{ max }}.</source>
+        <target>Verdien må være mellom {{ min }} og {{ max }}.</target>
+      </trans-unit>
+      <trans-unit id="7g313cV" resname="This value is not a valid hostname.">
+        <source>This value is not a valid hostname.</source>
+        <target>Denne verdien er ikke et gyldig vertsnavn.</target>
+      </trans-unit>
+      <trans-unit id="xwtBimR" resname="The number of elements in this collection should be a multiple of {{ compared_value }}.">
+        <source>The number of elements in this collection should be a multiple of {{ compared_value }}.</source>
+        <target>Antall elementer i denne samlingen bør være et multiplum av {{ compared_value }}.</target>
+      </trans-unit>
+      <trans-unit id="FDRZr.s" resname="This value should satisfy at least one of the following constraints:">
+        <source>This value should satisfy at least one of the following constraints:</source>
+        <target>Denne verdien skal tilfredsstille minst en av følgende begrensninger:</target>
+      </trans-unit>
+      <trans-unit id="WwY0IGI" resname="Each element of this collection should satisfy its own set of constraints.">
+        <source>Each element of this collection should satisfy its own set of constraints.</source>
+        <target>Hvert element i denne samlingen skal tilfredsstille sitt eget sett med begrensninger.</target>
+      </trans-unit>
+      <trans-unit id="lrbaa8g" resname="This value is not a valid International Securities Identification Number (ISIN).">
+        <source>This value is not a valid International Securities Identification Number (ISIN).</source>
+        <target>Denne verdien er ikke et gyldig International Securities Identification Number (ISIN).</target>
+      </trans-unit>
+      <trans-unit id=".SEaaBa" resname="This form should not contain extra fields.">
+        <source>This form should not contain extra fields.</source>
+        <target>Feltgruppen må ikke inneholde ekstra felter.</target>
+      </trans-unit>
+      <trans-unit id="WPnLAh9" resname="The uploaded file was too large. Please try to upload a smaller file.">
+        <source>The uploaded file was too large. Please try to upload a smaller file.</source>
+        <target>Den opplastede filen var for stor. Vennligst last opp en mindre fil.</target>
+      </trans-unit>
+      <trans-unit id="qwR4y4X" resname="The CSRF token is invalid.">
+        <source>The CSRF token is invalid.</source>
+        <target>CSRF nøkkelen er ugyldig.</target>
+      </trans-unit>
+      <trans-unit id="eo1zeih" resname="This value is not a valid HTML5 color.">
+        <source>This value is not a valid HTML5 color.</source>
+        <target>Denne verdien er ikke en gyldig HTML5-farge.</target>
+      </trans-unit>
+      <trans-unit id="dN.ZVc0" resname="Please enter a valid birthdate.">
+        <source>Please enter a valid birthdate.</source>
+        <target>Vennligst oppgi gyldig fødselsdato.</target>
+      </trans-unit>
+      <trans-unit id="OPymPfZ" resname="The selected choice is invalid.">
+        <source>The selected choice is invalid.</source>
+        <target>Det valgte valget er ugyldig.</target>
+      </trans-unit>
+      <trans-unit id="GUH6TYE" resname="The collection is invalid.">
+        <source>The collection is invalid.</source>
+        <target>Samlingen er ugyldig.</target>
+      </trans-unit>
+      <trans-unit id="14il0ha" resname="Please select a valid color.">
+        <source>Please select a valid color.</source>
+        <target>Velg en gyldig farge.</target>
+      </trans-unit>
+      <trans-unit id="4AJRUCC" resname="Please select a valid country.">
+        <source>Please select a valid country.</source>
+        <target>Vennligst velg et gyldig land.</target>
+      </trans-unit>
+      <trans-unit id="xAI5mrh" resname="Please select a valid currency.">
+        <source>Please select a valid currency.</source>
+        <target>Vennligst velg en gyldig valuta.</target>
+      </trans-unit>
+      <trans-unit id="c6v9ASZ" resname="Please choose a valid date interval.">
+        <source>Please choose a valid date interval.</source>
+        <target>Vennligst velg et gyldig datointervall.</target>
+      </trans-unit>
+      <trans-unit id="2BR60Jg" resname="Please enter a valid date and time.">
+        <source>Please enter a valid date and time.</source>
+        <target>Vennligst angi en gyldig dato og tid.</target>
+      </trans-unit>
+      <trans-unit id="ofLBhv0" resname="Please enter a valid date.">
+        <source>Please enter a valid date.</source>
+        <target>Vennligst oppgi en gyldig dato.</target>
+      </trans-unit>
+      <trans-unit id="Xsmm6Mc" resname="Please select a valid file.">
+        <source>Please select a valid file.</source>
+        <target>Vennligst velg en gyldig fil.</target>
+      </trans-unit>
+      <trans-unit id="Fka0cZD" resname="The hidden field is invalid.">
+        <source>The hidden field is invalid.</source>
+        <target>Det skjulte feltet er ugyldig.</target>
+      </trans-unit>
+      <trans-unit id="69ux5Ml" resname="Please enter an integer.">
+        <source>Please enter an integer.</source>
+        <target>Vennligst skriv inn et heltall.</target>
+      </trans-unit>
+      <trans-unit id="TQbat_9" resname="Please select a valid language.">
+        <source>Please select a valid language.</source>
+        <target>Vennligst velg et gyldig språk.</target>
+      </trans-unit>
+      <trans-unit id="vpa7l8w" resname="Please select a valid locale.">
+        <source>Please select a valid locale.</source>
+        <target>Vennligst velg et gyldig sted.</target>
+      </trans-unit>
+      <trans-unit id="Gz8pWER" resname="Please enter a valid money amount.">
+        <source>Please enter a valid money amount.</source>
+        <target>Vennligst angi et gyldig pengebeløp.</target>
+      </trans-unit>
+      <trans-unit id="PRxiOhB" resname="Please enter a number.">
+        <source>Please enter a number.</source>
+        <target>Vennligst skriv inn et nummer.</target>
+      </trans-unit>
+      <trans-unit id="seAdKJo" resname="The password is invalid.">
+        <source>The password is invalid.</source>
+        <target>Passordet er ugyldig.</target>
+      </trans-unit>
+      <trans-unit id="A5k0Q20" resname="Please enter a percentage value.">
+        <source>Please enter a percentage value.</source>
+        <target>Vennligst angi en prosentverdi.</target>
+      </trans-unit>
+      <trans-unit id="rH6V.WA" resname="The values do not match.">
+        <source>The values do not match.</source>
+        <target>Verdiene stemmer ikke overens.</target>
+      </trans-unit>
+      <trans-unit id="Eopl1Sm" resname="Please enter a valid time.">
+        <source>Please enter a valid time.</source>
+        <target>Vennligst angi et gyldig tidspunkt.</target>
+      </trans-unit>
+      <trans-unit id="ll14Sm9" resname="Please select a valid timezone.">
+        <source>Please select a valid timezone.</source>
+        <target>Vennligst velg en gyldig tidssone.</target>
+      </trans-unit>
+      <trans-unit id="1xP1kmd" resname="Please enter a valid URL.">
+        <source>Please enter a valid URL.</source>
+        <target>Vennligst skriv inn en gyldig URL.</target>
+      </trans-unit>
+      <trans-unit id="iMmAsrC" resname="Please enter a valid search term.">
+        <source>Please enter a valid search term.</source>
+        <target>Vennligst angi et gyldig søketerm.</target>
+      </trans-unit>
+      <trans-unit id="GRMTXRX" resname="Please provide a valid phone number.">
+        <source>Please provide a valid phone number.</source>
+        <target>Vennligst oppgi et gyldig telefonnummer.</target>
+      </trans-unit>
+      <trans-unit id="WkYuMDd" resname="The checkbox has an invalid value.">
+        <source>The checkbox has an invalid value.</source>
+        <target>Avkrysningsboksen har en ugyldig verdi.</target>
+      </trans-unit>
+      <trans-unit id="lY5Mzyl" resname="Please enter a valid email address.">
+        <source>Please enter a valid email address.</source>
+        <target>Vennligst skriv inn en gyldig e-post adresse.</target>
+      </trans-unit>
+      <trans-unit id="TzSC4.o" resname="Please select a valid option.">
+        <source>Please select a valid option.</source>
+        <target>Vennligst velg et gyldig alternativ.</target>
+      </trans-unit>
+      <trans-unit id="qGRcTk7" resname="Please select a valid range.">
+        <source>Please select a valid range.</source>
+        <target>Vennligst velg et gyldig område.</target>
+      </trans-unit>
+      <trans-unit id="PU.w6nC" resname="Please enter a valid week.">
+        <source>Please enter a valid week.</source>
+        <target>Vennligst skriv inn en gyldig uke.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="da" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="8fibWlP" resname="Web-based gedcom editor">
+        <source>Web-based gedcom editor</source>
+        <target>__Web-based gedcom editor</target>
+      </trans-unit>
+      <trans-unit id="UlmuZWF" resname="In development">
+        <source>In development</source>
+        <target>__In development</target>
+      </trans-unit>
+      <trans-unit id="dP6sXrj" resname="Prefix">
+        <source>Prefix</source>
+        <target>__Prefix</target>
+      </trans-unit>
+      <trans-unit id=".Jc8c5R" resname="First names">
+        <source>First names</source>
+        <target>__First names</target>
+      </trans-unit>
+      <trans-unit id="fwVUcOj" resname="Last names">
+        <source>Last names</source>
+        <target>__Last names</target>
+      </trans-unit>
+      <trans-unit id="BAe8.qE" resname="Suffix">
+        <source>Suffix</source>
+        <target>__Suffix</target>
+      </trans-unit>
+      <trans-unit id="A.jBJz4" resname="Male">
+        <source>Male</source>
+        <target>__Male</target>
+      </trans-unit>
+      <trans-unit id="6MyoCK5" resname="Female">
+        <source>Female</source>
+        <target>__Female</target>
+      </trans-unit>
+      <trans-unit id="TdHxiLn" resname="Intersex">
+        <source>Intersex</source>
+        <target>__Intersex</target>
+      </trans-unit>
+      <trans-unit id="t2TNwOq" resname="Unknown">
+        <source>Unknown</source>
+        <target>__Unknown</target>
+      </trans-unit>
+      <trans-unit id="KU26DYu" resname="Not Recorded">
+        <source>Not Recorded</source>
+        <target>__Not Recorded</target>
+      </trans-unit>
+      <trans-unit id="lT3W8rR" resname="Sex">
+        <source>Sex</source>
+        <target>__Sex</target>
+      </trans-unit>
+      <trans-unit id="OltquJT" resname="Nicknames">
+        <source>Nicknames</source>
+        <target>__Nicknames</target>
+      </trans-unit>
+      <trans-unit id="uq3fcPt" resname="Type">
+        <source>Type</source>
+        <target>__Type</target>
+      </trans-unit>
+      <trans-unit id="4j4ENWi" resname="Families">
+        <source>Families</source>
+        <target>__Families</target>
+      </trans-unit>
+      <trans-unit id="yLKZntQ" resname="Parents">
+        <source>Parents</source>
+        <target>__Parents</target>
+      </trans-unit>
+      <trans-unit id="oIn0tAC" resname="Husband">
+        <source>Husband</source>
+        <target>__Husband</target>
+      </trans-unit>
+      <trans-unit id="3.af0ar" resname="Wife">
+        <source>Wife</source>
+        <target>__Wife</target>
+      </trans-unit>
+      <trans-unit id="NYOjWKW" resname="Children">
+        <source>Children</source>
+        <target>__Children</target>
+      </trans-unit>
+      <trans-unit id="gmpDkIR" resname="Marriage">
+        <source>Marriage</source>
+        <target>__Marriage</target>
+      </trans-unit>
+      <trans-unit id="k.fwfl0" resname="Not Married">
+        <source>Not Married</source>
+        <target>__Not Married</target>
+      </trans-unit>
+      <trans-unit id="r9Dn0BS" resname="Civil">
+        <source>Civil</source>
+        <target>__Civil</target>
+      </trans-unit>
+      <trans-unit id="2eHB7nr" resname="Religios">
+        <source>Religios</source>
+        <target>__Religios</target>
+      </trans-unit>
+      <trans-unit id="SuxkP5W" resname="Common law">
+        <source>Common law</source>
+        <target>__Common law</target>
+      </trans-unit>
+      <trans-unit id="th3Y9AF" resname="Partnership">
+        <source>Partnership</source>
+        <target>__Partnership</target>
+      </trans-unit>
+      <trans-unit id="PoCKf.5" resname="Registered partnership">
+        <source>Registered partnership</source>
+        <target>__Registered partnership</target>
+      </trans-unit>
+      <trans-unit id="Nj_l6Zs" resname="Living together">
+        <source>Living together</source>
+        <target>__Living together</target>
+      </trans-unit>
+      <trans-unit id="zw.0AVg" resname="Living apart together">
+        <source>Living apart together</source>
+        <target>__Living apart together</target>
+      </trans-unit>
+      <trans-unit id="JUkKENB" resname="Relationship">
+        <source>Relationship</source>
+        <target>__Relationship</target>
+      </trans-unit>
+      <trans-unit id="tRLZfny" resname="User">
+        <source>User</source>
+        <target>__User</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

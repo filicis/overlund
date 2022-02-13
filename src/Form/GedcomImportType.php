@@ -44,6 +44,12 @@ class GedcomImportType extends AbstractType
               'application/x-pdf',
             ],
             'mimeTypesMessage' => 'Please upload a valid PDF document', ])],])
+      ->add('autodetect', ChoiceType::class, [
+        'label' => 'Autodetect',
+        'mapped' => false, 
+        'expanded' => true,
+        'empty_data' => 'yes',
+        'choices' => ['Yes' => 'yes', 'No' => 'no']     ])      
       ->add('encoding', TextType::class, [
         'label' => "Character Set",
         'mapped' => false
@@ -53,7 +59,7 @@ class GedcomImportType extends AbstractType
         'mapped' => false,
         'expanded' => true,
         'multiple' => false,
-        'choices' => ['Dos' => null, 'Unix' => true, 'Mac' => false]
+        'choices' => ['Dos' => 'dos', 'Unix' => 'unix', 'Mac' => 'mac']
         ,])
         
       ;

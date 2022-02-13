@@ -24,7 +24,7 @@
         {% endblock cardheader %}
       </h2>
       <div class="card-body">
-        {% if warning %}
+        {% if warning is defined %}
         <div class="alert alert-warning"> {{ warning|trans }}</div>
         {% endif %}
         {% block cardbody %}

@@ -19,8 +19,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+  /**
+   *  class FormidlerController
+   *
+   **/
+
 class FormidlerController extends AbstractController
 {
+  /**
+   *
+   *
+   **/
+
     #[Route('/tree/{url}', name: 'tree')]
     public function index(Project $project): Response
     {
@@ -28,4 +38,17 @@ class FormidlerController extends AbstractController
             'controller_name' => 'FormidlerController',
         ]);
     }
+
+  /**
+   *
+   *
+   **/
+
+    #[Route('/tree', name: 'notree')] 
+    public function index1(): Response 
+    {
+       return $this->render('formidler/index.html.twig', [
+                'controller_name' => 'FormidlerController',
+            ]);
+    }  
 }

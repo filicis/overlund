@@ -13,6 +13,7 @@
 namespace App\Controller;
 
 use       Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use       Symfony\Component\HttpFoundation\Request;
 use       Symfony\Component\HttpFoundation\Response;
 use       Symfony\Component\Routing\Annotation\Route;
 use       Doctrine\Persistence\ManagerRegistry;
@@ -31,8 +32,13 @@ use       App\Repository\ProjectRepository;
 class DefaultController extends AbstractController
 {
   #[Route('/', name: 'default')]
-  public function index(ManagerRegistry $doctrine): Response
+  public function index(Request $request, ManagerRegistry $doctrine): Response
   {
+    $cookies= $request->cookies;
+    if ($cookies->has('PROJECT'))
+    {
+    }  
+
     $projects = $doctrine->getRepository(Project::class)->findAll();
 
     if (! $projects) {

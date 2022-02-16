@@ -98,7 +98,7 @@ class ProjectController extends AbstractController
 
 
   /**
-   *
+   *  openProject()
    **/
 
   #[Route('/admin/openProject', name: 'adminOpenProject')]
@@ -112,12 +112,12 @@ class ProjectController extends AbstractController
       -> getForm();
     ;
 
-    //$form= $this->createForm(ProjectsType::class, $projecter);
 
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid())
     {
+      return $this->redirectToRoute('editor', ['url' => $form->get('project')->getData()->getUrl()]);
     }
     return $this->renderForm('card.html.twig', [
       'form' => $form,

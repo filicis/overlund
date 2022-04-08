@@ -24,7 +24,7 @@
 
 				{% for ch in childlist %}
 
-				<option value="1" onfocus='showIndividual()'>{{ ch }}</option>
+				<option value="1" onfocus='bohr()'>{{ ch }}</option>
 
 				{% endfor %}
 			</select>

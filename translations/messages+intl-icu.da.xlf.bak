@@ -39,7 +39,7 @@
       </trans-unit>
       <trans-unit id="TdHxiLn" resname="Intersex">
         <source>Intersex</source>
-        <target>Interkøn</target>
+        <target>__Intersex</target>
       </trans-unit>
       <trans-unit id="t2TNwOq" resname="Unknown">
         <source>Unknown</source>

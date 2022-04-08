@@ -26,7 +26,7 @@
 <div class="row">
 
 
-  <div id= "villy" class="col">
+  <div class="col">
     {% block lcol %}
     	{{ include('editor/individual.html.twig') }}
     {% endblock lcol %}
@@ -89,7 +89,7 @@
  
   // (C) PUT LOADED CONTENT INTO <DIV>
   .then((content) => {
-    document.getElementById("villy").innerHTML = content;
+    document.getElementById("birger").innerHTML = content;
   })
  
   // (D) HANDLE ERRORS - OPTIONAL

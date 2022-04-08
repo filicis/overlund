@@ -53,7 +53,7 @@ class GedcomImportType extends AbstractType
         'choices' => ['Yes' => 'yes', 'No' => 'no']     ])      
       ->add('encoding', TextType::class, [
         'label' => "Character Set",
-        'data' => 'UTF8',
+        'data' => 'UTF8'
         'mapped' => false
           ,])
       ->add('terminator', ChoiceType::class, [

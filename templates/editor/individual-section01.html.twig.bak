@@ -62,13 +62,13 @@
 					<div class="form-floating">
 						<!-- input type="text" class="form-control" id="idXXX7" placeholder="Tekst" -->
 
-						<select class="form-select" id="idXXXXXX7" aria-label="Default select example" onChange='benny()'
-						  data-bs-toggle="tooltip" data-bs-placement="top" title="Indicates the sex of the individual at birth ">
+						<select class="form-select" id="idXXXXXX7" aria-label="Default select example" onChange='benny()'>
 							<!-- option >Køn</option -->
 							<option value="M" selected> {{ 'Male' | trans }} </option>
 							<option value="F"> {{ 'Female' | trans }} </option>
               <option value="X"> {{ 'Intersex' | trans }} </option>
               <option value="U"> {{ 'Unknown' | trans }} </option>
+              <option value="N"> {{ 'Not Recorded' | trans }} </option>
 						</select>
 
 						<label for="idXXX7"> {{ 'Sex' | trans }} </label>

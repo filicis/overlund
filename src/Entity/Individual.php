@@ -23,7 +23,7 @@ use App\Entity\RecordSuperclass;
 
 
   /**
-   * @ORM\Entity(repositoryClass=IndividualRepository::class)
+   * @ ORM\Entity(repositoryClass=IndividualRepository::class)
    **/
 
 #[ORM\Entity(repositoryClass:  IndividualRepository::class)]
@@ -33,14 +33,14 @@ class Individual extends RecordSuperclass
 
 
     /**
-     * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="individuals")
+     * @ ORM\ManyToOne(targetEntity=Project::class, inversedBy="individuals")
      */
 
     #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "individuals")]
     private $project;
 
     /**
-     * @ORM\OneToMany(targetEntity=PersonalNameStructure::class, mappedBy="individual")
+     * @ ORM\OneToMany(targetEntity=PersonalNameStructure::class, mappedBy="individual")
      */
 
     #[ORM\OneToMany(targetEntity: PersonalNameStructure::class, mappedBy: "individual")]

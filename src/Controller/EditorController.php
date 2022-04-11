@@ -31,14 +31,15 @@ class EditorController extends AbstractController
 {
 
   /**
-   *
+   *  index
    *
    **/
-
 
   #[Route('/editor/{url}', name: 'editor', defaults: ['p1' => null, 'p2' => null])]
   public function index(Request $request, Project $project, ?string  $p1= null, ?string $p2= null): Response
   {
+    $session= $request->getSession();
+
     $family= null;
     $individual= null;
 
@@ -61,9 +62,6 @@ class EditorController extends AbstractController
       {
       }
 		}
-
-
-
 
     return $this->render('editor/index.html.twig', [
 
@@ -98,7 +96,7 @@ class EditorController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
-			  return $this->redirectToRoute('editor', ['url' => 'familie']);
+			  //return $this->redirectToRoute('editor', ['url' => 'familie']);
       //}
       //catch(\Exception $e)
       //{
@@ -136,7 +134,7 @@ class EditorController extends AbstractController
       catch(\Exception $e)
       {
       }
-			return $this->redirectToRoute('editor', ['url' => 'familie' ]);
+			// return $this->redirectToRoute('editor', ['url' => 'familie' ]);
 
 
   }

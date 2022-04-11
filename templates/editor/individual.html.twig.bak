@@ -9,7 +9,7 @@
 <div class="card border-dark alert-primary shadow-sm p-3 mb-5  rounded " id="birger" >
 
 	<div class="card-header border-dark">
-		[I2031] Anders Hansen Nielsen
+		[I2031] <span>Anders Hansen Nielsen</span>
 	</div>
 
 
@@ -23,7 +23,7 @@
 	<div class="card-footer border-dark">
 		<div class="btn-group" role="group" aria-label="Basic example">
       <a role="button" class="btn btn.outline-primary" href="{#{ path('editorNewIndividual') }#}"><i class="bi bi-person-plus"></i></a>
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i></button>
+			<button type="button" class="btn btn-outline-primary" onclick="newIndividual"><i class="bi bi-person-plus"></i></button>
 			<button type="button" class="btn btn-outline-primary"><i class="bi bi-binoculars"></i></button>
 			<button type="button" class="btn btn-outline-primary" disabled><i class="bi bi-arrow-left"></i></button>
 			<button type="button" class="btn btn-outline-primary"><i class="bi bi-arrow-right"></i></button>

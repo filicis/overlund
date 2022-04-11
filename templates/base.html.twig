@@ -114,8 +114,8 @@
 
     		  </div>
   		  </div>
-  		  
-  		  
+
+
   		  <div class="navbar-expand d-flex flex-row-reverse" id="navbarNavAltMarkup" >
   		    <!-- div class="navbar-expand justify-content-end" id="navbarNavAltMarkup" -->
     		  <div class="navbar-nav mr_auto">
@@ -165,9 +165,46 @@
 				var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 				var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   				return new bootstrap.Tooltip(tooltipTriggerEl)
-					})			
-			
+					})
+
 			</script>
+
+			<script>
+			  async function mymyNewIndividual(myUrl)
+        {
+
+          // const myUrl= {{ url('editorNewIndividual', {url: 'Project01'} ) }};
+          const myInit= {
+            mode: 'cors',
+            credentials: 'include',
+          };
+
+
+
+          document.getElementById('idYYY0').value= 'Test06';
+
+          // (A) FETCH "DUMMY.HTML"
+          await fetch(myUrl, myInit);
+
+          // (B) RETURN THE RESULT AS TEXT
+          //.then((result) => {
+          //  if (result.status != 200) { throw new Error("Bad Server Response"); }
+          //  return result.text();
+          //})
+
+          // (C) PUT LOADED CONTENT INTO <DIV>
+          //.then((content) => {
+          //  document.getElementById("villy").innerHTML = content;
+          //})
+
+          // (D) HANDLE ERRORS - OPTIONAL
+          //.catch((error) => { console.log(error); });
+
+          document.getElementById('idYYY0').value= 'Test08';
+
+        }
+      </script>
+
 
     {% endblock javascripts %}
 

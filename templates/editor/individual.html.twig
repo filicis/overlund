@@ -22,13 +22,51 @@
 
 	<div class="card-footer border-dark">
 		<div class="btn-group" role="group" aria-label="Basic example">
-      <a role="button" class="btn btn.outline-primary" href="{#{ path('editorNewIndividual') }#}"><i class="bi bi-person-plus"></i></a>
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i></button>
+      <!-- a role="button" class="btn btn.outline-primary" href="{#{ path('editorNewIndividual') }#}"><i class="bi bi-person-plus"></i></a -->
+			<button type="button" class="btn btn-outline-primary" onclick="document.getElementById('idYYY0').value= 'Test'; newIndividual();"><i class="bi bi-person-plus"></i></button>
+			<button type="button" class="btn btn-outline-primary" onclick="myNewIndividual()"><i class="bi bi-person-plus"></i></button>
 			<button type="button" class="btn btn-outline-primary"><i class="bi bi-binoculars"></i></button>
-			<button type="button" class="btn btn-outline-primary" disabled><i class="bi bi-arrow-left"></i></button>
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-arrow-right"></i></button>
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-person-x"></i></button>
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-file-lock"></i></button>
+			<button type="button" class="btn btn-outline-primary" onclick="myNewIndividual()"><i class="bi bi-arrow-left"></i></button>
+			<button type="button" class="btn btn-outline-primary" onclick="myNewIndividual()"><i class="bi bi-arrow-right"></i></button>
+			<button type="button" class="btn btn-outline-primary" onclick="document.getElementById('idYYY0').value= 'Test01'"><i class="bi bi-person-x"></i></button>
+			<button type="button" class="btn btn-outline-primary" onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')"><i class="bi bi-file-lock"></i></button>
 		</div>
 	</div>
 </div>
+
+
+<script>
+
+  function myNewIndividual()
+  {
+      document.getElementById('idYYY0').value= 'Test02';
+
+  }
+
+
+    function ___newIndividual()
+    {
+      document.getElementById('idXXX0').value= 'Test';
+
+      // (A) FETCH "DUMMY.HTML"
+      await fetch({{ url('editorNewIndividual', {url: 'Project01'} ) }})
+
+      // (B) RETURN THE RESULT AS TEXT
+      .then((result) => {
+        if (result.status != 200) { throw new Error("Bad Server Response"); }
+        return result.text();
+      })
+
+      // (C) PUT LOADED CONTENT INTO <DIV>
+      .then((content) => {
+        document.getElementById("villy").innerHTML = content;
+      })
+
+      // (D) HANDLE ERRORS - OPTIONAL
+      .catch((error) => { console.log(error); });
+
+      }
+
+
+
+</script>

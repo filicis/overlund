@@ -75,31 +75,49 @@
 
 {% block javascripts %}
   {{ parent() }}
-  
-  async function showIndividual()
-  {
-  // (A) FETCH "DUMMY.HTML"
-  fetch("2-dummy.html")
- 
-  // (B) RETURN THE RESULT AS TEXT
-  .then((result) => {
-    if (result.status != 200) { throw new Error("Bad Server Response"); }
-    return result.text();
-  })
- 
-  // (C) PUT LOADED CONTENT INTO <DIV>
-  .then((content) => {
-    document.getElementById("villy").innerHTML = content;
-  })
- 
-  // (D) HANDLE ERRORS - OPTIONAL
-  .catch((error) => { console.log(error); });
-  
-  }
-  
-  
-  async function showFamily()
-  {
-  }
-  
+
+
+  <script>
+
+    async function __showIndividual()
+    {
+      // (A) FETCH "DUMMY.HTML"
+      fetch("2-dummy.html")
+
+      // (B) RETURN THE RESULT AS TEXT
+      .then((result) => {
+         if (result.status != 200) { throw new Error("Bad Server Response"); }
+          return result.text();
+      })
+
+      // (C) PUT LOADED CONTENT INTO <DIV>
+      .then((content) => {
+        document.getElementById("villy").innerHTML = content;
+      })
+
+      // (D) HANDLE ERRORS - OPTIONAL
+      .catch((error) => { console.log(error); });
+
+    }
+
+  </script>
+
+  <script>
+
+    async function addFamily()
+    {
+      const myUrl= '{{ url('editorNewFamily', {url: 'Project01'} ) }}';
+      const myInit= {
+        mode: 'cors',
+        credentials: 'include',
+      };
+
+
+      document.getElementById('idXXX1').value= myUrl;
+      await fetch(myUrl, myInit);
+
+    }
+
+  </script>
+
 {% endblock javascripts%}

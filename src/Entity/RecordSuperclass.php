@@ -55,7 +55,7 @@ use       App\Entity\Traits\XrefTrait;
    **/
 
 #[ORM\MappedSuperclass(repositoryClass: RecordSuperclassRepository::class)]
-// # [ORM\HasLifecycleCallbacks]
+#[ORM\HasLifecycleCallbacks]
 class RecordSuperclass
 {
   const dummy= "SELECT xref FROM family where xref REGEXP 'F\d*' ORDER BY xref desc";
@@ -139,7 +139,12 @@ class RecordSuperclass
           . strtolower((new \ReflectionClass($this))->getShortName())
           . ' where (`project_id` in (\''
           . $this->getProject()->getId()
-          . '\')) and (xref REGEXP "^[[:alpha:]][[:digit:]]+$") ORDER BY length(xref) DESC, xref DESC LIMIT 1';
+          . '\')) and (xref REGEXP ("^[[:alpha:]][[:digit:]]+$")) ORDER BY xref DESC';
+
+    $sql= 'SELECT SUBSTRING(`xref`, 2) FROM '
+          . strtolower((new \ReflectionClass($this))->getShortName())
+          . ' where xref REGEXP "^[[:alpha:]][[:digit:]]+$" ORDER BY length(xref) desc, xref DESC';
+
 
     $em= $event->getEntityManager();
 
@@ -148,8 +153,10 @@ class RecordSuperclass
 
     $res= $conn->fetchOne($sql);
 
+    echo $res;
+
     if ($res)
-      $this->xref= $this::XREF_PREFIX . ++$res;
+      $this->xref= $this::XREF_PREFIX . ($res + 1);
     else
       $this->xref= $this::XREF_PREFIX . 1;
 

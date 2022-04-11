@@ -27,6 +27,7 @@ use App\Entity\RecordSuperclass;
    **/
 
 #[ORM\Entity(repositoryClass:  IndividualRepository::class)]
+//# [ ORM\HasLifecycleCallbacks]
 class Individual extends RecordSuperclass
 {
     protected const XREF_PREFIX = 'I';

@@ -29,6 +29,20 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class EditorController extends AbstractController
 {
+  /**
+   *  Default Editor
+   *  - Hvis projectlisten er tom oprettes et standard project
+   *  - Er der flere projecter i listen får brugeren mulighed for at vælge project
+   *
+   **/ 
+
+  #[Route('/editor', name: 'defaultEditor')]
+  public function index1(Request $request) : Response
+  {
+    return $this->redirectToRoute('editor', ['url' => 'Project01']);
+  }  
+
+
 
   /**
    *  index

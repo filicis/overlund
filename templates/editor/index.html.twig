@@ -12,34 +12,6 @@
 
     }
 
-    async function __newIndividual()
-    {
-      document.getElementById('idXXX0').value= 'Test';
-
-      // (A) FETCH "DUMMY.HTML"
-      await fetch({{ url('editorNewIndividual', {url: 'Project01'} ) }})
-
-      // (B) RETURN THE RESULT AS TEXT
-      .then((result) => {
-        if (result.status != 200) { throw new Error("Bad Server Response"); }
-        return result.text();
-      })
-
-      // (C) PUT LOADED CONTENT INTO <DIV>
-      .then((content) => {
-        document.getElementById("villy").innerHTML = content;
-      })
-
-      // (D) HANDLE ERRORS - OPTIONAL
-      .catch((error) => { console.log(error); });
-
-      }
-
-
-      async function __newFamily()
-      {
-      }
-
     </script>
 
 

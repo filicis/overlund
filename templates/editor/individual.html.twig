@@ -20,17 +20,22 @@
 		{{ include('editor/individual-section03.html.twig') }}
 
 
-	<div class="card-footer border-dark">
-		<div class="btn-group" role="group" aria-label="Basic example">
-      <!-- a role="button" class="btn btn.outline-primary" href="{#{ path('editorNewIndividual') }#}"><i class="bi bi-person-plus"></i></a -->
-			<button type="button" class="btn btn-outline-primary" onclick="document.getElementById('idYYY0').value= 'Test'; newIndividual();"><i class="bi bi-person-plus"></i></button>
-			<button type="button" class="btn btn-outline-primary" onclick="myNewIndividual()"><i class="bi bi-person-plus"></i></button>
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-binoculars"></i></button>
-			<button type="button" class="btn btn-outline-primary" onclick="myNewIndividual()"><i class="bi bi-arrow-left"></i></button>
-			<button type="button" class="btn btn-outline-primary" onclick="myNewIndividual()"><i class="bi bi-arrow-right"></i></button>
-			<button type="button" class="btn btn-outline-primary" onclick="document.getElementById('idYYY0').value= 'Test01'"><i class="bi bi-person-x"></i></button>
-			<button type="button" class="btn btn-outline-primary" onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')"><i class="bi bi-file-lock"></i></button>
-		</div>
+	<div class="card-footer border-dark d-flex justify-content-between">
+		{# <div class="btn-group" role="group" aria-label="Basic example"> #}
+      <!-- a role="button" class="btn btn.primary" href="{#{ path('editorNewIndividual') }#}"><i class="bi bi-person-plus"></i></a -->
+			<button type="button" class="btn btn-sm btn-primary"
+                            data-bs-toggle="tooltip"
+                            title="{% trans %} New Individual {% endtrans %}"
+                            onclick="document.getElementById('idYYY0').value= 'Test'; newIndividual();">
+                            <i class="bi bi-person-plus"></i>
+                            </button>
+			<button type="button" class="btn btn-sm btn-primary" onclick="myNewIndividual()"><i class="bi bi-person-plus"></i></button>
+			<button type="button" class="btn btn-sm btn-primary"><i class="bi bi-binoculars"></i></button>
+			<button type="button" class="btn btn-sm btn-primary" onclick="myNewIndividual()"><i class="bi bi-arrow-left"></i></button>
+			<button type="button" class="btn btn-sm btn-primary" onclick="myNewIndividual()"><i class="bi bi-arrow-right"></i></button>
+			<button type="button" class="btn btn-sm btn-primary" onclick="document.getElementById('idYYY0').value= 'Test01'"><i class="bi bi-person-x"></i></button>
+			<button type="button" class="btn btn-sm btn-primary" onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')"><i class="bi bi-file-lock"></i></button>
+		{# </div> #}
 	</div>
 </div>
 

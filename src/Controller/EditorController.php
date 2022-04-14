@@ -77,7 +77,7 @@ class EditorController extends AbstractController
       }
 		}
 
-    return $this->render('editor/index.html.twig', [
+    return $this->render('editor/editor.html.twig', [
 
       'controller_name' => 'EditorController',
       'project' => $project,

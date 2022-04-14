@@ -13,7 +13,7 @@
 
 			<!-- Navne Struktur -->
 
-		<div class="col-10">
+		<div id="NameStructure" class="col-10">
 
 				<!-- Fornavne -->
 
@@ -102,10 +102,10 @@
 			<!-- Billede -->
 
 		<div class="col-2 align-self-center text-center">
-			<!-- img src="\ludvig.jpg" class="img-thumbnail img-fluid" height="100" width="100" alt="..."-->
-      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-gender-male" viewBox="0 0 16 16">
+			<img src="\ludvig.jpg" class="img-thumbnail img-fluid" height="100" width="100" alt="...">
+      <!-- svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-gender-male" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M9.5 2a.5.5 0 0 1 0-1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L9.871 6.836a5 5 0 1 1-.707-.707L13.293 2H9.5zM6 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
-</svg>
+</svg -->
     </div>
 
 
@@ -127,17 +127,18 @@
 		switch (document.getElementById("idXXXXXX7").value)
 		{
 			case 'M':
-			  document.getElementById("birger").classList.toggle("alert-primary");
+			  document.getElementById("birger").classList.add("alert-primary");
+        // document.getElementById("birger").style.backgroundColor= tomato;
 			  break;
 			case 'F':
-			  document.getElementById("birger").classList.toggle("alert-danger");
+			  document.getElementById("birger").classList.add("alert-danger");
 			  break;
 			case 'U':
       case 'N':
-			  document.getElementById("birger").classList.toggle("alert-secondary");
+			  document.getElementById("birger").classList.add("alert-secondary");
 			  break;
 			default:
-			  document.getElementById("birger").classList.toggle("alert-alarm");
+			  document.getElementById("birger").classList.add("alert-alarm");
 		}
 
 	}

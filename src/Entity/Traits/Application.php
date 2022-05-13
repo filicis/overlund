@@ -21,7 +21,7 @@ namespace App\Entity\Traits;
    **/
 
 
-trait Application
+class Application
 {
   
   public const SOUR               = "Overlund - Web-based Genealogy Application";

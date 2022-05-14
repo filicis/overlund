@@ -37,19 +37,19 @@
 			<div class="row">
 				<div class="col-3">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="idXXX2" placeholder="Tekst" >
+						<input type="text" class="form-control form-control-sm" id="idXXX2" placeholder="Tekst" >
 						<label for="idXXX2"> {{ 'Prefix' | trans }}</label>
 					</div>
 				</div>
 				<div class="col-6">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="idXXX3" placeholder="Tekst" value="Hansen Nielsen" >
+						<input type="text" class="form-control form-control-sm" id="idXXX3" placeholder="Tekst" value="Hansen Nielsen" >
 						<label for="idXXX3"> {{ 'Last names' | trans }} </label>
 					</div>
 				</div>
 				<div class="col-3">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="idXXX4" placeholder="Tekst" >
+						<input type="text" class="form-control form-control-sm" id="idXXX4" placeholder="Tekst" >
 						<label for="idXXX4"> {{ 'Suffix' | trans }}</label>
 					</div>
 				</div>
@@ -60,9 +60,9 @@
 			<div class="row">
 				<div class="col-3">
 					<div class="form-floating">
-						<!-- input type="text" class="form-control" id="idXXX7" placeholder="Tekst" -->
+						<!-- input type="text" class="form-control form-control-sm" id="idXXX7" placeholder="Tekst" -->
 
-						<select class="form-select" id="idXXXXXX7" aria-label="Default select example" onChange='benny()'
+						<select class="form-select form-control-sm" id="idXXXXXX7" aria-label="Default select example" onChange='benny()'
 						  data-bs-toggle="tooltip" data-bs-placement="top" title="Indicates the sex of the individual at birth ">
 							<!-- option >Køn</option -->
 							<option value="M" selected> {{ 'Male' | trans }} </option>
@@ -76,13 +76,13 @@
 				</div>
 				<div class="col-6">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="idXXX6" placeholder="Tekst" >
+						<input type="text" class="form-control form-control-sm" id="idXXX6" placeholder="Tekst" >
 						<label for="idXXX6"> {{ 'Nicknames' | trans }} </label>
 					</div>
 				</div>
 				<div class="col-3">
 					<div class="form-floating">
-						<input type="text" class="form-control" id="idXXX5" list="idXXXXX5" placeholder="Tekst" >
+						<input type="text" class="form-control form-control-sm" id="idXXX5" list="idXXXXX5" placeholder="Tekst" >
 						<label for="idXXX5"> {{ 'Type' | trans }} </label>
 						<datalist id="idXXXXX5">
 						  <option value="AKA">Alias</option>
@@ -125,22 +125,22 @@
 
 	function benny()
 	{
-		document.getElementById("birger").classList.remove('alert-primary', 'alert-secondary', 'alert-danger', 'alert-alarm');
+		document.getElementById("birger").classList.remove('bg-primary', 'bg-secondary', 'bg-danger', 'bg-alarm');
 		switch (document.getElementById("idXXXXXX7").value)
 		{
 			case 'M':
-			  document.getElementById("birger").classList.add("alert-primary");
+			  document.getElementById("birger").classList.add("bg-primary");
         // document.getElementById("birger").style.backgroundColor= tomato;
 			  break;
 			case 'F':
-			  document.getElementById("birger").classList.add("alert-danger");
+			  document.getElementById("birger").classList.add("bg-danger");
 			  break;
 			case 'U':
       case 'N':
-			  document.getElementById("birger").classList.add("alert-secondary");
+			  document.getElementById("birger").classList.add("bg-secondary");
 			  break;
 			default:
-			  document.getElementById("birger").classList.add("alert-alarm");
+			  document.getElementById("birger").classList.add("bg-alarm");
 		}
 
 	}

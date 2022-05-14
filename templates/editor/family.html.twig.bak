@@ -22,15 +22,15 @@
 
 
 
-	<div class="card-footer border-dark">
-		<div class="btn-group" role="group" aria-label="Basic example">
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-person-plus"></i></i></button>
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-binoculars"></i></i></button>
-			<button type="button" class="btn btn-outline-primary" disabled><i class="bi bi-arrow-left"></i></button>
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-arrow-right"></i></button>
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-person-x"></i></button>
-			<button type="button" class="btn btn-outline-primary"><i class="bi bi-file-lock"></i></button>
-		</div>
+	<div class="card-footer border-dark d-flex justify-content-between">
+		<!-- div class="btn-group" role="group" aria-label="Basic example" -->
+			<button type="button" class="btn btn-sm btn-primary" onclick="addFamily()"><i class="bi bi-person-plus"></i></i></button>
+			<button type="button" class="btn btn-sm btn-primary"><i class="bi bi-binoculars"></i></i></button>
+			<button type="button" class="btn btn-sm btn-primary" disabled><i class="bi bi-arrow-left"></i></button>
+			<button type="button" class="btn btn-sm btn-primary"><i class="bi bi-arrow-right"></i></button>
+			<button type="button" class="btn btn-sm btn-primary"><i class="bi bi-person-x"></i></button>
+			<button type="button" class="btn btn-sm btn-primary"><i class="bi bi-file-lock"></i></button>
+		<!-- /div -->
 
 	</div>
 

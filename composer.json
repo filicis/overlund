@@ -46,7 +46,7 @@
         "symfony/uid": "6.1.*",
         "symfony/validator": "6.1.*",
         "symfony/web-link": "6.1.*",
-        "symfony/webpack-encore-bundle": "^1.13",
+        "symfony/webpack-encore-bundle": "^1.14",
         "symfony/workflow": "6.1.*",
         "symfony/yaml": "6.1.*",
         "twig/cssinliner-extra": "^3.3",

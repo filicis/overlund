@@ -34,7 +34,7 @@ export default class extends Controller {
   updateSex(event) 
   {
      document.getElementById("birger").classList.remove('bg-primary', 'bg-secondary', 'bg-danger', 'bg-alarm');
-       switch (document.getElementById("idXXXXXX7").value)
+       switch (event.target.value)
        {
          case 'M':
            document.getElementById("birger").classList.add("bg-primary");

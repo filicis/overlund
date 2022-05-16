@@ -22,16 +22,16 @@
 
 </div>
 
-<div class="row">
+<div class="row" {{ stimulus_controller('editor', {'project': 'Project01', 'indi': 'abc', 'fam': 'def'}) }}  >
 
 
-  <div id= "villy" class="col-lg-6">
+  <div id= "villy" class="col-lg-6" {{ stimulus_target('editor', 'indiView') }} >
     {% block lcol %}
     	{{ include('editor/individual.html.twig') }}
     {% endblock lcol %}
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-lg-6" {{ stimulus_target('editor', 'famView') }}  >
     {% block rcol %}
   		{{ include('editor/family.html.twig') }}
     {% endblock rcol %}
@@ -72,7 +72,7 @@
 {% endblock body %}
 
 
-{% block javascripts %}
+{% block jjjavascripts %}
   {{ parent() }}
 
 
@@ -119,4 +119,4 @@
 
   </script>
 
-{% endblock javascripts%}
+{% endblock jjjavascripts%}

@@ -57,32 +57,10 @@ class EditorController extends AbstractController
     $family= null;
     $individual= null;
 
-        $form= $this->createFormBuilder($project)
-      -> add('title', TextType::class)
-      -> add('url', TextType::class)
-      ->add('save', SubmitType::class, ['label' => 'Create Task'])
-      ->getForm();
-
-    $form->handleRequest($request);
-
-		if ($form->isSubmitted() && $form->isValid())
-		{
-		  try
-		  {
-
-			  return $this->redirectToRoute('/da');
-      }
-      catch(\Exception $e)
-      {
-      }
-		}
-
     return $this->render('editor/editor.html.twig', [
 
       'controller_name' => 'EditorController',
       'project' => $project,
-    'form' => $form,
-    'form' => $form->createView(),
 
     ]);
   }

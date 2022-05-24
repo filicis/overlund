@@ -27,6 +27,21 @@ export default class extends Controller {
     //fetch(this.urlValue).then(/* … */)
   }
 
+  //
+  //
+  //
+  addFamily(event)
+  {
+  }
+
+
+  //
+  //
+  //
+  addIndividual(event)
+  {
+  }  
+
 
   // updateSex()
   //

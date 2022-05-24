@@ -4,12 +4,36 @@
 
 #}
 
+<style>
+
+  input[type="checkbox"]:checked + .btn
+  {
+    background-color: var(--bs-warning) ;
+  }
+  
+</style>
 
 
-<div class="card border-dark bg-primary bg-gradient bg-opacity-25 shadow-sm p-3 mb-5  rounded " id="birger" >
+<div class="card border-dark bg-primary bg-gradient bg-opacity-25 shadow-lg p-3 mb-5  rounded " id="birger" >
 
-	<div class="card-header border-dark">
-		[I2031] <span>Anders Hansen Nielsen</span>
+	<div class="row card-header border-dark">
+	  <div class="col-9 text-nowrap overflow-hidden">
+		[I2031] <span class="mlr-lock">Anders Hansen Nielsen</span>
+		</div>
+		<div class="col-3 text-end">
+      <span class="" aria-label="Restriction">
+		    <input type="checkbox" class="mlr-lock btn-check" id="btn-check11" autocomplete="off">
+			  <label class="mlr btn btn-light btn-sm" for="btn-check11"><i class="bi-unlock"></i></label>
+		  </span>
+      <span>
+        <input type="checkbox" class="btn-check" id="btn-check12" autocomplete="off">
+			  <label class="btn btn-light btn-sm" for="btn-check12">T</label>
+		  </span>
+      <span>
+        <input type="checkbox" class="btn-check" id="btn-check13" autocomplete="off">
+			  <label class="btn btn-light btn-sm" for="btn-check13">U</label>
+		  </span>
+    </div>
 	</div>
 
 
@@ -23,18 +47,17 @@
 	<div class="card-footer border-dark d-flex justify-content-between">
 		{# <div class="btn-group" role="group" aria-label="Basic example"> #}
       <!-- a role="button" class="btn btn.primary" href="{#{ path('editorNewIndividual') }#}"><i class="bi bi-person-plus"></i></a -->
-			<button type="button" class="btn btn-sm btn-primary"
+			<button type="button" class="btn btn-smm btn-light"
                             data-bs-toggle="tooltip"
                             title="{% trans %} New Individual {% endtrans %}"
-                            onclick="document.getElementById('idYYY0').value= 'Test'; newIndividual();">
+                            onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')">
                             <i class="bi bi-person-plus"></i>
                             </button>
-			<button type="button" class="btn btn-sm btn-primary" onclick="myNewIndividual()"><i class="bi bi-person-plus"></i></button>
-			<button type="button" class="btn btn-sm btn-primary"><i class="bi bi-binoculars"></i></button>
-			<button type="button" class="btn btn-sm btn-primary" onclick="myNewIndividual()"><i class="bi bi-arrow-left"></i></button>
-			<button type="button" class="btn btn-sm btn-primary" onclick="myNewIndividual()"><i class="bi bi-arrow-right"></i></button>
-			<button type="button" class="btn btn-sm btn-primary" onclick="document.getElementById('idYYY0').value= 'Test01'"><i class="bi bi-person-x"></i></button>
-			<button type="button" class="btn btn-sm btn-primary" onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')"><i class="bi bi-file-lock"></i></button>
+			<button type="button" class="btn btn-light text-primary"><i class="bi bi-search fs-16" data-bs-toggle="tooltip" title="Search for individual"></i></button>
+			<button type="button" class="btn btn-light" onclick="myNewIndividual()"><i class="bi bi-arrow-left"></i></button>
+			<button type="button" class="btn btn-light text-danger" onclick="myNewIndividual()"><i class="bi bi-arrow-right"></i></button>
+			<button type="button" class="btn btn-light" onclick="document.getElementById('idYYY0').value= 'Test01'"><i class="bi bi-person-x"></i></button>
+			<button type="button" class="btn btn-light" onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')"><i class="bi bi-file-lock"></i></button>
 		{# </div> #}
 	</div>
 </div>

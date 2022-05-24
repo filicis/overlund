@@ -29,6 +29,8 @@
 
 
     {% block javascripts %}
+
+
       {{ encore_entry_script_tags('app') }}
 
       <!-- Renders app.js & a webpack runtime.js file
@@ -36,13 +38,7 @@
           <script src="/build/app.js" defer></script>
           See note below about the "defer" attribute -->
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" defer
-         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-      <script defer>
-        // const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        // const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-      </script>
 
     {% endblock %}
   </head>
@@ -180,17 +176,17 @@
     {% block jjavascripts %}
 
 
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+
 			<script>
 
-		//		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-		//		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  	//			return new bootstrap.Tooltip(tooltipTriggerEl)
-		//			})
+				var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+				var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  				return new bootstrap.Tooltip(tooltipTriggerEl)
+					})
 
-      .mlr-lock
-      {
-        border-style: solid;
-      }
 
 			</script>
 
@@ -229,6 +225,9 @@
 
         }
       </script>
+
+
+
 
 
     {% endblock jjavascripts %}

@@ -21,7 +21,7 @@ use       App\Entity\Traits\UlidIdTrait;
 
   /**
    *  Record
-   *  - Basal funtionalitet der går igen i (næsten) alle Gedcom Records
+   *  - Basal funtionalitet der gÃ¥r igen i (næsten) alle Gedcom Records
    *
    *  Linker op til:
    *  - IdentifierStructure

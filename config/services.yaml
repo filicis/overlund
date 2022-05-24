@@ -10,8 +10,8 @@ parameters:
 
 twig:
     globals:
-        product: Overlund  
-        copyright: "© 2020-22 Filicis Software - Michael Lindhardt Rasmussen"  
+        product: "Codename Overlund"
+        copyright: "© 2020-22 Filicis Software - Michael Lindhardt Rasmussen"
 
 
 services:

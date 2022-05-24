@@ -52,7 +52,13 @@
                             <i class="bi bi-person-plus"></i>
                             </button>
 			<button type="button" class="btn btn-light text-primary"><i class="bi bi-search fs-16" data-bs-toggle="tooltip" title="Search for individual"></i></button>
-			<button type="button" class="btn btn-light" onclick="myNewIndividual()"><i class="bi bi-arrow-left"></i></button>
+			<button type="button"
+			        class="btn btn-light"
+			        onClick=""
+			        {{ stimulus_action('editor', 'addIndividual') }}
+			        data-editor-myUrl-param="{{ url('editorNewIndividual', {url: 'Project01'} ) }}">
+			          <i class="bi bi-arrow-left"></i>
+			</button>
 			<button type="button" class="btn btn-light text-danger" onclick="myNewIndividual()"><i class="bi bi-arrow-right"></i></button>
 			<button type="button" class="btn btn-light" onclick="document.getElementById('idYYY0').value= 'Test01'"><i class="bi bi-person-x"></i></button>
 			<button type="button" class="btn btn-light" onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')"><i class="bi bi-file-lock"></i></button>

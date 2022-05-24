@@ -11,9 +11,9 @@ export default class extends Controller {
 
 
   // indiValueChanged()
-  // - opdaterer 
+  // - opdaterer
   //
-  indiValueChanged() 
+  indiValueChanged()
   {
     //fetch(this.urlValue).then(/* … */)
   }
@@ -22,7 +22,7 @@ export default class extends Controller {
   // famValueChanged()
   // - opdaterer
   //
-  famValueChanged() 
+  famValueChanged()
   {
     //fetch(this.urlValue).then(/* … */)
   }
@@ -40,13 +40,43 @@ export default class extends Controller {
   //
   addIndividual(event)
   {
-  }  
+
+    const myInit= {
+      mode: 'cors',
+      credentials: 'include',
+    };
+
+
+
+    // document.getElementById('idYYY0').value= 'Test06';
+
+          // (A) FETCH "DUMMY.HTML"
+
+      fetch(event.params.myurl, myInit);
+
+          // (B) RETURN THE RESULT AS TEXT
+          //.then((result) => {
+          //  if (result.status != 200) { throw new Error("Bad Server Response"); }
+          //  return result.text();
+          //})
+
+          // (C) PUT LOADED CONTENT INTO <DIV>
+          //.then((content) => {
+          //  document.getElementById("villy").innerHTML = content;
+          //})
+
+          // (D) HANDLE ERRORS - OPTIONAL
+          //.catch((error) => { console.log(error); });
+
+    document.getElementById('idYYY0').value= event.params.myurl;
+
+  }
 
 
   // updateSex()
   //
   //
-  updateSex(event) 
+  updateSex(event)
   {
      document.getElementById("birger").classList.remove('bg-primary', 'bg-secondary', 'bg-danger', 'bg-alarm');
        switch (event.target.value)

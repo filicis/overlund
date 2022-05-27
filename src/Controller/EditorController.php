@@ -77,25 +77,12 @@ class EditorController extends AbstractController
     $fam= new Family();
     $project->addFamily($fam);
 
-    	//	  try
-		  //{
-        $entityManager= $doctrine->getManager();
+    $entityManager= $doctrine->getManager();
 
-              // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($project);
-        $entityManager->persist($fam);
+    $entityManager->persist($project);
+    $entityManager->persist($fam);
 
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-			  //return $this->redirectToRoute('editor', ['url' => 'familie']);
-      //}
-      //catch(\Exception $e)
-      //{
-      //}
-			//return $this->redirectToRoute('editor', ['url' => 'familie' ]);
-
-
+    $entityManager->flush();
   }
 
 
@@ -107,28 +94,20 @@ class EditorController extends AbstractController
   #[Route('/editor/{url}/newindividual', name: 'editorNewIndividual')]
   public function newIndividual(Request $request, Project $project, ManagerRegistry $doctrine): Response
   {
-    $indi= new Individual();
-    $project->addIndividual($indi);
+    try
+    {
+      $indi= new Individual();
+      $project->addIndividual($indi); 
 
-    		  try
-		  {
-        $entityManager= $doctrine->getManager();
+      $entityManager= $doctrine->getManager();
+      $entityManager->persist($project);
+      $entityManager->persist($indi);
+      $entityManager->flush();
 
-              // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($project);
-        $entityManager->persist($indi);
-
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
-
-			  return $this->redirectToRoute('editor', ['url' => 'familie' ]);
-      }
-      catch(\Exception $e)
-      {
-      }
-			// return $this->redirectToRoute('editor', ['url' => 'familie' ]);
-
-
+      return $this->json(['id' => $indi->getId()]);
+    }
+    catch(\Exception $e)
+    {
+    }
   }
-
 }

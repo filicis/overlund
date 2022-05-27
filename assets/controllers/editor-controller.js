@@ -46,27 +46,19 @@ export default class extends Controller {
       credentials: 'include',
     };
 
-
-
-    // document.getElementById('idYYY0').value= 'Test06';
-
-          // (A) FETCH "DUMMY.HTML"
-
-      fetch(event.params.myurl, myInit);
-
-          // (B) RETURN THE RESULT AS TEXT
-          //.then((result) => {
-          //  if (result.status != 200) { throw new Error("Bad Server Response"); }
-          //  return result.text();
-          //})
-
-          // (C) PUT LOADED CONTENT INTO <DIV>
-          //.then((content) => {
-          //  document.getElementById("villy").innerHTML = content;
-          //})
-
-          // (D) HANDLE ERRORS - OPTIONAL
-          //.catch((error) => { console.log(error); });
+    fetch(event.params.myurl, myInit)
+      .then(response => {
+        //handle response           
+        // alert("HTTP Error !");
+        console.log(response);
+      })
+      .then(data => {
+        //handle data
+        console.log(data);
+      })
+      .catch(error => {
+        //handle error
+      });
 
     document.getElementById('idYYY0').value= event.params.myurl;
 

@@ -13,9 +13,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Family;
-use App\Entity\Individual;
-use App\Entity\Project;
+use       App\Entity\Family;
+use       App\Entity\Individual;
+use       App\Entity\Project;
+
+use       App\Service\EditorService;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -26,9 +28,26 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use Doctrine\Persistence\ManagerRegistry;
 
+  /**
+   *  EditorController
+   *
+   **/  
 
 class EditorController extends AbstractController
 {
+  private $es;
+
+  /**
+   *  __constructor()
+   *
+   **/
+
+  public function __construct(EditorService $es)
+  {
+    $this->es= $es;
+  }  
+
+
   /**
    *  Default Editor
    *  - Hvis projectlisten er tom oprettes et standard project
@@ -67,7 +86,7 @@ class EditorController extends AbstractController
 
 
   /**
-   *
+   *  function newFamily()
    *
    **/
 
@@ -87,7 +106,7 @@ class EditorController extends AbstractController
 
 
   /**
-   *
+   *  function newIndividual()
    *
    **/
 
@@ -104,7 +123,7 @@ class EditorController extends AbstractController
       $entityManager->persist($indi);
       $entityManager->flush();
 
-      return $this->json(['id' => $indi->getId()]);
+      return $this->json(['id' => $indi->getId(),]);
     }
     catch(\Exception $e)
     {

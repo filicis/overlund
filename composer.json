@@ -2,9 +2,16 @@
     "name": "filicis/overlund",
     "description": "Web-based Genealogy Applicarion",
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Michael Lindhardt Rasmussen",
+            "email": "mlr@dadlnet.dk",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": ">=8.0.2",
         "ext-ctype": "*",

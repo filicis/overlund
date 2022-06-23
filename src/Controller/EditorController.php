@@ -3,11 +3,13 @@
 /**
  * This file is part of the Overlund package.
  *
- * (c) Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @copyright 2000-2022 Filicis Software
+ * @license MIT
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- **/
+ */
 
 
 
@@ -31,7 +33,7 @@ use Doctrine\Persistence\ManagerRegistry;
   /**
    *  EditorController
    *
-   **/  
+   **/
 
 class EditorController extends AbstractController
 {
@@ -45,7 +47,7 @@ class EditorController extends AbstractController
   public function __construct(EditorService $es)
   {
     $this->es= $es;
-  }  
+  }
 
 
   /**
@@ -53,13 +55,13 @@ class EditorController extends AbstractController
    *  - Hvis projectlisten er tom oprettes et standard project
    *  - Er der flere projecter i listen får brugeren mulighed for at vælge project
    *
-   **/ 
+   **/
 
   #[Route('/editor', name: 'defaultEditor')]
   public function index1(Request $request) : Response
   {
     return $this->redirectToRoute('editor', ['url' => 'Project01']);
-  }  
+  }
 
 
 
@@ -116,7 +118,7 @@ class EditorController extends AbstractController
     try
     {
       $indi= new Individual();
-      $project->addIndividual($indi); 
+      $project->addIndividual($indi);
 
       $entityManager= $doctrine->getManager();
       $entityManager->persist($project);

@@ -48,4 +48,5 @@ security:
         - { path: ^/(da|sv|no|en)/admin, roles: ROLE_ADMIN }
         - { path: ^/(da|sv|no|en)/profile, roles: ROLE_USER }
         - { path: ^/(da|sv|no|en)/editor, roles: ROLE_ADMIN }
+        - { path: ^/api/users, roles: ROLE_ADMIN }
 

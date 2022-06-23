@@ -30,3 +30,5 @@ yarn-error.log
 *.mlr
 *.bak
 *.swp
+/build/
+.phpdoc/

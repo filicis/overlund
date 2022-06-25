@@ -57,6 +57,18 @@ class ApiFamilyController extends AbstractController
 
 
   /**
+   * function delete()
+   *
+   */
+
+  #[Route('/delete', name: 'delete', methods: ['POST'])]
+  public function delete()
+  {
+
+  }
+
+
+  /**
   *  function new()
   *
   */
@@ -83,6 +95,21 @@ class ApiFamilyController extends AbstractController
     }
 
   }
+
+
+
+  /**
+   * function setRestriction()
+   *
+   */
+
+  #[Route('/setRestriction', name: 'setRestriction', methods: ['POST'])]
+  public function setRestriction()
+  {
+
+  }
+
+
 
 
 }

@@ -57,8 +57,22 @@ class ApiIndividualController extends AbstractController
   }
 
 
+
+
   /**
-  *
+   * function delete()
+   *
+   */
+
+  #[Route('/delete', name: 'delete', methods: ['POST'])]
+  public function delete()
+  {
+
+  }
+
+
+  /**
+  * function new()
   *
   */
 
@@ -82,5 +96,33 @@ class ApiIndividualController extends AbstractController
     }
 
   }
+
+
+    /**
+   * function setRestriction()
+   *
+   */
+
+  #[Route('/setRestriction', name: 'setRestriction', methods: ['POST'])]
+  public function setRestriction()
+  {
+
+  }
+
+
+
+    /**
+   * function setSex()
+   *
+   */
+
+  #[Route('/setSex', name: 'setSex', methods: ['POST'])]
+  public function setSex()
+  {
+
+  }
+
+
+
 
 }

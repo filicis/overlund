@@ -16,19 +16,18 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonRespone;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- *  ApiController
+ *  ApiProjectsController
  *  - Grundlæggende api funktioner
  *
  */ 
 
-#[Route('/api', name: 'api_')]
-class ApiController extends AbstractController
+#[Route('/api/projects', name: 'api_projects_')]
+class ApiProjectsController extends AbstractController
 {
-    #[Route('/webapi', name: 'app_webapi')]
+    #[Route('/webapi', name: 'webapi')]
     public function index(): Response
     {
         return $this->render('webapi/index.html.twig', [
@@ -37,14 +36,14 @@ class ApiController extends AbstractController
     }
 
     /**
-     *  function GetVersion()
+     *  function GetList()
      *
      * @return Return the Overlund version:
      */ 
 
-    #[Route('/getVersion', name: 'getVersion')]
+    #[Route('/getList', name: 'getList')]
     public function getVersion() : Response
     {
-      return $this->json(['Version' => '0.0.1 beta',], $status= 200, $headers= [], $context= []);
+      return $this->json(['svar' => 'yes',]);
     }  
 }

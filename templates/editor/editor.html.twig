@@ -19,6 +19,9 @@
 
 </div>
 
+
+{# Row 1 #}
+
 <div class="row" {{ stimulus_controller('editor', {'project': 'Project01', 'indi': 'abc', 'fam': 'def'}) }}  >
 
 
@@ -26,16 +29,18 @@
     {% block lcol %}
     	{{ include('editor/individual.html.twig') }}
     {% endblock lcol %}
+  	{{ include('editor/buttonline-left.html.twig') }}
   </div>
 
   <div class="col-lg-6" {{ stimulus_target('editor', 'famView') }}  >
     {% block rcol %}
   		{{ include('editor/family.html.twig') }}
     {% endblock rcol %}
-  </div> <!-- End col -->
+  	{{ include('editor/buttonline-right.html.twig') }}
+  </div>
 
+</div"> <!-- End row 1 -->
 
-</div> <!-- End row -->
 
 <div class="modal" id="exampleModal" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
 

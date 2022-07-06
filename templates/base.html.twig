@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="application-name" content="Overlund">
+    <meta name="application-name" content="Codename Overlund">
     <meta name="description" content="Overlund Gedcom Editor">
   	<meta name="author" content="Michael Lindhardt Rasmussen">
 
@@ -45,132 +45,18 @@
 
 
 	{# Document Body #}
-  <body class="bg-body bg-gradient">
+
+  <body class="bg-body">
 
 		{% block navbar %}
-	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		  <div class="container-fluid">
-  		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    		  <span class="navbar-toggler-icon"></span>
-  		  </button>
 
-   		  {# Selve menu strukturen #}
+   		{{ include('navbar-primary.html.twig') }}
 
-  		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    		  <a class="navbar-brand" href="https://github.com/filicis/overlund" target="_blank">Filicis</a>
-
-    		  <div class="navbar-nav me_auto mb-2 mb-lg-0">
-
-      		  <a class="nav-item nav-link active" href="{{ path("default") }}">Home</a>
-
-					  <div class= "nav-item dropdown">
-						  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown01" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Project</a>
-      			  <div class="dropdown-menu" aria-labelledby="navbarDropdown01">
-        			  <a class="dropdown-item" href="{{ url('adminNewProject') }}">New Project</a>
-        			  <a class="dropdown-item" href="{{ url('adminOpenProject') }}">Open Project</a>
-        			  <div class="dropdown-divider"></div>
-        			  <a class="dropdown-item" href="{{ url('editorImport', {'url':  'Project01'}) }}">Import GEDCOM file</a>
-        			  <a class="dropdown-item" href="#">Export file</a>
-        			  <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Show GEDCOM file</a>
-        			  <a class="dropdown-item" href="test">Something else here</a>
-      			  </div>
-      		  </div>
-
-					  <div class= "nav-item dropdown">
-						  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown02" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Editors</a>
-      			  <div class="dropdown-menu" aria-labelledby="navbarDropdown02">
-        			  <a class="dropdown-item" href="{{ url('editor', {'url': 'Project01'}) }}">Standard Editor</a>
-        			  <a class="dropdown-item" href="#">Note Editor</a>
-        			  <a class="dropdown-item" href="#">Name Editor</a>
-        			  <a class="dropdown-item" href="#">Individual Event</a>
-        			  <a class="dropdown-item" href="#">Family Event</a>
-        			  <a class="dropdown-item" href="#">Individual Citation</a>
-        			  <a class="dropdown-item" href="#">Family Citation</a>
-        			  <div class="dropdown-divider"></div>
-        			  <a class="dropdown-item" href="about">Something else here</a>
-      			  </div>
-      		  </div>
-
-					  <div class= "nav-item dropdown">
-						  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown03" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Library</a>
-      			  <div class="dropdown-menu" aria-labelledby="navbarDropdown03">
-        			  <a class="dropdown-item" href="sourcerecords">Source Records</a>
-        			  <a class="dropdown-item" href="repositaryrecords">Repository Records</a>
-        			  <a class="dropdown-item" href="noterecords">Note Records</a>
-        			  <div class="dropdown-divider"></div>
-        			  <a class="dropdown-item" href="about">All Media</a>
-        			  <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="{{ path('library') }}" target="iframetest">Modal</a>
-        			  <a class="dropdown-item" href="{{ path('library') }}" target="iframetest">All Places</a>
-      			  </div>
-      		  </div>
-
-            {% if is_granted('ROLE_ADMIN') %}
-
-            <div class= "nav.item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown04" role="button" data-bs-toggle="dropdown">Admin</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown04">
-                <a class="dropdown-item" href="#">Website</a>
-                <a class="dropdown-item" href="{{ path('adminNewProject') }}">Projects</a>
-                <a class="dropdown-item" href="#">Users</a>
-                <a class="dropdown-item" href="{{ path('place') }}">Map</a>
-                <hr class="dropdown-divider" />
-                <a class="dropdown-item" href="{{ path('dev')}}">Udvikling</a>
-              </div>
-            </div>
-
-            {% endif %}
-
-
-            <div class= "nav.item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown05" role="button" data-bs-toggle="dropdown">Help</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown05">
-                <a class="dropdown-item" href="#">Gedcom Validator</a>
-                <hr class="dropdown-divider">
-                <a class="dropdown-item" rel="license"  href="{{ path('about') }}">About</a>
-              </div>
-            </div>
-
-    		  </div>
-  		  </div>
-
-
-  		  <div class="navbar-expand d-flex flex-row-reverse" id="navbarNavAltMarkup" >
-  		    <!-- div class="navbar-expand justify-content-end" id="navbarNavAltMarkup" -->
-    		  <div class="navbar-nav mr_auto">
-
-          {% set locale= app.request.getLocale() %}
-
-         <div class= 'nav-item dropdown'>
-          	<!-- a class="nav-link dropdown-toggle" href="#" id="navbarDropdown06" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sprog</a -->
-          	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown06" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.request.locale | locale_name(app.request.locale) | u.title }}</a>
-          	<div class="dropdown-menu" aria-labelledby="navbarDropdown06">
-
-            	<a class="dropdown-item {% if locale == 'da' %} active {% endif %}" href="{{ path('default', {_locale: 'da'}) }}">Dansk</a>
-            	<a class="dropdown-item {% if locale == 'sv' %} active {% endif %}" href="{{ path('default', {_locale: 'sv'}) }}">Svensk</a>
-            	<a class="dropdown-item {% if locale == 'no' %} active {% endif %}" href="{{ path('default', {_locale: 'no'}) }}">Norsk</a>
-            	<a class="dropdown-item {% if locale == 'en' %} active {% endif %}" href="{{ path('default', {_locale: 'en'}) }}">Engelsk</a>
-
-            	<div class="dropdown-divider"></div>
-          	</div>
-          </div>
-
-
-
-					  {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-     				  <span class= "navbar-text"> {{ 'User' | trans }}: {{ app.user.username }} </span>
-        		  <a class="nav-item nav-link" href="{{ path('app_logout') }}">logout</a>
- 					  {% else %}
-      			  <a class="nav-item nav-link" href="{{ path('login') }}">Login</a>
-					  {% endif %}
-				  </div>
-  		  </div>
-  	  </div> <!-- Container -->
-	  </nav>
 	  {% endblock navbar %}
 
 
-    {% block body %}{% endblock body %}
+    {% block body %}
+    {% endblock body %}
 
 
     {% block jjavascripts %}

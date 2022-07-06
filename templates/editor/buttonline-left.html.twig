@@ -1,29 +1,29 @@
 {# templates/editor/buttonline-left.html.twig #}
 
 
-<div class="card border-dark bg-success bg-opacity-25 bg-gradient mhhhh-100 shadow-lg p-3 mb-5 rounded">
+<div class="bg-body bbg-opacity-25 bbg-gradient mhhhh-100 sshadow-lg p-3 mb-5 rounded d-flex justify-content-around"
+     data-controller="editor-controller">
 
 
-  <div class="card-footer border-dark d-flex justify-content-between">
-    {# <div class="btn-group" role="group" aria-label="Basic example"> #}
-      <!-- a role="button" class="btn btn.primary" href="{#{ path('editorNewIndividual') }#}"><i class="bi bi-person-plus"></i></a -->
-      <button type="button" class="btn btn-smm btn-light"
-        data-bs-toggle="tooltip"
-        title="{% trans %} New Individual {% endtrans %}"
-        onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')">
-        <i class="bi bi-person-plus"></i>
-      </button>
-      <button type="button" class="btn btn-light text-primary"><i class="bi bi-search fs-16" data-bs-toggle="tooltip" title="Search for individual"></i></button>
-      <button type="button"
-        class="btn btn-light"
-        onClick=""
-        {{ stimulus_action('editor', 'addIndividual') }}
-        data-editor-myUrl-param="{{ url('editorNewIndividual', {url: 'Project01'} ) }}">
-        <i class="bi bi-arrow-left"></i>
-      </button>
-      <button type="button" class="btn btn-light text-danger" onclick="myNewIndividual()"><i class="bi bi-arrow-right"></i></button>
-      <button type="button" class="btn btn-light" onclick="document.getElementById('idYYY0').value= 'Test01'"><i class="bi bi-person-x"></i></button>
-      <button type="button" class="btn btn-light" onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')"><i class="bi bi-file-lock"></i></button>
-    {# </div> #}
-  </div>
+  <button type="button" class="btn btn-smm btn-outline-dark"
+    data-bs-toggle="tooltip"
+    title="{% trans %} New Individual {% endtrans %}"
+    onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')">
+    <i class="bi bi-person-plus"></i>
+  </button>
+  <button type="button" class="btn btn-outline-dark text-primary"><i class="bi bi-search fs-16" data-bs-toggle="tooltip" title="Search for individual"></i></button>
+  <button type="button"
+    class="btn btn-outline-dark"
+    onClick=""
+    {{ stimulus_action('editor', 'addIndividual') }}
+    data-editor-myUrl-param="{{ url('editorNewIndividual', {url: 'Project01'} ) }}">
+    <i class="bi bi-arrow-left"></i>
+  </button>
+  <button type="button" class="btn btn-outline-dark" onclick="myNewIndividual()"><i class="bi bi-arrow-right text-danger"></i></button>
+  <button type="button" class="btn btn-outline-dark" onclick="document.getElementById('idYYY0').value= 'Test01'"><i class="bi bi-person-x"></i></button>
+  <button type="button" class="btn btn-outline-dark"
+    data-action="editor#addIndividual"
+    data-editorController-myurl-param="">
+    <i class="bi bi-file-lock"></i>
+  </button>
 </div>

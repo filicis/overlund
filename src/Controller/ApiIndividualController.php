@@ -36,6 +36,30 @@ use       App\Entity\Project;
 #[Route('/api/editor/{url}/individual', name: 'api_individual_')]
 class ApiIndividualController extends AbstractController
 {
+  /**
+   *
+   */
+
+  private $entityManager;
+
+
+  /**
+   *
+   *
+   */
+
+  function __construct(ManagerRegistry $doctrine)
+  {
+    $this->entityManager= $doctrine->getManager();
+  }
+
+
+
+  /**
+   *
+   *
+   */
+
   #[Route('/webapi', name: 'webapi')]
   public function index(): Response
   {
@@ -77,17 +101,16 @@ class ApiIndividualController extends AbstractController
   */
 
   #[Route('/new', name: 'new')]
-  public function new(Request $request, Project $project, ManagerRegistry $doctrine) : Response
+  public function new(Request $request, Project $project) : Response
   {
     try
     {
       $indi= new Individual();
       $project->addIndividual($indi);
 
-      $entityManager= $doctrine->getManager();
-      $entityManager->persist($project);
-      $entityManager->persist($indi);
-      $entityManager->flush();
+      $this->entityManager->persist($project);
+      $this->entityManager->persist($indi);
+      $this->entityManager->flush();
 
       return $this->json(['id' => $indi->getId(),]);
     }
@@ -98,7 +121,7 @@ class ApiIndividualController extends AbstractController
   }
 
 
-    /**
+  /**
    * function setRestriction()
    *
    */
@@ -111,14 +134,22 @@ class ApiIndividualController extends AbstractController
 
 
 
-    /**
+  /**
    * function setSex()
    *
    */
 
   #[Route('/setSex', name: 'setSex', methods: ['POST'])]
-  public function setSex()
+  public function setSex(Request $request, Project $project, ManagerRegistry $doctrine)
   {
+    try
+    {
+
+    }
+    catch(\Exception $e)
+    {
+
+    }
 
   }
 

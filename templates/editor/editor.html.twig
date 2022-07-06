@@ -11,6 +11,9 @@
 
 {% block body %}
 
+<div class="container">
+
+
 
 <div class="row">
 
@@ -29,6 +32,7 @@
     {% block lcol %}
     	{{ include('editor/individual.html.twig') }}
     {% endblock lcol %}
+
   	{{ include('editor/buttonline-left.html.twig') }}
   </div>
 
@@ -36,6 +40,7 @@
     {% block rcol %}
   		{{ include('editor/family.html.twig') }}
     {% endblock rcol %}
+
   	{{ include('editor/buttonline-right.html.twig') }}
   </div>
 
@@ -65,6 +70,7 @@
 
 </div>
 
+</div>
 
 {% endblock body %}
 

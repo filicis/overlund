@@ -48,7 +48,7 @@ export default class extends Controller {
 
     fetch(event.params.myurl, myInit)
       .then(response => {
-        //handle response           
+        //handle response
         // alert("HTTP Error !");
         console.log(response);
       })
@@ -70,22 +70,22 @@ export default class extends Controller {
   //
   updateSex(event)
   {
-     document.getElementById("birger").classList.remove('bg-primary', 'bg-secondary', 'bg-danger', 'bg-alarm');
+     document.getElementById("birger").classList.remove('alert-primary', 'alert-secondary', 'alert-danger', 'alert-alarm');
        switch (event.target.value)
        {
          case 'M':
-           document.getElementById("birger").classList.add("bg-primary");
+           document.getElementById("birger").classList.add("alert-primary");
            // document.getElementById("birger").style.backgroundColor= tomato;
            break;
          case 'F':
-           document.getElementById("birger").classList.add("bg-danger");
+           document.getElementById("birger").classList.add("alert-danger");
            break;
          case 'U':
          case 'N':
-           document.getElementById("birger").classList.add("bg-secondary");
+           document.getElementById("birger").classList.add("alert-secondary");
            break;
          default:
-           document.getElementById("birger").classList.add("bg-alarm");
+           document.getElementById("birger").classList.add("alert-alarm");
        }
   }
 }

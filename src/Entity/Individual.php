@@ -47,6 +47,9 @@ class Individual extends RecordSuperclass
     #[ORM\OneToMany(targetEntity: PersonalNameStructure::class, mappedBy: "individual")]
     private $personalNameStructures;
 
+    #[ORM\Column(type: 'string', length: 1, nullable: true)]
+    private $sex;
+
     public function __construct()
     {
         $this->personalNameStructures = new ArrayCollection();
@@ -92,6 +95,18 @@ class Individual extends RecordSuperclass
                 $personalNameStructure->setIndividual(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSex(): ?string
+    {
+        return $this->sex;
+    }
+
+    public function setSex(?string $sex): self
+    {
+        $this->sex = $sex;
 
         return $this;
     }

@@ -18,6 +18,9 @@ export default class extends Controller {
   indiValueChanged(value)
   {
     const myInit= {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: 'Fetch PUT Request Example' }),
       mode: 'cors',
       credentials: 'include',
     };

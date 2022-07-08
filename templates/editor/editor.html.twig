@@ -37,22 +37,18 @@
 
   {# Row 1 #}
 
-  <div class="row"
-    >
-
-
-    <div id= "villy" class="col-lg-6" {{ stimulus_target('editor', 'indiView') }} >
-      {% block lcol %}
-      {{ include('editor/individual.html.twig') }}
-      {% endblock lcol %}
-
+  <div class="row">
+    <div id= "villy" class="col-lg-6" >
+      <div  {{ stimulus_target('editor', 'indiView') }}>
+        {{ include('editor/individual.html.twig') }}
+      </div>
       {{ include('editor/buttonline-left.html.twig') }}
     </div>
 
-    <div class="col-lg-6" {{ stimulus_target('editor', 'famView') }}  >
-      {% block rcol %}
-      {{ include('editor/family.html.twig') }}
-      {% endblock rcol %}
+    <div class="col-lg-6"   >
+      <div {{ stimulus_target('editor', 'famView') }}>
+        {{ include('editor/family.html.twig') }}
+      </div>
 
       {{ include('editor/buttonline-right.html.twig') }}
     </div>

@@ -7,7 +7,7 @@ export default class extends Controller {
     indi: String,
     fam: String
   }
-  static targets= ['indiView', 'famView']
+  static targets= ['indiView', 'famView', 'indicard']
 
 
   // indiValueChanged()
@@ -65,27 +65,31 @@ export default class extends Controller {
   }
 
 
+
+
   // updateSex()
   //
   //
   updateSex(event)
   {
-     document.getElementById("birger").classList.remove('alert-primary', 'alert-secondary', 'alert-danger', 'alert-alarm');
+    if (this.hasIndicardTarget)
+    {
+       this.indicardTarget.classList.remove('alert-info', 'alert-primary', 'alert-secondary', 'alert-danger', 'alert-warning');
        switch (event.target.value)
        {
          case 'M':
-           document.getElementById("birger").classList.add("alert-primary");
-           // document.getElementById("birger").style.backgroundColor= tomato;
+           this.indicardTarget.classList.add("alert-info");
            break;
          case 'F':
-           document.getElementById("birger").classList.add("alert-danger");
+           this.indicardTarget.classList.add("alert-danger");
            break;
          case 'U':
          case 'N':
-           document.getElementById("birger").classList.add("alert-secondary");
+           this.indicardTarget.classList.add("alert-secondary");
            break;
          default:
-           document.getElementById("birger").classList.add("alert-alarm");
+           this.indicardTarget.classList.add("alert-primary");
        }
+    }
   }
 }

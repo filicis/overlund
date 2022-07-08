@@ -24,6 +24,7 @@ use       Doctrine\Persistence\ManagerRegistry;
 
 use       App\Entity\Family;
 use       App\Entity\Individual;
+use       App\Entity\PersonalNameStructure;;
 use       App\Entity\Project;
 
 
@@ -105,11 +106,14 @@ class ApiIndividualController extends AbstractController
   {
     try
     {
+      $name= new PersonalNameStructure();
       $indi= new Individual();
+      $indi->addPersonalNameStructure($name);
       $project->addIndividual($indi);
 
       $this->entityManager->persist($project);
       $this->entityManager->persist($indi);
+      $this->entityManager->persist($name);
       $this->entityManager->flush();
 
       return $this->json(['id' => $indi->getId(),]);

@@ -11,64 +11,73 @@
 
 {% block body %}
 
-<div class="container">
+  {#
+      Bootstrap 'container' der indeholder hele Gedcom Editoren
+
+      Definerer samtidig Stimulis controlleren 'editor' med samt variablerne
+  #}
+
+
+<div class="container"
+  {{ stimulus_controller('editor', {'project': 'Project01', 'indi': 'abc', 'fam': 'def'}) }}>
 
 
 
-<div class="row">
+  <div class="row">
 
     {% block toprow %}
     {% endblock toprow %}
 
-</div>
-
-
-{# Row 1 #}
-
-<div class="row" {{ stimulus_controller('editor', {'project': 'Project01', 'indi': 'abc', 'fam': 'def'}) }}  >
-
-
-  <div id= "villy" class="col-lg-6" {{ stimulus_target('editor', 'indiView') }} >
-    {% block lcol %}
-    	{{ include('editor/individual.html.twig') }}
-    {% endblock lcol %}
-
-  	{{ include('editor/buttonline-left.html.twig') }}
   </div>
 
-  <div class="col-lg-6" {{ stimulus_target('editor', 'famView') }}  >
-    {% block rcol %}
-  		{{ include('editor/family.html.twig') }}
-    {% endblock rcol %}
 
-  	{{ include('editor/buttonline-right.html.twig') }}
-  </div>
+  {# Row 1 #}
 
-</div"> <!-- End row 1 -->
+  <div class="row"
+    >
 
 
-<div class="modal" id="exampleModal" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div id= "villy" class="col-lg-6" {{ stimulus_target('editor', 'indiView') }} >
+      {% block lcol %}
+      {{ include('editor/individual.html.twig') }}
+      {% endblock lcol %}
 
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
+      {{ include('editor/buttonline-left.html.twig') }}
+    </div>
 
-  <iframe name="iframetest"></iframe>
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+    <div class="col-lg-6" {{ stimulus_target('editor', 'famView') }}  >
+      {% block rcol %}
+      {{ include('editor/family.html.twig') }}
+      {% endblock rcol %}
+
+      {{ include('editor/buttonline-right.html.twig') }}
+    </div>
+
+  </div"> <!-- End row 1 -->
+
+
+  <div class="modal" id="exampleModal" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <iframe name="iframetest"></iframe>
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
+
+
   </div>
-
-
-</div>
 
 </div>
 

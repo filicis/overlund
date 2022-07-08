@@ -17,6 +17,7 @@ namespace App\Controller;
 
 use       App\Entity\Family;
 use       App\Entity\Individual;
+use       App\Entity\PersonalNameStructure;
 use       App\Entity\Project;
 
 use       App\Service\EditorService;
@@ -115,20 +116,23 @@ class EditorController extends AbstractController
   #[Route('/editor/{url}/newindividual', name: 'editorNewIndividual')]
   public function newIndividual(Request $request, Project $project, ManagerRegistry $doctrine): Response
   {
-    try
-    {
+    //try
+    //{
+      $name= new PersonalNameStructure();
       $indi= new Individual();
+      $indi->addPersonalNameStructure($name);
       $project->addIndividual($indi);
 
       $entityManager= $doctrine->getManager();
       $entityManager->persist($project);
       $entityManager->persist($indi);
+      $entityManager->persist($name);
       $entityManager->flush();
 
       return $this->json(['id' => $indi->getId(),]);
-    }
-    catch(\Exception $e)
-    {
-    }
+    //}
+    //catch(\Exception $e)
+    //{
+    //}
   }
 }

@@ -15,6 +15,8 @@ namespace App\Entity;
 
 use       App\Entity\RecordSuperclass;
 use       App\Entity\Traits\PersonalNamePieces;
+use       App\Entity\Traits\UlidIdTrait;
+
 
 use       App\Repository\PersonalNameStructureRepository;
 use       Doctrine\ORM\Mapping as ORM;
@@ -24,9 +26,9 @@ use       Doctrine\ORM\Mapping as ORM;
    **/
 
 #[ORM\Entity(repositoryClass: PersonalNameStructureRepository::class)]
-class PersonalNameStructure extends RecordSuperclass
+class PersonalNameStructure
 {
-  use PersonalNamePieces;
+  use PersonalNamePieces, UlidIdTrait;
 
 
     /**

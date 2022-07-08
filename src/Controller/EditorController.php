@@ -39,14 +39,16 @@ use Doctrine\Persistence\ManagerRegistry;
 class EditorController extends AbstractController
 {
   private $es;
+  private $entityManager;
 
   /**
    *  __constructor()
    *
    **/
 
-  public function __construct(EditorService $es)
+  public function __construct(ManagerRegistry $doctrine, EditorService $es)
   {
+    $this->entityManager= $doctrine->getManager();
     $this->es= $es;
   }
 
@@ -94,17 +96,16 @@ class EditorController extends AbstractController
    **/
 
   #[Route('/editor/{url}/newfamily', name: 'editorNewFamily')]
-  public function newFamily(Request $request, Project $project, ManagerRegistry $doctrine): Response
+  public function newFamily(Request $request, Project $project): Response
   {
     $fam= new Family();
     $project->addFamily($fam);
 
-    $entityManager= $doctrine->getManager();
 
-    $entityManager->persist($project);
-    $entityManager->persist($fam);
+    $this->entityManager->persist($project);
+    $this->entityManager->persist($fam);
 
-    $entityManager->flush();
+    $this->entityManager->flush();
   }
 
 
@@ -114,7 +115,7 @@ class EditorController extends AbstractController
    **/
 
   #[Route('/editor/{url}/newindividual', name: 'editorNewIndividual')]
-  public function newIndividual(Request $request, Project $project, ManagerRegistry $doctrine): Response
+  public function newIndividual(Request $request, Project $project): Response
   {
     //try
     //{
@@ -123,16 +124,21 @@ class EditorController extends AbstractController
       $indi->addPersonalNameStructure($name);
       $project->addIndividual($indi);
 
-      $entityManager= $doctrine->getManager();
-      $entityManager->persist($project);
-      $entityManager->persist($indi);
-      $entityManager->persist($name);
-      $entityManager->flush();
+      $this->entityManager->persist($project);
+      $this->entityManager->persist($indi);
+      $this->entityManager->persist($name);
+      $this->entityManager->flush();
 
       return $this->json(['id' => $indi->getId(),]);
     //}
     //catch(\Exception $e)
     //{
     //}
+  }
+
+
+  public function updateIndiCard(Request $request, Project $project): Response
+  {
+
   }
 }

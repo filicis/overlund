@@ -43,15 +43,15 @@ export default class extends Controller {
   //
   //
   //
-  addFamily(event)
+  newFamily(event)
   {
   }
 
 
-  //  addIndividual
+  //  newIndividual
   //
   //
-  addIndividual(event)
+  newIndividual(event)
   {
 
     const myInit= {

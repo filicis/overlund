@@ -7,7 +7,10 @@
   <button type="button" class="btn btn-smm btn-outline-dark"
     data-bs-toggle="tooltip"
     title="{% trans %} New Individual {% endtrans %}"
-    onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')">
+
+    data-action="editor#newIndividual"
+    data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+
     <i class="bi bi-person-plus"></i>
   </button>
   <button type="button" class="btn btn-outline-dark text-primary"><i class="bi bi-search fs-16" data-bs-toggle="tooltip" title="Search for individual"></i></button>
@@ -20,9 +23,9 @@
   </button>
   <button type="button" class="btn btn-outline-dark"><i class="bi bi-arrow-right text-danger"></i></button>
   <button type="button" class="btn btn-outline-dark"><i class="bi bi-person-x"></i></button>
-  <button type="button" class="btn btn-outline-dark"
-    data-action="editor#addIndividual"
-    data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+  <button type="button"
+          class="btn btn-outline-dark"
+          onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')">
     <i class="bi bi-file-lock"></i>
   </button>
 </div>

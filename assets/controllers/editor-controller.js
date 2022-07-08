@@ -20,7 +20,7 @@ export default class extends Controller {
     const myInit= {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: 'Fetch PUT Request Example' }),
+      body: JSON.stringify(value),
       mode: 'cors',
       credentials: 'include',
     };
@@ -48,7 +48,7 @@ export default class extends Controller {
   }
 
 
-  //
+  //  addIndividual
   //
   //
   addIndividual(event)
@@ -60,21 +60,9 @@ export default class extends Controller {
     };
 
     fetch(event.params.myurl, myInit)
-      .then(response => {
-        //handle response
-        // alert("HTTP Error !");
-        console.log(response);
-      })
-      .then(data => {
-        //handle data
-        console.log(data);
-      })
-      .catch(error => {
-        //handle error
-      });
-
-    document.getElementById('idYYY0').value= event.params.myurl;
-
+      .then(response => response.text())
+      .then(data => this.indiValue= data)
+      .catch();
   }
 
 

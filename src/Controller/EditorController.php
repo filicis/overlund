@@ -140,6 +140,23 @@ class EditorController extends AbstractController
 
 
   /**
+   *  function updateFamCard
+   *
+   **/
+
+  #[Route('/editor/{url}/updateFamCard', name: 'editorUpdateFamCard')]
+  public function updateFamCard(Request $request, Project $project): Response
+  {
+    $title= $request->getContent();
+
+    return $this->render('editor/family.html.twig', ['title' => $title]);
+
+  }
+
+
+
+
+  /**
    *  function updateIndiCard
    *
    **/

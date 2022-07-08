@@ -37,14 +37,36 @@ export default class extends Controller {
   //
   famValueChanged(value)
   {
-    //fetch(this.urlValue).then(/* … */)
+    const myInit= {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(value),
+      mode: 'cors',
+      credentials: 'include',
+    };
+
+    fetch(this.renderfamValue, myInit)
+      .then(response => response.text())
+      .then(data => this.famViewTarget.innerHTML= data)
+      .catch();
   }
+
+
 
   //
   //
   //
   newFamily(event)
   {
+    const myInit= {
+      mode: 'cors',
+      credentials: 'include',
+    };
+
+    fetch(event.params.myurl, myInit)
+      .then(response => response.text())
+      .then(data => this.famValue= data)
+      .catch();
   }
 
 

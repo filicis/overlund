@@ -137,8 +137,16 @@ class EditorController extends AbstractController
   }
 
 
+
+  /**
+   *  function updateIndiCard
+   *
+   **/
+
+  #[Route('/editor/{url}/updateIndiCard', name: 'editorUpdateIndiCard')]
   public function updateIndiCard(Request $request, Project $project): Response
   {
+    return $this->render('editor/individual.html.twig');
 
   }
 }

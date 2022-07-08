@@ -5,7 +5,9 @@ export default class extends Controller {
   static values= {
     project: String,
     indi: String,
-    fam: String
+    fam: String,
+    renderindi: String,
+    renderfam: String,
   }
   static targets= ['indiView', 'famView', 'indicard']
 
@@ -13,16 +15,24 @@ export default class extends Controller {
   // indiValueChanged()
   // - opdaterer
   //
-  indiValueChanged()
+  indiValueChanged(value)
   {
-    //fetch(this.urlValue).then(/* … */)
+    const myInit= {
+      mode: 'cors',
+      credentials: 'include',
+    };
+
+    fetch(this.renderindiValue, myInit)
+      .then(response => response.text())
+      .then(data => this.indiViewTarget.innerHTML= data)
+      .catch();
   }
 
 
   // famValueChanged()
   // - opdaterer
   //
-  famValueChanged()
+  famValueChanged(value)
   {
     //fetch(this.urlValue).then(/* … */)
   }

@@ -153,8 +153,6 @@ class RecordSuperclass
 
     $res= $conn->fetchOne($sql);
 
-    echo $res;
-
     if ($res)
       $this->xref= $this::XREF_PREFIX . ($res + 1);
     else

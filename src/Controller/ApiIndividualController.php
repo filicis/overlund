@@ -17,6 +17,7 @@ namespace App\Controller;
 use       Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use       Symfony\Component\HttpFoundation\Request;
 use       Symfony\Component\HttpFoundation\Response;
+use       Symfony\Component\HttpFoundation\JsonResponse;
 use       Symfony\Component\Routing\Annotation\Route;
 
 use       Doctrine\Persistence\ManagerRegistry;
@@ -102,7 +103,7 @@ class ApiIndividualController extends AbstractController
   */
 
   #[Route('/new', name: 'new')]
-  public function new(Request $request, Project $project) : Response
+  public function new(Request $request, Project $project) : JsonResponse
   {
     try
     {
@@ -116,7 +117,10 @@ class ApiIndividualController extends AbstractController
       $this->entityManager->persist($name);
       $this->entityManager->flush();
 
-      return $this->json(['id' => $indi->getId(),]);
+      $arr= array('id' => $indi->getId(), 'balder' => 'hund');
+
+      return $this->json($arr);
+      // return $this->json(['id' => $indi->getId()]);
     }
     catch(\Exception $e)
     {

@@ -17,6 +17,7 @@ namespace App\Controller;
 use       Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use       Symfony\Component\HttpFoundation\Request;
 use       Symfony\Component\HttpFoundation\Response;
+use       Symfony\Component\HttpFoundation\JsonResponse;
 use       Symfony\Component\Routing\Annotation\Route;
 
 use       Doctrine\Persistence\ManagerRegistry;
@@ -74,10 +75,10 @@ class ApiFamilyController extends AbstractController
   */
 
   #[Route('/new', name: 'new')]
-  public function new(Request $request, Project $project, ManagerRegistry $doctrine) : Response
+  public function new(Request $request, Project $project, ManagerRegistry $doctrine) : JsonResponse
   {
-    try
-    {
+    //try
+    //{
       $fam= new Family();
       $project->addFamily($fam);
 
@@ -88,11 +89,15 @@ class ApiFamilyController extends AbstractController
 
       $entityManager->flush();
 
-      return $this->json(['id' => $fam->getId(),]);
-    }
-    catch(\Exception $e)
-    {
-    }
+      $id= $fam->getId();
+      $dummy= array('id' => $id,);
+
+      //return $this->json(['id' => $fam->getId()]);
+      return $this->json($dummy);
+    //}
+    //catch(\Exception $e)
+    //{
+    //}
 
   }
 

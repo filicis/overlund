@@ -12,6 +12,7 @@ export default class extends Controller {
   static targets= ['indiView', 'famView', 'indicard']
 
 
+
   // indiValueChanged()
   // - opdaterer
   //
@@ -65,8 +66,9 @@ export default class extends Controller {
 
     fetch(event.params.myurl, myInit)
       .then(response => response.text())
-      .then(data => this.famValue= data)
-      .catch();
+      .then(data => console.log(data));
+      //.then(data => this.famValue= data['idd']);
+      //.catch();
   }
 
 
@@ -82,8 +84,8 @@ export default class extends Controller {
     };
 
     fetch(event.params.myurl, myInit)
-      .then(response => response.text())
-      .then(data => this.indiValue= data)
+      .then(response => response.json())
+      .then(data => this.indiValue= data['id'])
       .catch();
   }
 

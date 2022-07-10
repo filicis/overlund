@@ -130,7 +130,9 @@ class EditorController extends AbstractController
       $this->entityManager->persist($name);
       $this->entityManager->flush();
 
-      return $this->json(['id' => $indi->getId(),]);
+      $id= $indi->getId();
+
+      return $this->json($id);
     //}
     //catch(\Exception $e)
     //{

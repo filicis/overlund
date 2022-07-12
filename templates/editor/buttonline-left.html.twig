@@ -4,25 +4,32 @@
 <div class="bg-body bbg-opacity-25 bbg-gradient mhhhh-100 sshadow-lg p-3 mb-5 rounded d-flex justify-content-around">
 
 
-  <button type="button" class="btn btn-smm btn-outline-dark"
-    data-bs-toggle="tooltip"
-    title="{% trans %} New Individual {% endtrans %}"
-
-    data-action="editor#newIndividual"
-    data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
-
-    <i class="bi bi-person-plus"></i>
-  </button>
-  <button type="button" class="btn btn-outline-dark text-primary"><i class="bi bi-search fs-16" data-bs-toggle="tooltip" title="Search for individual"></i></button>
   <button type="button"
-    class="btn btn-outline-dark"
-    onClick=""
-    {{ stimulus_action('editor', 'addIndividual') }}
-    data-editor-myUrl-param="{{ url('editorNewIndividual', {url: 'Project01'} ) }}">
+          class="btn btn-smm btn-outline-dark"
+          data-bs-toggle="tooltip"
+          title="{% trans %} New Individual {% endtrans %}"
+
+          data-action="editor#newIndividual"
+          data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+
+    <i class="bi bi-person-fill"></i>
+  </button>
+  <button type="button"
+          class="btn btn-outline-dark"
+          data-bs-toggle="tooltip"
+          title="Search for individual">
+    <i class="bi bi-search fs-16"  ></i></button>
+  <button type="button"
+          class="btn btn-outline-dark"
+          {{ stimulus_action('editor', 'addIndividual') }}
+          data-editor-myUrl-param="{{ url('editorNewIndividual', {url: 'Project01'} ) }}">
     <i class="bi bi-arrow-left"></i>
   </button>
-  <button type="button" class="btn btn-outline-dark"><i class="bi bi-arrow-right text-danger"></i></button>
-  <button type="button" class="btn btn-outline-dark"><i class="bi bi-person-x"></i></button>
+  <button type="button"
+          class="btn btn-outline-dark">
+    <i class="bi bi-arrow-right text-danger"></i></button>
+  <button type="button"
+          class="btn btn-outline-dark"><i class="bi bi-x-lg"></i></button>
   <button type="button"
           class="btn btn-outline-dark"
           onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')">

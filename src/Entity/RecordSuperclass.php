@@ -44,14 +44,6 @@ use       App\Entity\Traits\XrefTrait;
    *  - SourceRecord
    *  - SubmitterRecord
    *
-   *
-   * 	@ORM\MappedSuperclass(repositoryClass=RecordSuperclassRepository::class)
-   *
-   *	@ORM\HasLifecycleCallbacks
-   *
-   *	@ ORM\Index(columns: ["xref", ])
-   *  @ ORM\Table(indexes={@Index=(name="xref_idx", columns={"xref"}, options={"Length": 20})} )
-   *	@ ORM\Index(fields: ["xref"])
    **/
 
 #[ORM\MappedSuperclass(repositoryClass: RecordSuperclassRepository::class)]
@@ -67,14 +59,13 @@ class RecordSuperclass
 
 
   /**
-  * @ORM\Column(type="string", length=12, nullable=true)
   */
+
   #[ORM\Column(type: "string", length: 12, nullable: true)]
   private $rin;
 
 
   /**
-   * @ORM\Column(type="datetime_immutable", nullable=true)
    */
 
   #[ORM\Column(type: "datetime_immutable", nullable: true)]
@@ -86,7 +77,6 @@ class RecordSuperclass
 
 
   /**
-   * @ORM\Column(type="string", length=20, nullable=true)
    **/
 
   #[ORM\Column(type: "string", length: 20, nullable: true)]
@@ -129,7 +119,6 @@ class RecordSuperclass
    *  - sætter CreatedAt
    *  - sætter xref
    *
-   *  @ORM\PrePersist
    **/
 
   #[ORM\PrePersist]
@@ -174,7 +163,6 @@ class RecordSuperclass
    *  - sætter CreatedAt
    *  - sætter xref
    *
-   *  @ORM\PreUpdate
    **/
 
 

@@ -26,6 +26,8 @@ use       App\Entity\Family;
 use       App\Entity\Individual;
 use       App\Entity\Project;
 
+use       App\Service\EditorService;
+
 
 /**
 *  ApiFamilyController

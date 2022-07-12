@@ -28,6 +28,8 @@ use       App\Entity\Individual;
 use       App\Entity\PersonalNameStructure;;
 use       App\Entity\Project;
 
+use       App\Service\EditorService;
+
 
 /**
 *  ApiIndividualController
@@ -42,6 +44,7 @@ class ApiIndividualController extends AbstractController
    *
    */
 
+  private $editorService;
   private $entityManager;
 
 
@@ -50,9 +53,10 @@ class ApiIndividualController extends AbstractController
    *
    */
 
-  function __construct(ManagerRegistry $doctrine)
+  function __construct(ManagerRegistry $doctrine, EditorService $es)
   {
     $this->entityManager= $doctrine->getManager();
+    $this->editorService= $es;
   }
 
 
@@ -117,10 +121,7 @@ class ApiIndividualController extends AbstractController
       $this->entityManager->persist($name);
       $this->entityManager->flush();
 
-      $arr= array('id' => $indi->getId(), 'balder' => 'hund');
-
-      return $this->json($arr);
-      // return $this->json(['id' => $indi->getId()]);
+      return $this->json(['id' => $indi->getId()]);
     }
     catch(\Exception $e)
     {

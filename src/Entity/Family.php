@@ -13,6 +13,8 @@
 namespace App\Entity;
 
 use App\Repository\FamilyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 use App\Entity\RecordSuperclass;
@@ -33,6 +35,14 @@ class Family extends RecordSuperclass
   #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "families")]
   private $project;
 
+  #[ORM\OneToMany(mappedBy: 'family', targetEntity: Relation::class, orphanRemoval: true)]
+  private $relations;
+
+  public function __construct()
+  {
+      $this->relations = new ArrayCollection();
+  }
+
 
 
   public function getProject(): ?Project
@@ -43,6 +53,36 @@ class Family extends RecordSuperclass
   public function setProject(?Project $project): self
   {
       $this->project = $project;
+
+      return $this;
+  }
+
+  /**
+   * @return Collection<int, Relation>
+   */
+  public function getRelations(): Collection
+  {
+      return $this->relations;
+  }
+
+  public function addRelation(Relation $relation): self
+  {
+      if (!$this->relations->contains($relation)) {
+          $this->relations[] = $relation;
+          $relation->setFamily($this);
+      }
+
+      return $this;
+  }
+
+  public function removeRelation(Relation $relation): self
+  {
+      if ($this->relations->removeElement($relation)) {
+          // set the owning side to null (unless already changed)
+          if ($relation->getFamily() === $this) {
+              $relation->setFamily(null);
+          }
+      }
 
       return $this;
   }

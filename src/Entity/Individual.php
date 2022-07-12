@@ -58,9 +58,13 @@ class Individual extends RecordSuperclass
     #[ORM\Column(type: 'string', length: 1, nullable: true)]
     private $sex;
 
+    #[ORM\OneToMany(mappedBy: 'individual', targetEntity: Relation::class)]
+    private $relations;
+
     public function __construct()
     {
         $this->personalNameStructures = new ArrayCollection();
+        $this->relations = new ArrayCollection();
     }
 
 
@@ -115,6 +119,36 @@ class Individual extends RecordSuperclass
     public function setSex(?string $sex): self
     {
         $this->sex = $sex;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Relation>
+     */
+    public function getRelations(): Collection
+    {
+        return $this->relations;
+    }
+
+    public function addRelation(Relation $relation): self
+    {
+        if (!$this->relations->contains($relation)) {
+            $this->relations[] = $relation;
+            $relation->setIndividual($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRelation(Relation $relation): self
+    {
+        if ($this->relations->removeElement($relation)) {
+            // set the owning side to null (unless already changed)
+            if ($relation->getIndividual() === $this) {
+                $relation->setIndividual(null);
+            }
+        }
 
         return $this;
     }

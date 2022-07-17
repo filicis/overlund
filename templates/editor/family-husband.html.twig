@@ -1,0 +1,74 @@
+{#
+
+  templates/editor/family-husband.html.twig
+
+  Expects the template variable: husb
+
+#}
+
+
+<div class="row">
+
+  <!-- Billede -->
+  <div class="col-2 align-self-center text-center">
+    <button class="btn btn-sm btn-outline-dark">
+
+
+      <img src="\ludvig.jpg" class="img-fluid" height="50" width="50" alt="...">
+    </button>
+  </div>
+
+  <!-- Navn -->
+
+  <div class="col">
+    <div class="form-floating">
+      <input type="text"
+        class="form-control-plaintext"
+        id="idHusband"
+        placeholder="Tekst"
+        value="Anders Hansen Nielsen"
+        readonly>
+      <label for="idHusband">{{ 'Husband' | trans }}</label>
+
+    </div>
+  </div>
+
+  {# Reserveret til knap-apparat #}
+
+  <div class="col-3">
+
+    <button type="button"
+      class="btn btn-sm btn-outline-dark"
+      data-bs-toggle="tooltip"
+      title="{{'New Individual as Husband' | trans}}">
+
+      <i class="bi bi-person-fill"></i>
+    </button>
+
+    <button type="button"
+      class="btn btn-sm btn-outline-dark"
+      data-bs-toggle="tooltip"
+      title="{{'Link current Individual as Husband' | trans}}">
+      <i class="bi bi-link"></i>
+    </button>
+
+    <button type="button" class="btn btn-sm btn-outline-dark"
+      data-bs-toggle="tooltip"
+      title="{{'Remove as Husband' | trans}}">
+      <i class="bi bi-person-fill"></i>
+    </button>
+
+    <button type="button" class="btn btn-sm btn-outline-dark"
+      data-bs-toggle="tooltip"
+      title="{{'Search for Husband' | trans}}">
+      <i class="bi bi-search"></i>
+    </button>
+
+    <button type="button" class="btn btn-sm btn-outline-dark"
+      data-bs-toggle="tooltip"
+      title="{{'Notes for Husband' | trans}}">
+      <i class="bi bi-chat-left-text-fill"></i>
+    </button>
+
+  </div>
+</div>

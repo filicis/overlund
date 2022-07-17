@@ -1,0 +1,76 @@
+{#
+
+  templates/editor/family-wife.html.twig
+
+#}
+
+
+<div class="row">
+
+
+  {# Wifes Picture #}
+
+  <div class="col-2 align-self-center text-center">
+    <button type="button"
+      class="btn btn-sm btn-outline-dark bg-light ">
+
+      <img src="\karen.jpg" class="img-fluid" height="50" width="50" alt="Karen">
+    </button>
+  </div>
+
+
+  {# Wifes name #}
+
+  <div class="col">
+    <div class="form-floating">
+      <input type="text"
+          class="form-control-plaintext"
+          id="idWife"
+          placeholder="Tekst"
+          value="Anne Margrethe Sørensdatter" readonly>
+      <label for="idWife">{{ 'Wife' | trans }}</label>
+
+    </div>
+  </div>
+
+
+  {# Tilhørende knap-apparat #}
+
+  <div class="col-3">
+
+    <button type="button"
+      class="btn btn-sm btn-outline-dark bg-light"
+      data-bs-toggle="tooltip"
+      title="{{ 'New Individual as Wife' | trans }}">
+
+      <i class="bi bi-person-fill"></i>
+    </button>
+
+    <button type="button"
+      class="btn btn-sm btn-outline-dark bg-light"
+      data-bs-toggle="tooltip"
+      title="{{ 'Link current Individual as Wife' | trans  }}">
+      <i class="bi bi-person-fill"></i>
+    </button>
+
+    <button type="button"
+      class="btn btn-sm btn-light"
+      data-bs-toggle="tooltip"
+      title="{{'Remove as Wife' | trans }}">
+      <i class="bi bi-person-fill"></i>
+    </button>
+
+    <button type="button" class="btn btn-sm btn-outline-dark"
+      data-bs-toggle="tooltip"
+      title="{{ 'Search for Wife' | trans }}">
+      <i class="bi bi-person-fill"></i>
+    </button>
+
+    <button type="button" class="btn btn-sm btn-outline-dark"
+      data-bs-toggle="tooltip"
+      title="{{'Notes for Wife' | trans}}">
+      <i class="bi bi-person-fill"></i>
+    </button>
+
+  </div>
+</div>

@@ -59,6 +59,12 @@ class Relation
     return $this->id;
   }
 
+
+  /**
+   *
+   *  @return string Indicates the type of this relation, eg Husband, Wife, Child
+   */
+
   public function getType(): ?string
   {
     return $this->type;

@@ -6,6 +6,8 @@ export default class extends Controller {
     project: String,
     indi: String,
     fam: String,
+    husband: String,
+    wife: String,
     renderindi: String,
     renderfam: String,
   }

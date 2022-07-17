@@ -154,4 +154,31 @@ class Individual extends RecordSuperclass
     }
 
 
+  /**
+   *  function getName()
+   *  - Temporary Implemantation
+   *
+   *
+   *  @return String This individuals primary personal name
+   */
+
+  public function getName()
+  {
+    return "Anders Hansen / Nielsen /";
+  }
+
+  /**
+   *  function getImage()
+   *  - Temporary Implemantation
+   *
+   *
+   *  @return String File reference
+   */
+
+  public function getImage()
+  {
+    return "\karen.jpg";
+  }
+
+
 }

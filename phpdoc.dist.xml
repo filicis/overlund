@@ -10,8 +10,8 @@
         <cache>build/cache</cache>
     </paths>
     <version number="3.0.0">
-        <api>
-            <source dsn="src">
+        <api format="php">
+          <source dsn="./src">
                 <path>Controller</path>
                 <path>Entity</path>
                 <path>Entity/Traits</path>

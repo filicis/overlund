@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" target-language="no" datatype="plaintext" original="file.ext">
+  <file source-language="en" target-language="se" datatype="plaintext" original="file.ext">
     <header>
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
@@ -12,6 +12,58 @@
       <trans-unit id="UlmuZWF" resname="In development">
         <source>In development</source>
         <target>__In development</target>
+      </trans-unit>
+      <trans-unit id="dmOQYs8" resname="New Individual">
+        <source>New Individual</source>
+        <target>__New Individual</target>
+      </trans-unit>
+      <trans-unit id="oIn0tAC" resname="Husband">
+        <source>Husband</source>
+        <target>__Husband</target>
+      </trans-unit>
+      <trans-unit id="vrDOY_a" resname="New Individual as Husband">
+        <source>New Individual as Husband</source>
+        <target>__New Individual as Husband</target>
+      </trans-unit>
+      <trans-unit id="CKozuCm" resname="Link current Individual as Husband">
+        <source>Link current Individual as Husband</source>
+        <target>__Link current Individual as Husband</target>
+      </trans-unit>
+      <trans-unit id="RO3c5QV" resname="Remove as Husband">
+        <source>Remove as Husband</source>
+        <target>__Remove as Husband</target>
+      </trans-unit>
+      <trans-unit id="X.8WgXS" resname="Search for Husband">
+        <source>Search for Husband</source>
+        <target>__Search for Husband</target>
+      </trans-unit>
+      <trans-unit id="vGECXvz" resname="Notes for Husband">
+        <source>Notes for Husband</source>
+        <target>__Notes for Husband</target>
+      </trans-unit>
+      <trans-unit id="3.af0ar" resname="Wife">
+        <source>Wife</source>
+        <target>__Wife</target>
+      </trans-unit>
+      <trans-unit id="TSmP.N2" resname="New Individual as Wife">
+        <source>New Individual as Wife</source>
+        <target>__New Individual as Wife</target>
+      </trans-unit>
+      <trans-unit id="ypN04bI" resname="Link current Individual as Wife">
+        <source>Link current Individual as Wife</source>
+        <target>__Link current Individual as Wife</target>
+      </trans-unit>
+      <trans-unit id="RXbbJ6e" resname="Remove as Wife">
+        <source>Remove as Wife</source>
+        <target>__Remove as Wife</target>
+      </trans-unit>
+      <trans-unit id="RxgCwf1" resname="Search for Wife">
+        <source>Search for Wife</source>
+        <target>__Search for Wife</target>
+      </trans-unit>
+      <trans-unit id="ol9hwzg" resname="Notes for Wife">
+        <source>Notes for Wife</source>
+        <target>__Notes for Wife</target>
       </trans-unit>
       <trans-unit id="dP6sXrj" resname="Prefix">
         <source>Prefix</source>
@@ -45,10 +97,6 @@
         <source>Unknown</source>
         <target>__Unknown</target>
       </trans-unit>
-      <trans-unit id="KU26DYu" resname="Not Recorded">
-        <source>Not Recorded</source>
-        <target>__Not Recorded</target>
-      </trans-unit>
       <trans-unit id="lT3W8rR" resname="Sex">
         <source>Sex</source>
         <target>__Sex</target>
@@ -69,13 +117,9 @@
         <source>Parents</source>
         <target>__Parents</target>
       </trans-unit>
-      <trans-unit id="oIn0tAC" resname="Husband">
-        <source>Husband</source>
-        <target>__Husband</target>
-      </trans-unit>
-      <trans-unit id="3.af0ar" resname="Wife">
-        <source>Wife</source>
-        <target>__Wife</target>
+      <trans-unit id="eJFsbUq" resname="Events and Attributes">
+        <source>Events and Attributes</source>
+        <target>__Events and Attributes</target>
       </trans-unit>
       <trans-unit id="NYOjWKW" resname="Children">
         <source>Children</source>
@@ -124,54 +168,6 @@
       <trans-unit id="tRLZfny" resname="User">
         <source>User</source>
         <target>__User</target>
-      </trans-unit>
-      <trans-unit id="dmOQYs8" resname="New Individual">
-        <source>New Individual</source>
-        <target>__New Individual</target>
-      </trans-unit>
-      <trans-unit id="vrDOY_a" resname="New Individual as Husband">
-        <source>New Individual as Husband</source>
-        <target>__New Individual as Husband</target>
-      </trans-unit>
-      <trans-unit id="CKozuCm" resname="Link current Individual as Husband">
-        <source>Link current Individual as Husband</source>
-        <target>__Link current Individual as Husband</target>
-      </trans-unit>
-      <trans-unit id="RO3c5QV" resname="Remove as Husband">
-        <source>Remove as Husband</source>
-        <target>__Remove as Husband</target>
-      </trans-unit>
-      <trans-unit id="X.8WgXS" resname="Search for Husband">
-        <source>Search for Husband</source>
-        <target>__Search for Husband</target>
-      </trans-unit>
-      <trans-unit id="vGECXvz" resname="Notes for Husband">
-        <source>Notes for Husband</source>
-        <target>__Notes for Husband</target>
-      </trans-unit>
-      <trans-unit id="TSmP.N2" resname="New Individual as Wife">
-        <source>New Individual as Wife</source>
-        <target>__New Individual as Wife</target>
-      </trans-unit>
-      <trans-unit id="ypN04bI" resname="Link current Individual as Wife">
-        <source>Link current Individual as Wife</source>
-        <target>__Link current Individual as Wife</target>
-      </trans-unit>
-      <trans-unit id="RXbbJ6e" resname="Remove as Wife">
-        <source>Remove as Wife</source>
-        <target>__Remove as Wife</target>
-      </trans-unit>
-      <trans-unit id="RxgCwf1" resname="Search for Wife">
-        <source>Search for Wife</source>
-        <target>__Search for Wife</target>
-      </trans-unit>
-      <trans-unit id="ol9hwzg" resname="Notes for Wife">
-        <source>Notes for Wife</source>
-        <target>__Notes for Wife</target>
-      </trans-unit>
-      <trans-unit id="eJFsbUq" resname="Events and Attributes">
-        <source>Events and Attributes</source>
-        <target>__Events and Attributes</target>
       </trans-unit>
     </body>
   </file>

@@ -5,7 +5,8 @@
 #}
 
 
-<div class="row">
+<div class="row"
+     data-action="editor#selectWife">
 
 
   {# Wifes Picture #}
@@ -40,6 +41,7 @@
 
     <button type="button"
       class="btn btn-sm btn-outline-dark bg-light"
+      data-action="editor#newWife"
       data-bs-toggle="tooltip"
       title="{{ 'New Individual as Wife' | trans }}">
 
@@ -48,12 +50,14 @@
 
     <button type="button"
       class="btn btn-sm btn-outline-dark bg-light"
+      data-action="editor#linkWife"
       data-bs-toggle="tooltip"
       title="{{ 'Link current Individual as Wife' | trans  }}">
       <i class="bi bi-person-fill"></i>
     </button>
 
     <button type="button"
+      data-action="editor#unlinkWife"
       class="btn btn-sm btn-light"
       data-bs-toggle="tooltip"
       title="{{'Remove as Wife' | trans }}">

@@ -107,7 +107,7 @@
       </trans-unit>
       <trans-unit id="PoCKf.5" resname="Registered partnership">
         <source>Registered partnership</source>
-        <target>__Registered partnership</target>
+        <target>Registreret Partnerskab</target>
       </trans-unit>
       <trans-unit id="Nj_l6Zs" resname="Living together">
         <source>Living together</source>
@@ -124,6 +124,86 @@
       <trans-unit id="tRLZfny" resname="User">
         <source>User</source>
         <target>Bruger</target>
+      </trans-unit>
+      <trans-unit id="dmOQYs8" resname="New Individual">
+        <source>New Individual</source>
+        <target>Nyt Individ</target>
+      </trans-unit>
+      <trans-unit id="vrDOY_a" resname="New Individual as Husband">
+        <source>New Individual as Husband</source>
+        <target>__New Individual as Husband</target>
+      </trans-unit>
+      <trans-unit id="CKozuCm" resname="Link current Individual as Husband">
+        <source>Link current Individual as Husband</source>
+        <target>__Link current Individual as Husband</target>
+      </trans-unit>
+      <trans-unit id="RO3c5QV" resname="Remove as Husband">
+        <source>Remove as Husband</source>
+        <target>Fjern ægtemanden</target>
+      </trans-unit>
+      <trans-unit id="X.8WgXS" resname="Search for Husband">
+        <source>Search for Husband</source>
+        <target>__Search for Husband</target>
+      </trans-unit>
+      <trans-unit id="vGECXvz" resname="Notes for Husband">
+        <source>Notes for Husband</source>
+        <target>__Notes for Husband</target>
+      </trans-unit>
+      <trans-unit id="TSmP.N2" resname="New Individual as Wife">
+        <source>New Individual as Wife</source>
+        <target>__New Individual as Wife</target>
+      </trans-unit>
+      <trans-unit id="ypN04bI" resname="Link current Individual as Wife">
+        <source>Link current Individual as Wife</source>
+        <target>__Link current Individual as Wife</target>
+      </trans-unit>
+      <trans-unit id="RXbbJ6e" resname="Remove as Wife">
+        <source>Remove as Wife</source>
+        <target>Fjern Hustru</target>
+      </trans-unit>
+      <trans-unit id="RxgCwf1" resname="Search for Wife">
+        <source>Search for Wife</source>
+        <target>__Search for Wife</target>
+      </trans-unit>
+      <trans-unit id="ol9hwzg" resname="Notes for Wife">
+        <source>Notes for Wife</source>
+        <target>__Notes for Wife</target>
+      </trans-unit>
+      <trans-unit id="eJFsbUq" resname="Events and Attributes">
+        <source>Events and Attributes</source>
+        <target>Begivenheder og egenskaber</target>
+      </trans-unit>
+      <trans-unit id="CTCso6s" resname="New Individual as Child">
+        <source>New Individual as Child</source>
+        <target>__New Individual as Child</target>
+      </trans-unit>
+      <trans-unit id="EQbqhDe" resname="Link current Individual as Child">
+        <source>Link current Individual as Child</source>
+        <target>__Link current Individual as Child</target>
+      </trans-unit>
+      <trans-unit id="oxg3tWa" resname="Remove as Child">
+        <source>Remove as Child</source>
+        <target>__Remove as Child</target>
+      </trans-unit>
+      <trans-unit id="1yLu2et" resname="Search for Child">
+        <source>Search for Child</source>
+        <target>__Search for Child</target>
+      </trans-unit>
+      <trans-unit id="BZxx8ME" resname="Notes for Child">
+        <source>Notes for Child</source>
+        <target>__Notes for Child</target>
+      </trans-unit>
+      <trans-unit id="Th9Jqci" resname="Event">
+        <source>Event</source>
+        <target>__Event</target>
+      </trans-unit>
+      <trans-unit id="mcQKtAW" resname="Date">
+        <source>Date</source>
+        <target>__Date</target>
+      </trans-unit>
+      <trans-unit id="6UY9zPB" resname="Place">
+        <source>Place</source>
+        <target>__Place</target>
       </trans-unit>
     </body>
   </file>

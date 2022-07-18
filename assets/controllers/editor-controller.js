@@ -18,45 +18,51 @@ export default class extends Controller {
   // indiValueChanged()
   // - opdaterer
   //
-  indiValueChanged(value)
+  indiValueChanged(value, previousValue)
   {
-    const myInit= {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(value),
-      mode: 'cors',
-      credentials: 'include',
-    };
+    if (! (value === previousValue))
+    {
+      const myInit= {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(value),
+        mode: 'cors',
+        credentials: 'include',
+      };
 
-    fetch(this.renderindiValue, myInit)
+      fetch(this.renderindiValue, myInit)
       .then(response => response.text())
       .then(data => this.indiViewTarget.innerHTML= data)
       .catch();
+    }
   }
 
 
-  // famValueChanged()
+  // function famValueChanged()
   // - opdaterer
   //
-  famValueChanged(value)
+  famValueChanged(value, previousValue)
   {
-    const myInit= {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(value),
-      mode: 'cors',
-      credentials: 'include',
-    };
+    if (! (value === previousValue))
+    {
+      const myInit= {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(value),
+        mode: 'cors',
+        credentials: 'include',
+      };
 
-    fetch(this.renderfamValue, myInit)
+      fetch(this.renderfamValue, myInit)
       .then(response => response.text())
       .then(data => this.famViewTarget.innerHTML= data)
       .catch();
+    }
   }
 
 
 
-  //
+  // function newFamily
   //
   //
   newFamily(event)
@@ -67,14 +73,14 @@ export default class extends Controller {
     };
 
     fetch(event.params.myurl, myInit)
-      .then(response => response.text())
-      .then(data => console.log(data));
-      //.then(data => this.famValue= data['idd']);
-      //.catch();
+    .then(response => response.text())
+    .then(data => console.log(data));
+    //.then(data => this.famValue= data['idd']);
+    //.catch();
   }
 
 
-  //  newIndividual
+  //  function newIndividual
   //
   //
   newIndividual(event)
@@ -86,10 +92,57 @@ export default class extends Controller {
     };
 
     fetch(event.params.myurl, myInit)
-      .then(response => response.json())
-      .then(data => this.indiValue= data['id'])
-      .catch();
+    .then(response => response.json())
+    .then(data => this.indiValue= data['id'])
+    .catch();
   }
+
+
+  // function selectHusband
+  //
+  //
+
+  selectHusband(event)
+  {
+    this.indiValue= this.husbandValue;
+    event.stopPropagation();
+  }
+
+
+  // function selectWife
+  //
+  //
+
+  selectWife(event)
+  {
+    this.indiValue= this.wifeValue;
+    event.stopPropagation();
+  }
+
+
+  // function unlinkHusband
+  //
+  //
+
+  unlinkHusband(event)
+  {
+    this.husbandValue== "";
+    event.stopPropagation();
+  }
+
+
+  // function unlinkWife
+  //
+  //
+
+  unlinkWife(event)
+  {
+    this.wifeValue= "";
+    event.stopPropagation();
+  }
+
+
+
 
 
 
@@ -101,22 +154,22 @@ export default class extends Controller {
   {
     if (this.hasIndicardTarget)
     {
-       this.indicardTarget.classList.remove('alert-info', 'alert-primary', 'alert-secondary', 'alert-danger', 'alert-warning');
-       switch (event.target.value)
-       {
-         case 'M':
-           this.indicardTarget.classList.add("alert-info");
-           break;
-         case 'F':
-           this.indicardTarget.classList.add("alert-danger");
-           break;
-         case 'U':
-         case 'N':
-           this.indicardTarget.classList.add("alert-secondary");
-           break;
-         default:
-           this.indicardTarget.classList.add("alert-primary");
-       }
+      this.indicardTarget.classList.remove('alert-info', 'alert-primary', 'alert-secondary', 'alert-danger', 'alert-warning');
+      switch (event.target.value)
+      {
+        case 'M':
+        this.indicardTarget.classList.add("alert-info");
+        break;
+        case 'F':
+        this.indicardTarget.classList.add("alert-danger");
+        break;
+        case 'U':
+        case 'N':
+        this.indicardTarget.classList.add("alert-secondary");
+        break;
+        default:
+        this.indicardTarget.classList.add("alert-primary");
+      }
     }
   }
 }

@@ -11,12 +11,13 @@
 
   {# Wifes Picture #}
 
-  <div class="col-2 align-self-center text-center">
-    <button type="button"
-      class="btn btn-sm btn-outline-dark bg-light ">
+  <div class="col-2">
+    <!--button type="button"
+      class="btn btn-sm btn-outline-dark bg-light "-->
 
-      <img src="\karen.jpg" class="img-fluid" height="50" width="50" alt="Karen">
-    </button>
+
+      <img src="\karen.jpg" class="img-fluid img-thumbnail" alt="Karen">
+    <!--/button-->
   </div>
 
 
@@ -28,7 +29,7 @@
           class="form-control-plaintext"
           id="idWife"
           placeholder="Tekst"
-          value="Anne Margrethe Sørensdatter" readonly>
+          value="Anne Margrethe Sørensdatter" rreadonly>
       <label for="idWife">{{ 'Wife' | trans }}</label>
 
     </div>
@@ -66,7 +67,7 @@
       <!--i class="bi bi-person-fill"></i-->
     </button>
 
-    <button type="button" 
+    <button type="button"
       class="btn btn-sm btn-outline-dark bg-light"
       data-bs-toggle="tooltip"
       title="{{ 'Search for Wife' | trans }}">
@@ -74,7 +75,7 @@
       <!--i class="bi bi-person-fill"></i-->
     </button>
 
-    <button type="button" 
+    <button type="button"
       class="btn btn-sm btn-outline-dark bg-light"
       data-bs-toggle="tooltip"
       title="{{'Notes for Wife' | trans}}">

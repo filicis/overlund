@@ -41,6 +41,12 @@ class EditorController extends AbstractController
   private $es;
   private $entityManager;
 
+  private $icontest= array(
+    'key01' => "🧑",
+    'key02' => "🔎",
+    'key03' => "❌",
+  );
+
   /**
    *  __constructor()
    *
@@ -85,6 +91,7 @@ class EditorController extends AbstractController
 
       'controller_name' => 'EditorController',
       'project' => $project,
+      'icons' => $this->icontest,
       'title' => 'test',
 
     ]);

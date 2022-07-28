@@ -38,19 +38,19 @@
   {# Row 1 #}
 
   <div class="row">
-    <div id= "villy" class="col-lg-6" >
+    <div id= "villy" class="col-lg-6 h-100">
       <div  {{ stimulus_target('editor', 'indiView') }}>
         {{ include('editor/individual.html.twig') }}
       </div>
-      {{ include('editor/buttonline-left.html.twig') }}
+      {#{ include('editor/buttonline-left.html.twig') }#}
     </div>
 
-    <div class="col-lg-6"   >
+    <div class="col-lg-6 h-100">
       <div {{ stimulus_target('editor', 'famView') }}>
         {{ include('editor/family.html.twig') }}
       </div>
 
-      {{ include('editor/buttonline-right.html.twig') }}
+      {#{ include('editor/buttonline-right.html.twig') }#}
     </div>
 
   </div"> <!-- End row 1 -->

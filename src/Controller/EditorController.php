@@ -45,6 +45,8 @@ class EditorController extends AbstractController
     'key01' => "🧑",
     'key02' => "🔎",
     'key03' => "❌",
+    'locked'    => '&#1F512;',    // 🔒
+    'unlock'    => '&#1F513;',    // 🔓
   );
 
   /**

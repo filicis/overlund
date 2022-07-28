@@ -147,7 +147,7 @@
       </trans-unit>
       <trans-unit id="vGECXvz" resname="Notes for Husband">
         <source>Notes for Husband</source>
-        <target>__Notes for Husband</target>
+        <target>Noter omkring Husband</target>
       </trans-unit>
       <trans-unit id="TSmP.N2" resname="New Individual as Wife">
         <source>New Individual as Wife</source>
@@ -167,7 +167,7 @@
       </trans-unit>
       <trans-unit id="ol9hwzg" resname="Notes for Wife">
         <source>Notes for Wife</source>
-        <target>__Notes for Wife</target>
+        <target>Noter omkring Wife</target>
       </trans-unit>
       <trans-unit id="eJFsbUq" resname="Events and Attributes">
         <source>Events and Attributes</source>
@@ -195,15 +195,15 @@
       </trans-unit>
       <trans-unit id="Th9Jqci" resname="Event">
         <source>Event</source>
-        <target>__Event</target>
+        <target>Begivenhed</target>
       </trans-unit>
       <trans-unit id="mcQKtAW" resname="Date">
         <source>Date</source>
-        <target>__Date</target>
+        <target>Dato</target>
       </trans-unit>
       <trans-unit id="6UY9zPB" resname="Place">
         <source>Place</source>
-        <target>__Place</target>
+        <target>Lokation</target>
       </trans-unit>
     </body>
   </file>

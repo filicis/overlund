@@ -1,11 +1,11 @@
 {# templates/editor/buttonline-left.html.twig #}
 
 
-<div class="bg-body bbg-opacity-25 bbg-gradient mhhhh-100 sshadow-lg p-3 mb-5 rounded d-flex justify-content-around">
+<!-- div class="bg-body bbg-opacity-25 bbg-gradient mhhhh-100 sshadow-lg p-3 mb-5 rounded d-flex justify-content-around" -->
 
 
   <button type="button"
-          class="btn btn-smm btn-outline-dark"
+          class="btn btn-outline-dark bg-light"
           data-bs-toggle="tooltip"
           title="{% trans %} New Individual {% endtrans %}"
 
@@ -15,25 +15,25 @@
     <!-- i class="bi bi-person-fill"></i-->
   </button>
   <button type="button"
-          class="btn btn-outline-dark"
+          class="btn btn-outline-dark bg-light"
           data-bs-toggle="tooltip"
           title="Search for individual">
           {{ icons['key02'] }}
     <!--i class="bi bi-search fs-16"  ></i></button-->
   <button type="button"
-          class="btn btn-outline-dark"
+          class="btn btn-outline-dark bg-light"
           {{ stimulus_action('editor', 'addIndividual') }}
           data-editor-myUrl-param="{{ url('editorNewIndividual', {url: 'Project01'} ) }}">
     <i class="bi bi-arrow-left"></i>
   </button>
   <button type="button"
-          class="btn btn-outline-dark">
+          class="btn btn-outline-dark bg-light">
     <i class="bi bi-arrow-right text-danger"></i></button>
   <button type="button"
-          class="btn btn-outline-dark"><i class="bi bi-x-lg"></i></button>
+          class="btn btn-outline-dark bg-light"><i class="bi bi-x-lg"></i></button>
   <button type="button"
-          class="btn btn-outline-dark"
+          class="btn btn-outline-dark bg-light"
           onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')">
     <i class="bi bi-file-lock"></i>
   </button>
-</div>
+<!-- /div -->

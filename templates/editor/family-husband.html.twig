@@ -42,8 +42,7 @@
       data-action="editor#newHusband"
       data-bs-toggle="tooltip"
       title="{{'New Individual as Husband' | trans}}">
-      👨
-      <!--i class="bi bi-person-fill"></i-->
+      {{ constant('App\\Controller\\EditorController::ICON_MALE') }}
     </button>
 
     <button type="button"
@@ -51,8 +50,7 @@
       data-action="editor#linkHusband"
       data-bs-toggle="tooltip"
       title="{{'Link current Individual as Husband' | trans}}">
-      🔗
-      <!-- i class="bi bi-link"></i -->
+      {{ constant('App\\Controller\\EditorController::ICON_LINK') }}
     </button>
 
     <button type="button"
@@ -60,24 +58,21 @@
       data-action="editor#unlinkHusband"
       data-bs-toggle="tooltip"
       title="{{'Remove as Husband' | trans}}">
-      ❌
-      <!-- i class="bi bi-person-fill"></i-->
+      {{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}
     </button>
 
     <button type="button"
       class="btn btn-sm btn-outline-dark bg-light"
       data-bs-toggle="tooltip"
       title="{{'Search for Husband' | trans}}">
-      🔍
-      <!--i class="bi bi-search"></i-->
+      {{ constant('App\\Controller\\EditorController::ICON_SEARCH_L') }}
     </button>
 
     <button type="button"
       class="btn btn-sm btn-outline-dark bg-light"
       data-bs-toggle="tooltip"
       title="{{'Notes for Husband' | trans}}">
-      🗒️
-      <!--i class="bi bi-chat-left-text-fill"></i-->
+      {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
     </button>
 
 

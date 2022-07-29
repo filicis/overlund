@@ -7,6 +7,8 @@ parameters:
     locale: da
     app_locales: da|sv|no|en
     app.supported_locales: da|en|no|sv
+    app.icon.locked: &#x1F512;
+    app.icon.unlocked: &#x1F513;
 
 twig:
     globals:

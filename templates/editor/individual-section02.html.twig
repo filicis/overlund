@@ -20,9 +20,14 @@
 
 
 <div class="card-body">
-	<div class="row">
-		<div class="col-10">
+  <div class="row">
+    <div class="col">
 			<label for="XXX"> {{ 'Families' | trans }}:</label>
+
+    </div>
+  </div>
+	<div class="row">
+		<div class="col-9">
 			<select class="form-select" id="XXX" size=4 aria-label="Default select example">
 				<!-- option selected>Open this select menu</option- -->
 
@@ -33,7 +38,22 @@
 				{% endfor %}
 			</select>
 		</div>
-		<div class="col">
+		<div class="col text-end">
+      <button type="button"
+        class="btn btn-sm btn-outline-dark btn-light"
+        data-bs-toggle="tooltip"
+        title="{{'Change Pedigree of Child' | trans}}">
+      {{ constant('App\\Controller\\EditorController::ICON_UP') }}
+
+      </button>
+
+
+      <button type="button"
+        class="btn btn-sm btn-outline-dark btn-light"
+        data-bs-toggle="tooltip"
+        title="{{'Change Pedigree of Child' | trans}}">
+       {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
+      </button>
 
 		</div>
 
@@ -41,9 +61,14 @@
 </div>
 
 <div class=card-body>
-	<div class="row">
-		<div class="col-10">
+  <div class="row">
+    <div class="col">
 			<label for="XXX"> {{ 'Parents' | trans }} :</label>
+
+    </div>
+  </div>
+	<div class="row">
+		<div class="col-9">
 			<select class="form-select" id="XXX" size=3 aria-label="Default select example">
 				<!-- option selected>Open this select menu</option- -->
 
@@ -54,7 +79,22 @@
 				{% endfor %}
 			</select>
 		</div>
-		<div class="col">
+		<div class="col text-end">
+      <button type="button"
+        class="btn btn-sm btn-outline-dark btn-light"
+        data-bs-toggle="tooltip"
+        title="{{'Change Pedigree of Child' | trans}}">
+      {{ constant('App\\Controller\\EditorController::ICON_UP') }}
+
+      </button>
+
+
+      <button type="button"
+        class="btn btn-sm btn-outline-dark btn-light"
+        data-bs-toggle="tooltip"
+        title="{{'Change Pedigree of Child' | trans}}">
+       {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
+      </button>
 
 		</div>
 	</div>
@@ -64,22 +104,22 @@
 
 <div class="card-body d-flex justify-content-between">
 		<button type="button" class="btn btn-outline-dark bg-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{% trans %} Events and Attributes {% endtrans %}">
-			<i class="bi bi-file-spreadsheet"></i>
+			{{ constant('App\\Controller\\EditorController::ICON_EVENTS') }}
 		</button>
-		<a role="button" class="btn btn-outline-dark bg-light" href="noteeditor" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notes">
-			<i class="bi bi-file-text"></i>
-		</a>
+		<button role="button" class="btn btn-outline-dark bg-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notes">
+      {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
+    </button>
 		<button type="button" class="btn btn-outline-dark bg-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Source Citations">
-			<i class="bi bi-file-post"></i>
+			{{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
 		</button>
 		<button type="button" class="btn btn-outline-dark bg-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Media">
-			<i class="bi bi-file-image"></i>
+			{{ constant('App\\Controller\\EditorController::ICON_MEDIA') }}
 		</button>
 		<button type="button" class="btn btn-outline-dark bg-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Last Change / Restrictions">
-			<i class="bi bi-file-lock"></i>
+			{{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
 		</button>
 		<button type="button" class="btn btn-outline-dark bg-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Researchers">
-			<i class="bi bi-file-person"></i>
+			{{ constant('App\\Controller\\EditorController::ICON_RESEARCHERS') }}
 		</button>
 </div>
 

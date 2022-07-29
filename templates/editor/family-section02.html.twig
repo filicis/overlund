@@ -46,8 +46,7 @@
         data-action="editor#newChild"
         data-bs-toggle="tooltip"
         title="{{'New Individual as Child' | trans}}">
-        👶
-        <!-- i class="bi bi-person-fill"></i -->
+   			{{ constant('App\\Controller\\EditorController::ICON_CHILD') }}
       </button>
 
       <button type="button"
@@ -55,8 +54,7 @@
         data-action="editor#linkChild"
         data-bs-toggle="tooltip"
         title="{{'Link current Individual as Child' | trans}}">
-        🔗
-        <!--i class="bi bi-link"></i-->
+      {{ constant('App\\Controller\\EditorController::ICON_LINK') }}
       </button>
 
       <button type="button"
@@ -64,31 +62,27 @@
         data-action="editor#unlinkChild"
         data-bs-toggle="tooltip"
         title="{{'Remove as Child' | trans}}">
-        ❌
-        <!-- i class="bi bi-person-fill"></i -->
+      {{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}
       </button>
 
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
         data-bs-toggle="tooltip"
         title="{{'Search for Child' | trans}}">
-        🔍
-        <!--i class="bi bi-search"></i-->
+      {{ constant('App\\Controller\\EditorController::ICON_SEARCH_L') }}
       </button>
 
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
         data-bs-toggle="tooltip"
         title="{{'Notes for Child' | trans}}">
-        🗒️
-        <!-- i class="bi bi-chat-left-text-fill"></i -->
+      {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
       </button>
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
         data-bs-toggle="tooltip"
         title="{{'Change Pedigree of Child' | trans}}">
-        🧒🔗👪
-        <!-- i class="bi bi-chat-left-text-fill"></i -->
+      {{ constant('App\\Controller\\EditorController::ICON_PEDIGREE') }}
       </button>
 
 
@@ -96,8 +90,8 @@
         class="btn btn-sm btn-outline-dark btn-light"
         data-bs-toggle="tooltip"
         title="{{'Change Pedigree of Child' | trans}}">
-        <i class="bi bi-arrow-up" style="color: Green;"></i>
-        <!-- i class="bi bi-chat-left-text-fill"></i -->
+      {{ constant('App\\Controller\\EditorController::ICON_UP') }}
+
       </button>
 
 
@@ -105,9 +99,7 @@
         class="btn btn-sm btn-outline-dark btn-light"
         data-bs-toggle="tooltip"
         title="{{'Change Pedigree of Child' | trans}}">
-        <i class="bi bi-arrow-down" style="color: Green;"></i>
-
-        <!-- i class="bi bi-chat-left-text-fill"></i -->
+       {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
       </button>
 
     </div>
@@ -124,8 +116,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Events and Attributes">
-    🗓️
-    <!--i class="bi bi-file-spreadsheet"></i -->
+			{{ constant('App\\Controller\\EditorController::ICON_EVENTS') }}
   </button>
 
   <button role="button"
@@ -133,8 +124,8 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Notes">
-    📝
-    <!-- i class="bi bi-file-text"></i -->
+		{{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
+
   </button>
 
   <button type="button"
@@ -142,8 +133,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Source Citations">
-    📖
-    <!-- i class="bi bi-file-post"></i -->
+		{{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
   </button>
 
   <button type="button"
@@ -151,8 +141,8 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Media">
-    🖼️
-    <!-- i class="bi bi-file-image"></i-->
+		{{ constant('App\\Controller\\EditorController::ICON_MEDIA') }}
+
   </button>
 
   <button type="button"
@@ -160,7 +150,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Last Change / Restrictions">
-    <i class="bi bi-file-lock"></i>
+		{{ constant('App\\Controller\\EditorController::ICON_MEDIA') }}
   </button>
 
   <button type="button"
@@ -168,8 +158,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Researchers">
-    🧑‍🔬
-    <!--i class="bi bi-file-person"></i-->
+ 		{{ constant('App\\Controller\\EditorController::ICON_RESEARCHERS') }}
   </button>
 </div>
 

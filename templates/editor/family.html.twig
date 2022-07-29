@@ -25,15 +25,15 @@
 
 		      <span class="" aria-label="Restriction">
 		    <input type="checkbox" class="mlr-lock btn-check" id="btn-check1" autocomplete="off">
-			  <label class="mlr btn btn-outline-dark btn-light btn-sm" for="btn-check1">🔓</label>
+			  <label class="mlr btn btn-outline-dark btn-light btn-sm" for="btn-check1">{{ constant('App\\Controller\\EditorController::ICON_LOCKED') }}</label>
 		  </span>
       <span>
         <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off">
-			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check2">🤐</label>
+			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check2">{{ constant('App\\Controller\\EditorController::ICON_CONFIDENTIAL') }}</label>
 		  </span>
       <span>
         <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off">
-			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check3">⛔</label>
+			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check3">{{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}</label>
 		  </span>
 
 

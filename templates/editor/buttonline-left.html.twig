@@ -1,40 +1,45 @@
 {# templates/editor/buttonline-left.html.twig #}
 
 
-<!-- div class="bg-body bbg-opacity-25 bbg-gradient mhhhh-100 sshadow-lg p-3 mb-5 rounded d-flex justify-content-around" -->
 
-
-  <button type="button"
-          class="btn btn-outline-dark bg-light"
-          data-bs-toggle="tooltip"
-          title="{% trans %} New Individual {% endtrans %}"
-
-          data-action="editor#newIndividual"
-          data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
-          {{ constant('App\\Controller\\EditorController::ICON_PERSON') }}
-  </button>
-  <button type="button"
-          class="btn btn-outline-dark bg-light"
-          data-bs-toggle="tooltip"
-          title="Search for individual">
-          {{ constant('App\\Controller\\EditorController::ICON_SEARCH_R') }}
-  <button type="button"
-          class="btn btn-outline-dark bg-light"
-          {{ stimulus_action('editor', 'addIndividual') }}
-          data-editor-myUrl-param="{{ url('editorNewIndividual', {url: 'Project01'} ) }}">
-          {{ constant('App\\Controller\\EditorController::ICON_LEFT') }}
-  </button>
-  <button type="button"
-          class="btn btn-outline-dark bg-light">
-          {{ constant('App\\Controller\\EditorController::ICON_RIGHT') }}
-  <button type="button"
-          class="btn btn-outline-dark bg-light">
-          {{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}
-
-  </button>
-  <button type="button"
-          class="btn btn-outline-dark bg-light"
-          onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')">
-    <i class="bi bi-file-lock"></i>
-  </button>
-<!-- /div -->
+<button type="button"
+  class="btn btn-outline-dark btn-light"
+  data-bs-toggle="tooltip"
+  title="{{ 'New Individual' | trans }}"
+  data-action="editor#newIndividual"
+  data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+  {{ constant('App\\Controller\\EditorController::ICON_PERSON') }}
+</button>
+<button type="button"
+  class="btn btn-outline-dark btn-light"
+  data-bs-toggle="tooltip"
+  title="{{ 'Search for individual' | trans }}">
+  {{ constant('App\\Controller\\EditorController::ICON_SEARCH_R') }}
+</button>
+<button type="button"
+  class="btn btn-outline-dark btn-light"
+  data-bs-toggle="tooltip"
+  title="{{ 'Previous' | trans}}"
+  {{ stimulus_action('editor', 'addIndividual') }}
+  data-editor-myUrl-param="{{ url('editorNewIndividual', {url: 'Project01'} ) }}">
+  {{ constant('App\\Controller\\EditorController::ICON_LEFT') }}
+</button>
+<button type="button"
+  class="btn btn-outline-dark btn-light"
+  data-bs-toggle="tooltip"
+  title="{{ 'Next' | trans}}">
+  {{ constant('App\\Controller\\EditorController::ICON_RIGHT') }}
+</button>
+<button type="button"
+  class="btn btn-outline-dark btn-light"
+  data-bs-toggle="tooltip"
+  title="{{ 'Delete individual' | trans }}">
+  {{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}
+</button>
+<button type="button"
+  class="btn btn-outline-dark btn-light"
+  data-bs-toggle="tooltip"
+  title="Search for individual"
+  onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')">
+  <i class="bi bi-file-lock"></i>
+</button>

@@ -62,12 +62,12 @@
 					<div class="form-floating">
 						<!-- input type="text" class="form-control form-control-sm" id="idXXX7" placeholder="Tekst" -->
 
-						<select class="form-select form-control-sm"
+						<select class="form-select form-select-sm"
 						        id="idXXXXXX7"
 						        aria-label="Default select example"
 						        data-bs-toggle="tooltip"
 						        data-bs-placement="top"
-						        title="Indicates the sex of the individual at birth "
+						        title="{{ 'Indicates the sex of the individual at birth' | trans }}"
                     {{ stimulus_action('editor', 'updateSex', 'change') }}  >
 							<!-- option >Køn</option -->
 							<option value="M" selected> {{ 'Male' | trans }} </option>
@@ -75,7 +75,7 @@
               <option value="X"> {{ 'Intersex' | trans }} </option>
               <option value="U"> {{ 'Unknown' | trans }} </option>
 						</select>
-						<label for="idXXX7"> {{ 'Sex' | trans }} </label>
+						<label class="form-label-sm" for="idXXX7"> {{ 'Sex' | trans }} </label>
 					</div>
 
 				</div>

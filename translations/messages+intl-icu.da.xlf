@@ -15,7 +15,7 @@
       </trans-unit>
       <trans-unit id="dP6sXrj" resname="Prefix">
         <source>Prefix</source>
-        <target>__Prefix</target>
+        <target>Præfiks</target>
       </trans-unit>
       <trans-unit id=".Jc8c5R" resname="First names">
         <source>First names</source>
@@ -27,7 +27,7 @@
       </trans-unit>
       <trans-unit id="BAe8.qE" resname="Suffix">
         <source>Suffix</source>
-        <target>__Suffix</target>
+        <target>Suffiks</target>
       </trans-unit>
       <trans-unit id="A.jBJz4" resname="Male">
         <source>Male</source>

@@ -7,7 +7,7 @@
     the members of the family, and a number of data entry and control buttons.
 
     Template Variables:
-    - Fam
+    - fam
 
 #}
 
@@ -17,41 +17,52 @@
 
   {# Header #}
 
-	<div class="row card-header border-dark">
-	  <div class="col-8 text-nowrap overflow-hidden">
-			[F657] <span class='I201'>Anders Hansen Nielsen</span> + <span class='I202'>Anne Margrethe Sørensdatter</span>
-	 </div>
-		<div class="col text-end">
+  <div class="row card-header border-dark">
+    {% if fam %}
+    <div class="col-8 text-nowrap overflow-hidden">
+      <span>[{{ fam.xref }}]</span>
+      <span class='I201'>Anders Hansen Nielsen</span>
+      +
+      <span class='I202'>Anne Margrethe Sørensdatter</span>
+    </div>
+    {% endif %}
+    <div class="col text-end">
 
-		      <span class="" aria-label="Restriction">
-		    <input type="checkbox" class="mlr-lock btn-check" id="btn-check1" autocomplete="off">
-			  <label class="mlr btn btn-outline-dark btn-light btn-sm" for="btn-check1">{{ constant('App\\Controller\\EditorController::ICON_LOCKED') }}</label>
-		  </span>
+      <span class="" aria-label="Restriction">
+        <input type="checkbox" class="mlr-lock btn-check" id="btn-check1" autocomplete="off">
+        <label class="mlr btn btn-outline-dark btn-light btn-sm" for="btn-check1">
+          {{ constant('App\\Controller\\EditorController::ICON_LOCKED') }}
+        </label>
+      </span>
       <span>
         <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off">
-			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check2">{{ constant('App\\Controller\\EditorController::ICON_CONFIDENTIAL') }}</label>
-		  </span>
+        <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check2">
+          {{ constant('App\\Controller\\EditorController::ICON_CONFIDENTIAL') }}
+        </label>
+      </span>
       <span>
         <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off">
-			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check3">{{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}</label>
-		  </span>
+        <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check3">
+          {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
+        </label>
+      </span>
 
-
-		</div>
-
-	</div>
-
-
-		{{ include('editor/family-section01.html.twig') }}
-
-		{{ include('editor/family-section02.html.twig') }}
-
-		{{ include('editor/family-section03.html.twig') }}
-
-    <div class="card-footer border-dark d-flex justify-content-between">
-            {{ include('editor/buttonline-right.html.twig') }}
 
     </div>
+
+  </div>
+
+
+  {{ include('editor/family-section01.html.twig') }}
+
+  {{ include('editor/family-section02.html.twig') }}
+
+  {{ include('editor/family-section03.html.twig') }}
+
+  <div class="card-footer border-dark d-flex justify-content-between">
+    {{ include('editor/buttonline-right.html.twig') }}
+
+  </div>
 
 
 

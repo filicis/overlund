@@ -4,6 +4,10 @@
     Definerer standard layout for vores gedcom editor
     - Venstre kolonne som defaulter til en INDI structur
     - Højre kolonne defaulter til en FAM structur
+
+    Forventer to Template variable
+    - indi
+    - fam
 #}
 
 
@@ -17,9 +21,15 @@
       Definerer samtidig Stimulis controlleren 'editor' med samt variablerne
   #}
 
+  {% if indi %}
+    {% set indiarg = indi.id %}
+  {% else %}
+    {% set indiarg = '' %}
+  {% endif %}
+
 
 <div class="container"
-     {{ stimulus_controller('editor', {'project': 'Project01', 'indi': '', 'fam': '', husband:'', wife: ''}) }}
+     {{ stimulus_controller('editor', {'project': 'Project01', 'indi': '{{ indiarg }}', 'fam': '', husband:'', wife: ''}) }}
      data-editor-renderindi-value="{{ url('editorUpdateIndiCard', {url: 'Project01'} ) }}"
      data-editor-renderfam-value="{{ url('editorUpdateFamCard', {url: 'Project01'} ) }}"
 
@@ -37,7 +47,7 @@
 
   {# Row 1 #}
 
-  <div class="row row-cols-1 row-cols-xxl-2">
+  <div class="row row-cols-1 row-cols-xl-2">
     <div id= "villy" class="col"  {{ stimulus_target('editor', 'indiView') }}>
       {{ include('editor/individual.html.twig') }}
     </div>

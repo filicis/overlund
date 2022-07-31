@@ -40,14 +40,8 @@ class EditorController extends AbstractController
 {
   private $es;
   private $entityManager;
+  private $doctrine;
 
-  private $icontest= array(
-    'key01' => "🧑",
-    'key02' => "🔎",
-    'key03' => "❌",
-    'locked'    => '&#x1F512;',    // 🔒
-    'unlock'    => '&#x1F513;',    // 🔓
-  );
 
   public const ICON_LOCKED            = "🔏";
   public const ICON_UNLOCKED          = "🔓";
@@ -91,6 +85,7 @@ class EditorController extends AbstractController
 
   public function __construct(ManagerRegistry $doctrine, EditorService $es)
   {
+    $this->doctrine= $doctrine;
     $this->entityManager= $doctrine->getManager();
     $this->es= $es;
   }
@@ -119,19 +114,21 @@ class EditorController extends AbstractController
   #[Route('/editor/{url}', name: 'editor', defaults: ['p1' => null, 'p2' => null])]
   public function index(Request $request, Project $project, ?string  $p1= null, ?string $p2= null): Response
   {
+    $arg= array();
     $session= $request->getSession();
 
     $query= $this->entityManager->createQuery('select f.id FROM App\Entity\Family f');
 
-    $family= $query->getResult();
+    $family= null;
     $individual= null;
+    $family= $this->doctrine->getRepository(family::class)->findOneBy($arg);
+    $individual= $this->doctrine->getRepository(Individual::class)->findOneBy($arg);
 
     return $this->render('editor/editor.html.twig', [
 
-      'controller_name' => 'EditorController',
       'project' => $project,
-      'icons' => $this->icontest,
-      'title' => 'test',
+      'indi' => $individual,
+      'fam' => $family,
 
     ]);
   }
@@ -196,8 +193,17 @@ class EditorController extends AbstractController
   public function updateFamCard(Request $request, Project $project): Response
   {
     $title= $request->getContent();
+    $family= null;
+    $individual= null;
+    $family= $this->doctrine->getRepository(family::class)->findOneBy($arg);
+    $individual= $this->doctrine->getRepository(Individual::class)->findOneBy($arg);
 
-    return $this->render('editor/family.html.twig', ['title' => $title]);
+    return $this->render('editor/family.html.twig', [
+      'title' => $title,
+      'indi' => $individual,
+      'fam' => $family,
+
+      ]);
 
   }
 
@@ -212,9 +218,19 @@ class EditorController extends AbstractController
   #[Route('/editor/{url}/updateIndiCard', name: 'editorUpdateIndiCard')]
   public function updateIndiCard(Request $request, Project $project): Response
   {
-    $title= $request->getContent();
+    $arg= array();
 
-    return $this->render('editor/individual.html.twig', ['title' => $title]);
+    $title= $request->getContent();
+    $family= null;
+    $individual= null;
+    $family= $this->doctrine->getRepository(family::class)->findOneBy($arg);
+    $individual= $this->doctrine->getRepository(Individual::class)->findOneBy($arg);
+
+    return $this->render('editor/individual.html.twig', [
+          'title' => $title,
+      'indi' => $individual,
+      'fam' => $family,
+     ]);
 
   }
 }

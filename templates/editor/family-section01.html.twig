@@ -6,17 +6,15 @@
 
 <div class="card-body">
 
-	{# Husband #}
+	  {# Husband #}
 
-		{{ include('editor/family-husband.html.twig') }}
+	{{ include('editor/family-husband.html.twig') }}
 
-	<!-- Wife -->
+	  {# Wife #}
 
+	{{ include('editor/family-wife.html.twig') }}
 
-		{{ include('editor/family-wife.html.twig') }}
-
-
-	<!-- Gennerelle oplysninger om forholdet -->
+	  {# Gennerelle oplysninger om forholdet #}
 
 	<div class="row">
 		<div class="col-1"></div>
@@ -24,7 +22,6 @@
 			<div class="form-floating">
 				<input type="number" class="form-control form-control-sm" id="idNumber" placeholder="Tekst" value="8">
 				<label for="idNumber"> {{ 'Children' | trans }} </label>
-
 			</div>
 		</div>
 

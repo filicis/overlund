@@ -1,7 +1,7 @@
 {# templates/editor/individual.html.twig #}
 
 {#
-    Indivisual Frame
+    Individual Frame
 
     The Individual Frame shows the name of the currently selected individual,
     the parental and spousal families associated with the individual,
@@ -11,35 +11,49 @@
     - indi
 #}
 
-<style>
 
-  input[type="checkbox"]:checked + .btn
+<!--style>
+
+  input[type="checkboxxx"]:checked + .btn
   {
     background-color: var(--bs-warning) ;
   }
 
-</style>
+</style-->
 
 
-<div id="sammy" class="card border-dark alert alert-primary h-100 shadow-lg p-3 mb-5  rounded "
-
+<div id="sammy"
+     class="card border-dark alert alert-primary h-100 shadow-lg p-3 mb-5  rounded "
      {{ stimulus_target('editor', 'indicard') }}>
-
 	<div class="row card-header border-dark">
+    {% if indi %}
 	  <div class="col-8 text-nowrap overflow-hidden">
-		[I2031] <span class="mlr-lock">Anders Hansen Nielsen {{ title }}</span>
+	    <span>[{{ indi.xref}}]</span>
+	    <span class="mlr-lock">Anders Hansen Nielsen</span>
 		</div>
-		<div class="col text-end" aria-label="Restriction">
+		{% endif %}
+		<div class="col text-end"
+		     aria-label="Restriction">
 		  <span>
-		    <input type="checkbox" class="mlr-lock btn-check" id="btn-check11" autocomplete="off" value="LOCKED">
+		    <input type="checkbox"
+		           class="mlr-lock btn-check"
+		           id="btn-check11"
+		           autocomplete="off"
+		           value="LOCKED">
 			  <label class="mlr btn btn-outline-dark btn-light btn-sm" for="btn-check11">&#x1F513;</label>
 		  </span>
       <span>
-        <input type="checkbox" class="btn-check" id="btn-check12" autocomplete="off">
+        <input type="checkbox"
+               class="btn-check"
+               id="btn-check12"
+               autocomplete="off">
 			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check12">🤐</label>
 		  </span>
       <span>
-        <input type="checkbox" class="btn-check" id="btn-check13" autocomplete="off">
+        <input type="checkbox"
+               class="btn-check"
+               id="btn-check13"
+               autocomplete="off">
 			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check13">⛔</label>
     </div>
 	</div>

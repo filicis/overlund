@@ -54,35 +54,34 @@ class Project
      *
      */
 
-    #[ORM\OneToMany(targetEntity: Family::class, mappedBy: "project")]
+    #[ORM\OneToMany(targetEntity: Family::class, mappedBy: "project", fetch: "EXTRA_LAZY")]
     private $families;
 
     /**
      *
      */
 
-    #[ORM\OneToMany(targetEntity: Individual::class, mappedBy: "project")]
+    #[ORM\OneToMany(targetEntity: Individual::class, mappedBy: "project", fetch: "EXTRA_LAZY")]
     private $individuals;
 
     /**
      *
      */
 
-    #[ORM\OneToMany(targetEntity: SubmitterRecord::class, mappedBy: "project")]
+    #[ORM\OneToMany(targetEntity: SubmitterRecord::class, mappedBy: "project", fetch: "EXTRA_LAZY")]
     private $submitterRecords;
 
     /**
      *
      */
 
-    #[ORM\OneToMany(targetEntity: MediaRecord::class, mappedBy: "project")]
+    #[ORM\OneToMany(targetEntity: MediaRecord::class, mappedBy: "project", fetch: "EXTRA_LAZY")]
     private $mediaRecords;
 
     /**
-     * @ORM\OneToMany(targetEntity=PlaceRecord::class, mappedBy="project")
      */
 
-    #[ORM\OneToMany(targetEntity: PlaceRecord::class, mappedBy: "project")]
+    #[ORM\OneToMany(targetEntity: PlaceRecord::class, mappedBy: "project", fetch: "EXTRA_LAZY")]
     private $placeRecords;
 
     /**

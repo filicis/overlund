@@ -108,21 +108,19 @@ class EditorController extends AbstractController
 
   /**
    *  index
+   *  - primære indgang til Editor
    *
+   *  TODO:
    **/
 
   #[Route('/editor/{url}', name: 'editor', defaults: ['p1' => null, 'p2' => null])]
   public function index(Request $request, Project $project, ?string  $p1= null, ?string $p2= null): Response
   {
-    $arg= array();
     $session= $request->getSession();
 
-    $query= $this->entityManager->createQuery('select f.id FROM App\Entity\Family f');
 
-    $family= null;
-    $individual= null;
-    $family= $this->doctrine->getRepository(family::class)->findOneBy($arg);
-    $individual= $this->doctrine->getRepository(Individual::class)->findOneBy($arg);
+    $individual= $project->getIndividuals()[10];
+    $family= $project->getFamilies()[10];
 
     return $this->render('editor/editor.html.twig', [
 
@@ -189,18 +187,19 @@ class EditorController extends AbstractController
    *
    **/
 
-  #[Route('/editor/{url}/updateFamCard', name: 'editorUpdateFamCard')]
+  #[Route('/editor/{url}/updateFamCard', name: 'editorUpdateFamCard', methods: ['PUT'])]
   public function updateFamCard(Request $request, Project $project): Response
   {
+    $data = json_decode($request->getContent(), true);
+
+
     $title= $request->getContent();
-    $family= null;
-    $individual= null;
-    $family= $this->doctrine->getRepository(family::class)->findOneBy($arg);
-    $individual= $this->doctrine->getRepository(Individual::class)->findOneBy($arg);
+
+    $family= $this->entityManager->find('App\Entity\Family', $data);
 
     return $this->render('editor/family.html.twig', [
       'title' => $title,
-      'indi' => $individual,
+      //'indi' => $individual,
       'fam' => $family,
 
       ]);
@@ -215,21 +214,18 @@ class EditorController extends AbstractController
    *
    **/
 
-  #[Route('/editor/{url}/updateIndiCard', name: 'editorUpdateIndiCard')]
+  #[Route('/editor/{url}/updateIndiCard', name: 'editorUpdateIndiCard', methods: ['PUT'])]
   public function updateIndiCard(Request $request, Project $project): Response
   {
-    $arg= array();
+    $data = json_decode($request->getContent(), true);
 
     $title= $request->getContent();
-    $family= null;
-    $individual= null;
-    $family= $this->doctrine->getRepository(family::class)->findOneBy($arg);
-    $individual= $this->doctrine->getRepository(Individual::class)->findOneBy($arg);
+    $individual= $this->entityManager->find('App\Entity\Individual', $data);
 
     return $this->render('editor/individual.html.twig', [
-          'title' => $title,
+          'title' => $data,
       'indi' => $individual,
-      'fam' => $family,
+      //'fam' => $family,
      ]);
 
   }

@@ -29,7 +29,9 @@
 
 
 <div class="container"
-     {{ stimulus_controller('editor', {'project': 'Project01', 'indi': '{{ indiarg }}', 'fam': '', husband:'', wife: ''}) }}
+     {{ stimulus_controller('editor', {'project': 'Project01', 'indi2': '{{ indiarg }}', 'fam1': '', husband:'', wife: ''}) }}
+     data-editor-indi-value="{{ indiarg }}";
+     data-editor-fam-value="{{ fam.id }}";
      data-editor-renderindi-value="{{ url('editorUpdateIndiCard', {url: 'Project01'} ) }}"
      data-editor-renderfam-value="{{ url('editorUpdateFamCard', {url: 'Project01'} ) }}"
 

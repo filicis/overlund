@@ -18,6 +18,7 @@ use       Symfony\Component\Uid\Ulid;
 
 use       App\Entity\Family;
 use       App\Entity\Individual;
+use       App\Entity\PersonalNameStructure;
 use       App\Entity\Project;
 
 
@@ -118,6 +119,20 @@ class EditorService
     return null;
   }
 
+  //
+  //  function newPersonalName
+  //
+
+  public function newPersonalName(Individual $indi) :?Ulid
+  {
+    $name= new PersonalNameStructure();
+    $indi->addPersonalNameStructure($name);
+
+    $this->entityManager->persist($name);
+    $this->EntityManager->flush();
+
+    return $name->getId();
+  }  
 }
 
 

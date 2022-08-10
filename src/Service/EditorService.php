@@ -129,10 +129,10 @@ class EditorService
     $indi->addPersonalNameStructure($name);
 
     $this->entityManager->persist($name);
-    $this->EntityManager->flush();
+    $this->entityManager->flush();
 
     return $name->getId();
-  }  
+  }
 }
 
 

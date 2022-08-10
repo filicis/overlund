@@ -29,7 +29,7 @@
     {% if indi %}
 	  <div class="col-8 text-nowrap overflow-hidden">
 	    <span>[{{ indi.xref}}]</span>
-	    <span class="mlr-lock">Anders Hansen Nielsen</span>
+	    <span class="mlr-lock">{{ indi.personalNameStructures.first.personalName }}</span>
 		</div>
 		{% else %}
 		  {{ title }}

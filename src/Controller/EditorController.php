@@ -118,9 +118,12 @@ class EditorController extends AbstractController
   {
     $session= $request->getSession();
 
-
-    $individual= $project->getIndividuals()[10];
-    $family= $project->getFamilies()[10];
+    $individual= $project->getIndividuals()->first();
+    if ($individual->getPersonalNameStructures()->isEmpty())
+    {
+      $this->es->newPersonalName($individual);
+    }
+    $family= $project->getFamilies()->first();
 
     return $this->render('editor/editor.html.twig', [
 
@@ -195,7 +198,9 @@ class EditorController extends AbstractController
 
     $title= $request->getContent();
 
-    $family= $this->entityManager->find('App\Entity\Family', $data);
+    // $family= $this->entityManager->find('App\Entity\Family', $data);
+
+    $family= $project->getFamilies()[$data];
 
     return $this->render('editor/family.html.twig', [
       'title' => $title,
@@ -220,7 +225,13 @@ class EditorController extends AbstractController
     $data = json_decode($request->getContent(), true);
 
     $title= $request->getContent();
-    $individual= $this->entityManager->find('App\Entity\Individual', $data);
+    // $individual= $this->entityManager->find('App\Entity\Individual', $data);
+
+    $individual= $project->getIndividuals()[$data];
+    if ($individual->getPersonalNameStructures()->isEmpty())
+    {
+      $this->es->newPersonalName($individual);
+    }
 
     return $this->render('editor/individual.html.twig', [
           'title' => $data,

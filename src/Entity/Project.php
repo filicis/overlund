@@ -54,14 +54,14 @@ class Project
      *
      */
 
-    #[ORM\OneToMany(targetEntity: Family::class, mappedBy: "project", fetch: "EXTRA_LAZY")]
+    #[ORM\OneToMany(targetEntity: Family::class, mappedBy: "project", indexBy: 'id', fetch: "EXTRA_LAZY")]
     private $families;
 
     /**
      *
      */
 
-    #[ORM\OneToMany(targetEntity: Individual::class, mappedBy: "project", fetch: "EXTRA_LAZY")]
+    #[ORM\OneToMany(targetEntity: Individual::class, mappedBy: "project", indexBy: 'id', fetch: "EXTRA_LAZY")]
     private $individuals;
 
     /**

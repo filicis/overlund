@@ -58,8 +58,17 @@ class Individual extends RecordSuperclass
     #[ORM\Column(type: 'string', length: 1, nullable: true)]
     private $sex;
 
+    /**
+     *  ArrayCollection relations
+     *
+     */
+
     #[ORM\OneToMany(mappedBy: 'individual', targetEntity: Relation::class)]
     private $relations;
+
+    // ******************************************
+    // ******************************************
+    // ******************************************
 
     public function __construct()
     {

@@ -21,9 +21,17 @@
     {% if fam %}
     <div class="col-8 text-nowrap overflow-hidden">
       <span>[{{ fam.xref }}]</span>
-      <span class='I201'>Anders Hansen Nielsen</span>
+      <span class='I201'
+            <span {{ stimulus_target('editor', 'personalName') }}
+	          title="{{ fam.id }}"
+
+        >Anders Hansen Nielsen</span>
       +
-      <span class='I202'>Anne Margrethe Sørensdatter</span>
+      <span class='I202'
+            <span {{ stimulus_target('editor', 'personalName') }}
+	          title="{{ fam.id }}"
+
+        >Anne Margrethe Sørensdatter</span>
     </div>
     {% endif %}
     <div class="col text-end">

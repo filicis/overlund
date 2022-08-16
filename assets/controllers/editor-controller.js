@@ -142,7 +142,14 @@ export default class extends Controller {
   }
 
 
+  //
+  //
+  // updatePerosnalNameStructurre
 
+  updatePersonalNameStructure(event)
+  {
+    return;
+  }
 
 
 
@@ -171,5 +178,6 @@ export default class extends Controller {
         this.indicardTarget.classList.add("alert-primary");
       }
     }
+    event.stopPropagation();
   }
 }

@@ -54,6 +54,9 @@ class Relation
   #[ORM\JoinColumn(nullable: false)]
   private $family;
 
+  #[ORM\Column(length: 255, nullable: true)]
+  private ?string $phrase = null;
+
   // ********************************************
   // ********************************************
   // ********************************************
@@ -127,5 +130,17 @@ class Relation
     $this->family = $family;
 
     return $this;
+  }
+
+  public function getPhrase(): ?string
+  {
+      return $this->phrase;
+  }
+
+  public function setPhrase(?string $phrase): self
+  {
+      $this->phrase = $phrase;
+
+      return $this;
   }
 }

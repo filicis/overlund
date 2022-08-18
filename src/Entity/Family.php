@@ -20,8 +20,11 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Entity\RecordSuperclass;
 
   /**
-   * @ORM\Entity(repositoryClass=FamilyRepository::class)
-   **/
+   *  Repræsenterer Gedcom FAMILY_RECORD
+   *
+   *  @link https://gedcom.io/specifications/FamilySearchGEDCOMv7.html#INDIVIDUAL_RECORD
+   *
+   */
 
 #[ORM\Entity(repositoryClass: FamilyRepository::class)]
 class Family extends RecordSuperclass
@@ -37,12 +40,6 @@ class Family extends RecordSuperclass
 
   #[ORM\OneToMany(mappedBy: 'family', targetEntity: Relation::class, orphanRemoval: true)]
   private $relations;
-
-  #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-  private ?Relation $husb = null;
-
-  #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-  private ?Relation $wife = null;
 
   public function __construct()
   {
@@ -89,30 +86,6 @@ class Family extends RecordSuperclass
               $relation->setFamily(null);
           }
       }
-
-      return $this;
-  }
-
-  public function getHusb(): ?Relation
-  {
-      return $this->husb;
-  }
-
-  public function setHusb(?Relation $husb): self
-  {
-      $this->husb = $husb;
-
-      return $this;
-  }
-
-  public function getWife(): ?Relation
-  {
-      return $this->wife;
-  }
-
-  public function setWife(?Relation $wife): self
-  {
-      $this->wife = $wife;
 
       return $this;
   }

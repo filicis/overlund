@@ -16,14 +16,14 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\JsonRespone;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  *  ApiController
  *  - Grundlæggende api funktioner
  *
- */ 
+ */
 
 #[Route('/api', name: 'api_')]
 class ApiController extends AbstractController
@@ -40,11 +40,11 @@ class ApiController extends AbstractController
      *  function GetVersion()
      *
      * @return Return the Overlund version:
-     */ 
+     */
 
     #[Route('/getVersion', name: 'getVersion')]
-    public function getVersion() : Response
+    public function getVersion() : JsonResponse
     {
       return $this->json(['Version' => '0.0.1 beta',], $status= 200, $headers= [], $context= []);
-    }  
+    }
 }

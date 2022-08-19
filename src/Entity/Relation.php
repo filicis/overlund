@@ -19,9 +19,23 @@ use App\Repository\RelationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ *  TODO:
+ */
+
+enum FamilyRole: string
+{
+    case CHIL = 'C';
+    case HUSB = 'H';
+    case WIFE = 'W';
+}
+
+
+
+/**
  *  class Relation
  *
- *  Implementerer Gedcom FAMC, FAMS, HUSB, WIFE, CHIL
+ *  Association class between FAM and HUSB / WIFE /INDI
+ * Gedcom FAMC, FAMS, HUSB, WIFE, CHIL
  */
 
 #[ORM\Entity(repositoryClass: RelationRepository::class)]
@@ -34,33 +48,57 @@ class Relation
 
 
   /**
-   *
-   *
+   *  familyRole
+   *  - Defines The individual's role in the current family
    */
 
-  #[ORM\Column(type: 'string', length: 4)]
-  private $type;
+  #[ORM\Column(type: 'string', enumType: FamilyRole::class)]
+  private $role;
+
+  /**
+   *  pedi
+   *  - Implements
+   */
 
   #[ORM\Column(type: 'string', length: 16, nullable: true)]
   private $pedi;
 
+  /**
+   *
+   *
+   */
+
   #[ORM\Column(type: 'string', length: 16, nullable: true)]
   private $stat;
 
+  /**
+   *  TODO: Skal tilfølges link til NOTE_STRUCTURE
+   *
+   */
+
+  /**
+   *  individual
+   *
+   *
+   */
+
   #[ORM\ManyToOne(targetEntity: Individual::class, inversedBy: 'relations')]
   private $individual;
+
+  /**
+   *  family
+   *
+   */
 
   #[ORM\ManyToOne(targetEntity: Family::class, inversedBy: 'relations')]
   #[ORM\JoinColumn(nullable: false)]
   private $family;
 
-  #[ORM\Column(length: 255, nullable: true)]
-  private ?string $phrase = null;
 
   // ********************************************
   // ********************************************
   // ********************************************
-  
+
   public function getId(): ?int
   {
     return $this->id;

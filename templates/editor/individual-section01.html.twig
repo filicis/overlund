@@ -1,4 +1,17 @@
-{# templates/editor/individual-section02.html.twig #}
+{#
+  This file is part of the Overlund package.
+
+  (c) 2020-2022 Michael Lindhardt Rasmussen <filicis@gmail.com>
+
+  For the full copyright and license information, please view the LICENSE
+  file that was distributed with this source code.
+#}
+
+
+{#
+  templates/editor/individual-section02.html.twig
+
+#}
 
 {#
 
@@ -9,149 +22,155 @@
   {% set nam=  indi.personalNameStructures.first %}
 
 
+
 <div class="card-body">
+  <div class="row">
 
-	<div class="row">
+    {# GEDCOM Navne Struktur #}
 
+    <div id="NameStructure"
+      class="col-9"
+      {{ stimulus_action('editor', 'updatePersonalNameStructure', 'input', {'test': nam.id}) }}
+      data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}" >
 
-			<!-- Navne Struktur -->
+      {# Fornavne #}
 
-		<div id="NameStructure"
-		     class="col-9"
-		     {{ stimulus_action('editor', 'updatePersonalNameStructure', 'input') }}  >
+      <div class="row">
+        <div class="col-3">
+          <div class="form-floating">
+            <input type="text"
+            class="form-control form-control-sm"
+            id="idYYY0"
+            name= 'npfx'
+            placeholder="Tekst"
+            value="{{ nam.npfx }}" >
+            <label for="idYYY0"> {{ 'Prefix' | trans }} </label>
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="form-floating">
+            <input type="text"
+            class="form-control form-control-sm"
+            id="idXXX1"
+            name= 'givn'
+            placeholder="Tekst"
+            value="{{ nam.givn }}" >
+            <label for="idXXX1"> {{ 'First names' | trans }}</label>
+          </div>
+        </div>
+      </div>
 
+      {# Efternavn #}
 
-				<!-- Fornavne -->
+      <div class="row">
+        <div class="col-3">
+          <div class="form-floating">
+            <input type="text"
+            class="form-control form-control-sm"
+            id="idXXX2"
+            name= 'spfx'
+            placeholder="Tekst",
+            value="{{ nam.spfx }}" >
+            <label for="idXXX2"> {{ 'Prefix' | trans }}</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-floating">
+            <input type="text"
+            class="form-control form-control-sm"
+            id="idXXX3"
+            name= 'surn'
+            placeholder="Tekst"
+            value="{{ nam.surn }}" >
+            <label for="idXXX3"> {{ 'Last names' | trans }} </label>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="form-floating">
+            <input type="text"
+            class="form-control form-control-sm"
+            id="idXXX4"
+            name= 'nsfx'
+            placeholder="Tekst",
+            value="{{ nam.nsfx }}" >
+            <label for="idXXX4"> {{ 'Suffix' | trans }}</label>
+          </div>
+        </div>
+      </div>
 
-			<div class="row">
-				<div class="col-3">
-					<div class="form-floating">
-						<input type="text"
-						       class="form-control form-control-sm"
-						       id="idYYY0"
-						       placeholder="Tekst" value="{{ nam.npfx }}" >
-						<label for="idYYY0"> {{ 'Prefix' | trans }} </label>
-					</div>
-				</div>
-				<div class="col-9">
-					<div class="form-floating">
-						<input type="text"
-						       class="form-control form-control-sm"
-						       id="idXXX1"
-						       placeholder="Tekst"
-						       value="{{ nam.givn }}" >
-						<label for="idXXX1"> {{ 'First names' | trans }}</label>
-					</div>
-				</div>
-			</div>
+      <!-- Diverse navnestof, etc -->
 
-				<!-- Efternavn -->
+      <div class="row">
+        <div class="col-3">
+          <div class="form-floating">
+            <!-- input type="text" class="form-control form-control-sm" id="idXXX7" placeholder="Tekst" -->
 
-			<div class="row">
-				<div class="col-3">
-					<div class="form-floating">
-						<input type="text"
-						       class="form-control form-control-sm"
-						       id="idXXX2"
-						       placeholder="Tekst",
-						       value="{{ nam.spfx }}" >
-						<label for="idXXX2"> {{ 'Prefix' | trans }}</label>
-					</div>
-				</div>
-				<div class="col-6">
-					<div class="form-floating">
-						<input type="text"
-						       class="form-control form-control-sm"
-						       id="idXXX3"
-						       placeholder="Tekst"
-						       value="{{ nam.surn }}" >
-						<label for="idXXX3"> {{ 'Last names' | trans }} </label>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="form-floating">
-						<input type="text"
-						       class="form-control form-control-sm"
-						       id="idXXX4"
-						       placeholder="Tekst",
-						       value="{{ nam.nsfx }}" >
-						<label for="idXXX4"> {{ 'Suffix' | trans }}</label>
-					</div>
-				</div>
-			</div>
-
-				<!-- Diverse navnestof, etc -->
-
-			<div class="row">
-				<div class="col-3">
-					<div class="form-floating">
-						<!-- input type="text" class="form-control form-control-sm" id="idXXX7" placeholder="Tekst" -->
-
-						<select class="form-select form-select-sm"
-						        id="idXXXXXX7"
-						        aria-label="Default select example"
-						        data-bs-toggle="tooltip"
-						        data-bs-placement="top"
-						        title="{{ 'Indicates the sex of the individual at birth' | trans }}"
-                    {{ stimulus_action('editor', 'updateSex', 'input') }}  >
-							<!-- option >Køn</option -->
-							<option value="M" selected> {{ 'Male' | trans }} </option>
-							<option value="F"> {{ 'Female' | trans }} </option>
+            <select class="form-select form-select-sm"
+              id="idXXXXXX7"
+              aria-label="Default select example"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="{{ 'Indicates the sex of the individual at birth' | trans }}"
+              {{ stimulus_action('editor', 'updateSex', 'input') }}  >
+              <!-- option >Køn</option -->
+              <option value="M" selected> {{ 'Male' | trans }} </option>
+              <option value="F"> {{ 'Female' | trans }} </option>
               <option value="X"> {{ 'Intersex' | trans }} </option>
               <option value="U"> {{ 'Unknown' | trans }} </option>
-						</select>
-						<label class="form-label-sm" for="idXXX7"> {{ 'Sex' | trans }} </label>
-					</div>
+            </select>
+            <label class="form-label-sm" for="idXXX7"> {{ 'Sex' | trans }} </label>
+          </div>
 
-				</div>
-				<div class="col">
-					<div class="form-floating">
-						<input type="text"
-						       class="form-control form-control-sm"
-						       id="idXXX6"
-						       placeholder="Tekst",
-						       value="{{ nam.nick }}" >
-						<label for="idXXX6"> {{ 'Nicknames' | trans }} </label>
-					</div>
-				</div>
-				<div class="col-3">
-					<div class="form-floating">
-						<input type="text" class="form-control form-control-sm" id="idXXX5" list="idXXXXX5" placeholder="Tekst" >
-						<label for="idXXX5"> {{ 'Type' | trans }} </label>
-						<datalist id="idXXXXX5">
-						  <option value="AKA">Alias</option>
-						  <option value="BIRTH"></option>
-						  <option value="IMMIGRANT"></option>
-						  <option value="MAIDEN"></option>
-						  <option value="MARRIED"></option>
-						  <option value="PROFESSIONAL"></option>
+        </div>
+        <div class="col">
+          <div class="form-floating">
+            <input type="text"
+            class="form-control form-control-sm"
+            id="idXXX6"
+            name= 'nick'
+            placeholder="Tekst",
+            value="{{ nam.nick }}" >
+            <label for="idXXX6"> {{ 'Nicknames' | trans }} </label>
+          </div>
+        </div>
+        <!-- div class="col-3">
+        <div class="form-floating">
+        <input type="text" class="form-control form-control-sm" id="idXXX5" list="idXXXXX5" placeholder="Tekst" >
+        <label for="idXXX5"> {{ 'Type' | trans }} </label>
+        <datalist id="idXXXXX5">
+        <option value="AKA">Alias</option>
+        <option value="BIRTH"></option>
+        <option value="IMMIGRANT"></option>
+        <option value="MAIDEN"></option>
+        <option value="MARRIED"></option>
+        <option value="PROFESSIONAL"></option>
 
-						</datalist>
-					</div>
-				</div>
+        </datalist>
+        </div>
+        </div -->
 
-			</div>
-		</div>
+      </div>
+    </div>
 
     {#
-		    Billede af dette individ
+    Billede af dette individ
 
     #}
 
-		<div class="col d-flex align-items-center">
-			<!-- img src="\ludvig.jpg" class="img-fluid" alt="..." -->
+    <div class="col d-flex align-items-center">
+      <!-- img src="\ludvig.jpg" class="img-fluid" alt="..." -->
 
       <svg xmlns="http://www.w3.org/2000/svg"
-           width="100%"
-           hheight="16"
-           fill="currentColor"
-           class="bi bi-person-fill"
-           viewBox="0 0 16 16">
-          <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-      </svg>
+        width="100%"
+        hheight="16"
+        fill="currentColor"
+        class="bi bi-person-fill"
+        viewBox="0 0 16 16">
+        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg>
+
+      </div>
+
 
     </div>
-
-
-	</div>
-</div>
+  </div>

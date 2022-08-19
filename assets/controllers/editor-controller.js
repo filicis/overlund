@@ -142,12 +142,32 @@ export default class extends Controller {
   }
 
 
+
+  // function updatePersonalNameStructurre
   //
   //
-  // updatePerosnalNameStructurre
 
   updatePersonalNameStructure(event)
   {
+    const myInit= {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      //body: JSON.stringify(value),
+      mode: 'cors',
+      credentials: 'include',
+    };
+
+
+    console.log('Ny værdi: ',  event.target.value);
+    console.log('Target: ',  event.params['test']);
+    console.log('Target: ',  event.params['url']);
+
+    fetch(event.params['url'], myInit)
+    .then(response => response.text())
+    .then(data => this.famViewTarget.innerHTML= data)
+    .catch();
+
+
     return;
   }
 

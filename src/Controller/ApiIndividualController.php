@@ -164,5 +164,23 @@ class ApiIndividualController extends AbstractController
 
 
 
+  /**
+   * function updatePersonalName()
+   *
+   */
+
+  #[Route('/updatePersonalName', name: 'updatePersonalName', methods: ['PUT'])]
+  public function updatePersonalName(Request $request, Project $project, ManagerRegistry $doctrine) : JsonResponse
+  {
+    $parameters = json_decode($request->getContent(), true);
+
+    // $indi= $project[];
+    // $name= $indi[];
+
+    return $this->json('Donald / Duck /');
+  }
+
+
+
 
 }

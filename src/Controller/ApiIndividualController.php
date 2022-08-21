@@ -25,7 +25,7 @@ use       Doctrine\Persistence\ManagerRegistry;
 
 use       App\Entity\Family;
 use       App\Entity\Individual;
-use       App\Entity\PersonalNameStructure;;
+use       App\Entity\PersonalNameStructure;
 use       App\Entity\Project;
 
 use       App\Service\EditorService;
@@ -165,17 +165,38 @@ class ApiIndividualController extends AbstractController
 
 
   /**
-   * function updatePersonalName()
+   *  function updatePersonalName()
+   *
+   *  Method Parameters
+   *  indId:
+   *  nameId:
    *
    */
 
   #[Route('/updatePersonalName', name: 'updatePersonalName', methods: ['PUT'])]
   public function updatePersonalName(Request $request, Project $project, ManagerRegistry $doctrine) : JsonResponse
   {
-    $parameters = json_decode($request->getContent(), true);
+    $params = json_decode($request->getContent(), true);
 
-    // $indi= $project[];
-    // $name= $indi[];
+
+    $indi= $project->getIndividuals()[$params['indiId']];
+    $name= $indi->getPersonalNameStructures()[$params['nameId']];
+
+    if (false)
+    {
+    if (array_key_exists('surn', $params))
+    {
+      $name->setSurn($params['surn']);
+    }
+
+    $this->entityManager->persist($name);
+    $this->entityManager->flush();
+  }
+    //if ($params)
+    //return $this->json($project->individuals[]);
+
+
+    return $this->json($indi->getId());
 
     return $this->json('Donald / Duck /');
   }

@@ -30,8 +30,8 @@
 
     <div id="NameStructure"
       class="col-9"
-      {{ stimulus_action('editor', 'updatePersonalNameStructure', 'input', {'test': nam.id}) }}
-      data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}" >
+      {{ stimulus_action('editor', 'updatePersonalNameStructure', 'input', {'name_id': nam.id, 'name_surn': nam.surn}) }}
+      data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}">
 
       {# Fornavne #}
 

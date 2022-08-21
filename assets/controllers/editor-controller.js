@@ -11,7 +11,7 @@ export default class extends Controller {
     renderindi: String,
     renderfam: String,
   }
-  static targets= ['indiView', 'famView', 'indicard']
+  static targets= ['indiView', 'famView', 'indicard', 'personalName']
 
 
 
@@ -143,32 +143,43 @@ export default class extends Controller {
 
 
 
-  // function updatePersonalNameStructurre
+  //  function updatePersonalNameStructurre
   //
-  //
+  //  event.params
+  //  url:
+  //  indiId:
+  //  nameId:
 
   updatePersonalNameStructure(event)
   {
+    const property= event.target.attributes.name.value;
+    const arg= {property: event.target.value,
+                  nameId: event.params['nameId'],
+                  indiId: this.indiValue
+    };
     const myInit= {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      //body: JSON.stringify(value),
+      body: JSON.stringify(arg),
       mode: 'cors',
       credentials: 'include',
     };
 
 
+    console.log('Name: ',  event.target.attributes.name.value);
+
     console.log('Ny værdi: ',  event.target.value);
-    console.log('Target: ',  event.params['test']);
+    console.log('nameId: ',  event.params['nameId']);
     console.log('Target: ',  event.params['url']);
 
+    console.log(event.params);
+
     fetch(event.params['url'], myInit)
-    .then(response => response.text())
-    .then(data => this.famViewTarget.innerHTML= data)
-    .catch();
+    .then((response) => response.text())
+    .then((data) => this.personalNameTarget.innerHTML= data)
+    .catch((error) => console.error('Error: ', error));
 
 
-    return;
   }
 
 

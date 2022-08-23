@@ -91,8 +91,9 @@ class Individual extends RecordSuperclass
     }
 
     /**
-     * @return Collection|PersonalNameStructure[]
+     *
      */
+
     public function getPersonalNameStructures(): Collection
     {
         return $this->personalNameStructures;

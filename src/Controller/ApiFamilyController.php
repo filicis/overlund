@@ -25,6 +25,7 @@ use       Doctrine\Persistence\ManagerRegistry;
 use       App\Entity\Family;
 use       App\Entity\Individual;
 use       App\Entity\Project;
+use       App\Entity\PersonalNameStructure;
 
 use       App\Service\EditorService;
 

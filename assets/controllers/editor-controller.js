@@ -153,10 +153,12 @@ export default class extends Controller {
   updatePersonalNameStructure(event)
   {
     const property= event.target.attributes.name.value;
-    const arg= {property: event.target.value,
-                  nameId: event.params['nameId'],
-                  indiId: this.indiValue
-    };
+    var arg= {};
+    arg[property]= event.target.value;
+    arg['nameId']= event.params['nameId'];
+    arg['indiId']= this.indiValue;
+
+
     const myInit= {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -171,6 +173,9 @@ export default class extends Controller {
     console.log('Ny værdi: ',  event.target.value);
     console.log('nameId: ',  event.params['nameId']);
     console.log('Target: ',  event.params['url']);
+
+    console.log('Property: ', property);
+    console.log('Value: ', event.target.value);
 
     console.log(event.params);
 

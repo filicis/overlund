@@ -41,17 +41,17 @@ use       App\Service\EditorService;
 class ApiIndividualController extends AbstractController
 {
   /**
-   *
-   */
+  *
+  */
 
   private $editorService;
   private $entityManager;
 
 
   /**
-   *
-   *
-   */
+  *
+  *
+  */
 
   function __construct(ManagerRegistry $doctrine, EditorService $es)
   {
@@ -62,9 +62,9 @@ class ApiIndividualController extends AbstractController
 
 
   /**
-   *
-   *
-   */
+  *
+  *
+  */
 
   #[Route('/webapi', name: 'webapi')]
   public function index(): Response
@@ -90,9 +90,9 @@ class ApiIndividualController extends AbstractController
 
 
   /**
-   * function delete()
-   *
-   */
+  * function delete()
+  *
+  */
 
   #[Route('/delete', name: 'delete', methods: ['POST'])]
   public function delete()
@@ -131,9 +131,9 @@ class ApiIndividualController extends AbstractController
 
 
   /**
-   * function setRestriction()
-   *
-   */
+  * function setRestriction()
+  *
+  */
 
   #[Route('/setRestriction', name: 'setRestriction', methods: ['POST'])]
   public function setRestriction()
@@ -144,9 +144,9 @@ class ApiIndividualController extends AbstractController
 
 
   /**
-   * function setSex()
-   *
-   */
+  * function setSex()
+  *
+  */
 
   #[Route('/setSex', name: 'setSex', methods: ['POST'])]
   public function setSex(Request $request, Project $project, ManagerRegistry $doctrine)
@@ -165,13 +165,13 @@ class ApiIndividualController extends AbstractController
 
 
   /**
-   *  function updatePersonalName()
-   *
-   *  Method Parameters
-   *  indId:
-   *  nameId:
-   *
-   */
+  *  function updatePersonalName()
+  *
+  *  Method Parameters
+  *  indId:
+  *  nameId:
+  *
+  */
 
   #[Route('/updatePersonalName', name: 'updatePersonalName', methods: ['PUT'])]
   public function updatePersonalName(Request $request, Project $project, ManagerRegistry $doctrine) : JsonResponse
@@ -180,23 +180,46 @@ class ApiIndividualController extends AbstractController
 
 
     $indi= $project->getIndividuals()[$params['indiId']];
-    $name= $indi->getPersonalNameStructures()[$params['nameId']];
+    $name= $indi->getPersonalNameStructures()->first();
 
-    if (false)
+    if ($indi)
+    $temp= $indi->getPersonalNameStructures();
+
+    if ($name)
     {
-    if (array_key_exists('surn', $params))
-    {
-      $name->setSurn($params['surn']);
+      if (array_key_exists('npfx', $params))
+      {
+        $name->setNpfx($params['npfx']);
+      }
+      if (array_key_exists('givn', $params))
+      {
+        $name->setGivn($params['givn']);
+      }
+      if (array_key_exists('nick', $params))
+      {
+        $name->setNick($params['nick']);
+      }
+      if (array_key_exists('spfx', $params))
+      {
+        $name->setSpfx($params['spfx']);
+      }
+      if (array_key_exists('surn', $params))
+      {
+        $name->setSurn($params['surn']);
+      }
+      if (array_key_exists('nsfx', $params))
+      {
+        $name->setNsfx($params['nsfx']);
+      }
+
+      $this->entityManager->persist($name);
+      $this->entityManager->flush();
     }
-
-    $this->entityManager->persist($name);
-    $this->entityManager->flush();
-  }
     //if ($params)
     //return $this->json($project->individuals[]);
 
 
-    return $this->json($indi->getId());
+    return $this->json($params);
 
     return $this->json('Donald / Duck /');
   }

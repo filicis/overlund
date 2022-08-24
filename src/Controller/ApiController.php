@@ -28,7 +28,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/api', name: 'api_')]
 class ApiController extends AbstractController
 {
-    #[Route('/webapi', name: 'app_webapi')]
+    #[Route('/webapi', name: 'webapi')]
     public function index(): Response
     {
         return $this->render('webapi/index.html.twig', [
@@ -45,6 +45,6 @@ class ApiController extends AbstractController
     #[Route('/getVersion', name: 'getVersion')]
     public function getVersion() : JsonResponse
     {
-      return $this->json(['Version' => '0.0.1 beta',], $status= 200, $headers= [], $context= []);
+      return $this->json(['stat' => 'Ok', 'Result' => ['Version' => '0.0.1 beta',]]);
     }
 }

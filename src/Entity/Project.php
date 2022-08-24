@@ -27,7 +27,6 @@ use       App\Entity\GedcomStructure;
    *  -
    *
    *
-   * @ORM\Entity(repositoryClass=ProjectRepository::class)
    **/
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
@@ -37,7 +36,7 @@ class Project
 
 
     /**
-     *
+     *  title
      */
 
     #[ORM\Column(type: "string", length: 80)]
@@ -93,6 +92,23 @@ class Project
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $GedcomFilename;
+
+    /**
+     *  language
+     *  - Default language for this project
+     */
+
+    #[ORM\Column(length: 5, nullable: true)]
+    private ?string $language = null;
+
+    /**
+     *  placeForm
+     *  - Default PLAC FORM
+     *
+     */
+
+    #[ORM\Column(length: 80, nullable: true)]
+    private ?string $placForm = null;
 
     public function __construct()
     {
@@ -335,6 +351,30 @@ class Project
     public function setGedcomFilename(?string $GedcomFilename): self
     {
         $this->GedcomFilename = $GedcomFilename;
+
+        return $this;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(?string $language): self
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    public function getPlacForm(): ?string
+    {
+        return $this->placForm;
+    }
+
+    public function setPlacForm(?string $placForm): self
+    {
+        $this->placForm = $placForm;
 
         return $this;
     }

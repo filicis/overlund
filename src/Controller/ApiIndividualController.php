@@ -212,16 +212,17 @@ class ApiIndividualController extends AbstractController
         $name->setNsfx($params['nsfx']);
       }
 
+        // Genopbygger 'PersonalName'
+
+      $this->editorService->rebuildPersonalName($name);
+
+        // Opdaterer databasen
+
       $this->entityManager->persist($name);
       $this->entityManager->flush();
     }
-    //if ($params)
-    //return $this->json($project->individuals[]);
 
-
-    return $this->json($params);
-
-    return $this->json('Donald / Duck /');
+    return $this->json($name->getPersonalName());
   }
 
 

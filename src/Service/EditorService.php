@@ -133,6 +133,19 @@ class EditorService
 
     return $name->getId();
   }
+
+
+  /**
+   *  function rebuildPersonalName()
+   *  - rebuild 'PersonalName' from 'PersonalNamePieces' taking 'lang' into account
+   *
+   *
+   */
+
+   public function rebuildPersonalName(PersonalNameStructure $name)
+   {
+     $name->setPersonalName($name->getGivn() . ' ' . $name->getSurn());
+   }
 }
 
 

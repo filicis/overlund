@@ -20,13 +20,6 @@ use       Doctrine\ORM\Mapping as ORM;
   /**
    *  trait PersonalNamePieces
    *  - Gedcom 7.0
-   *
-   *  Anvendes i:
-   *  - HeaderRecord
-   *  - RepositoryRecord
-   *  - SubmitterRecord
-   *  - Event*
-   *
    **/
 
 
@@ -34,42 +27,36 @@ trait PersonalNamePieces
 {
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
      **/
 
     #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $npfx;
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
      **/
 
     #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $givn;
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
      **/
 
     #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $nick;
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
      **/
 
     #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $spfx;
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
      **/
 
     #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $surn;
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
      **/
 
     #[ORM\Column(type: "string", length: 80, nullable: true)]

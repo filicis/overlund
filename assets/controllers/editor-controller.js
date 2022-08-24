@@ -167,24 +167,16 @@ export default class extends Controller {
       credentials: 'include',
     };
 
-
-    console.log('Name: ',  event.target.attributes.name.value);
-
-    console.log('Ny værdi: ',  event.target.value);
-    console.log('nameId: ',  event.params['nameId']);
-    console.log('Target: ',  event.params['url']);
-
-    console.log('Property: ', property);
-    console.log('Value: ', event.target.value);
-
-    console.log(event.params);
-
     fetch(event.params['url'], myInit)
-    .then((response) => response.text())
-    .then((data) => this.personalNameTarget.innerHTML= data)
+    .then((response) => {
+        if (! response.ok)
+          throw new Error('Netværksfejl: ', response.status);
+        return response.text();
+    })
+    .then((data) => {
+        console.log('Data: ', data);
+    })
     .catch((error) => console.error('Error: ', error));
-
-
   }
 
 
@@ -202,13 +194,16 @@ export default class extends Controller {
       {
         case 'M':
         this.indicardTarget.classList.add("alert-info");
+        this.indicardTarget.style.backgroundColor= "#DBFFFE";
         break;
         case 'F':
         this.indicardTarget.classList.add("alert-danger");
+        this.indicardTarget.style.backgroundColor= "#FFF2F2";
         break;
         case 'U':
         case 'N':
         this.indicardTarget.classList.add("alert-secondary");
+        this.indicardTarget.style.backgroundColor= "#F0FFEF";
         break;
         default:
         this.indicardTarget.classList.add("alert-primary");

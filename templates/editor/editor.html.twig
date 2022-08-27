@@ -28,6 +28,8 @@
   {% endif %}
 
 
+
+
 <div class="container"
      {{ stimulus_controller('editor', {'project': 'Project01', 'indi2': '{{ indiarg }}', 'fam1': '', husband:'', wife: ''}) }}
      data-editor-indi-value="{{ indiarg }}";
@@ -49,7 +51,7 @@
 
   {# Row 1 #}
 
-  <div class="row row-cols-1 row-cols-xl-2">
+  <div class="row row-cols-1 row-cols-xl-2" style="background-color: #FFFFE5">
     <div id= "villy" class="col"  {{ stimulus_target('editor', 'indiView') }}>
       {{ include('editor/individual.html.twig') }}
     </div>

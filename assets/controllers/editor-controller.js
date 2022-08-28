@@ -189,24 +189,20 @@ export default class extends Controller {
   {
     if (this.hasIndicardTarget)
     {
-      this.indicardTarget.classList.remove('alert-info', 'alert-primary', 'alert-secondary', 'alert-danger', 'alert-warning');
       switch (event.target.value)
       {
         case 'M':
-        this.indicardTarget.classList.add("alert-info");
-        this.indicardTarget.style.backgroundColor= "#DBFFFE";
-        break;
+          this.indicardTarget.style.backgroundColor= "#DBFFFE";
+          break;
         case 'F':
-        this.indicardTarget.classList.add("alert-danger");
-        this.indicardTarget.style.backgroundColor= "#FFF2F2";
-        break;
+          this.indicardTarget.style.backgroundColor= "#FFF2F2";
+          break;
         case 'U':
         case 'N':
-        this.indicardTarget.classList.add("alert-secondary");
-        this.indicardTarget.style.backgroundColor= "#F0FFEF";
-        break;
+          this.indicardTarget.style.backgroundColor= "#F0FFEF";
+          break;
         default:
-        this.indicardTarget.classList.add("alert-primary");
+          this.indicardTarget.style.backgroundColor= "#F0FFEF";
       }
     }
     event.stopPropagation();

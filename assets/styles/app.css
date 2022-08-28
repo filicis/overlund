@@ -3,11 +3,3 @@
 
 
 
-    /*
-        Restrictions - when checked
-    */
-
-  input[type="checkbox"]:checked + .btn
-  {
-    background-color: var(--bs-warning) ;
-  }

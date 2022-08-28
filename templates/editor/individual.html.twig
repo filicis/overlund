@@ -32,7 +32,11 @@
 		{% endif %}
 		<div class="col text-end"
 		     aria-label="Restriction">
-		  <span>
+		  <span class=""
+            data-bs-toggle="tooltip"
+            title="{{ 'Write protection' | trans }}"
+            aria-label="{{ 'Write protection' | trans }}"
+		    >
 		    <input type="checkbox"
 		           class="mlr-lock btn-check"
 		           id="btn-check11"
@@ -40,14 +44,18 @@
 		           value="LOCKED">
 			  <label class="mlr btn btn-outline-dark btn-light btn-sm" for="btn-check11">&#x1F513;</label>
 		  </span>
-      <span>
+      <span class=""
+            data-bs-toggle="tooltip"
+            title= "{{ 'Confidential' | trans }}">
         <input type="checkbox"
                class="btn-check"
                id="btn-check12"
                autocomplete="off">
 			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check12">🤐</label>
 		  </span>
-      <span>
+      <span class=""
+            data-bs-toggle="tooltip"
+            title="{{ 'Private' | trans }}">
         <input type="checkbox"
                class="btn-check"
                id="btn-check13"

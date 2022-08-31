@@ -36,7 +36,11 @@
         >Anne Margrethe Sørensdatter</span>
     </div>
     {% endif %}
-    <div class="col text-end">
+
+
+      {# Restrictions #}
+
+    <fieldset class="col text-end">
 
       <span class=""
             data-bs-toggle="tooltip"
@@ -44,31 +48,42 @@
             aria-label="{{ 'Write protection' | trans }}">
         <input type="checkbox"
                class="btn-check"
+               name= "locked"
                id="btn-check1"
                autocomplete="off">
-        <label class="mlr btn btn-outline-dark btn-light btn-sm" for="btn-check1">
+        <label class="btn btn-outline-dark btn-light btn-sm" 
+               for="btn-check1">
           {{ constant('App\\Controller\\EditorController::ICON_LOCKED') }}
         </label>
       </span>
       <span class=""
             data-bs-toggle="tooltip"
             title= "{{ 'Confidential' | trans }}">
-        <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off">
-        <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check2">
+        <input type="checkbox" 
+               class="btn-check"
+               name= "Confidential"
+               id="btn-check2" 
+               autocomplete="off">
+        <label class="btn btn-outline-dark btn-light btn-sm" 
+               for="btn-check2">
           {{ constant('App\\Controller\\EditorController::ICON_CONFIDENTIAL') }}
         </label>
       </span>
       <span class=""
             data-bs-toggle="tooltip"
-            title="{{ 'Private' | trans }}">
-        <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off">
-        <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check3">
+            title="{{ 'Privacy' | trans }}">
+        <input type="checkbox" 
+               class="btn-check"
+               name= "Privacy"
+               id="btn-check3" 
+               autocomplete="off">
+        <label class="btn btn-outline-dark btn-light btn-sm" 
+               for="btn-check3">
           {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
         </label>
       </span>
 
-
-    </div>
+    </fieldset>
 
   </div>
 

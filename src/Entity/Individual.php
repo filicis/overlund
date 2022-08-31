@@ -23,7 +23,7 @@ use App\Repository\IndividualRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 use App\Entity\RecordSuperclass;
-
+use App\Entity\Traits\Restrictions;
 
   /**
    *
@@ -33,6 +33,8 @@ use App\Entity\RecordSuperclass;
 //# [ ORM\HasLifecycleCallbacks]
 class Individual extends RecordSuperclass
 {
+  use Restrictions;
+
     protected const XREF_PREFIX = 'I';
 
 

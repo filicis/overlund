@@ -18,6 +18,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 use App\Entity\RecordSuperclass;
+use App\Entity\Traits\Restrictions;
 
   /**
    *  Implements Gedcom FAMILY_RECORD
@@ -29,6 +30,8 @@ use App\Entity\RecordSuperclass;
 #[ORM\Entity(repositoryClass: FamilyRepository::class)]
 class Family extends RecordSuperclass
 {
+  use Restrictions;
+  
   protected const XREF_PREFIX = 'F';
 
   /**

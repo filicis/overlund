@@ -103,24 +103,48 @@
 
 
 <div class="card-body d-flex justify-content-between">
-		<button type="button" class="btn btn-outline-dark btn-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{% trans %} Events and Attributes {% endtrans %}">
-			{{ constant('App\\Controller\\EditorController::ICON_EVENTS') }}
-		</button>
-		<button role="button" class="btn btn-outline-dark btn-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Notes">
+	<button type="button" 
+          class="btn btn-outline-dark btn-light shadow" 
+          data-bs-toggle="tooltip" 
+          data-bs-placement="bottom" 
+          title="{% trans %} Events and Attributes {% endtrans %}">
+    {{ constant('App\\Controller\\EditorController::ICON_EVENTS') }}
+	</button>
+	<button role="button" 
+          class="btn btn-outline-dark btn-light shadow" 
+          data-bs-toggle="tooltip" 
+          data-bs-placement="bottom" 
+          title="{{ 'Notes' | trans }}">
       {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
-    </button>
-		<button type="button" class="btn btn-outline-dark btn-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Source Citations">
+  </button>
+	<button type="button" 
+          class="btn btn-outline-dark btn-light shadow" 
+          data-bs-toggle="tooltip" 
+          data-bs-placement="bottom" 
+          title="{{ 'Source Citations' | trans }}">
 			{{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
-		</button>
-		<button type="button" class="btn btn-outline-dark btn-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Media">
+  </button>
+	<button type="button" 
+          class="btn btn-outline-dark btn-light shadow" 
+          data-bs-toggle="tooltip" 
+          data-bs-placement="bottom" 
+          title="{{ 'Media' | trans }}">
 			{{ constant('App\\Controller\\EditorController::ICON_MEDIA') }}
-		</button>
-		<button type="button" class="btn btn-outline-dark btn-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Last Change / Restrictions">
-			{{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
-		</button>
-		<button type="button" class="btn btn-outline-dark btn-light" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Researchers">
-			{{ constant('App\\Controller\\EditorController::ICON_RESEARCHERS') }}
-		</button>
+	</button>
+	<button type="button" 
+          class="btn btn-outline-dark btn-light shadow" 
+          data-bs-toggle="tooltip" 
+          data-bs-placement="bottom" 
+          title="Last Change / Restrictions">
+		{{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
+	</button>
+	<button type="button" 
+          class="btn btn-outline-dark btn-light shadow" 
+          data-bs-toggle="tooltip" 
+          data-bs-placement="bottom" 
+          title="{{ 'Researchers' | trans }}">
+	  {{ constant('App\\Controller\\EditorController::ICON_RESEARCHERS') }}
+	</button>
 </div>
 
 

@@ -31,11 +31,11 @@
 
 
 <div class="container"
-     {{ stimulus_controller('editor', {'project': 'Project01', 'indi2': '{{ indiarg }}', 'fam1': '', husband:'', wife: ''}) }}
-     data-editor-indi-value="{{ indiarg }}";
-     data-editor-fam-value="{{ fam.id }}";
-     data-editor-renderindi-value="{{ url('editorUpdateIndiCard', {url: 'Project01'} ) }}"
-     data-editor-renderfam-value="{{ url('editorUpdateFamCard', {url: 'Project01'} ) }}"
+  {{ stimulus_controller('editor', {'project': 'Project01', 'indi2': '{{ indiarg }}', 'fam1': '', husband:'', wife: ''}) }}
+  data-editor-indi-value="{{ indiarg }}";
+  data-editor-fam-value="{{ fam.id }}";
+  data-editor-renderindi-value="{{ url('editorUpdateIndiCard', {url: 'Project01'} ) }}"
+  data-editor-renderfam-value="{{ url('editorUpdateFamCard', {url: 'Project01'} ) }}"
 
   >
 
@@ -84,13 +84,26 @@
 
   </div>
 
+
 </div>
 
 
-{#
-    Toast
+<footer class="footer fixed-bottom mt-auto py-3 bg-light">
+  <div class="container-fluid">
 
-    - endnu ikke impleteret
+
+      <span class="text-muted">
+        28.300 individuals in 9284 families
+      </span>
+  </div>
+</footer>
+
+
+
+{#
+Toast
+
+- endnu ikke impleteret
 #}
 
 
@@ -113,25 +126,25 @@
 
 
 {% block jjjavascripts %}
-  {{ parent() }}
+{{ parent() }}
 
 
-  <script>
+<script>
 
-    async function addFamily()
-    {
-      const myUrl= '{{ url('editorNewFamily', {url: 'Project01'} ) }}';
-      const myInit= {
-        mode: 'cors',
-        credentials: 'include',
-      };
+  async function addFamily()
+  {
+    const myUrl= '{{ url('editorNewFamily', {url: 'Project01'} ) }}';
+    const myInit= {
+      mode: 'cors',
+      credentials: 'include',
+    };
 
 
-      document.getElementById('idXXX1').value= myUrl;
-      await fetch(myUrl, myInit);
+    document.getElementById('idXXX1').value= myUrl;
+    await fetch(myUrl, myInit);
 
-    }
+  }
 
-  </script>
+</script>
 
 {% endblock jjjavascripts%}

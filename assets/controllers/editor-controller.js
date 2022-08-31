@@ -38,6 +38,14 @@ export default class extends Controller {
   }
 
 
+  //  indiRestrictions()
+
+  indiRestrictions(event)
+  {
+
+  }
+
+
   // function famValueChanged()
   // - opdaterer
   //

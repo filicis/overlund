@@ -30,15 +30,19 @@
 		{% else %}
 		  {{ title }}
 		{% endif %}
-		<div class="col text-end"
+
+      {# RESN knap apparat #}
+
+		<fieldset class="col text-end"
 		     aria-label="Restriction">
 		  <span class=""
             data-bs-toggle="tooltip"
             title="{{ 'Write protection' | trans }}"
             aria-label="{{ 'Write protection' | trans }}"
 		    >
-		    <input type="checkbox"
-		           class="mlr-lock btn-check"
+		    <input type= "checkbox"
+		           class= "btn-check"
+               name= "locked"
 		           id="btn-check11"
 		           autocomplete="off"
 		           value="LOCKED">
@@ -49,19 +53,21 @@
             title= "{{ 'Confidential' | trans }}">
         <input type="checkbox"
                class="btn-check"
+               name= "confidential"
                id="btn-check12"
                autocomplete="off">
 			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check12">🤐</label>
 		  </span>
       <span class=""
             data-bs-toggle="tooltip"
-            title="{{ 'Private' | trans }}">
+            title="{{ 'Privacy' | trans }}">
         <input type="checkbox"
                class="btn-check"
+               name= "privacy"
                id="btn-check13"
                autocomplete="off">
 			  <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check13">⛔</label>
-    </div>
+    </fieldset>
 	</div>
 
 

@@ -34,7 +34,8 @@
       {# RESN knap apparat #}
 
 		<fieldset class="col text-end"
-		     aria-label="Restriction">
+		          data-action="change->editor#indiRestrictions"
+		          aria-label="Restriction">
 		  <span class=""
             data-bs-toggle="tooltip"
             title="{{ 'Write protection' | trans }}"
@@ -44,8 +45,7 @@
 		           class= "btn-check"
                name= "locked"
 		           id="btn-check11"
-		           autocomplete="off"
-		           value="LOCKED">
+		           autocomplete="off">
 			  <label class="mlr btn btn-outline-dark btn-light btn-sm" for="btn-check11">&#x1F513;</label>
 		  </span>
       <span class=""

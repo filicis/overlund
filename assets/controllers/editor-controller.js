@@ -38,10 +38,46 @@ export default class extends Controller {
   }
 
 
+
+  //  famRestrictions()
+
+  famRestrictions(event)
+  {
+    console.log('Name: ', event.target.name);
+    console.log('Checked: ', event.target.checked);
+    switch(event.target.name)
+    {
+      case 'locked':
+        break;
+
+      case 'confidential':
+        break;
+
+      case 'privacy':
+        break;
+    }
+
+  }
+
+
+
   //  indiRestrictions()
 
   indiRestrictions(event)
   {
+    console.log('Name: ', event.target.name);
+    console.log('Checked: ', event.target.checked);
+    switch(event.target.name)
+    {
+      case 'locked':
+        break;
+
+      case 'confidential':
+        break;
+
+      case 'privacy':
+        break;
+    }
 
   }
 

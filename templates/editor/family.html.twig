@@ -40,7 +40,9 @@
 
       {# Restrictions #}
 
-    <fieldset class="col text-end">
+    <fieldset class="col text-end"
+              data-action="change->editor#famRestrictions"
+>
 
       <span class=""
             data-bs-toggle="tooltip"
@@ -51,7 +53,7 @@
                name= "locked"
                id="btn-check1"
                autocomplete="off">
-        <label class="btn btn-outline-dark btn-light btn-sm" 
+        <label class="btn btn-outline-dark btn-light btn-sm"
                for="btn-check1">
           {{ constant('App\\Controller\\EditorController::ICON_LOCKED') }}
         </label>
@@ -59,12 +61,12 @@
       <span class=""
             data-bs-toggle="tooltip"
             title= "{{ 'Confidential' | trans }}">
-        <input type="checkbox" 
+        <input type="checkbox"
                class="btn-check"
                name= "Confidential"
-               id="btn-check2" 
+               id="btn-check2"
                autocomplete="off">
-        <label class="btn btn-outline-dark btn-light btn-sm" 
+        <label class="btn btn-outline-dark btn-light btn-sm"
                for="btn-check2">
           {{ constant('App\\Controller\\EditorController::ICON_CONFIDENTIAL') }}
         </label>
@@ -72,12 +74,12 @@
       <span class=""
             data-bs-toggle="tooltip"
             title="{{ 'Privacy' | trans }}">
-        <input type="checkbox" 
+        <input type="checkbox"
                class="btn-check"
                name= "Privacy"
-               id="btn-check3" 
+               id="btn-check3"
                autocomplete="off">
-        <label class="btn btn-outline-dark btn-light btn-sm" 
+        <label class="btn btn-outline-dark btn-light btn-sm"
                for="btn-check3">
           {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
         </label>

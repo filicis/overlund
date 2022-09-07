@@ -6,19 +6,35 @@
 
 #}
 
+{% set husb= fam.getHusb() %}
+
+{% if husb %}
+  {% set phusb= "\ludvig.jpg" %}
+  {% set nhusb= "Anders Hansen Nielsen" %}
+  {% set synlig= "visible" %}
+{% else %}
+  {% set phusb= "\ludvig.jpg" %}
+  {% set nhusb= "Anders Hansen Nielsen" %}
+  {% set synlig= "visible" %}
+{% endif %}
+
 
 <div class="row"
      data-action="editor#selectHusband">
 
-  <!-- Billede -->
-  <div class="col-1 d-flex align-items-center p-1">
-    <!--button type= "button"
-      class="btn btn-sm btn-outline-dark btn-light" -->
-      <img src="\ludvig.jpg" class="img-fluid" alt="...">
-    <!--/button-->
+
+  {# Billede
+     Viser personens billede, eller
+     Usynlig hvis personen ikke er defineret
+  #}
+
+  <div class="col-1 d-flex align-items-center p-1 {{ synlig }}">
+      <img src="\{{ phusb }}" class="img-fluid" alt="...">
   </div>
 
-  <!-- Navn -->
+
+  {# Navn
+  #}
 
   <div class="col">
     <div class="form-floating">
@@ -26,12 +42,13 @@
         class="form-control form-control-sm shadow-lg"
         id="idHusband"
         placeholder="Tekst"
-        value="Anders Hansen Nielsen"
+        value="{{ nhusb }}"
         readonly>
       <label for="idHusband">{{ 'Husband' | trans }}</label>
 
     </div>
   </div>
+
 
   {# Reserveret til knap-apparat #}
 

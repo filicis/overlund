@@ -2,11 +2,15 @@
 <html lang={{ app.request.getLocale() }}>
 
 	{# Document Header #}
+
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="application-name" content="Codename Overlund">
     <meta name="description" content="Overlund Gedcom Editor">
+    <meta name="generator" content="Symfony 6.1">
+    <meta name="keywords" content="Gedcom Editor">
+
   	<meta name="author" content="Michael Lindhardt Rasmussen">
 
     <title>{% block title %}{{ product }}{% endblock %}</title>
@@ -16,12 +20,17 @@
 
 
     {% block stylesheets %}
+
       {# Vi anvender Bootstrap - aktuelt version 5.2.1 #}
 
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+      {# Vi anvender Bootstrap Icons - aktuelt version 1.9.1 #}
+
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+      {# Encore #}
 
       {{ encore_entry_link_tags('app') }}
 
@@ -32,7 +41,7 @@
 
     {% block javascripts %}
 
-      {{ encore_entry_script_tags('app') }}
+      {# { encore_entry_script_tags('app') } #}
 
     {% endblock %}
   </head>
@@ -54,6 +63,8 @@
 
 
     {% block jjavascripts %}
+
+      {{ encore_entry_script_tags('app') }}
 
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"

@@ -14,6 +14,28 @@ export default class extends Controller {
   static targets= ['indiView', 'famView', 'indicard', 'personalName']
 
 
+  // import())
+  // - importerer en ny GEDCOM fil
+
+  import(event)
+  {
+    console.log('Import called now...')
+    var file= event.target.files[0];
+    console.log('Filename: ', file.name);
+    console.log('Filesize: ', file.size);
+    console.log('Filetype: ', file.type);
+    var reader= new FileReader();
+    reader.onload= function(e)
+    {
+      console.log('Loaded')
+      var text= e.target.result;
+      var lines= text.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
+      console.log('Line: ', lines[0]);
+    }
+    console.log('Read file');
+    reader.readAsText(file);
+  }
+
 
   // indiValueChanged()
   // - opdaterer

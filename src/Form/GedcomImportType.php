@@ -41,16 +41,16 @@ class GedcomImportType extends AbstractType
             'maxSize' => '500M',
             //'mimeTypes' => [
             //  'application/octet-stream',
-  
+
             // ],
-            'mimeTypesMessage' => 'Please upload a valid PDF document', ])],])
+            'mimeTypesMessage' => 'Please upload a valid GEDCOM file', ])],])
       ->add('autodetect', ChoiceType::class, [
         'label' => 'Autodetect',
-        'mapped' => false, 
+        'mapped' => false,
         'expanded' => true,
         'data' => 'yes',
         //'empty_data' => 'Yes',
-        'choices' => ['Yes' => 'yes', 'No' => 'no']     ])      
+        'choices' => ['Yes' => 'yes', 'No' => 'no']     ])
       ->add('encoding', TextType::class, [
         'label' => "Character Set",
         'data' => 'UTF8',
@@ -64,7 +64,7 @@ class GedcomImportType extends AbstractType
         'data' => 'dos',
         'choices' => ['Dos' => 'dos', 'Unix' => 'unix', 'Mac' => 'mac']
         ,])
-        
+
       ;
   }
 

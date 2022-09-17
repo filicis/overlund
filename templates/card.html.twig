@@ -14,13 +14,13 @@
 {% endif %}
 
 <div class="d-flex justify-content-center">
-  <div class="card w-50">
+  <div class="card w-50" data-controller="editor">
       <h2 class="card-header text-center">
         {% block cardheader %}
-          
+
             {{ formTitle|trans }}
-          
-        
+
+
         {% endblock cardheader %}
       </h2>
       <div class="card-body">

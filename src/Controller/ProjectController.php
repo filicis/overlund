@@ -20,6 +20,7 @@ use	  App\Form\GedcomImportType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Request;
@@ -161,4 +162,47 @@ class ProjectController extends AbstractController
      ]);
 
   }
+
+  /**
+   *  import
+   *  - Importerer en Gedcom fil til det aktuelle project
+   **/
+
+  #[Route('/editor/{url}/import1', name: 'editorImport1')]
+  public function import1(Request $request, Project $project, ManagerRegistry $doctrine): Response
+  {
+    $defaultData = ['message' => 'Type your message here'];
+    $form= $this->createFormBuilder($defaultData)
+      // -> add('filename', FileType::class)
+      -> getForm();
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid())
+    {
+      try
+      {
+        $entityManager= $doctrine->getManager();
+              // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($project);
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return $this->redirectToRoute('/da');
+      }
+      catch(\Exception $e)
+      {
+      }
+      return $this->redirectToRoute('editor', ['url' => $project->getUrl()]);
+
+    }
+     return $this->renderForm('editor/import.html.twig', [
+       'form' => $form,
+       'formTitle' => 'Import GEDCOM file',
+       'warning' => 'The will delete all the genealogy data and replace with data from a GEDCOM file',
+     ]);
+
+  }
+
+
+
 }

@@ -7,6 +7,7 @@
 {% endblock title%}
 
 
+
 {% block body  %}
 
 {% if form is defined %}
@@ -14,7 +15,11 @@
 {% endif %}
 
 <div class="d-flex justify-content-center">
-  <div class="card w-50" data-controller="editor">
+  <div class="card w-50"
+       data-controller="gedcom"
+  >
+
+
     <h2 class="card-header text-center">
       {% block cardheader %}
 
@@ -31,9 +36,10 @@
       <div class="input-group mb-3">
         <label class="input-group-text" for="inputGroupFile01">Upload</label>
         <input type="file"
-               class="form-control"
-               data-action="change->editor#import"
-               id="inputGroupFile01">
+        class="form-control"
+        data-action="change->gedcom#import"
+        id="inputGroupFile01"
+        required>
       </div>
 
       {% block cardbody %}
@@ -43,8 +49,24 @@
       {# % if error %}
       <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
       {% endif % #}
+
+      <div class="input-group">
+        <span class="input-group-text">Preview</span>
+        <textarea class="form-control"
+                  data-gedcom-target= "polyview holger"
+                  aria-label="Preview"
+                  placeholder="test"
+                  rows=5
+                  readonly>
+          Hello<b>World</b>
+        </textarea>
+      </div>
+
       {% endblock cardbody %}
     </div>
+
+
+
     <div class="card-footer d-grid d-md-flex gap-2 justify-content-md-end">
       {% block cardfooter %}
       <button class="btn btn--sm btn-outline-success"  type="submit"><i class="bi bi-check-lg"></i></button>

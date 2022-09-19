@@ -2,7 +2,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets= [ 'polyview', 'holger', ]
+  static targets= [ 'polyview', 'holger', 'spinner']
 
 
   // import())
@@ -26,6 +26,8 @@ export default class extends Controller {
     }
 
       // filereader.onload
+      //
+      // Validerer at første linie er '0 HEAD'
 
     reader.onload= function(e)
     {
@@ -36,10 +38,7 @@ export default class extends Controller {
 
       console.log('Result: ', result);
 
-      const result1= /0 TRLR/.test(text);
-
-      console.log('Result1: ', result1);
-
+      console.log('ClassName: ', that.spinnerTarget.className)
 
       if (that.hasHolgerTarget)
       {
@@ -49,6 +48,27 @@ export default class extends Controller {
         console.log("Target not found");
       var lines= text.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
       console.log('Line: ', lines[0]);
+    }
+
+      //  filereader.onloadend
+      //  - fjerner spinner igen
+
+    reader.onloadend= function(e)
+    {
+      that.spinnerTarget.className= "invisible";
+    }
+
+
+      // filereader.onloadstart
+
+    reader.onloadstart= function(e)
+    {
+      // TODO: Tilføj spinner
+      that.spinnerTarget.className= "visible";
+      console.log('ClassName: ', that.spinnerTarget.className)
+
+
+      that.holgerTarget.value= "";
     }
 
       // filereader.onprogress

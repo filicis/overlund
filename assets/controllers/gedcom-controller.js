@@ -85,4 +85,13 @@ export default class extends Controller {
       console.log("YES !");
 
   }
+
+
+  // submit()
+
+  submit(event)
+  {
+    console.log("Submit called...")
+    this.holgerTarget.value="** Hello There **"
+  }
 }

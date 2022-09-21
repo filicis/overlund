@@ -10,15 +10,19 @@
 
 {% block body  %}
 
-{% if form is defined %}
-  {{ form_start(form) }}
+{% if myform is defined %}
+  {{ form_start(myform, {'data-action': 'submit->gedcom#submit'}) }}
+
+  {#
+  <form id="myform" name="myform" data-action="submit->gedcom#submit" method="post">
+  #}
+
 {% endif %}
 
 <div class="d-flex justify-content-center">
   <div class="card w-50"
     data-controller="gedcom"
     >
-
 
     <h2 class="card-header text-center">
       {% block cardheader %}
@@ -36,6 +40,9 @@
       <div class="mb-3">
         <label for="inputGroupFile01">Upload</label>
         <input type="file"
+        name="file"
+        accept=".ged"
+        form="myform"
         class="form-control"
         data-action="change->gedcom#import"
         id="inputGroupFile01"
@@ -43,21 +50,23 @@
       </div>
 
       {% block cardbody %}
-      {{ form_widget(form) }}
+      {{ form_widget(myform) }}
 
 
       {# % if error %}
       <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
       {% endif % #}
 
-      <div>
+      <div data-action="submit->gedcom#submit">
         <label for="floatingTextarea2">Preview</label>
 
         <textarea class="form-control"
           id= "floatingTextarea2"
           data-gedcom-target= "polyview holger"
+          data-action="submit->gedcom#submit"
           aria-label="Preview"
           rows=10
+          name="preview"
           wrap="off"
           readonly>
         </textarea>
@@ -75,16 +84,17 @@
           Loading...
         </button>
       </div>
-      <button class="btn btn--sm btn-outline-success"  type="submit"><i class="bi bi-check-lg"></i></button>
-      <button class="btn btn--sm btn-outline-danger"  type="submit"><i class="bi bi-x-lg"></i></button>
-      <button class="btn btn--sm btn-outline-primary"  type="submit"><i class="bi bi-question-lg"></i></button>
+      <button class="btn btn--sm btn-outline-success" fform="myform" type="submit" data-aaction="click->gedcom#submit"><i class="bi bi-check-lg"></i></button>
+      <button class="btn btn--sm btn-outline-danger"  type="button"><i class="bi bi-x-lg"></i></button>
+      <button class="btn btn--sm btn-outline-primary"  type="button"><i class="bi bi-question-lg"></i></button>
       {% endblock cardfooter %}
     </div>
+
   </div>
 </div>
 
-{% if form is defined %}
-  {{ form_end(form) }}
+{% if myform is defined %}
+  {{ form_end(myform) }}
 {% endif %}
 
 {% endblock body %}

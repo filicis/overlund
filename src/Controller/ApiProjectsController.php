@@ -22,28 +22,31 @@ use Symfony\Component\Routing\Annotation\Route;
  *  ApiProjectsController
  *  - Grundlæggende api funktioner
  *
- */ 
+ */
 
 #[Route('/api/projects', name: 'api_projects_')]
 class ApiProjectsController extends AbstractController
 {
-    #[Route('/webapi', name: 'webapi')]
-    public function index(): Response
-    {
-        return $this->render('webapi/index.html.twig', [
-            'controller_name' => 'WebapiController',
-        ]);
-    }
+  #[Route('/webapi', name: 'webapi')]
+  public function index(): Response
+  {
+    return $this->render('webapi/index.html.twig', [
+    'controller_name' => 'WebapiController',
+    ]);
+  }
 
-    /**
-     *  function GetList()
-     *
-     * @return Return the Overlund version:
-     */ 
+  /**
+  *  function GetList()
+  *
+  * @return Return the Overlund version:
+  */
 
-    #[Route('/getList', name: 'getList')]
-    public function getVersion() : Response
-    {
-      return $this->json(['svar' => 'yes',]);
-    }  
+  #[Route('/getList', name: 'getList')]
+  public function getVersion() : Response
+  {
+    return $this->json(['svar' => 'yes',]);
+  }
+
+
+
 }

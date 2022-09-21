@@ -20,6 +20,7 @@ use	  App\Form\GedcomImportType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -27,8 +28,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\ORM\ORMException;
+use       Doctrine\Persistence\ManagerRegistry;
+use       Doctrine\ORM\ORMException;
+
+use       Psr\Log\LoggerInterface;
 
   /**
    *  ProjectController
@@ -164,39 +167,51 @@ class ProjectController extends AbstractController
   }
 
   /**
-   *  import
+   *  import1
    *  - Importerer en Gedcom fil til det aktuelle project
    **/
 
   #[Route('/editor/{url}/import1', name: 'editorImport1')]
-  public function import1(Request $request, Project $project, ManagerRegistry $doctrine): Response
+  public function import1(Request $request, Project $project, ManagerRegistry $doctrine, LoggerInterface $logger): Response
   {
     $defaultData = ['message' => 'Type your message here'];
     $form= $this->createFormBuilder($defaultData)
-      // -> add('filename', FileType::class)
+      // -> add('filename', FileType::class, ['allow_file_upload' => true])
+      -> add('preview', TextareaType::class, ['attr' => ['data-gedcom-target' => 'preview holger']])
+      -> add('knap', SubmitType::class)
       -> getForm();
-    $form->handleRequest($request);
 
+    $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid())
     {
       try
       {
-        $entityManager= $doctrine->getManager();
-              // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($project);
-        // actually executes the queries (i.e. the INSERT query)
-        $entityManager->flush();
+        $data= $form->getData();
 
-        return $this->redirectToRoute('/da');
+
+
+        $logger->error("Helloo there !");
+
+        $logger->error(count($data));
+
+        $logger->error(array_key_first($data));
+
+
+        /*
+        foreach($data as [$key, $item])
+        {
+          $logger->error($key);
+        }
+        */
       }
       catch(\Exception $e)
       {
       }
-      return $this->redirectToRoute('editor', ['url' => $project->getUrl()]);
+      //return $this->redirectToRoute('editor', ['url' => $project->getUrl()]);
 
     }
      return $this->renderForm('editor/import.html.twig', [
-       'form' => $form,
+       'myform' => $form,
        'formTitle' => 'Import GEDCOM file',
        'warning' => 'The will delete all the genealogy data and replace with data from a GEDCOM file',
      ]);

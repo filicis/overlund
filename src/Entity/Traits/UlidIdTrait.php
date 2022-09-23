@@ -25,13 +25,6 @@ use       Symfony\Component\Uid\Ulid;
 
 trait UlidIdTrait
 {
-  /**
-   * @ORM\Id
-   * @ORM\Column(type="ulid", unique=true)
-   * @ORM\GeneratedValue(strategy="CUSTOM")
-   * @ORM\CustomIdGenerator(class=UlidGenerator::class)
-  **/
-
   #[ORM\Id]
   #[ORM\Column(type: "ulid", unique: true)]
   #[ORM\GeneratedValue(strategy: "CUSTOM")]

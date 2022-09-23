@@ -12,12 +12,12 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
-use Symfony\Component\Uid\Ulid;
-use App\Repository\ProjectRepository;
-use Doctrine\ORM\Mapping as ORM;
+use       Doctrine\Common\Collections\ArrayCollection;
+use       Doctrine\Common\Collections\Collection;
+use       Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
+use       Symfony\Component\Uid\Ulid;
+use       App\Repository\ProjectRepository;
+use       Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\Traits\UlidIdTrait;
 use       App\Entity\GedcomStructure;
@@ -83,12 +83,6 @@ class Project
     #[ORM\OneToMany(targetEntity: PlaceRecord::class, mappedBy: "project", fetch: "EXTRA_LAZY")]
     private $placeRecords;
 
-    /**
-     *
-     */
-
-    #[ORM\OneToMany(targetEntity: GedcomStructure::class, mappedBy: "project", orphanRemoval: true)]
-    private $gedcomStructures;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $GedcomFilename;
@@ -109,6 +103,12 @@ class Project
 
     #[ORM\Column(length: 80, nullable: true)]
     private ?string $placForm = null;
+
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: GedcomStructure::class, orphanRemoval: true)]
+    private Collection $gedcomStructures;
+
+
+
 
     public function __construct()
     {
@@ -313,35 +313,9 @@ class Project
         return $this;
     }
 
-    /**
-     * @return Collection|GedcomStructure[]
-     */
-    public function getGedcomStructures(): Collection
-    {
-        return $this->gedcomStructures;
-    }
 
-    public function addGedcomStructure(GedcomStructure $gedcomStructure): self
-    {
-        if (!$this->gedcomStructures->contains($gedcomStructure)) {
-            $this->gedcomStructures[] = $gedcomStructure;
-            $gedcomStructure->setProject($this);
-        }
 
-        return $this;
-    }
 
-    public function removeGedcomStructure(GedcomStructure $gedcomStructure): self
-    {
-        if ($this->gedcomStructures->removeElement($gedcomStructure)) {
-            // set the owning side to null (unless already changed)
-            if ($gedcomStructure->getProject() === $this) {
-                $gedcomStructure->setProject(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getGedcomFilename(): ?string
     {
@@ -378,4 +352,36 @@ class Project
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, GedcomStructure>
+     */
+    public function getGedcomStructures(): Collection
+    {
+        return $this->gedcomStructures;
+    }
+
+    public function addGedcomStructure(GedcomStructure $gedcomStructure): self
+    {
+        if (!$this->gedcomStructures->contains($gedcomStructure)) {
+            $this->gedcomStructures->add($gedcomStructure);
+            $gedcomStructure->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGedcomStructure(GedcomStructure $gedcomStructure): self
+    {
+        if ($this->gedcomStructures->removeElement($gedcomStructure)) {
+            // set the owning side to null (unless already changed)
+            if ($gedcomStructure->getProject() === $this) {
+                $gedcomStructure->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

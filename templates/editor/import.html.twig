@@ -52,6 +52,9 @@
       {% block cardbody %}
       {{ form_widget(myform) }}
 
+      <div data-gedcom-target= "polyview holger">
+
+      </div>
 
       {# % if error %}
       <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

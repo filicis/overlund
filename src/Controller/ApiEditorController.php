@@ -20,6 +20,9 @@ use       Symfony\Component\HttpFoundation\Response;
 use       Symfony\Component\HttpFoundation\JsonResponse;
 use       Symfony\Component\Routing\Annotation\Route;
 
+use       Symfony\Component\String\UnicodeString;
+
+
 use       Doctrine\Persistence\ManagerRegistry;
 
 
@@ -63,12 +66,28 @@ class ApiEditorController extends AbstractController
   /**
   *  function import()
   *
+  * - Låser projectet
+  * - Fjerner eksisterende Gedcom Strukturer
+  * - Indlæser nye Gedcom Strukturer
+  * - Fjerner eksisterende Records
+  * - Indlæser nye Gedcom Records
+  * - Genåbner projectet
   */
 
   #[Route('/import', name: 'import')]
   public function import(Request $request, Project $project ) : Response
   {
     $params = json_decode($request->getContent(), true);
+
+    // Vi forventer at få gedcom data som en tekst streng i UTF8 format
+
+
+
+
+    // Lås projectet
+
+    // Fjern eksisterende Gedcom Structurer
+
 
 
     return $this->json(['svar' => 'yes',]);

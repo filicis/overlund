@@ -169,6 +169,8 @@ class ProjectController extends AbstractController
   /**
    *  import1
    *  - Importerer en Gedcom fil til det aktuelle project
+   *
+   *  - Her dropper vi Symfony Forms til fordel for ren javascript løsning med Filereader, Formdata og Fetch
    **/
 
   #[Route('/editor/{url}/import1', name: 'editorImport1')]
@@ -177,8 +179,8 @@ class ProjectController extends AbstractController
     $defaultData = ['message' => 'Type your message here'];
     $form= $this->createFormBuilder($defaultData)
       // -> add('filename', FileType::class, ['allow_file_upload' => true])
-      -> add('preview', TextareaType::class, ['attr' => ['data-gedcom-target' => 'preview holger']])
-      -> add('knap', SubmitType::class)
+      //-> add('preview', TextareaType::class, ['attr' => ['data-gedcom-target' => 'preview holger']])
+      //-> add('knap', SubmitType::class)
       -> getForm();
 
     $form->handleRequest($request);

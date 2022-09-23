@@ -42,12 +42,16 @@ export default class extends Controller {
 
       if (that.hasHolgerTarget)
       {
-        that.holgerTarget.value= text;
+        that.holgerTarget.innerText= JSON.stringify(text.split(/[\r\n]+/g));
       }
       else
         console.log("Target not found");
       var lines= text.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
+
+      lines.forEach(function(item, index, arr) { /* ... */ });
+
       console.log('Line: ', lines[0]);
+      //console.log(lines);
     }
 
       //  filereader.onloadend

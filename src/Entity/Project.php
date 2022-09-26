@@ -107,6 +107,9 @@ class Project
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: GedcomStructure::class, orphanRemoval: true)]
     private Collection $gedcomStructures;
 
+    #[ORM\Column(length: 30, nullable: true)]
+    private ?string $workflowPlace = null;
+
 
 
 
@@ -118,6 +121,8 @@ class Project
         $this->mediaRecords = new ArrayCollection();
         $this->placeRecords = new ArrayCollection();
         $this->gedcomStructures = new ArrayCollection();
+
+        $this->workflowPlace= "init";
     }
 
 
@@ -379,6 +384,18 @@ class Project
                 $gedcomStructure->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getWorkflowPlace(): ?string
+    {
+        return $this->workflowPlace;
+    }
+
+    public function setWorkflowPlace(?string $workflowPlace): self
+    {
+        $this->workflowPlace = $workflowPlace;
 
         return $this;
     }

@@ -6,7 +6,7 @@ framework:
                 enabled: true
             marking_store:
                 type: 'method'
-                property: 'currentPlace'
+                property: 'workflowPlace'
             supports:
                 - App\Entity\Project
             initial_marking:  init
@@ -21,10 +21,13 @@ framework:
                     from: init
                     to:   import
                 to_editor:
-                    from: import
+                    from: init
                     to: editor
                 to_published:
                     from: editor
                     to: published
+                from_published:
+                    from: published
+                    to: editor
 
 

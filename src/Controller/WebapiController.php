@@ -28,6 +28,8 @@ use       App\Entity\Project;
    *  WebapiController
    *  - Den primære adgang til systemets Api
    *
+   *  - Checker for offline system
+   *  - checker for offline project
    */
 
 class WebapiController extends AbstractController

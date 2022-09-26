@@ -15,7 +15,7 @@ namespace App\Controller;
 use       App\Entity\Project;
 use       App\Form\ProjectType;
 use       App\Form\ProjectsType;
-use	  App\Form\GedcomImportType;
+use	      App\Form\GedcomImportType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -27,6 +27,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Workflow\WorkflowInterface;
 
 use       Doctrine\Persistence\ManagerRegistry;
 use       Doctrine\ORM\ORMException;
@@ -41,6 +42,15 @@ use       Psr\Log\LoggerInterface;
 
 class ProjectController extends AbstractController
 {
+  private $projectStateMachine;
+
+  public function __construct(WorkflowInterface $projectStateMachine)
+  {
+        $this->projectStateMachine = $projectStateMachine;
+  }
+
+
+
   #[Route('/admin/project', name: 'adminProject')]
   public function index(): Response
   {
@@ -176,6 +186,11 @@ class ProjectController extends AbstractController
   #[Route('/editor/{url}/import1', name: 'editorImport1')]
   public function import1(Request $request, Project $project, ManagerRegistry $doctrine, LoggerInterface $logger): Response
   {
+
+    // $workflow = $this->container->get('workflow.project');
+
+    $this->projectStateMachine->apply($project, 'to_editor');
+
     $defaultData = ['message' => 'Type your message here'];
     $form= $this->createFormBuilder($defaultData)
       // -> add('filename', FileType::class, ['allow_file_upload' => true])
@@ -198,13 +213,6 @@ class ProjectController extends AbstractController
 
         $logger->error(array_key_first($data));
 
-
-        /*
-        foreach($data as [$key, $item])
-        {
-          $logger->error($key);
-        }
-        */
       }
       catch(\Exception $e)
       {

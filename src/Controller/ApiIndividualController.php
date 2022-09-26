@@ -165,66 +165,73 @@ class ApiIndividualController extends AbstractController
 
 
   /**
-  *  function updatePersonalName()
-  *
-  *  Method Parameters
-  *  indId:
-  *  nameId:
-  *
-  */
+   *  function updatePersonalName()
+   *
+   *  Method Parameters
+   *  indId:
+   *  nameId:
+   *
+   */
 
   #[Route('/updatePersonalName', name: 'updatePersonalName', methods: ['PUT'])]
   public function updatePersonalName(Request $request, Project $project, ManagerRegistry $doctrine) : JsonResponse
   {
-    $params = json_decode($request->getContent(), true);
-
-
-    $indi= $project->getIndividuals()[$params['indiId']];
-    $name= $indi->getPersonalNameStructures()->first();
-
-    if ($indi)
-    $temp= $indi->getPersonalNameStructures();
-
-    if ($name)
+    try
     {
-      if (array_key_exists('npfx', $params))
+      $params = json_decode($request->getContent(), true);
+
+
+      $indi= $project->getIndividuals()[$params['indiId']];
+      $name= $indi->getPersonalNameStructures()->first();
+
+      if ($indi)
+      $temp= $indi->getPersonalNameStructures();
+
+      if ($name)
       {
-        $name->setNpfx($params['npfx']);
-      }
-      if (array_key_exists('givn', $params))
-      {
-        $name->setGivn($params['givn']);
-      }
-      if (array_key_exists('nick', $params))
-      {
-        $name->setNick($params['nick']);
-      }
-      if (array_key_exists('spfx', $params))
-      {
-        $name->setSpfx($params['spfx']);
-      }
-      if (array_key_exists('surn', $params))
-      {
-        $name->setSurn($params['surn']);
-      }
-      if (array_key_exists('nsfx', $params))
-      {
-        $name->setNsfx($params['nsfx']);
-      }
+        if (array_key_exists('npfx', $params))
+        {
+          $name->setNpfx($params['npfx']);
+        }
+        if (array_key_exists('givn', $params))
+        {
+          $name->setGivn($params['givn']);
+        }
+        if (array_key_exists('nick', $params))
+        {
+          $name->setNick($params['nick']);
+        }
+        if (array_key_exists('spfx', $params))
+        {
+          $name->setSpfx($params['spfx']);
+        }
+        if (array_key_exists('surn', $params))
+        {
+          $name->setSurn($params['surn']);
+        }
+        if (array_key_exists('nsfx', $params))
+        {
+          $name->setNsfx($params['nsfx']);
+        }
 
         // Genopbygger 'PersonalName'
 
-      $this->editorService->rebuildPersonalName($name);
+        $this->editorService->rebuildPersonalName($name);
 
         // Opdaterer databasen
 
-      $this->entityManager->persist($name);
-      $this->entityManager->flush();
-    }
+        $this->entityManager->persist($name);
+        $this->entityManager->flush();
+      }
 
-    return $this->json($name->getPersonalName());
+      return $this->json(['stat' => 'Ok', 'result' => ['name' => $name->getPersonalName()]]);
+    }
+      catch(\Exception $e)
+  {
+    return $this->json(['stat' => 'Error', 'Message' => $e->getMessage()]);
   }
 
+  }
 
 
 

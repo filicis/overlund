@@ -10,6 +10,7 @@ export default class extends Controller {
     wife: String,
     renderindi: String,
     renderfam: String,
+    webapi: String
   }
   static targets= ['indiView', 'famView', 'indicard', 'personalName']
 
@@ -221,8 +222,12 @@ export default class extends Controller {
   updatePersonalNameStructure(event)
   {
     const property= event.target.attributes.name.value;
+    const myurl= this.webapiValue + "/" + "api_individual_updatePersonalName" + "/Project01";
+
     var arg= {};
     arg[property]= event.target.value;
+    arg['method']= "api_individual_updatePersonalName";
+    arg['project']= 'Project01';
     arg['nameId']= event.params['nameId'];
     arg['indiId']= this.indiValue;
 
@@ -235,14 +240,17 @@ export default class extends Controller {
       credentials: 'include',
     };
 
-    fetch(event.params['url'], myInit)
+    console.log('Webapi: ', this.webapiValue);
+    console.log('Myulr: ', myurl);
+    //fetch(event.params['url'], myInit)
+    fetch(myurl, myInit)
     .then((response) => {
         if (! response.ok)
           throw new Error('Netværksfejl: ', response.status);
         return response.text();
     })
     .then((data) => {
-        console.log('Data: ', data);
+        console.log('Data::: ', data);
     })
     .catch((error) => console.error('Error: ', error));
   }

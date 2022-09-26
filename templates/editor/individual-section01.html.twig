@@ -28,10 +28,12 @@
 
     {# GEDCOM Navne Struktur #}
 
-    <div id="NameStructure"
+    <div
+      id="NameStructure"
       class="col-9"
-      {{ stimulus_action('editor', 'updatePersonalNameStructure', 'input', {'name_id': nam.id, 'name_surn': nam.surn}) }}
-      data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}">
+      data-action= "input->editor#updatePersonalNameStructure"
+      data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
+      data-editor-name-id-param= {{ nam.id }}>
 
       {# Fornavne #}
 

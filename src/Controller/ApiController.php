@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 /**
  *  ApiController
  *  - Grundlæggende api funktioner
@@ -28,24 +29,30 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/api', name: 'api_')]
 class ApiController extends AbstractController
 {
-    #[Route('/webapi', name: 'webapi')]
-    public function index(): Response
-    {
-        return $this->render('webapi/index.html.twig', [
-            'controller_name' => 'WebapiController',
-        ]);
-    }
 
-    /**
-     *  function GetVersion()
-     *
-     * @return Return the Overlund version:
-     */
+  /**
+  *  function apitest
+  *
+  */
 
-    #[Route('/getVersion', name: 'getVersion')]
-    public function getVersion() : JsonResponse
-    {
-      return $this->json(['stat' => 'Ok', 'Result' => ['Version' => '0.0.1 beta',]]);
-    }
+  #[Route('/', name: 'apitest')]
+  public function apitest() : Response
+  {
+  }
+
+
+
+
+  /**
+  *  function GetVersion()
+  *
+  * @return Return the Overlund version:
+  */
+
+  #[Route('/getVersion', name: 'getVersion')]
+  public function getVersion() : JsonResponse
+  {
+    return $this->json(['stat' => 'Ok', 'Result' => ['Version' => '0.0.1 beta',]]);
+  }
 }
 

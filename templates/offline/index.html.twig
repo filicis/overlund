@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {{ 'Temporarily Unavailable' | trans }}
+{% endblock %}
+
+
+{% block navbar %}{% endblock navbar %}
+
+
+{% block body %}
+
+
+<div class="d-flex justify-content-center">
+  <div class="card w-50" data-controller="editor">
+      <h2 class="card-header text-center">
+        {{ 'Temporarily Unavailable' | trans }}
+      </h2>
+      <div class="card-body">
+
+
+        <div class="alert alert-warning" role="alert">
+          {{ 'This website is down for maintenance. You should try again in a few minutes' | trans }}
+
+        </div>
+
+      </div>
+      <div class="card-footer d-grid d-md-flex gap-2 justify-content-md-end">
+        {% block cardfooter %}
+          <!--button class="btn btn--sm btn-outline-success"  type="submit"><i class="bi bi-check-lg"></i></button>
+          <button class="btn btn--sm btn-outline-danger"  type="submit"><i class="bi bi-x-lg"></i></button-->
+          <button class="btn btn--sm btn-outline-primary"  type="submit"><i class="bi bi-question-lg"></i></button>
+        {% endblock cardfooter %}
+      </div>
+  </div>
+</div>
+
+
+{% endblock %}

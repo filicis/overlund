@@ -48,7 +48,7 @@ class EditorService
    *
    */
 
-  public function addChild(Family $family, Individual $individual)
+  public function addChild(Family $family, Individual $individual) : ?Ulid
   {
   }
 
@@ -57,7 +57,7 @@ class EditorService
    *
    */
 
-  public function addHusband(Family $family, Individual $individual)
+  public function addHusband(Family $family, Individual $individual) : ?Ulid
   {
   }
 
@@ -68,9 +68,48 @@ class EditorService
    *
    */
 
-  public function addWife()
+  public function addWife(Family $family, Individual $individual) : ?Ulid
   {
   }
+
+
+  /**
+   *  function newAsChild
+   *
+   */
+
+  public function newAsChild(Project $project, Family $family) : ?Ulid
+  {
+    return $this->addChild($family, _newIndividual($project));
+  }
+
+
+
+
+  /**
+   *  function newAsHusband
+   *
+   */
+
+  public function newAsHusband(Project $project, Family $family) : ?Ulid
+  {
+    return $this->addHusband($family, _newIndividual($project));
+  }
+
+
+  /**
+   *  function newAsHusband
+   *
+   */
+
+  public function newAsWife(Project $project, Family $family) : ?Ulid
+  {
+    return $this->addWife($family, _newIndividual($project));
+  }
+
+
+
+
 
   /**
    *  function newFamily()
@@ -89,12 +128,13 @@ class EditorService
       return $fam->getId();
   }
 
+
   /**
-   *  function newIndividual()
+   *  function _newIndividual()
    *
    */
 
-  public function newIndividual(Project $project): ?Ulid
+  private function _newIndividual(Project $project): ?Individual
   {
       $name= new PersonalNameStructure();
       $indi= new Individual();
@@ -104,6 +144,20 @@ class EditorService
       $this->entityManager->persist($project);
       $this->entityManager->persist($indi);
       $this->entityManager->persist($name);
+
+      return $indi;
+  }
+
+
+
+  /**
+   *  function newIndividual()
+   *
+   */
+
+  public function newIndividual(Project $project): ?Ulid
+  {
+      $indi= $this->_newIndividual($project);
       $this->entityManager->flush();
 
       return $indi->getId();

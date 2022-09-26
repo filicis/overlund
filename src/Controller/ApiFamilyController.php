@@ -100,7 +100,7 @@ class ApiFamilyController extends AbstractController
   */
 
   #[Route('/new', name: 'new')]
-  public function new(Request $request, Project $project, ManagerRegistry $doctrine) : JsonResponse
+  public function new(Request $request, Project $project) : JsonResponse
   {
     try
     {

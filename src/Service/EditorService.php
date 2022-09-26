@@ -46,10 +46,17 @@ class EditorService
   /**
    *  function addChild()
    *
+   *  - Checker om der allerede er en relation
+   *  - Hvis ikke, tilføjes individet som barn
    */
 
   public function addChild(Family $family, Individual $individual) : ?Ulid
   {
+    if (! $family->getRelations()->contains($individual))
+    {
+      // $family
+    }
+    return null;
   }
 
   /**

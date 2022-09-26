@@ -131,39 +131,83 @@ export default class extends Controller {
 
 
 
+
   // function newFamily
   //
   //
   newFamily(event)
   {
+    var arg= {};
+    arg['method']= "api_family_new";
+    arg['project']= 'Project01';
     const myInit= {
       mode: 'cors',
       credentials: 'include',
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(arg),
     };
 
-    fetch(event.params.myurl, myInit)
-    .then(response => response.text())
-    .then(data => console.log(data));
+    //fetch(event.params.myurl, myInit)
+    fetch(this.webapiValue, myInit)
+    .then((response) =>
+    {
+      return response.json()
+    })
+    .then((data) =>
+    {
+      console.log(data);
+      const res= data.result;
+      this.famValue= res.id;
+      console.log('Id: ', res.id);
+    })
     //.then(data => this.famValue= data['idd']);
     //.catch();
+    .catch(error =>
+    {
+      console.error('Error: ', error)
+    });
   }
 
 
   //  function newIndividual
   //
   //
+
   newIndividual(event)
   {
-
+    var arg= {};
+    arg['method']= "api_individual_new";
+    arg['project']= 'Project01';
     const myInit= {
       mode: 'cors',
       credentials: 'include',
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(arg),
     };
 
-    fetch(event.params.myurl, myInit)
-    .then(response => response.json())
-    .then(data => this.indiValue= data['id'])
-    .catch();
+    fetch(this.webapiValue, myInit)
+    .then((response) =>
+    {
+      if (! response.ok)
+        throw new Error('Netværksfejl: ', response.status);
+      console.log('Response OK');
+      return response.json();
+    })
+    .then((data) =>
+    {
+      console.log(data);
+
+      const res= data.result;
+      this.indiValue= res.id;
+      console.log('Id: ', res.id);
+    })
+    .catch(error =>
+    {
+      console.error('Error: ', error)
+    });
+
   }
 
 
@@ -243,7 +287,8 @@ export default class extends Controller {
     console.log('Webapi: ', this.webapiValue);
     console.log('Myulr: ', myurl);
     //fetch(event.params['url'], myInit)
-    fetch(myurl, myInit)
+    // fetch(myurl, myInit)
+    fetch(this.webapiValue, myInit)
     .then((response) => {
         if (! response.ok)
           throw new Error('Netværksfejl: ', response.status);

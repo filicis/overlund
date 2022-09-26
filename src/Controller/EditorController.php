@@ -116,6 +116,18 @@ class EditorController extends AbstractController
   #[Route('/editor/{url}', name: 'editor', defaults: ['p1' => null, 'p2' => null])]
   public function index(Request $request, Project $project, ?string  $p1= null, ?string $p2= null): Response
   {
+    switch($project->getWorkflowPlace())
+    {
+      case 'import':       // Omdirigerer til en statusside for import funktionen
+
+      case 'editor':
+      case 'published':
+        break;
+
+      default:              // Videresender til en Project administrativ side...
+    }
+
+
     $session= $request->getSession();
 
     $individual= $project->getIndividuals()->first();

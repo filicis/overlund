@@ -40,16 +40,12 @@ use       App\Service\EditorService;
 #[Route('/api/editor/{url}/individual', name: 'api_individual_')]
 class ApiIndividualController extends AbstractController
 {
-  /**
-  *
-  */
-
   private $editorService;
   private $entityManager;
 
 
   /**
-  *
+  * __construct()
   *
   */
 
@@ -111,20 +107,13 @@ class ApiIndividualController extends AbstractController
   {
     try
     {
-      $name= new PersonalNameStructure();
-      $indi= new Individual();
-      $indi->addPersonalNameStructure($name);
-      $project->addIndividual($indi);
+      $id= $this->editorService->newIndividual($project);
 
-      $this->entityManager->persist($project);
-      $this->entityManager->persist($indi);
-      $this->entityManager->persist($name);
-      $this->entityManager->flush();
-
-      return $this->json(['id' => $indi->getId()]);
+      return $this->json(['stat' => 'Ok', 'result' => ['id' => $id]]);
     }
     catch(\Exception $e)
     {
+      return $this->json(['stat' => 'Error', 'Message' => $e->getMessage()]);
     }
 
   }

@@ -39,6 +39,28 @@ use       App\Service\EditorService;
 #[Route('/api/editor/{url}/family', name: 'api_family_')]
 class ApiFamilyController extends AbstractController
 {
+  private $editorService;
+  private $entityManager;
+
+
+  /**
+  * __construct()
+  *
+  */
+
+  function __construct(ManagerRegistry $doctrine, EditorService $es)
+  {
+    $this->entityManager= $doctrine->getManager();
+    $this->editorService= $es;
+  }
+
+
+  /**
+   *
+   *
+   */
+
+
   #[Route('/webapi', name: 'webapi')]
   public function index(): Response
   {
@@ -80,27 +102,17 @@ class ApiFamilyController extends AbstractController
   #[Route('/new', name: 'new')]
   public function new(Request $request, Project $project, ManagerRegistry $doctrine) : JsonResponse
   {
-    //try
-    //{
-      $fam= new Family();
-      $project->addFamily($fam);
+    try
+    {
 
-      $entityManager= $doctrine->getManager();
+      $id= $this->editorService->newFamily($project);
 
-      $entityManager->persist($project);
-      $entityManager->persist($fam);
-
-      $entityManager->flush();
-
-      $id= $fam->getId();
-      $dummy= array('id' => $id,);
-
-      //return $this->json(['id' => $fam->getId()]);
-      return $this->json($dummy);
-    //}
-    //catch(\Exception $e)
-    //{
-    //}
+      return $this->json(['stat' => 'Ok', 'result' => ['id' => $id]]);
+    }
+    catch(\Exception $e)
+    {
+      return $this->json(['stat' => 'Error', 'Message' => $e->getMessage()]);
+    }
 
   }
 

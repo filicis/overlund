@@ -1,19 +1,31 @@
 <?php
 
+/**
+ * This file is part of the Overlund package.
+ *
+ * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @copyright 2000-2022 Filicis Software
+ * @license MIT
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+
 namespace App\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
 
 trait Restrictions
 {
-    #[ORM\Column]
-    private ?bool $locked = null;
+    #[ORM\Column(nullable: true)]
+    private ?bool $locked = false;
 
-    #[ORM\Column]
-    private ?bool $confidential = null;
+    #[ORM\Column(nullable: true)]
+    private ?bool $confidential = false;
 
-    #[ORM\Column]
-    private ?bool $privacy = null;
+    #[ORM\Column(nullable: true)]
+    private ?bool $privacy = false;
 
 
     public function isLocked(): ?bool

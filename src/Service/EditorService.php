@@ -79,8 +79,6 @@ class EditorService
 
   public function newFamily(Project $project): ?Ulid
   {
-    try
-    {
       $fam= new Family();
       $project->addFamily($fam);
 
@@ -89,34 +87,26 @@ class EditorService
       $this->entityManager->flush();
 
       return $fam->getId();
-    }
-    catch(\Exception $e)
-    {
-    }
-    return null;
   }
 
-  //
-  //  function newIndividual()
-  //
+  /**
+   *  function newIndividual()
+   *
+   */
 
   public function newIndividual(Project $project): ?Ulid
   {
-    try
-    {
+      $name= new PersonalNameStructure();
       $indi= new Individual();
+      $indi->addPersonalNameStructure($name);
       $project->addIndividual($indi);
 
       $this->entityManager->persist($project);
       $this->entityManager->persist($indi);
+      $this->entityManager->persist($name);
       $this->entityManager->flush();
 
       return $indi->getId();
-    }
-    catch(\Exception $e)
-    {
-    }
-    return null;
   }
 
   //

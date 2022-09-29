@@ -31,18 +31,15 @@ class PersonalNameStructure
   use PersonalNamePieces, UlidIdTrait;
 
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private $personalName;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Individual::class, inversedBy="personalNameStructures")
+     *
      */
 
     #[ORM\ManyToOne(targetEntity: Individual::class, inversedBy: "personalNameStructures")]
+    #[JoinColumn(onDelete: Cascade)]
     private $individual;
 
 

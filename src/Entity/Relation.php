@@ -18,6 +18,9 @@ namespace App\Entity;
 use App\Repository\RelationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use       App\Entity\Individual;
+use       App\Entity\Family;
+
 /**
  *  TODO:
  */

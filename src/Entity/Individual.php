@@ -50,7 +50,7 @@ class Individual extends RecordSuperclass
      *
      */
 
-    #[ORM\OneToMany(targetEntity: PersonalNameStructure::class, mappedBy: "individual", indexBy: "id")]
+    #[ORM\OneToMany(targetEntity: PersonalNameStructure::class, mappedBy: "individual", indexBy: "id", fetch: "EAGER")]
     private $personalNameStructures;
 
     /**

@@ -44,6 +44,7 @@ enum FamilyRole: string
 #[ORM\Entity(repositoryClass: RelationRepository::class)]
 class Relation
 {
+
   #[ORM\Id]
   #[ORM\GeneratedValue]
   #[ORM\Column(type: 'integer')]
@@ -86,6 +87,7 @@ class Relation
    */
 
   #[ORM\ManyToOne(targetEntity: Individual::class, inversedBy: 'relations')]
+  #[OrderBy(["csortorder" => "ASC"])]
   #[ORM\JoinColumn(onDelete: "Cascade")]
   private $individual;
 
@@ -95,6 +97,7 @@ class Relation
    */
 
   #[ORM\ManyToOne(targetEntity: Family::class, inversedBy: 'relations')]
+  #[OrderBy(["fsortorder" => "ASC"])]
   #[ORM\JoinColumn(nullable: false, onDelete: "Cascade")]
   private $family;
 
@@ -108,6 +111,14 @@ class Relation
   // ********************************************
   // ********************************************
   // ********************************************
+
+
+  public function __construct()
+  {
+    $this->role= FamilyRole::CHIL;
+  }
+
+
 
   public function getId(): ?int
   {

@@ -56,10 +56,10 @@ class Family extends RecordSuperclass
   private $relations;
 
   #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-  private ?Relation $_husb = null;
+  private ?Relation $husbandRelation = null;
 
   #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-  private ?Relation $_wife = null;
+  private ?Relation $wifeRelation = null;
 
 
   // ********************************************
@@ -134,53 +134,6 @@ class Family extends RecordSuperclass
   }
 
 
-  /**
-   *  function getHusb()
-   *
-   */
-
-  public function getHusb(): ?Individual
-  {
-      return $this->_husb != null ? $this->_husb->individual : null;
-  }
-
-
-  /**
-   *  function setHusb()
-   *
-   */
-
-  public function setHusb(?Relation $_husb): self
-  {
-      $this->_husb = $_husb;
-
-      return $this;
-  }
-
-
-  /**
-   *  function getWife()
-   *
-   */
-
-  public function getWife(): ?Individual
-  {
-      return $this->_wife != null ? $this->_wife->individual : null;;
-  }
-
-
-  /**
-   *  function setWife()
-   *
-   */
-
-  public function setWife(?Relation $_wife): self
-  {
-      $this->_wife = $_wife;
-
-      return $this;
-  }
-
 
   /**
    *  function getChildRelations()
@@ -192,6 +145,82 @@ class Family extends RecordSuperclass
   public function getChildRelations(): Collection
   {
     return $this->relations->filter(function($element) { $element->isChild(); });
+  }
+
+
+  /**
+   *
+   *
+   */
+
+  public function getHusband(): ?Individual
+  {
+      return $this->husbandRelation != null ? $this->husbandRelation->getIndividual() : null;
+  }
+
+
+
+  /**
+   *
+   *
+   */
+
+  public function getHusbandRelation(): ?Relation
+  {
+      return $this->husbandRelation;
+  }
+
+  /**
+   *
+   *
+   */
+
+  public function setHusbandRelation(?Relation $husbandRelation): self
+  {
+      $this->husbandRelation = $husbandRelation;
+      $this->husbandRelation->setRole(FamilyRole::HUSB);
+      $this->addRelation($this->husbandRelation);
+
+      return $this;
+  }
+
+
+
+  /**
+   *
+   *
+   */
+
+  public function getwife(): ?Individual
+  {
+      return $this->wifeRelation != null ? $this->wifeRelation->getIndividual() : null;
+  }
+
+
+
+
+  /**
+   *
+   *
+   */
+
+  public function getWifeRelation(): ?Relation
+  {
+      return $this->wifeRelation;
+  }
+
+  /**
+   *
+   *
+   */
+
+  public function setWifeRelation(?Relation $wifeRelation): self
+  {
+      $this->wifeRelation = $wifeRelation;
+      $this->wifeRelation->setRole(FamilyRole::WIFE);
+      $this->addRelation($this->wifeRelation);
+
+      return $this;
   }
 
 

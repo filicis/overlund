@@ -12,41 +12,40 @@
  */
 
 
-namespace App\Entity\Traits;
+
+namespace App\EntityTraits;
 
 use 			Doctrine\ORM\Mapping as ORM;
 
-use       App\Entity\NoteCollection;
-
 
   /**
-   *  XrefTrait
+   *  Sortorder
    *
    **/
 
-trait XrefTrait
+trait Sortorder
 {
-
   /**
-   *  xref
+   *  sortorder
    */
 
-  #[ORM\Column(type: "string", length: 20, nullable: true)]
-  private $xref;
+  #[ORM\Column(type: "integer", nullable: true)]
+  private $sortorder;
 
 
-  public function getXref(): ?string
+  public function getSortorder(): ?int
   {
-      return $this->xref;
+      return $this->sortorder;
   }
 
 
-  public function setXref(?string $xref): self
+  public function setSortorder(?int $sortorder) : self
   {
-      $this->xref = $xref;
+      $this->sortorder = $sortorder;
 
       return $this;
   }
 
-}
 
+
+}

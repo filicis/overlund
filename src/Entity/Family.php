@@ -3,11 +3,14 @@
 /**
  * This file is part of the Overlund package.
  *
- * (c) Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @copyright 2000-2022 Filicis Software
+ * @license MIT
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 
 
 namespace App\Entity;
@@ -18,6 +21,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 use App\Entity\RecordSuperclass;
+use App\Entity\Relation;
 use App\Entity\Traits\Restrictions;
 
   /**
@@ -31,7 +35,7 @@ use App\Entity\Traits\Restrictions;
 class Family extends RecordSuperclass
 {
   use Restrictions;
-  
+
   protected const XREF_PREFIX = 'F';
 
   /**
@@ -70,7 +74,7 @@ class Family extends RecordSuperclass
 
   /**
    *  function getProject()
-   */ 
+   */
 
   public function getProject(): ?Project
   {
@@ -102,7 +106,7 @@ class Family extends RecordSuperclass
 
   /**
    *  function addRelation()
-   */ 
+   */
 
   public function addRelation(Relation $relation): self
   {
@@ -179,15 +183,15 @@ class Family extends RecordSuperclass
 
 
   /**
-   *  function getChildren()
+   *  function getChildRelations()
    *
-   *  Returns alle the elements of collection releations for which 'role' == FamilyRole::CHIL
+   *  - Returns alle the elements of collection releations for which 'role' == FamilyRole::CHIL
    *
    */
 
-  public function getChildren(): Collection
+  public function getChildRelations(): Collection
   {
-    return $this->relations->filter(function($element) { $element->role == FamilyRole::CHIL; });
+    return $this->relations->filter(function($element) { $element->isChild(); });
   }
 
 

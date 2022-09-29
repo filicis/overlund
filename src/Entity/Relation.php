@@ -15,8 +15,8 @@
 
 namespace App\Entity;
 
-use App\Repository\RelationRepository;
-use Doctrine\ORM\Mapping as ORM;
+use       App\Repository\RelationRepository;
+use       Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\Individual;
 use       App\Entity\Family;
@@ -86,6 +86,7 @@ class Relation
    */
 
   #[ORM\ManyToOne(targetEntity: Individual::class, inversedBy: 'relations')]
+  #[ORM\JoinColumn(onDelete: "Cascade")]
   private $individual;
 
   /**
@@ -94,8 +95,14 @@ class Relation
    */
 
   #[ORM\ManyToOne(targetEntity: Family::class, inversedBy: 'relations')]
-  #[ORM\JoinColumn(nullable: false)]
+  #[ORM\JoinColumn(nullable: false, onDelete: "Cascade")]
   private $family;
+
+  #[ORM\Column(nullable: true)]
+  private ?int $fsortorder = null;
+
+  #[ORM\Column(nullable: true)]
+  private ?int $csortorder = null;
 
 
   // ********************************************
@@ -181,6 +188,36 @@ class Relation
   public function setPhrase(?string $phrase): self
   {
       $this->phrase = $phrase;
+
+      return $this;
+  }
+
+
+  public function isChild() : bool
+  {
+    return $this->role == FamilyRole::CHIL;
+  }
+
+  public function getFsortorder(): ?int
+  {
+      return $this->fsortorder;
+  }
+
+  public function setFsortorder(?int $fsortorder): self
+  {
+      $this->fsortorder = $fsortorder;
+
+      return $this;
+  }
+
+  public function getCsortorder(): ?int
+  {
+      return $this->csortorder;
+  }
+
+  public function setCsortorder(?int $csortorder): self
+  {
+      $this->csortorder = $csortorder;
 
       return $this;
   }

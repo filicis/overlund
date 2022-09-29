@@ -39,7 +39,7 @@ class PersonalNameStructure
      */
 
     #[ORM\ManyToOne(targetEntity: Individual::class, inversedBy: "personalNameStructures")]
-    #[JoinColumn(onDelete: Cascade)]
+    #[ORM\JoinColumn(onDelete: "Cascade")]
     private $individual;
 
 

@@ -42,7 +42,7 @@
 
     <button type="button"
       class="btn btn-sm btn-outline-dark btn-light"
-      data-action="editor#newWife"
+      data-action="editor#newAsWife"
       data-bs-toggle="tooltip"
       title="{{ 'New Individual as Wife' | trans }}">
       {{ constant('App\\Controller\\EditorController::ICON_FEMALE') }}
@@ -50,7 +50,7 @@
 
     <button type="button"
       class="btn btn-sm btn-outline-dark btn-light"
-      data-action="editor#linkWife"
+      data-action="editor#linkAsWife"
       data-bs-toggle="tooltip"
       title="{{ 'Link current Individual as Wife' | trans  }}">
       {{ constant('App\\Controller\\EditorController::ICON_LINK') }}
@@ -66,6 +66,7 @@
 
     <button type="button"
       class="btn btn-sm btn-outline-dark btn-light"
+      data-action="editor#searchForWife"
       data-bs-toggle="tooltip"
       title="{{ 'Search for Wife' | trans }}">
       {{ constant('App\\Controller\\EditorController::ICON_SEARCH_L') }}
@@ -73,6 +74,7 @@
 
     <button type="button"
       class="btn btn-sm btn-outline-dark btn-light"
+      data-action="editor#notesForWife"
       data-bs-toggle="tooltip"
       title="{{'Notes for Wife' | trans}}">
       {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}

@@ -27,7 +27,8 @@ use App\Entity\Relation;
 use App\Entity\Traits\Restrictions;
 
   /**
-   *
+   *  Individual
+   *  Implementerer Gedcom INDIVIDUAL_RECORD
    **/
 
 #[ORM\Entity(repositoryClass:  IndividualRepository::class)]
@@ -62,16 +63,25 @@ class Individual extends RecordSuperclass
   private $sex;
 
   /**
-  *  ArrayCollection relations
+  * relations
+  * - Kombinerer FAMC og FAMS
   *
   */
 
-  #[ORM\OneToMany(mappedBy: 'individual', targetEntity: Relation::class)]
+  #[ORM\OneToMany(mappedBy: 'individual', targetEntity: Relation::class, cascade: ["persist"], orphanRemoval: true)]
   private $relations;
+
+
 
   // ******************************************
   // ******************************************
   // ******************************************
+
+
+  /**
+   *
+   *
+   */
 
   public function __construct()
   {
@@ -196,6 +206,7 @@ class Individual extends RecordSuperclass
 
   /**
    *  getFamilyRelations()
+   *  - egentlig FAMS
    *
    */
 
@@ -209,6 +220,7 @@ class Individual extends RecordSuperclass
 
   /**
    *  getParentRelations()
+   *  - egent FAMC
    *
    */
 

@@ -25,7 +25,8 @@ use App\Entity\Relation;
 use App\Entity\Traits\Restrictions;
 
   /**
-   *  Implements Gedcom FAMILY_RECORD
+   *  Family
+   *  Implementerer Gedcom FAMILY_RECORD
    *
    *  @link https://gedcom.io/terms/v7/record-FAM
    *
@@ -39,7 +40,7 @@ class Family extends RecordSuperclass
   protected const XREF_PREFIX = 'F';
 
   /**
-   * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="families")
+   *
    */
 
   #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "families")]
@@ -52,7 +53,7 @@ class Family extends RecordSuperclass
    *
    */
 
-  #[ORM\OneToMany(mappedBy: 'family', targetEntity: Relation::class, indexBy: 'individual', orphanRemoval: true)]
+  #[ORM\OneToMany(mappedBy: 'family', targetEntity: Relation::class, indexBy: 'individual', cascade: ["persist"], orphanRemoval: true)]
   private $relations;
 
   #[ORM\OneToOne(cascade: ['persist', 'remove'])]

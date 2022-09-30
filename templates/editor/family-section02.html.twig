@@ -43,7 +43,7 @@
     <div class="col-3 text-end">
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
-        data-action="editor#newChild"
+        data-action="editor#newAsChild"
         data-bs-toggle="tooltip"
         title="{{'New Individual as Child' | trans}}">
    			{{ constant('App\\Controller\\EditorController::ICON_CHILD') }}
@@ -51,7 +51,7 @@
 
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
-        data-action="editor#linkChild"
+        data-action="editor#linkAsChild"
         data-bs-toggle="tooltip"
         title="{{'Link current Individual as Child' | trans}}">
       {{ constant('App\\Controller\\EditorController::ICON_LINK') }}
@@ -67,6 +67,7 @@
 
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
+        data-action="editor#searchForChild"
         data-bs-toggle="tooltip"
         title="{{'Search for Child' | trans}}">
       {{ constant('App\\Controller\\EditorController::ICON_SEARCH_L') }}
@@ -74,12 +75,14 @@
 
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
+        data-action="editor#notesForChild"
         data-bs-toggle="tooltip"
         title="{{'Notes for Child' | trans}}">
       {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
       </button>
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
+        data-action="editor#pedigreeOfChild"
         data-bs-toggle="tooltip"
         title="{{'Change Pedigree of Child' | trans}}">
       {{ constant('App\\Controller\\EditorController::ICON_PEDIGREE') }}
@@ -88,8 +91,9 @@
 
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
+        data-action="editor#moveChildUp"
         data-bs-toggle="tooltip"
-        title="{{'Change Pedigree of Child' | trans}}">
+        title="{{'Move Child up' | trans}}">
       {{ constant('App\\Controller\\EditorController::ICON_UP') }}
 
       </button>
@@ -97,8 +101,9 @@
 
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
+        data-action="editor#moveChildDown"
         data-bs-toggle="tooltip"
-        title="{{'Change Pedigree of Child' | trans}}">
+        title="{{'Move Child down' | trans}}">
        {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
       </button>
 

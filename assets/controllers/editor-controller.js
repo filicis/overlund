@@ -233,12 +233,22 @@ export default class extends Controller {
   }
 
 
+  // function unlinkChild
+  //
+  //
+
+  unlinkChild(event)
+  {
+    console.log('Called: unlinkChild');
+  }
+
   // function unlinkHusband
   //
   //
 
   unlinkHusband(event)
   {
+    console.log('Called: unlinkHusband');
     this.husbandValue== "";
     event.stopPropagation();
   }
@@ -250,6 +260,7 @@ export default class extends Controller {
 
   unlinkWife(event)
   {
+    console.log('Called: unlinkWife');
     this.wifeValue= "";
     event.stopPropagation();
   }
@@ -328,4 +339,158 @@ export default class extends Controller {
     }
     event.stopPropagation();
   }
+
+
+  /*
+   *  newAsHusband(event)
+  */
+
+  newAsHusband(event)
+  {
+    console.log('Called: newAsHusband');
+  }
+
+
+  /*
+   *  newAsChild(event)
+  */
+
+  newAsChild(event)
+  {
+    console.log('Called: newAsChild');
+  }
+
+
+  /*
+   *  newAsWife(event)
+  */
+
+  newAsWife(event)
+  {
+    console.log('Called: newAsWife');
+  }
+
+
+  /*
+   *  linkAsChild(event)
+  */
+
+  linkAsChild(event)
+  {
+    console.log('Called: linkAsChild');
+  }
+
+  /*
+   *  linkAsHusband(event)
+  */
+
+  linkAsHusband(event)
+  {
+    console.log('Called: linkAsHusband');
+  }
+
+
+  /*
+   *  linkAsWife(event)
+  */
+
+  linkAsWife(event)
+  {
+    console.log('Called: linkAsWife');
+  }
+
+
+  /*
+   *  searchForChild(event)
+  */
+
+  searchForChild(event)
+  {
+    console.log('Called: searchForChild');
+  }
+
+  /*
+   *  searchForHusband(event)
+  */
+
+  searchForHusband(event)
+  {
+    console.log('Called: searchForHusband');
+  }
+
+
+  /*
+   *  searchForWife(event)
+  */
+
+  searchForWife(event)
+  {
+    console.log('Called: searchForWife');
+  }
+
+
+  /*
+   *  notesForChild(event)
+  */
+
+  notesForChild(event)
+  {
+    console.log('Called: notesForChild');
+  }
+
+
+
+
+  /*
+   *  notesForHusband(event)
+  */
+
+  notesForHusband(event)
+  {
+    console.log('Called: notesForHusband');
+  }
+
+
+  /*
+   *  notesForWife(event)
+  */
+
+  notesForWife(event)
+  {
+    console.log('Called: notesForWife');
+  }
+
+
+  /*
+   *  pedigreeOfChild(event)
+  */
+
+  pedigreeOfChild(event)
+  {
+    console.log('Called: pedigreeOfChild');
+  }
+
+
+  /*
+   *  moveChildUp(event)
+  */
+
+  moveChildUp(event)
+  {
+    console.log('Called: moveChildUp');
+  }
+
+
+  /*
+   *  moveChildDown(event)
+  */
+
+  moveChildDown(event)
+  {
+    console.log('Called: moveChildDown');
+  }
+
+
+
+
 }

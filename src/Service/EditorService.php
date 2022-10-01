@@ -143,14 +143,14 @@ class EditorService
 
   private function _newIndividual(Project $project): ?Individual
   {
-      $name= new PersonalNameStructure();
+      //$name= new PersonalNameStructure();
       $indi= new Individual();
-      $indi->addPersonalNameStructure($name);
+      //$indi->addPersonalNameStructure($name);
       $project->addIndividual($indi);
 
       $this->entityManager->persist($project);
       $this->entityManager->persist($indi);
-      $this->entityManager->persist($name);
+      // $this->entityManager->persist($name);
 
       return $indi;
   }

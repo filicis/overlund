@@ -22,9 +22,10 @@ use Doctrine\Common\Collections\Collection;
 use App\Repository\IndividualRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-use App\Entity\RecordSuperclass;
-use App\Entity\Relation;
-use App\Entity\Traits\Restrictions;
+use       App\Entity\RecordSuperclass;
+use       App\Entity\Relation;
+use       App\Entity\PersonalNameStructure;
+use       App\Entity\Traits\Restrictions;
 
   /**
    *  Individual
@@ -52,7 +53,7 @@ class Individual extends RecordSuperclass
   *
   */
 
-  #[ORM\OneToMany(targetEntity: PersonalNameStructure::class, mappedBy: "individual", indexBy: "id", fetch: "EAGER")]
+  #[ORM\OneToMany(targetEntity: PersonalNameStructure::class, mappedBy: "individual", indexBy: "id", cascade: ["persist"], fetch: "EAGER")]
   private $personalNameStructures;
 
   /**
@@ -87,6 +88,8 @@ class Individual extends RecordSuperclass
   {
     $this->personalNameStructures = new ArrayCollection();
     $this->relations = new ArrayCollection();
+    $n= new PersonalNameStructure();
+    $this->addPersonalNameStructure($n);
   }
 
 

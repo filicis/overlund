@@ -130,6 +130,26 @@ class ApiFamilyController extends AbstractController
   }
 
 
+  /**
+   * function newAsChild()
+   *
+   */
+
+  #[Route('/newAsChild', name: 'newAsChild', methods: ['PUT'])]
+  public function newAsChild(Request $request, Project $project) : JsonResponse
+  {
+    try
+    {
+      $id= $this->editorService->newAsChild($project);
+      return $this->json(['stat' => 'Ok', 'result' => ['id' => true]]);
+    }
+    catch(\Exception $e)
+    {
+      return $this->json(['stat' => 'Error', 'Message' => $e->getMessage()]);
+    }
+  }
+
+
 
 
 }

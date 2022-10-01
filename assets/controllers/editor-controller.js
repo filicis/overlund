@@ -15,6 +15,45 @@ export default class extends Controller {
   static targets= ['indiView', 'famView', 'indicard', 'personalName']
 
 
+  //  fetchWebapi
+  //
+
+  #fetchWebapi(arg, mymethod= 'PUT')
+  {
+    const myInit= {
+      mode: 'cors',
+      credentials: 'include',
+      method: mymethod,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(arg),
+    };
+
+    console.log('Arg: ', arg);
+    console.log('myInit: ', myInit)
+    fetch(this.webapiValue, myInit)
+    .then((response) =>
+    {
+      if (! response.ok)
+        throw new Error('Netværksfejl: ', response.status);
+      return response.json()
+    })
+    .then((data) =>
+    {
+      console.log('Data:', data);
+      return data;
+    })
+    .catch((error) =>
+    {
+      console.error('** ERROR **')
+      console.error('Catch Error: ', error.message);
+      alert(error.message);
+    });
+
+
+  }
+
+
+
   // import())
   // - importerer en ny GEDCOM fil
 
@@ -58,7 +97,10 @@ export default class extends Controller {
       fetch(this.renderindiValue, myInit)
       .then(response => response.text())
       .then(data => this.indiViewTarget.innerHTML= data)
-      .catch();
+      .catch((error) =>
+      {
+      console.error('Catch Error: ', error)
+      });
     }
   }
 
@@ -125,8 +167,13 @@ export default class extends Controller {
       fetch(this.renderfamValue, myInit)
       .then(response => response.text())
       .then(data => this.famViewTarget.innerHTML= data)
-      .catch();
+      .catch((error) =>
+      {
+        console.error('Catch Error: ', error)
+      });
     }
+
+
   }
 
 
@@ -152,7 +199,10 @@ export default class extends Controller {
     fetch(this.webapiValue, myInit)
     .then((response) =>
     {
-      return response.json()
+      if (response.ok)
+        return response.json()
+      throw new Error('Netværksfejl: ', response.status);
+
     })
     .then((data) =>
     {
@@ -161,8 +211,6 @@ export default class extends Controller {
       this.famValue= res.id;
       console.log('Id: ', res.id);
     })
-    //.then(data => this.famValue= data['idd']);
-    //.catch();
     .catch(error =>
     {
       console.error('Error: ', error)
@@ -205,7 +253,7 @@ export default class extends Controller {
     })
     .catch(error =>
     {
-      console.error('Error: ', error)
+      console.error('Catch Error: ', error)
     });
 
   }
@@ -308,7 +356,7 @@ export default class extends Controller {
     .then((data) => {
         console.log('Data::: ', data);
     })
-    .catch((error) => console.error('Error: ', error));
+    .catch((error) => console.error('Catch Error: ', error));
   }
 
 
@@ -357,7 +405,11 @@ export default class extends Controller {
 
   newAsChild(event)
   {
+    var arg= {};
+    arg['method']= "api_family_newAsChild";
+    arg['project']= 'Project01';
     console.log('Called: newAsChild');
+    return this.#fetchWebapi(arg);
   }
 
 

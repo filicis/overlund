@@ -20,9 +20,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-use App\Entity\RecordSuperclass;
-use App\Entity\Relation;
-use App\Entity\Traits\Restrictions;
+use       App\Entity\Individual;
+use       App\Entity\RecordSuperclass;
+use       App\Entity\Relation;
+use       App\Entity\Traits\Restrictions;
 
   /**
    *  Family
@@ -225,6 +226,47 @@ class Family extends RecordSuperclass
   }
 
 
+
+  /**
+   *  function addChild()
+   *
+   */
+
+  public function addChild(Individual $child)
+  {
+    $relation= new Relation();
+    $relation->setFamily($this);
+    $reletion->setIndividual($child);
+    return $this->addRelation($relation);
+  }
+
+
+
+  /**
+   *  function setHusband()
+   *
+   */
+
+  public function setHusband(Individual $husband)
+  {
+    $relation= new Relation();
+    $relation->setFamily($this);
+    $reletion->setIndividual($husband);
+    return $this->setHusbandRelation($relation);
+  }
+
+  /**
+   *  function setWife()
+   *
+   */
+
+  public function setWife(Individual $wife)
+  {
+    $relation= new Relation();
+    $relation->setFamily($this);
+    $reletion->setIndividual($wife);
+    return $this->setWifeRelation($relation);
+  }
 
 
 }

@@ -34,16 +34,13 @@ class MediaRecord extends RecordSuperclass
   #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "mediaRecords")]
   private $project;
 
-  /**
-   * @ORM\OneToMany(targetEntity=MediaLink::class, mappedBy="mediaRecord")
-   */
+  #[ORM\OneToMany(mappedBy: 'mediaRecord', targetEntity: FileReference::class)]
+  private Collection $fileReferences;
 
-  #[ORM\OneToMany(targetEntity: MediaLink::class, mappedBy: "mediaRecord")]
-  private $mediaLinks;
 
   public function __construct()
   {
-      $this->mediaLinks = new ArrayCollection();
+      $this->fileReferences = new ArrayCollection();
   }
 
   public function getProject(): ?Project
@@ -59,33 +56,34 @@ class MediaRecord extends RecordSuperclass
   }
 
   /**
-   * @return Collection|MediaLink[]
+   * @return Collection<int, FileReference>
    */
-  public function getMediaLinks(): Collection
+  public function getFileReferences(): Collection
   {
-      return $this->mediaLinks;
+      return $this->fileReferences;
   }
 
-  public function addMediaLink(MediaLink $mediaLink): self
+  public function addFileReference(FileReference $fileReference): self
   {
-      if (!$this->mediaLinks->contains($mediaLink)) {
-          $this->mediaLinks[] = $mediaLink;
-          $mediaLink->setMediaRecord($this);
+      if (!$this->fileReferences->contains($fileReference)) {
+          $this->fileReferences->add($fileReference);
+          $fileReference->setMediaRecord($this);
       }
 
       return $this;
   }
 
-  public function removeMediaLink(MediaLink $mediaLink): self
+  public function removeFileReference(FileReference $fileReference): self
   {
-      if ($this->mediaLinks->removeElement($mediaLink)) {
+      if ($this->fileReferences->removeElement($fileReference)) {
           // set the owning side to null (unless already changed)
-          if ($mediaLink->getMediaRecord() === $this) {
-              $mediaLink->setMediaRecord(null);
+          if ($fileReference->getMediaRecord() === $this) {
+              $fileReference->setMediaRecord(null);
           }
       }
 
       return $this;
   }
+
 
 }

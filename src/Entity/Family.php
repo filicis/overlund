@@ -15,15 +15,17 @@
 
 namespace App\Entity;
 
-use App\Repository\FamilyRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use       App\Repository\FamilyRepository;
+use       Doctrine\Common\Collections\ArrayCollection;
+use       Doctrine\Common\Collections\Collection;
+use       Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\Individual;
 use       App\Entity\RecordSuperclass;
 use       App\Entity\Relation;
 use       App\Entity\Traits\Restrictions;
+
+
 
   /**
    *  Family
@@ -268,5 +270,16 @@ class Family extends RecordSuperclass
     return $this->setWifeRelation($relation);
   }
 
+
+  /**
+   *  function individualExits()
+   *
+   *  Checker om en given id allerede findes i 'relations' kollektionen
+   */
+
+  public function individualExits(ulid $id) : bool
+  {
+    return $id ? array_key_exits($id, $this->getRelations())  : false;
+  }
 
 }

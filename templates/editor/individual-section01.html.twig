@@ -28,12 +28,12 @@
 
     {# GEDCOM Navne Struktur #}
 
-    <div
-      id="NameStructure"
-      class="col-9"
-      data-action= "input->editor#updatePersonalNameStructure"
-      data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
-      data-editor-name-id-param= {{ nam.id }}>
+    <div id="NameStructure"
+        class="col-9"
+        data-action= "input->editor#updatePersonalNameStructure"
+        data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
+        data-editor-name-id-param= {{ nam.id }}
+    >
 
       {# Fornavne #}
 
@@ -153,24 +153,15 @@
     </div>
 
     {#
-    Billede af dette individ
-
+      Billede af dette individ
+      TODO: Grundbilledet <img> skal afspejle individdets køn
     #}
 
-    <div class="col d-flex align-items-center">
-      <!-- img src="\ludvig.jpg" class="img-fluid" alt="..." -->
-
-      <svg xmlns="http://www.w3.org/2000/svg"
-        width="100%"
-        hheight="16"
-        fill="currentColor"
-        class="bi bi-person-fill"
-        viewBox="0 0 16 16">
-        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-        </svg>
-
-      </div>
+    <picture class="col d-flex align-items-center">
+      <!--source type="image/jpeg" srcset="\ludvig.jpg"-->
+      <img src="\male-employee-icon.svg" class="img-fluid" alt="..." >
+    </picture>
 
 
-    </div>
   </div>
+</div>

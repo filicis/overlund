@@ -28,11 +28,15 @@ class MediaRecord extends RecordSuperclass
   protected const XREF_PREFIX = 'M';
 
   /**
-   * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="mediaRecords")
    */
 
   #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "mediaRecords")]
   private $project;
+
+  /**
+   *
+   *
+   */
 
   #[ORM\OneToMany(mappedBy: 'mediaRecord', targetEntity: FileReference::class)]
   private Collection $fileReferences;

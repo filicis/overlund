@@ -24,13 +24,14 @@
 
 
   {# Billede
-     Viser personens billede, eller
-     Usynlig hvis personen ikke er defineret
+    nu implmenteret med HTML pucture tag
   #}
 
-  <div class="col-1 d-flex align-items-center p-1 {{ synlig }}">
-      <img src="\{{ phusb }}" class="img-fluid" alt="...">
-  </div>
+  <picture class="col-1 d-flex align-items-center p-1">
+     <source srcset="\{{ phusb }}">
+
+     <img src="\male-employee-icon.svg" class="img-fluid" alt="...">
+  </picture>
 
 
   {# Navn

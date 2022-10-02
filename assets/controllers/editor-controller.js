@@ -554,6 +554,8 @@ export default class extends Controller {
     console.log('Load Error: !!', event.target.src);
     console.log('Load Error: !!', event.currentTarget.parentNode.children[0]);
     console.log('Load Error: !!', event.currentTarget.parentNode.children[1]);
+    console.log('Load Error: !!', event.currentTarget.parentNode);
+
   }
 
 }

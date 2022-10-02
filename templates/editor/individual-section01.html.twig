@@ -154,12 +154,14 @@
 
     {#
       Billede af dette individ
-      TODO: Grundbilledet <img> skal afspejle individdets køn
+      TODO: Grundbilledet <img> skal afspejle individets køn
     #}
 
-    <picture class="col d-flex align-items-center">
-      <!--source type="image/jpeg" srcset="\ludvig.jpg"-->
-      <img src="\male-employee-icon.svg" class="img-fluid" alt="..." >
+    <picture class="col d-flex align-items-center" data-action="error->editor#loaderror" onError="function(){console.log('Load Error...'}">
+
+
+      <source type="image/jpeg" srcset="\ludvigg.jpg" data-action="error->editor#loaderror">
+      <img src="\male-employee-icon.svg" class="img-fluid" alt="..." data-action="error->editor#loaderror">
     </picture>
 
 

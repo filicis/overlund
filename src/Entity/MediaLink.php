@@ -3,11 +3,15 @@
 /**
  * This file is part of the Overlund package.
  *
- * (c) Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @copyright 2000-2022 Filicis Software
+ * @license MIT
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- **/
+ */
+
+
 
 
 namespace App\Entity;
@@ -18,7 +22,7 @@ use       Doctrine\ORM\Mapping as ORM;
 use       App\Entity\Traits\UlidIdTrait;
 
   /**
-   * @ORM\Entity(repositoryClass=MediaLinkRepository::class)
+   *  class MediaLink
    **/
 
 #[ORM\Entity(repositoryClass: MediaLinkRepository::class)]
@@ -28,33 +32,36 @@ class MediaLink
 
 
     /**
-     * @ORM\ManyToOne(targetEntity=MediaRecord::class, inversedBy="mediaLinks")
+     *  mediaRecord
+     *  - linker til en MediaRedor
      */
 
     #[ORM\ManyToOne(targetEntity: MediaRecord::class, inversedBy: "mediaLinks")]
+    #[ORM\JoinColoumn(onDelete: "Cascade")]
     private $mediaRecord;
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
      */
 
     #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=80, nullable=true)
      */
 
     #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $crop;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Record::class, inversedBy="mediaLinks")
      */
 
     #[ORM\ManyToOne(targetEntity: Record::class, inversedBy: "mediaLinks")]
     private $record;
 
+
+  //***************************************************************************
+  //***************************************************************************
+  //***************************************************************************
 
     public function getMediaRecord(): ?MediaRecord
     {

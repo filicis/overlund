@@ -145,6 +145,7 @@ class EditorController extends AbstractController
       'project' => $project,
       //'indi' => null,
       'fam' => $family,
+      // 'fam' => null,
       'indi' => $individual,
 
     ]);

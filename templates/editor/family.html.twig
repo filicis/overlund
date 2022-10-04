@@ -14,95 +14,102 @@
 
 
 <div class="card border-dark text-dark bg-gradient h-100 shadow-lg p-3 mb-5 rounded"
-     style="background-color: #F0FFEF"
->
+  style="background-color: #F0FFEF"
+  >
+  <fieldset {{ fam ? '' : 'Disabled'}}>
 
-  {# Header #}
 
-  <div class="row card-header border-dark">
-    {% if fam %}
-    <div class="col-8 text-nowrap overflow-hidden">
-      <span>[{{ fam.xref }}]</span>
-      <span class='I201'
+
+    {# Header #}
+
+    <div class="row card-header border-dark">
+      {% if fam %}
+      <div class="col-8 text-nowrap overflow-hidden">
+        <span>[{{ fam.xref }}]</span>
+        <span class='I201'
+          <span {{ stimulus_target('editor', 'personalName') }}
+            title="{{ fam.id }}"
+
+          >Anders Hansen Nielsen</span>
+          +
+          <span class='I202'
             <span {{ stimulus_target('editor', 'personalName') }}
-	          title="{{ fam.id }}"
+              title="{{ fam.id }}"
 
-        >Anders Hansen Nielsen</span>
-      +
-      <span class='I202'
-            <span {{ stimulus_target('editor', 'personalName') }}
-	          title="{{ fam.id }}"
+            >Anne Margrethe Sørensdatter</span>
+          </div>
+          {% endif %}
 
-        >Anne Margrethe Sørensdatter</span>
+
+          {# Restrictions #}
+
+          <div class="col text-end"
+            data-action="change->editor#famRestrictions"
+            >
+
+            <span class=""
+              data-bs-toggle="tooltip"
+              title="{{ 'Write protection' | trans }}"
+              aria-label="{{ 'Write protection' | trans }}">
+              <input type="checkbox"
+              class="btn-check"
+              name= "locked"
+              id="btn-check1"
+              autocomplete="off">
+              <label class="btn btn-outline-dark btn-light btn-sm"
+                for="btn-check1">
+                {{ constant('App\\Controller\\EditorController::ICON_LOCKED') }}
+              </label>
+            </span>
+            <span class=""
+              data-bs-toggle="tooltip"
+              title= "{{ 'Confidential' | trans }}">
+              <input type="checkbox"
+              class="btn-check"
+              name= "Confidential"
+              id="btn-check2"
+              autocomplete="off">
+              <label class="btn btn-outline-dark btn-light btn-sm"
+                for="btn-check2">
+                {{ constant('App\\Controller\\EditorController::ICON_CONFIDENTIAL') }}
+              </label>
+            </span>
+            <span class=""
+              data-bs-toggle="tooltip"
+              title="{{ 'Privacy' | trans }}">
+              <input type="checkbox"
+              class="btn-check"
+              name= "Privacy"
+              id="btn-check3"
+              autocomplete="off">
+              <label class="btn btn-outline-dark btn-light btn-sm"
+                for="btn-check3">
+                {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
+              </label>
+            </span>
+
+          </div>
+
+        </div>
+
+
+        {{ include('editor/family-section01.html.twig') }}
+
+        {{ include('editor/family-section02.html.twig') }}
+
+        {{ include('editor/family-section03.html.twig') }}
+
+      </fieldset>
+
+      {# Afsluttende knap apparat#}
+
+      <div class="card-footer border-dark d-flex justify-content-between">
+        {{ include('editor/buttonline-right.html.twig') }}
+
+      </div>
+
+
+
     </div>
-    {% endif %}
-
-
-      {# Restrictions #}
-
-    <fieldset class="col text-end"
-              data-action="change->editor#famRestrictions"
->
-
-      <span class=""
-            data-bs-toggle="tooltip"
-            title="{{ 'Write protection' | trans }}"
-            aria-label="{{ 'Write protection' | trans }}">
-        <input type="checkbox"
-               class="btn-check"
-               name= "locked"
-               id="btn-check1"
-               autocomplete="off">
-        <label class="btn btn-outline-dark btn-light btn-sm"
-               for="btn-check1">
-          {{ constant('App\\Controller\\EditorController::ICON_LOCKED') }}
-        </label>
-      </span>
-      <span class=""
-            data-bs-toggle="tooltip"
-            title= "{{ 'Confidential' | trans }}">
-        <input type="checkbox"
-               class="btn-check"
-               name= "Confidential"
-               id="btn-check2"
-               autocomplete="off">
-        <label class="btn btn-outline-dark btn-light btn-sm"
-               for="btn-check2">
-          {{ constant('App\\Controller\\EditorController::ICON_CONFIDENTIAL') }}
-        </label>
-      </span>
-      <span class=""
-            data-bs-toggle="tooltip"
-            title="{{ 'Privacy' | trans }}">
-        <input type="checkbox"
-               class="btn-check"
-               name= "Privacy"
-               id="btn-check3"
-               autocomplete="off">
-        <label class="btn btn-outline-dark btn-light btn-sm"
-               for="btn-check3">
-          {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
-        </label>
-      </span>
-
-    </fieldset>
-
-  </div>
-
-
-  {{ include('editor/family-section01.html.twig') }}
-
-  {{ include('editor/family-section02.html.twig') }}
-
-  {{ include('editor/family-section03.html.twig') }}
-
-  <div class="card-footer border-dark d-flex justify-content-between">
-    {{ include('editor/buttonline-right.html.twig') }}
-
-  </div>
-
-
-
-</div>
 
 

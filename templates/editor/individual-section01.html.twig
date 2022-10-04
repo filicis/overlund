@@ -24,16 +24,16 @@
 
 
 <div class="card-body">
-  <fieldset class="row" {{ indi ? '' : 'disabled' }}>
+  <div class="row">
 
     {# GEDCOM Navne Struktur #}
 
     <div id="NameStructure"
-        class="col-9"
-        data-action= "input->editor#updatePersonalNameStructure"
-        data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
-        data-editor-name-id-param= {{ nam ? nam.id : '' }}
-    >
+      class="col-9"
+      data-action= "input->editor#updatePersonalNameStructure"
+      data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
+      data-editor-name-id-param= {{ nam ? nam.id : ''
+    }}>
 
       {# Fornavne #}
 
@@ -153,18 +153,19 @@
     </div>
 
     {#
-      Billede af dette individ
-      TODO: Grundbilledet <img> skal afspejle individets køn
+    Billede af dette individ
+    TODO: Grundbilledet <img> skal afspejle individets køn
     #}
 
     <picture class="col d-flex align-items-center" data-action="error->editor#loaderror" onError="function(){console.log('Load Error...'}">
 
 
       <source type="image/jpeg" srcset="\ludvigg.jpg" data-action="error->editor#loaderror">
-      <img src="\male-employee-icon.svg" class="img-fluid" alt="..." data-action="error->editor#loaderror">
+        <img src="\male-employee-icon.svg" class="img-fluid" alt="..." data-action="error->editor#loaderror">
 
     </picture>
 
 
-  </fieldset>
-</div>
+    </div>
+  </div>
+

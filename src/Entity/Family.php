@@ -23,7 +23,9 @@ use       Doctrine\ORM\Mapping as ORM;
 use       App\Entity\Individual;
 use       App\Entity\RecordSuperclass;
 use       App\Entity\Relation;
+use       App\Entity\Traits\MediaTrait;
 use       App\Entity\Traits\Restrictions;
+use       App\Entity\Media;
 
 
 
@@ -38,7 +40,7 @@ use       App\Entity\Traits\Restrictions;
 #[ORM\Entity(repositoryClass: FamilyRepository::class)]
 class Family extends RecordSuperclass
 {
-  use Restrictions;
+  use Restrictions, MediaTrait;
 
   protected const XREF_PREFIX = 'F';
 
@@ -73,6 +75,7 @@ class Family extends RecordSuperclass
   public function __construct()
   {
       $this->relations = new ArrayCollection();
+      $this->media= new Media();
   }
 
 

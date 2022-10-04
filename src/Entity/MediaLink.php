@@ -52,11 +52,13 @@ class MediaLink
     #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $crop;
 
+    #[ORM\ManyToOne(inversedBy: 'mediaLinks')]
+    #[ORM\JoinColumn(nullable: false, onDelete: "Cascade")]
+    private ?Media $media = null;
+
     /**
      */
 
-    #[ORM\ManyToOne(targetEntity: Record::class, inversedBy: "mediaLinks")]
-    private $record;
 
 
   //***************************************************************************
@@ -99,15 +101,16 @@ class MediaLink
         return $this;
     }
 
-    public function getRecord(): ?Record
+    public function getMedia(): ?Media
     {
-        return $this->record;
+        return $this->media;
     }
 
-    public function setRecord(?Record $record): self
+    public function setMedia(?Media $media): self
     {
-        $this->record = $record;
+        $this->media = $media;
 
         return $this;
     }
+
 }

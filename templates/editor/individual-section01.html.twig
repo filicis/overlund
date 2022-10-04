@@ -19,12 +19,12 @@
     - indi
 #}
 
-  {% set nam=  indi.personalNameStructures.first %}
+  {% set nam=  indi ?  indi.personalNameStructures.first : null %}
 
 
 
 <div class="card-body">
-  <div class="row">
+  <fieldset class="row" {{ indi ?: 'disabled' }}>
 
     {# GEDCOM Navne Struktur #}
 
@@ -32,7 +32,7 @@
         class="col-9"
         data-action= "input->editor#updatePersonalNameStructure"
         data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
-        data-editor-name-id-param= {{ nam.id }}
+        data-editor-name-id-param= {{ nam ? nam.id }}
     >
 
       {# Fornavne #}
@@ -45,7 +45,7 @@
             id="idYYY0"
             name= 'npfx'
             placeholder="Tekst"
-            value="{{ nam.npfx }}" >
+            value="{{ nam ? nam.npfx }}" >
             <label for="idYYY0"> {{ 'Prefix' | trans }} </label>
           </div>
         </div>
@@ -56,7 +56,7 @@
             id="idXXX1"
             name= 'givn'
             placeholder="Tekst"
-            value="{{ nam.givn }}" >
+            value="{{ nam ? nam.givn }}" >
             <label for="idXXX1"> {{ 'First names' | trans }}</label>
           </div>
         </div>
@@ -72,7 +72,7 @@
             id="idXXX2"
             name= 'spfx'
             placeholder="Tekst",
-            value="{{ nam.spfx }}" >
+            value="{{ nam ? nam.spfx }}" >
             <label for="idXXX2"> {{ 'Prefix' | trans }}</label>
           </div>
         </div>
@@ -83,7 +83,7 @@
             id="idXXX3"
             name= 'surn'
             placeholder="Tekst"
-            value="{{ nam.surn }}" >
+            value="{{ nam ? nam.surn }}" >
             <label for="idXXX3"> {{ 'Last names' | trans }} </label>
           </div>
         </div>
@@ -94,7 +94,7 @@
             id="idXXX4"
             name= 'nsfx'
             placeholder="Tekst",
-            value="{{ nam.nsfx }}" >
+            value="{{ nam ? nam.nsfx }}" >
             <label for="idXXX4"> {{ 'Suffix' | trans }}</label>
           </div>
         </div>
@@ -129,7 +129,7 @@
             id="idXXX6"
             name= 'nick'
             placeholder="Tekst",
-            value="{{ nam.nick }}" >
+            value="{{ nam ? nam.nick }}" >
             <label for="idXXX6"> {{ 'Nicknames' | trans }} </label>
           </div>
         </div>
@@ -166,5 +166,5 @@
     </picture>
 
 
-  </div>
+  </fieldset>
 </div>

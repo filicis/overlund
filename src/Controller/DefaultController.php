@@ -37,11 +37,12 @@ class DefaultController extends AbstractController
     $cookies= $request->cookies;
     if ($cookies->has('PROJECT'))
     {
-    }  
+    }
 
     $projects = $doctrine->getRepository(Project::class)->findAll();
 
     if (! $projects) {
+      return $this->redirectToRoute('adminNewProject');
       throw $this->createNotFoundException(
       'No product found for id '
       );

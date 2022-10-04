@@ -33,7 +33,7 @@ class MediaRecord extends RecordSuperclass
    */
 
   #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "mediaRecords")]
-  #[ORM/JoinColumn(onDelete: "Cascade")]
+  #[ORM\JoinColumn(onDelete: "Cascade")]
   private $project;
 
   /**

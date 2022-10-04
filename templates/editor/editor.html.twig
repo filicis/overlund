@@ -5,7 +5,7 @@
     - Venstre kolonne som defaulter til en INDI structur
     - Højre kolonne defaulter til en FAM structur
 
-    Forventer to Template variable
+    Forventer to template variable
     - indi
     - fam
 #}
@@ -21,19 +21,11 @@
       Definerer samtidig Stimulis controlleren 'editor' med samt variablerne
   #}
 
-  {% if indi %}
-    {% set indiarg = indi.id %}
-  {% else %}
-    {% set indiarg = '' %}
-  {% endif %}
-
-
-
 
 <div class="container"
   {{ stimulus_controller('editor', {'project': 'Project01', 'indi2': '{{ indiarg }}', 'fam1': '', husband:'', wife: ''}) }}
-  data-editor-indi-value="{{ indiarg }}";
-  data-editor-fam-value="{{ fam.id }}";
+  data-editor-indi-value="{{ indi ? indi.id : ''}}";
+  data-editor-fam-value="{{ fam ? fam.id : '' }}";
   data-editor-renderindi-value="{{ url('editorUpdateIndiCard', {url: 'Project01'} ) }}"
   data-editor-renderfam-value="{{ url('editorUpdateFamCard', {url: 'Project01'} ) }}"
   data-editor-webapi-value="{{ url('webapi') }}"
@@ -53,14 +45,15 @@
 
   {# Row 1 #}
 
-  <div class="row row-cols-1 row-cols-xl-2" style="background-color: #FFFFE5">
-    <div id= "villy" class="col"  {{ stimulus_target('editor', 'indiView') }}>
-      {{ include('editor/individual.html.twig') }}
+    <div class="row row-cols-1 row-cols-xl-2" style="background-color: #FFFFE5">
+      <div class="col"  {{ stimulus_target('editor', 'indiView') }}>
+        {{ include('editor/individual.html.twig') }}
+      </div>
+      <div class="col" {{ stimulus_target('editor', 'famView') }}>
+        {{ include('editor/family.html.twig') }}
+      </div>
     </div>
-    <div class="col" {{ stimulus_target('editor', 'famView') }}>
-      {{ include('editor/family.html.twig') }}
-    </div>
-  </div> {#  End row 1  #}
+  {#  End row 1  #}
 
 
   <div class="modal" id="exampleModal" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -127,26 +120,3 @@ Toast
 {% endblock body %}
 
 
-{% block jjjavascripts %}
-{{ parent() }}
-
-
-<script>
-
-  async function addFamily()
-  {
-    const myUrl= '{{ url('editorNewFamily', {url: 'Project01'} ) }}';
-    const myInit= {
-      mode: 'cors',
-      credentials: 'include',
-    };
-
-
-    document.getElementById('idXXX1').value= myUrl;
-    await fetch(myUrl, myInit);
-
-  }
-
-</script>
-
-{% endblock jjjavascripts%}

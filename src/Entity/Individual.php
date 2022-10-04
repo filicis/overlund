@@ -11,11 +11,7 @@
  * file that was distributed with this source code.
  */
 
-
-
-
 namespace App\Entity;
-
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -75,7 +71,6 @@ class Individual extends RecordSuperclass
   private $relations;
 
 
-
   // ******************************************
   // ******************************************
   // ******************************************
@@ -92,7 +87,7 @@ class Individual extends RecordSuperclass
     $this->relations = new ArrayCollection();
     $n= new PersonalNameStructure();
     $this->addPersonalNameStructure($n);
-    $this->media= new Media;
+    $this->media= new Media();
   }
 
 
@@ -236,8 +231,6 @@ class Individual extends RecordSuperclass
       return $element->isChild();
     });
   }
-
-
 
 
 }

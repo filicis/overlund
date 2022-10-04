@@ -24,7 +24,7 @@
 
 
 <div class="card-body">
-  <fieldset class="row" {{ indi ?: 'disabled' }}>
+  <fieldset class="row" {{ indi ? '' : 'disabled' }}>
 
     {# GEDCOM Navne Struktur #}
 
@@ -32,7 +32,7 @@
         class="col-9"
         data-action= "input->editor#updatePersonalNameStructure"
         data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
-        data-editor-name-id-param= {{ nam ? nam.id }}
+        data-editor-name-id-param= {{ nam ? nam.id : '' }}
     >
 
       {# Fornavne #}

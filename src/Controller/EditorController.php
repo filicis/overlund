@@ -131,6 +131,9 @@ class EditorController extends AbstractController
     $session= $request->getSession();
 
     $individual= $project->getIndividuals()->first();
+
+    //$individual= new Individual();
+    // $individual= null;
     //if ($individual->getPersonalNameStructures()->isEmpty())
     //{
     //  $this->es->newPersonalName($individual);
@@ -140,7 +143,7 @@ class EditorController extends AbstractController
     return $this->render('editor/editor.html.twig', [
 
       'project' => $project,
-      // 'indi' => null,
+      //'indi' => null,
       'fam' => $family,
       'indi' => $individual,
 
@@ -247,9 +250,8 @@ class EditorController extends AbstractController
     }
 
     return $this->render('editor/individual.html.twig', [
-          'title' => $data,
+      'title' => $data,
       'indi' => $individual,
-      //'fam' => $family,
      ]);
 
   }

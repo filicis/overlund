@@ -47,12 +47,12 @@ trait MediaTrait
    *  function __construct
    *
    */
-
+/*
   public function __construct()
   {
     $this->media= new Media();
   }
-
+*/
 
 
   public function getMedia(): ?Media

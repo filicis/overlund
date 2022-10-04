@@ -6,7 +6,7 @@
 
 #}
 
-{% set husb= fam.getHusband() %}
+{% set husb= fam ? fam.getHusband() %}
 
 {% if husb %}
   {% set phusb= "\ludvig.jpg" %}

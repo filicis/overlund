@@ -33,7 +33,7 @@
       {# RESN knap apparat #}
 
 		<fieldset class="col text-end"
-		          {{ indi ?: 'Disabled' }}
+		          {{ indi ? '' : 'Disabled' }}
 		          data-action="change->editor#indiRestrictions"
 		          aria-label="Restriction">
 		  <span class=""

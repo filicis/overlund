@@ -19,8 +19,8 @@
 									] %}
 
 
-<fieldset class="card-body" {{ indi ?: 'Disabled' }}>
-  <div class="row" {{ indi ?: 'Disbaled' }} >
+<fieldset class="card-body" {{ indi ? '' : 'Disabled' }}>
+  <div class="row" {{ indi ? '' : 'Disbaled' }} >
     <div class="col">
 			<label for="XXX"> {{ 'Families' | trans }}:</label>
 

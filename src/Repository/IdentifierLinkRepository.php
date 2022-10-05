@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\IdentifierStructure;
+use App\Entity\IdentifierLink;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<IdentifierStructure>
+ * @extends ServiceEntityRepository<IdentifierLink>
  *
- * @method IdentifierStructure|null find($id, $lockMode = null, $lockVersion = null)
- * @method IdentifierStructure|null findOneBy(array $criteria, array $orderBy = null)
- * @method IdentifierStructure[]    findAll()
- * @method IdentifierStructure[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method IdentifierLink|null find($id, $lockMode = null, $lockVersion = null)
+ * @method IdentifierLink|null findOneBy(array $criteria, array $orderBy = null)
+ * @method IdentifierLink[]    findAll()
+ * @method IdentifierLink[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class IdentifierStructureRepository extends ServiceEntityRepository
+class IdentifierLinkRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, IdentifierStructure::class);
+        parent::__construct($registry, IdentifierLink::class);
     }
 
-    public function save(IdentifierStructure $entity, bool $flush = false): void
+    public function save(IdentifierLink $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class IdentifierStructureRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(IdentifierStructure $entity, bool $flush = false): void
+    public function remove(IdentifierLink $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class IdentifierStructureRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return IdentifierStructure[] Returns an array of IdentifierStructure objects
+//     * @return IdentifierLink[] Returns an array of IdentifierLink objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class IdentifierStructureRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?IdentifierStructure
+//    public function findOneBySomeField($value): ?IdentifierLink
 //    {
 //        return $this->createQueryBuilder('i')
 //            ->andWhere('i.exampleField = :val')

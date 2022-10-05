@@ -40,15 +40,8 @@ class PlaceRecord extends RecordSuperclass
   private $place;
 
 
-  /**
-   * @ORM\OneToMany(targetEntity=EventStructure::class, mappedBy="place")
-   */
-
-  #[ORM\OneToMany(targetEntity: EventStructure::class, mappedBy: "place")]
-  private $eventStructures;
 
   /**
-   * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="placeRecords")
    */
 
   #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "placeRecords")]
@@ -90,35 +83,6 @@ class PlaceRecord extends RecordSuperclass
   }
 
 
-  /**
-   * @return Collection|EventStructure[]
-   */
-  public function getEventStructures(): Collection
-  {
-      return $this->eventStructures;
-  }
-
-  public function addEventStructure(EventStructure $eventStructure): self
-  {
-      if (!$this->eventStructures->contains($eventStructure)) {
-          $this->eventStructures[] = $eventStructure;
-          $eventStructure->setPlace($this);
-      }
-
-      return $this;
-  }
-
-  public function removeEventStructure(EventStructure $eventStructure): self
-  {
-      if ($this->eventStructures->removeElement($eventStructure)) {
-          // set the owning side to null (unless already changed)
-          if ($eventStructure->getPlace() === $this) {
-              $eventStructure->setPlace(null);
-          }
-      }
-
-      return $this;
-  }
 
   public function getProject(): ?Project
   {

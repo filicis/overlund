@@ -24,6 +24,7 @@ use       App\Entity\PersonalNameStructure;
 use       App\Entity\Traits\MediaTrait;;
 use       App\Entity\Traits\Restrictions;
 use       App\Entity\Media;
+//use       App\Entiry\IdentifierLink;
 
   /**
    *  Individual
@@ -70,6 +71,9 @@ class Individual extends RecordSuperclass
   #[ORM\OneToMany(mappedBy: 'individual', targetEntity: Relation::class, cascade: ["persist"], orphanRemoval: true)]
   private $relations;
 
+  #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+  private ?IdentifierLink $identifierLink = null;
+
 
   // ******************************************
   // ******************************************
@@ -88,6 +92,8 @@ class Individual extends RecordSuperclass
     $n= new PersonalNameStructure();
     $this->addPersonalNameStructure($n);
     $this->media= new Media();
+   $this->identifierLink= new IdentifierLink();
+
   }
 
 
@@ -230,6 +236,18 @@ class Individual extends RecordSuperclass
     return $this->relations->filter(function($element) {
       return $element->isChild();
     });
+  }
+
+  public function getIdentifierLink(): ?IdentifierLink
+  {
+      return $this->identifierLink;
+  }
+
+  public function setIdentifierLink(?IdentifierLink $identifierLink): self
+  {
+      $this->identifierLink = $identifierLink;
+
+      return $this;
   }
 
 

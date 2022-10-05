@@ -39,25 +39,24 @@
 
       <div class="row ">
         <div class="col-3">
-          <div class="form-floating">
+          <div class="mb-2 sshadow">
+            <label class= "small" for="idYYY0"> {{ 'Prefix' | trans }}: </label>
             <input type="text"
             class="form-control form-control-sm shadow"
             id="idYYY0"
             name= 'npfx'
-            placeholder="Tekst"
             value="{{ nam ? nam.npfx }}" >
-            <label for="idYYY0"> {{ 'Prefix' | trans }} </label>
           </div>
         </div>
         <div class="col-9">
-          <div class="form-floating">
+          <div class="mb-2">
+            <label class="small" for="idXXX1"> {{ 'First names' | trans }}:</label>
+
             <input type="text"
             class="form-control form-control-sm shadow"
             id="idXXX1"
             name= 'givn'
-            placeholder="Tekst"
             value="{{ nam ? nam.givn }}" >
-            <label for="idXXX1"> {{ 'First names' | trans }}</label>
           </div>
         </div>
       </div>
@@ -66,36 +65,33 @@
 
       <div class="row">
         <div class="col-3">
-          <div class="form-floating">
+          <div class="mb-2">
+            <label class="small" for="idXXX2"> {{ 'Prefix' | trans }}:</label>
             <input type="text"
             class="form-control form-control-sm shadow"
             id="idXXX2"
             name= 'spfx'
-            placeholder="Tekst",
             value="{{ nam ? nam.spfx }}" >
-            <label for="idXXX2"> {{ 'Prefix' | trans }}</label>
           </div>
         </div>
         <div class="col-6">
-          <div class="form-floating">
+          <div class="mb-2">
+            <label class="small" for="idXXX3"> {{ 'Last names' | trans }}: </label>
             <input type="text"
             class="form-control form-control-sm shadow"
             id="idXXX3"
             name= 'surn'
-            placeholder="Tekst"
             value="{{ nam ? nam.surn }}" >
-            <label for="idXXX3"> {{ 'Last names' | trans }} </label>
           </div>
         </div>
         <div class="col-3">
-          <div class="form-floating">
+          <div class="mb-2">
+            <label class="small" for="idXXX4"> {{ 'Suffix' | trans }}:</label>
             <input type="text"
             class="form-control form-control-sm shadow"
             id="idXXX4"
             name= 'nsfx'
-            placeholder="Tekst",
             value="{{ nam ? nam.nsfx }}" >
-            <label for="idXXX4"> {{ 'Suffix' | trans }}</label>
           </div>
         </div>
       </div>
@@ -104,7 +100,8 @@
 
       <div class="row">
         <div class="col-3">
-          <div class="form-floating">
+          <div class="mb-2">
+            <label class="small" for="idXXX7"> {{ 'Sex' | trans }}: </label>
 
             <select class="form-select form-select-sm shadow"
               id="idXXXXXX7"
@@ -118,19 +115,17 @@
               <option value="X"> {{ 'Intersex' | trans }} </option>
               <option value="U"> {{ 'Unknown' | trans }} </option>
             </select>
-            <label class="form-label-sm" for="idXXX7"> {{ 'Sex' | trans }} </label>
           </div>
 
         </div>
         <div class="col">
-          <div class="form-floating">
+          <label class="small" for="idXXX6"> {{ 'Nicknames' | trans }} </label>
+          <div class="mb-2">
             <input type="text"
             class="form-control form-control-sm shadow"
             id="idXXX6"
             name= 'nick'
-            placeholder="Tekst",
             value="{{ nam ? nam.nick }}" >
-            <label for="idXXX6"> {{ 'Nicknames' | trans }} </label>
           </div>
         </div>
         <!-- div class="col-3">

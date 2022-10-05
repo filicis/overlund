@@ -19,33 +19,41 @@
 %}
 
 
-<div class="card-body">
-<div class="row overflow-auto" style="max-height: 250px">
-	<div class="col ooverflow-auto" style="max-hheight: 250px">
-		<table class="table table-sm shadow table-light">
+{#
+  Har problemer med sticky top - check søsterversionen i individual-section02.html.twig
+#}
 
-			<thead  style="position: sticky; top: 0">
-				<tr>
-					<th scope="col">{{'Event' | trans}}</th>
-					<th scope="col">{{'Date' | trans}}</th>
-					<th scope="col">{{'Place' | trans}}</th>
-				</tr>
-			</thead>
+<div class="card-body overflow-auto mb-2" style="max-height: 250px">
+  <!--div class="row overflow-auto" style="max-height: 250px">
+    <div class="col ooverflow-auto" style="max-hheight: 250px"-->
+      <!--div class="table-responsive" -->
 
-			<tbody>
-				{% for e in iEvent %}
 
-				<tr>
-					<td >{{ e[0] }}</td>
-					<td >{{ e[1] }}</td>
-					<td >{{ e[2] }}</td>
-				</tr>
+        <table class="table table-bordered table-sm shadow table-light">
 
-				{% endfor %}
-			</tbody>
+          <thead  style="position: sticky; top: 0">
+            <tr>
+              <th scope="col">{{'Event' | trans}}</th>
+              <th scope="col">{{'Date' | trans}}</th>
+              <th scope="col">{{'Place' | trans}}</th>
+            </tr>
+          </thead>
 
-		</table>
-	</div>
-</div>
+          <tbody>
+            {% for e in iEvent %}
+
+
+            <tr class="" role="button">
+              <td >{{ e[0] }}</td>
+              <td >{{ e[1] }}</td>
+              <td >{{ e[2] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+      <!-- /div-->
+    <!--/div>
+  </div-->
 </div>
 

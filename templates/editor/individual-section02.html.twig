@@ -25,7 +25,7 @@
     <div class="col-9">
 
       <label class="small" for="XXX"> {{ 'Families' | trans }}:</label>
-      <select class="form-select shadow" id="XXX" size=3 aria-label="Default select example">
+      <select class="form-select form-select-sm shadow" id="XXX" size=3 aria-label="Default select example">
 
         <!-- option selected>Open this select menu</option- -->
 
@@ -56,7 +56,6 @@
           title="{{'Change Pedigree of Child' | trans}}">
           {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
         </button>
-
       </div>
     </div>
   </div>
@@ -67,7 +66,7 @@
     <div class="col-9">
 
       <label class="small" for="XXX"> {{ 'Parents' | trans }} :</label>
-      <select class="form-select shadow" id="XXX" size=2 aria-label="Default select example">
+      <select class="form-select form-select-sm shadow" id="XXX" size=2 aria-label="Default select example">
         <!-- option selected>Open this select menu</option- -->
 
         {% for p in parentlist %}

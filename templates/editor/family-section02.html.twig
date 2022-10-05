@@ -36,7 +36,10 @@
 
     {# Reserveret til knap-apparat #}
 
-    <div class="col-3 text-end">
+    <div class="col-3 d-flex align-items-center">
+      <div class="text-end">
+
+
       <button type="button"
         class="btn btn-sm btn-outline-dark btn-light"
         data-action="editor#newAsChild"
@@ -102,7 +105,7 @@
         data-bs-toggle="tooltip"
         title="{{'Move Child down' | trans}}">
         {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
-      </button>
+      </button> </div>
 
     </div>
 

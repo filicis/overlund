@@ -20,131 +20,131 @@
 
 
 <div class="card-body">
-  <div class="row">
-    <div class="col">
-			<label for="XXX"> {{ 'Families' | trans }}:</label>
 
+  <div class="row">
+    <div class="col-9">
+
+      <label class="small" for="XXX"> {{ 'Families' | trans }}:</label>
+      <select class="form-select shadow" id="XXX" size=3 aria-label="Default select example">
+
+        <!-- option selected>Open this select menu</option- -->
+
+        {% for f in familylist %}
+
+        <option value="1" onfocus='kilroy()'>{{ f }}</option>
+
+        {% endfor %}
+      </select>
+    </div>
+
+    {# Reserveret til knap-apparat #}
+
+    <div class="col-3 d-flex align-items-center">
+      <div class="text-end">
+
+        <button type="button"
+          class="btn btn-sm btn-outline-dark btn-light"
+          data-bs-toggle="tooltip"
+          title="{{'Change Pedigree of Child' | trans}}">
+          {{ constant('App\\Controller\\EditorController::ICON_UP') }}
+
+        </button>
+
+        <button type="button"
+          class="btn btn-sm btn-outline-dark btn-light"
+          data-bs-toggle="tooltip"
+          title="{{'Change Pedigree of Child' | trans}}">
+          {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
+        </button>
+
+      </div>
     </div>
   </div>
-	<div class="row">
-		<div class="col-9">
-			<select class="form-select shadow" id="XXX" size=4 aria-label="Default select example">
-				<!-- option selected>Open this select menu</option- -->
+</div>
 
-				{% for f in familylist %}
-
-				<option value="1" onfocus='kilroy()'>{{ f }}</option>
-
-				{% endfor %}
-			</select>
-		</div>
-		<div class="col text-end">
-      <button type="button"
-        class="btn btn-sm btn-outline-dark btn-light"
-        data-bs-toggle="tooltip"
-        title="{{'Change Pedigree of Child' | trans}}">
-      {{ constant('App\\Controller\\EditorController::ICON_UP') }}
-
-      </button>
-
-
-      <button type="button"
-        class="btn btn-sm btn-outline-dark btn-light"
-        data-bs-toggle="tooltip"
-        title="{{'Change Pedigree of Child' | trans}}">
-       {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
-      </button>
-
-		</div>
-
-	</div>
-<!-- /div>
-
-<div class=card-body -->
+<div class=card-body>
   <div class="row">
-    <div class="col">
-			<label for="XXX"> {{ 'Parents' | trans }} :</label>
+    <div class="col-9">
 
+      <label class="small" for="XXX"> {{ 'Parents' | trans }} :</label>
+      <select class="form-select shadow" id="XXX" size=2 aria-label="Default select example">
+        <!-- option selected>Open this select menu</option- -->
+
+        {% for p in parentlist %}
+
+        <option value="1"  onfocus='kilroy()'>{{ p }}</option>
+
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-3 d-flex align-items-center">
+      <div class="text-end">
+
+        <button type="button" disabled
+          class="btn btn-sm btn-outline-dark btn-light"
+          data-bs-toggle="tooltip"
+          title="{{'Change Pedigree of Child' | trans}}">
+          {{ constant('App\\Controller\\EditorController::ICON_UP') }}
+
+        </button>
+
+        <button type="button" disabled
+          class="btn btn-sm btn-outline-dark btn-light"
+          data-bs-toggle="tooltip"
+          title="{{'Change Pedigree of Child' | trans}}">
+          {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
+        </button>
+
+      </div>
     </div>
   </div>
-	<div class="row">
-		<div class="col-9">
-			<select class="form-select shadow" id="XXX" size=3 aria-label="Default select example">
-				<!-- option selected>Open this select menu</option- -->
-
-				{% for p in parentlist %}
-
-				<option value="1"  onfocus='kilroy()'>{{ p }}</option>
-
-				{% endfor %}
-			</select>
-		</div>
-		<div class="col text-end">
-      <button type="button" disabled
-        class="btn btn-sm btn-outline-dark btn-light"
-        data-bs-toggle="tooltip"
-        title="{{'Change Pedigree of Child' | trans}}">
-      {{ constant('App\\Controller\\EditorController::ICON_UP') }}
-
-      </button>
-
-
-      <button type="button" disabled
-        class="btn btn-sm btn-outline-dark btn-light"
-        data-bs-toggle="tooltip"
-        title="{{'Change Pedigree of Child' | trans}}">
-       {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
-      </button>
-
-		</div>
-	</div>
 </div>
 
 
 
 <div class="card-body d-flex justify-content-between">
-	<button type="button"
-          class="btn btn-outline-dark btn-light shadow"
-          data-bs-toggle="tooltip"
-          data-bs-placement="bottom"
-          title="{% trans %} Events and Attributes {% endtrans %}">
+  <button type="button"
+    class="btn btn-outline-dark btn-light shadow"
+    data-bs-toggle="tooltip"
+    data-bs-placement="bottom"
+    title="{% trans %} Events and Attributes {% endtrans %}">
     {{ constant('App\\Controller\\EditorController::ICON_EVENTS') }}
-	</button>
-	<button role="button"
-          class="btn btn-outline-dark btn-light shadow"
-          data-bs-toggle="tooltip"
-          data-bs-placement="bottom"
-          title="{{ 'Notes' | trans }}">
-      {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
   </button>
-	<button type="button"
-          class="btn btn-outline-dark btn-light shadow"
-          data-bs-toggle="tooltip"
-          data-bs-placement="bottom"
-          title="{{ 'Source Citations' | trans }}">
-			{{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
+  <button role="button"
+    class="btn btn-outline-dark btn-light shadow"
+    data-bs-toggle="tooltip"
+    data-bs-placement="bottom"
+    title="{{ 'Notes' | trans }}">
+    {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
   </button>
-	<button type="button"
-          class="btn btn-outline-dark btn-light shadow"
-          data-bs-toggle="tooltip"
-          data-bs-placement="bottom"
-          title="{{ 'Media' | trans }}">
-			{{ constant('App\\Controller\\EditorController::ICON_MEDIA') }}
-	</button>
-	<button type="button"
-          class="btn btn-outline-dark btn-light shadow"
-          data-bs-toggle="tooltip"
-          data-bs-placement="bottom"
-          title="Last Change / Restrictions">
-		{{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
-	</button>
-	<button type="button"
-          class="btn btn-outline-dark btn-light shadow"
-          data-bs-toggle="tooltip"
-          data-bs-placement="bottom"
-          title="{{ 'Researchers' | trans }}">
-	  {{ constant('App\\Controller\\EditorController::ICON_RESEARCHERS') }}
-	</button>
+  <button type="button"
+    class="btn btn-outline-dark btn-light shadow"
+    data-bs-toggle="tooltip"
+    data-bs-placement="bottom"
+    title="{{ 'Source Citations' | trans }}">
+    {{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
+  </button>
+  <button type="button"
+    class="btn btn-outline-dark btn-light shadow"
+    data-bs-toggle="tooltip"
+    data-bs-placement="bottom"
+    title="{{ 'Media' | trans }}">
+    {{ constant('App\\Controller\\EditorController::ICON_MEDIA') }}
+  </button>
+  <button type="button"
+    class="btn btn-outline-dark btn-light shadow"
+    data-bs-toggle="tooltip"
+    data-bs-placement="bottom"
+    title="Last Change / Restrictions">
+    {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
+  </button>
+  <button type="button"
+    class="btn btn-outline-dark btn-light shadow"
+    data-bs-toggle="tooltip"
+    data-bs-placement="bottom"
+    title="{{ 'Researchers' | trans }}">
+    {{ constant('App\\Controller\\EditorController::ICON_RESEARCHERS') }}
+  </button>
 </div>
 
 

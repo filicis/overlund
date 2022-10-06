@@ -20,6 +20,8 @@ use       Symfony\Component\HttpFoundation\Response;
 use       Symfony\Component\Routing\Annotation\Route;
 
 use       Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
+use       Symfony\Component\HttpKernel\Exception\BadRequestException;
+use       Symfony\Component\HttpKernel\Exception\NotImplementedException;
 
 //use       function Symfony\Component\String\u;
 
@@ -51,6 +53,9 @@ class WebapiController extends AbstractController
     if ($offline)
       throw new ServiceUnavailableHttpException();
 
+    //throw new NotImplementedException();
+
+
     try
     {
       $params = json_decode($request->getContent(), true);
@@ -67,6 +72,8 @@ class WebapiController extends AbstractController
     }
     catch(\Exception $e)
     {
+      //throw new NotImplementedException();
+      //throw new Exception($e->getMessage());
       //return $this->redirectToRoute('offline');
       return $this->json(['stat' => 'Error', 'Message' => $e->getMessage()]);
     }

@@ -358,16 +358,20 @@ export default class extends Controller {
 
     console.log('Webapi: ', this.webapiValue);
     console.log('Myulr: ', myurl);
-    //fetch(event.params['url'], myInit)
-    // fetch(myurl, myInit)
     fetch(this.webapiValue, myInit)
+    .finally(() => {})
     .then((response) => {
+        const isJson= response.headers.get('content-type')?.includes('application/json');
+
         if (! response.ok)
         {
+
           switch(response.status)
           {
             case 500:
-              throw new Error('Netværksfejl: ', response.status);
+              console.log("Reponse: ", response)
+              //throw response;
+              //throw new Error('Netværksfejl: ', response.status);
               return;
 
             case 503:
@@ -379,14 +383,22 @@ export default class extends Controller {
           }
 
           //throw new Error('Netværksfejl: ', response.status);
-          return;
+          return Promise.reject('Fejl');
         }
-        return response.text();
+        console.log(response);
+        //return isJson ? response.json() : response.text();
+        return Promise.reject(error);
+        return response.json();
     })
     .then((data) => {
         console.log('Data::: ', data);
+        if (! data)
+          return Promise.reject('Fejl');
     })
-    .catch((error) => console.error('Catch Error: ', error));
+    .catch((error) => {
+
+      console.error('Catch 2 Error: ', error.message)
+    });
   }
 
 

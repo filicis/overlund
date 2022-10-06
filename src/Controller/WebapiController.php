@@ -19,6 +19,8 @@ use       Symfony\Component\HttpFoundation\Request;
 use       Symfony\Component\HttpFoundation\Response;
 use       Symfony\Component\Routing\Annotation\Route;
 
+use       Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
+
 //use       function Symfony\Component\String\u;
 
 use       App\Entity\Project;
@@ -26,7 +28,8 @@ use       App\Entity\Project;
 
   /**
    *  WebapiController
-   *  - Den primære adgang til systemets Api
+   *  - Den primære snitflade til systemets Api
+   *  - Opdelt i to indgange: /webapi der anvendes intern i systemet og /api der åbner for kommunikation til andre applikationer
    *
    *  - Checker for offline system
    *  - checker for offline project
@@ -34,9 +37,20 @@ use       App\Entity\Project;
 
 class WebapiController extends AbstractController
 {
+  /**
+   * function webapi
+   * - Snitflade til anvendelse internt i systemet
+   *
+   */
+
   #[Route('/webapi/{method}/{project}', name: 'webapi')]
   public function webapi(Request $request, String $method= null, String $project= null): Response
   {
+    $offline= false;
+
+    if ($offline)
+      throw new ServiceUnavailableHttpException();
+
     try
     {
       $params = json_decode($request->getContent(), true);
@@ -53,6 +67,7 @@ class WebapiController extends AbstractController
     }
     catch(\Exception $e)
     {
+      //return $this->redirectToRoute('offline');
       return $this->json(['stat' => 'Error', 'Message' => $e->getMessage()]);
     }
 

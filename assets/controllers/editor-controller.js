@@ -15,10 +15,11 @@ export default class extends Controller {
   static targets= ['indiView', 'famView', 'indicard', 'personalName']
 
 
-  //  fetchWebapi
+  //  function webapi
+  //  - Den primære indgang til systemets web service
   //
 
-  #fetchWebapi(arg, mymethod= 'PUT')
+  #webapi(arg, mymethod= 'PUT')
   {
     const myInit= {
       mode: 'cors',
@@ -34,7 +35,19 @@ export default class extends Controller {
     .then((response) =>
     {
       if (! response.ok)
-        throw new Error('Netværksfejl: ', response.status);
+      {
+        switch(response.status)
+        {
+          case 503:
+            window.location.href = "/offline";
+            break;
+
+          default:
+        }
+        window.location.href = "/offline";
+        //throw new Error('Netværksfejl: ', response.status);
+        return null;
+      }
       return response.json()
     })
     .then((data) =>
@@ -329,7 +342,7 @@ export default class extends Controller {
 
     var arg= {};
     arg[property]= event.target.value;
-    arg['method']= "api_individual_updatePersonalName";
+    arg['method']= "api_individual_updatePersonalNames";
     arg['project']= 'Project01';
     arg['nameId']= event.params['nameId'];
     arg['indiId']= this.indiValue;
@@ -350,7 +363,24 @@ export default class extends Controller {
     fetch(this.webapiValue, myInit)
     .then((response) => {
         if (! response.ok)
-          throw new Error('Netværksfejl: ', response.status);
+        {
+          switch(response.status)
+          {
+            case 500:
+              throw new Error('Netværksfejl: ', response.status);
+              return;
+
+            case 503:
+              window.location.href = "/offline";
+              break;
+
+            default:
+              throw new Error('Netværksfejl: ', response.status);
+          }
+
+          //throw new Error('Netværksfejl: ', response.status);
+          return;
+        }
         return response.text();
     })
     .then((data) => {
@@ -409,7 +439,7 @@ export default class extends Controller {
     arg['method']= "api_family_newAsChild";
     arg['project']= 'Project01';
     console.log('Called: newAsChild');
-    return this.#fetchWebapi(arg);
+    return this.#webapi(arg);
   }
 
 

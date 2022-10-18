@@ -45,41 +45,14 @@ class ApiIndividualController extends AbstractController
 
 
   /**
-  * __construct()
-  *
-  */
+   *   function __construct()
+   *
+   */
 
   function __construct(ManagerRegistry $doctrine, EditorService $es)
   {
     $this->entityManager= $doctrine->getManager();
     $this->editorService= $es;
-  }
-
-
-
-  /**
-  *
-  *
-  */
-
-  #[Route('/webapi', name: 'webapi')]
-  public function index(): Response
-  {
-    return $this->render('webapi/index.html.twig', [
-    'controller_name' => 'WebapiController',
-    ]);
-  }
-
-  /**
-  *  function GetVersion()
-  *
-  * @return Return the Overlund version:
-  */
-
-  #[Route('/getVersion', name: 'getVersion')]
-  public function getVersion() : Response
-  {
-    return $this->json(['svar' => 'yes',]);
   }
 
 
@@ -221,6 +194,31 @@ class ApiIndividualController extends AbstractController
   }
 
   }
+
+
+
+  /**
+   *  function next()
+   *  - returnerer id for efterfølgende individ
+   */
+
+  #[Route('/next', name: 'next', methods: ['GET'])]
+  public function next(Request $request, Project $project) : JsonResponse
+  {
+
+  }
+
+  /**
+   *  function previous()
+   *  - returnerer id for efterfølgende individ
+   */
+
+  #[Route('/prev', name: 'prev', methods: ['GET'])]
+  public function previous(Request $request, Project $project) : JsonResponse
+  {
+
+  }
+
 
 
 

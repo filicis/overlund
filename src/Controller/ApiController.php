@@ -52,7 +52,7 @@ class ApiController extends AbstractController
   #[Route('/getVersion', name: 'getVersion')]
   public function getVersion() : JsonResponse
   {
-    return $this->json(['stat' => 'Ok', 'Result' => ['Version' => '0.0.1 beta',]]);
+    return $this->json(['stat' => 'Ok', 'Result' => ['Version' => '0.0.1 alpha',]]);
   }
 }
 

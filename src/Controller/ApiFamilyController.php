@@ -44,9 +44,9 @@ class ApiFamilyController extends AbstractController
 
 
   /**
-  * __construct()
-  *
-  */
+   *  function __construct()
+   *
+   */
 
   function __construct(ManagerRegistry $doctrine, EditorService $es)
   {
@@ -54,32 +54,6 @@ class ApiFamilyController extends AbstractController
     $this->editorService= $es;
   }
 
-
-  /**
-   *
-   *
-   */
-
-
-  #[Route('/webapi', name: 'webapi')]
-  public function index(): Response
-  {
-    return $this->render('webapi/index.html.twig', [
-    'controller_name' => 'WebapiController',
-    ]);
-  }
-
-  /**
-  *  function GetVersion()
-  *
-  * @return Return the Overlund version:
-  */
-
-  #[Route('/getVersion', name: 'getVersion')]
-  public function getVersion() : Response
-  {
-    return $this->json(['svar' => 'yes',]);
-  }
 
 
   /**

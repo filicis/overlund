@@ -79,7 +79,7 @@ class EditorController extends AbstractController
 
 
   /**
-   *  __constructor()
+   *  function __constructor()
    *
    **/
 
@@ -152,54 +152,6 @@ class EditorController extends AbstractController
   }
 
 
-  /**
-   *  function newFamily()
-   *
-   **/
-
-  #[Route('/editor/{url}/newfamily', name: 'editorNewFamily')]
-  public function newFamily(Request $request, Project $project): Response
-  {
-    $fam= new Family();
-    $project->addFamily($fam);
-
-
-    $this->entityManager->persist($project);
-    $this->entityManager->persist($fam);
-
-    $this->entityManager->flush();
-  }
-
-
-  /**
-   *  function newIndividual()
-   *
-   **/
-
-  #[Route('/editor/{url}/newindividual', name: 'editorNewIndividual')]
-  public function newIndividual(Request $request, Project $project): Response
-  {
-    //try
-    //{
-      $name= new PersonalNameStructure();
-      $indi= new Individual();
-      $indi->addPersonalNameStructure($name);
-      $project->addIndividual($indi);
-
-      $this->entityManager->persist($project);
-      $this->entityManager->persist($indi);
-      $this->entityManager->persist($name);
-      $this->entityManager->flush();
-
-      $id= $indi->getId();
-
-      return $this->json($id);
-    //}
-    //catch(\Exception $e)
-    //{
-    //}
-  }
-
 
 
   /**
@@ -212,10 +164,7 @@ class EditorController extends AbstractController
   {
     $data = json_decode($request->getContent(), true);
 
-
     $title= $request->getContent();
-
-    // $family= $this->entityManager->find('App\Entity\Family', $data);
 
     $family= $project->getFamilies()[$data];
 
@@ -242,7 +191,6 @@ class EditorController extends AbstractController
     $data = json_decode($request->getContent(), true);
 
     $title= $request->getContent();
-    // $individual= $this->entityManager->find('App\Entity\Individual', $data);
 
     $individual= $project->getIndividuals()[$data];
     if ($individual->getPersonalNameStructures()->isEmpty())

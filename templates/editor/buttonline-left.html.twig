@@ -19,9 +19,7 @@
 <button type="button"
   class="btn btn-outline-dark btn-light"
   data-bs-toggle="tooltip"
-  title="{{ 'Previous' | trans}}"
-  {{ stimulus_action('editor', 'addIndividual') }}
-  data-editor-myUrl-param="{{ url('editorNewIndividual', {url: 'Project01'} ) }}">
+  title="{{ 'Previous' | trans}}">
   {{ constant('App\\Controller\\EditorController::ICON_LEFT') }}
 </button>
 <button type="button"
@@ -39,7 +37,8 @@
 <button type="button"
   class="btn btn-outline-dark btn-light"
   data-bs-toggle="tooltip"
-  title="Search for individual"
-  onclick="mymyNewIndividual('{{ url('editorNewIndividual', {url: 'Project01'} ) }}')">
+  title="Search for individual">
+
+
   <i class="bi bi-file-lock"></i>
 </button>

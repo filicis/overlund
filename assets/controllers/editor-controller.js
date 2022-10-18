@@ -205,48 +205,16 @@ export default class extends Controller {
     var arg= {};
     arg['method']= "api_family_new";
     arg['project']= 'Project01';
-    const myInit= {
-      mode: 'cors',
-      credentials: 'include',
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(arg),
-    };
-
 
     this.#webapi(arg)
     .then((data) =>
     {
-        console.log('newFamily Result: ', data);
+      console.log('newFamily Result: ', data);
+      console.log('newFamily Result: ', data.stat);
+
+      if (data.stat == 'Ok')
+        this.famValue= data.result.id;
     });
-    // console.log('newFamily Result: ', data);
-    // console.log('Result: ', data['stat']);
-    //if (data.stat == ok)
-    //  this.famValue= res.id;
-
-/*
-
-    //fetch(event.params.myurl, myInit)
-    fetch(this.webapiValue, myInit)
-    .then((response) =>
-    {
-      if (response.ok)
-        return response.json()
-      throw new Error('Netværksfejl: ', response.status);
-
-    })
-    .then((data) =>
-    {
-      console.log(data);
-      const res= data.result;
-      this.famValue= res.id;
-      console.log('Id: ', res.id);
-    })
-    .catch(error =>
-    {
-      console.error('Error: ', error)
-    });
-*/
   }
 
 
@@ -259,35 +227,16 @@ export default class extends Controller {
     var arg= {};
     arg['method']= "api_individual_new";
     arg['project']= 'Project01';
-    const myInit= {
-      mode: 'cors',
-      credentials: 'include',
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(arg),
-    };
 
-    fetch(this.webapiValue, myInit)
-    .then((response) =>
-    {
-      if (! response.ok)
-        throw new Error('Netværksfejl: ', response.status);
-      console.log('Response OK');
-      return response.json();
-    })
+    this.#webapi(arg)
     .then((data) =>
     {
-      console.log(data);
+      console.log('newIndividual Result: ', data);
+      console.log('newIndividual Result: ', data.stat);
 
-      const res= data.result;
-      this.indiValue= res.id;
-      console.log('Id: ', res.id);
-    })
-    .catch(error =>
-    {
-      console.error('Catch Error: ', error)
+      if (data.stat == 'Ok')
+        this.indiValue= data.result.id;
     });
-
   }
 
 
@@ -367,10 +316,11 @@ export default class extends Controller {
     arg['nameId']= event.params['nameId'];
     arg['indiId']= this.indiValue;
 
-    const result= this.#webapi(arg);
-    console.log('Result: ', result);
-
-
+    this.#webapi(arg)
+    .then((data) =>
+    {
+        console.log('Result: ', data);
+    });
   }
 
 

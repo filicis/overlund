@@ -10,17 +10,19 @@ export default class extends Controller {
     wife: String,
     renderindi: String,
     renderfam: String,
-    webapi: String
+    webapi: String,
   }
   static targets= ['indiView', 'famView', 'indicard', 'personalName']
 
+  //var myResult;
 
-  //  function webapi
+  //  function #webapi
   //  - Den primære indgang til systemets web service
   //
 
-  #webapi(arg, mymethod= 'PUT')
+  async #webapi(arg, mymethod= 'PUT')
   {
+    var myResult= "Hej verden";
     const myInit= {
       mode: 'cors',
       credentials: 'include',
@@ -31,7 +33,7 @@ export default class extends Controller {
 
     console.log('Arg: ', arg);
     console.log('myInit: ', myInit)
-    fetch(this.webapiValue, myInit)
+    await fetch(this.webapiValue, myInit)
     .then((response) =>
     {
       if (! response.ok)
@@ -51,15 +53,20 @@ export default class extends Controller {
     })
     .then((data) =>
     {
-      console.log('Data:', data);
-      return data;
+      myResult= data;
+      // console.log('#Webapi Data:', data);
+      // console.log('#Webapi Data:', myResult);
+      // return data;
+
     })
     .catch((error) =>
     {
       console.error('Catch Error: ', error.message);
       //alert(error.message);
     });
-
+    // console.log("Data: ", data);
+    // console.log("this myResult: ", myResult);
+    return myResult;
 
   }
 
@@ -206,6 +213,19 @@ export default class extends Controller {
       body: JSON.stringify(arg),
     };
 
+
+    this.#webapi(arg)
+    .then((data) =>
+    {
+        console.log('newFamily Result: ', data);
+    });
+    // console.log('newFamily Result: ', data);
+    // console.log('Result: ', data['stat']);
+    //if (data.stat == ok)
+    //  this.famValue= res.id;
+
+/*
+
     //fetch(event.params.myurl, myInit)
     fetch(this.webapiValue, myInit)
     .then((response) =>
@@ -226,6 +246,7 @@ export default class extends Controller {
     {
       console.error('Error: ', error)
     });
+*/
   }
 
 
@@ -332,6 +353,8 @@ export default class extends Controller {
   //  url:
   //  indiId:
   //  nameId:
+  //
+  //  TODO: Skal opdatere navn relevante steder på websiden
 
   updatePersonalNameStructure(event)
   {

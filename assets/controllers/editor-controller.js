@@ -40,13 +40,12 @@ export default class extends Controller {
         {
           case 503:
             window.location.href = "/offline";
-            break;
+            throw new Error('System is offline');
 
           default:
         }
-        window.location.href = "/offline";
-        //throw new Error('Netværksfejl: ', response.status);
-        return null;
+        // window.location.href = "/offline";
+        throw new Error('Netværksfejl: ', response.status);
       }
       return response.json()
     })
@@ -57,9 +56,8 @@ export default class extends Controller {
     })
     .catch((error) =>
     {
-      console.error('** ERROR **')
       console.error('Catch Error: ', error.message);
-      alert(error.message);
+      //alert(error.message);
     });
 
 
@@ -338,67 +336,18 @@ export default class extends Controller {
   updatePersonalNameStructure(event)
   {
     const property= event.target.attributes.name.value;
-    const myurl= this.webapiValue + "/" + "api_individual_updatePersonalName" + "/Project01";
 
     var arg= {};
     arg[property]= event.target.value;
-    arg['method']= "api_individual_updatePersonalNames";
+    arg['method']= "api_individual_updatePersonalName";
     arg['project']= 'Project01';
     arg['nameId']= event.params['nameId'];
     arg['indiId']= this.indiValue;
 
+    const result= this.#webapi(arg);
+    console.log('Result: ', result);
 
-    const myInit= {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(arg),
-      mode: 'cors',
-      credentials: 'include',
-    };
 
-    console.log('Webapi: ', this.webapiValue);
-    console.log('Myulr: ', myurl);
-    fetch(this.webapiValue, myInit)
-    .finally(() => {})
-    .then((response) => {
-        const isJson= response.headers.get('content-type')?.includes('application/json');
-
-        if (! response.ok)
-        {
-
-          switch(response.status)
-          {
-            case 500:
-              console.log("Reponse: ", response)
-              //throw response;
-              //throw new Error('Netværksfejl: ', response.status);
-              return;
-
-            case 503:
-              window.location.href = "/offline";
-              break;
-
-            default:
-              throw new Error('Netværksfejl: ', response.status);
-          }
-
-          //throw new Error('Netværksfejl: ', response.status);
-          return Promise.reject('Fejl');
-        }
-        console.log(response);
-        //return isJson ? response.json() : response.text();
-        return Promise.reject(error);
-        return response.json();
-    })
-    .then((data) => {
-        console.log('Data::: ', data);
-        if (! data)
-          return Promise.reject('Fejl');
-    })
-    .catch((error) => {
-
-      console.error('Catch 2 Error: ', error.message)
-    });
   }
 
 

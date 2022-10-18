@@ -18,10 +18,13 @@ use       Symfony\Component\HttpFoundation\RedirectResponse;
 use       Symfony\Component\HttpFoundation\Request;
 use       Symfony\Component\HttpFoundation\Response;
 use       Symfony\Component\Routing\Annotation\Route;
+use       Psr\Log\LoggerInterface;
 
 use       Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 use       Symfony\Component\HttpKernel\Exception\BadRequestException;
 use       Symfony\Component\HttpKernel\Exception\NotImplementedException;
+
+use       Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 //use       function Symfony\Component\String\u;
 
@@ -39,10 +42,23 @@ use       App\Entity\Project;
 
 class WebapiController extends AbstractController
 {
+  private $logger= null;
+
+  /**
+   *  function __construct
+   */
+
+  public function __construct(LoggerInterface $logger)
+  {
+    $this->logger= $logger;
+  }
+
+
   /**
    * function webapi
    * - Snitflade til anvendelse internt i systemet
    *
+   * Ved fejl returneres en taktfuld Json fejlmeddelse
    */
 
   #[Route('/webapi/{method}/{project}', name: 'webapi')]
@@ -53,14 +69,15 @@ class WebapiController extends AbstractController
     if ($offline)
       throw new ServiceUnavailableHttpException();
 
-    //throw new NotImplementedException();
-
 
     try
     {
       $params = json_decode($request->getContent(), true);
       $m= $params['method'] ? $params['method'] : $method;
       $p= $params['project'] ? $params['project'] : $project;
+
+      //$this->logger->info('Method: ' . $m);
+      //$this->logger->info('Project: ' . $p);
 
 
       if (! $p)
@@ -69,16 +86,18 @@ class WebapiController extends AbstractController
       {
         return new RedirectResponse($this->generateUrl($m, ['url' => $p]));
       }
+
+    }
+    catch(RouteNotFoundException $e)
+    {
+      // $this->logger->error('Route not found: ' . $e->getMessage());
+      return $this->json(['stat' => 'Error', 'Message' => 'Metode ikke implementeret: ' . $m]);
+
     }
     catch(\Exception $e)
     {
-      //throw new NotImplementedException();
-      //throw new Exception($e->getMessage());
-      //return $this->redirectToRoute('offline');
-      return $this->json(['stat' => 'Error', 'Message' => $e->getMessage()]);
+      return $this->json(['stat' => 'Error', 'Message' => 'Webapi fejl: ' . $e->getMessage()]);
     }
-
-
   }
 
 

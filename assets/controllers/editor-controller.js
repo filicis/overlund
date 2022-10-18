@@ -325,17 +325,15 @@ export default class extends Controller {
         console.log('Result: ', data);
 
         let cmd= "[title='".concat(that.indiValue, "']");
-        //let cmd= this.indiValue;
-        console.log("Cmd: ", cmd);
-
-        //let nodes= document.querySelectorAll("span[title='01GEN5HWT6ANXP0X5K22WSPTW9']");
+        // console.log("Cmd: ", cmd);
+        // let nodes= document.querySelectorAll("span[title='01GEN5HWT6ANXP0X5K22WSPTW9']");
         let nodes= document.querySelectorAll(cmd);
 
         nodes.forEach((element) =>
         {
           element.innerText= data.result.name;
         });
-        console.log("Nodes: ", nodes);
+        // console.log("Nodes: ", nodes);
     });
   }
 

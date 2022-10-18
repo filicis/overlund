@@ -12,7 +12,7 @@ export default class extends Controller {
     renderfam: String,
     webapi: String,
   }
-  static targets= ['indiView', 'famView', 'indicard', 'personalName']
+  static targets= ['indiView', 'famView', 'indicard', 'personalName', 'tommy']
 
   //var myResult;
 
@@ -310,6 +310,8 @@ export default class extends Controller {
   {
     const property= event.target.attributes.name.value;
 
+    var that= this;
+
     var arg= {};
     arg[property]= event.target.value;
     arg['method']= "api_individual_updatePersonalName";
@@ -321,6 +323,19 @@ export default class extends Controller {
     .then((data) =>
     {
         console.log('Result: ', data);
+
+        let cmd= "[title='".concat(that.indiValue, "']");
+        //let cmd= this.indiValue;
+        console.log("Cmd: ", cmd);
+
+        //let nodes= document.querySelectorAll("span[title='01GEN5HWT6ANXP0X5K22WSPTW9']");
+        let nodes= document.querySelectorAll(cmd);
+
+        nodes.forEach((element) =>
+        {
+          element.innerText= data.result.name;
+        });
+        console.log("Nodes: ", nodes);
     });
   }
 

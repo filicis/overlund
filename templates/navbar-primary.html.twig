@@ -105,10 +105,10 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown06" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.request.locale | locale_name(app.request.locale) | u.title }}</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown06">
 
-            <a class="dropdown-item {% if locale == 'da' %} active {% endif %}" href="{{ path('default', {_locale: 'da'}) }}">Dansk</a>
-            <a class="dropdown-item {% if locale == 'sv' %} active {% endif %}" href="{{ path('default', {_locale: 'sv'}) }}">Svensk</a>
-            <a class="dropdown-item {% if locale == 'no' %} active {% endif %}" href="{{ path('default', {_locale: 'no'}) }}">Norsk</a>
-            <a class="dropdown-item {% if locale == 'en' %} active {% endif %}" href="{{ path('default', {_locale: 'en'}) }}">Engelsk</a>
+            <a class="dropdown-item {% if locale == 'da' %} active {% endif %}" href="{{ path('editor', {_locale: 'da', 'url': 'Project01'}) }}">Dansk</a>
+            <a class="dropdown-item {% if locale == 'sv' %} active {% endif %}" href="{{ path('editor', {_locale: 'sv', 'url': 'Project01'}) }}">Svensk</a>
+            <a class="dropdown-item {% if locale == 'no' %} active {% endif %}" href="{{ path('editor', {_locale: 'no', 'url': 'Project01'}) }}">Norsk</a>
+            <a class="dropdown-item {% if locale == 'en' %} active {% endif %}" href="{{ path('editor', {_locale: 'en', 'url': 'Project01'}) }}">Engelsk</a>
 
             <div class="dropdown-divider"></div>
           </div>

@@ -244,9 +244,10 @@ export default class extends Controller {
   //
   //
 
-  selectHusband(event)
+  selectIndividual(event)
   {
-    this.indiValue= this.husbandValue;
+    console.log("SelectIndividual: ", event)
+    this.indiValue= event.params.id;
     event.stopPropagation();
   }
 

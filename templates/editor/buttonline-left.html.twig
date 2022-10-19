@@ -16,12 +16,22 @@
   title="{{ 'Search for individual' | trans }}">
   {{ constant('App\\Controller\\EditorController::ICON_SEARCH_R') }}
 </button>
-<button type="button"
-  class="btn btn-outline-dark btn-light"
-  data-bs-toggle="tooltip"
-  title="{{ 'Previous' | trans}}">
-  {{ constant('App\\Controller\\EditorController::ICON_LEFT') }}
-</button>
+<div class="dropup dropup-center">
+
+  <button type="button"
+    class="btn btn-outline-dark btn-light dropdown-toggle"
+    data-bs-toggle="dropdown"
+    data-bs-auto-close="true"
+    title="{{ 'Previous' | trans}}">
+    {{ constant('App\\Controller\\EditorController::ICON_LEFT') }}
+  </button>
+  <ul class="dropdown-menu">
+    <li><h6 class="dropdown-header">Dropdown header</h6></li>
+    <li><a class="dropdown-item" href="#"><span class="w-25">[I1]</span><span class="w-50">Ludvig Rasmussen</span><span class="w-25">1893</span><span class="w-25">1974</span></a></li>
+    <li><a class="dropdown-item " href="#">[I25] Holger Danske</a></li>
+    <li><a class="dropdown-item" href="#">[i74] Louise Heiberg</a></li>
+  </ul>
+</div>
 <button type="button"
   class="btn btn-outline-dark btn-light"
   data-bs-toggle="tooltip"

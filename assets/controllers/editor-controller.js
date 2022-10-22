@@ -112,9 +112,14 @@ export default class extends Controller {
         credentials: 'include',
       };
 
+      console.time('render');
       fetch(this.renderindiValue, myInit)
-      .then(response => response.text())
-      .then(data => this.indiViewTarget.innerHTML= data)
+      .finally(() =>
+      {
+        console.timeEnd('render');
+      })
+      .then((response) => response.text())
+      .then((data) => this.indiViewTarget.innerHTML= data)
       .catch((error) =>
       {
       console.error('Catch Error: ', error)
@@ -182,9 +187,14 @@ export default class extends Controller {
         credentials: 'include',
       };
 
+      console.time('render');
       fetch(this.renderfamValue, myInit)
-      .then(response => response.text())
-      .then(data => this.famViewTarget.innerHTML= data)
+      .finally(() =>
+      {
+        console.timeEnd('render');
+      })
+      .then((response) => response.text())
+      .then((data) => this.famViewTarget.innerHTML= data)
       .catch((error) =>
       {
         console.error('Catch Error: ', error)

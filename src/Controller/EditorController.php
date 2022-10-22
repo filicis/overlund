@@ -29,6 +29,8 @@ use       Symfony\Component\HttpFoundation\Request;
 use       Symfony\Component\HttpFoundation\Response;
 use       Symfony\Component\Routing\Annotation\Route;
 
+use       Ds\Set;
+
 use Doctrine\Persistence\ManagerRegistry;
 
   /**
@@ -157,12 +159,19 @@ class EditorController extends AbstractController
   /**
    *  function updateFamCard
    *
+   *  TODO: skal opdatere FamHistory i session.
    **/
 
   #[Route('/editor/{url}/updateFamCard', name: 'editorUpdateFamCard', methods: ['PUT'])]
   public function updateFamCard(Request $request, Project $project): Response
   {
     $data = json_decode($request->getContent(), true);
+    $session= $request->getSession();
+    $set= $session->get('FamHistory');
+    if (!$set)
+      $set= new Set();
+    $set->add($data);
+    $session->set('FamHistory', $set);
 
     $title= $request->getContent();
 
@@ -189,6 +198,12 @@ class EditorController extends AbstractController
   public function updateIndiCard(Request $request, Project $project): Response
   {
     $data = json_decode($request->getContent(), true);
+    $session= $request->getSession();
+    $set= $session->get('IndiHistory');
+    if (!$set)
+      $set= new Set();
+    $set->add($data);
+    $session->set('IndiHistory', $set);
 
     $title= $request->getContent();
 

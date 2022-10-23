@@ -1,6 +1,10 @@
 {# templates/editor/buttonline-left.html.twig #}
 
+{#
+#}
 
+{% set history= project.url ~ 'indiHistory' %}
+{% set hlist= app.session.get('IndiHistory') %}
 
 <button type="button"
   class="btn btn-outline-dark  btn-light"
@@ -16,6 +20,8 @@
   title="{{ 'Search for individual' | trans }}">
   {{ constant('App\\Controller\\EditorController::ICON_SEARCH_R') }}
 </button>
+
+
 <div class="dropup dropup-center">
 
   <button type="button"
@@ -27,11 +33,25 @@
   </button>
   <ul class="dropdown-menu">
     <li class=""><h6 class="dropdown-header">Dropdown header</h6></li>
-    <li class=""><a class="dropdown-item" href="#"><pre class="d-inline"> [I1] </pre>Ludvig Rasmussen (1893 1974)</a></li>
-    <li class=""><a class="dropdown-item" href="#"><pre class="d-inline">[I11] </pre>Holger Danske (1893 1974)</a></li>
-    <li class=""><a class="dropdown-item" href="#"><pre class="d-inline">[I25] </pre>Louise Heiberg (1815-1870)</a></li>
+
+    {% if hlist %}
+    {% set indis= project.getIndividuals() %}
+    {% for id in hlist %}
+    {% set ii= indis.get(id) %}
+    {% if ii %}
+    <li class="">
+      <a class="dropdown-item"
+        title=""
+        data-action="click->editor#selectIndividual"
+        data-editor-id-param={{ ii.getId() }}
+        href="#"><pre class="d-inline"> [{{ ii.getXref() }}]</pre> {#{ ii.getName() }#}   {{ ii ? ii.personalNameStructures.first.personalName : '' }} (1893 1974)</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
   </ul>
 </div>
+
 <button type="button"
   class="btn btn-outline-dark btn-light"
   data-bs-toggle="tooltip"

@@ -194,7 +194,7 @@ class Individual extends RecordSuperclass
 
   public function getName()
   {
-    return "Anders Hansen / Nielsen /";
+    return $this->getPersonalNameStructures()->first()->getPersonalName();
   }
 
   /**

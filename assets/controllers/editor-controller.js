@@ -259,7 +259,6 @@ export default class extends Controller {
     console.log("SelectIndividual: ", event);
     console.log("SelectIndividual id: ", event.params.id);
     this.indiValue= event.params.id;
-    console.log("Id: ", this.indiValue);
     event.stopPropagation();
   }
 

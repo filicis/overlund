@@ -4,7 +4,7 @@
 #}
 
 {% set history= project.url ~ 'indiHistory' %}
-{% set hlist= app.session.get('IndiHistory') %}
+{% set hlist= app.session.get('IndiHistory') ?: newSet()  %}
 
 <button type="button"
   class="btn btn-outline-dark  btn-light"
@@ -28,17 +28,17 @@
     class="btn btn-outline-dark btn-light dropdown-toggle"
     data-bs-toggle="dropdown"
     data-bs-auto-close="true"
-    title="{{ 'Previous' | trans}}">
+    title="{{ 'History' | trans}}">
     {{ constant('App\\Controller\\EditorController::ICON_LEFT') }}
   </button>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu border border-primary shadow-lg">
     <li class=""><h6 class="dropdown-header">Dropdown header</h6></li>
 
     {% if hlist %}
     {% set indis= project.getIndividuals() %}
     {% for id in hlist %}
     {% set ii= indis.get(id) %}
-    {% if ii %}
+    {% if ii and id != indi.id %}
     <li class="">
       <a class="dropdown-item"
         title=""

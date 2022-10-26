@@ -33,7 +33,7 @@
       data-action= "input->editor#updatePersonalNameStructure"
       data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
       data-editor-name-id-param= {{ nam ? nam.id : ''
-    }}>
+      }}>
 
       {# Fornavne #}
 
@@ -118,7 +118,7 @@
           </div>
 
         </div>
-        <div class="col">
+        <div class="col-6">
           <label class="small" for="idXXX6"> {{ 'Nicknames' | trans }} </label>
           <div class="mb-2">
             <input type="text"
@@ -127,6 +127,14 @@
             name= 'nick'
             value="{{ nam ? nam.nick }}" >
           </div>
+        </div>
+        <div class="col-3">
+          <button type="button"
+            class="btn btn-outline-dark btn-light"
+            data-bs-toggle="tooltip"
+            title="{{ 'Next' | trans}}">
+            {{ constant('App\\Controller\\EditorController::ICON_RIGHT') }}
+          </button>
         </div>
         <!-- div class="col-3">
         <div class="form-floating">
@@ -161,6 +169,6 @@
     </picture>
 
 
-    </div>
   </div>
+</div>
 

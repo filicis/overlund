@@ -204,6 +204,17 @@ export default class extends Controller {
 
   }
 
+  /**
+   *  function individualNames
+   *  - Åbner et modalt vindue til redigering af et givent individs navne
+   *
+   *  - Individdet er allerede defineret i this.indi
+   */
+
+  individualNames(event)
+  {
+
+  }
 
 
 
@@ -545,6 +556,70 @@ export default class extends Controller {
     console.log('Load Error: !!', event.currentTarget.parentNode.children[1]);
     console.log('Load Error: !!', event.currentTarget.parentNode);
 
+  }
+
+
+
+  /**
+   *  function individualEvetns(event)
+   *
+   *
+   */
+
+  individualEvents(Event)
+  {
+    console.log("individualEvents");
+
+    //document.get.modal('show');
+
+    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {'focus': true, 'show': true});
+
+    //const myModal = new bootstrap.Modal(ElementById('exampleModal')document.get);
+    // myModal("show");
+    console.log("individualEvents: ", myModal);
+
+  }
+
+
+  /**
+   *  function notes(event)
+   *
+   *
+   */
+
+  notes(Event)
+  {
+    console.log("notes");
+    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {'focus': true});
+    console.log("individualEvents: ", myModal);
+  }
+
+
+  /**
+   *  function sourceCitations(event)
+   *
+   *
+   */
+
+  sourceCitations(Event)
+  {
+    console.log("sourceCitations");
+    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {focus: true});
+    console.log("individualEvents: ", myModal);
+  }
+
+
+  /**
+   *  function mediaFiles(event)
+   *
+   *
+   */
+
+  mediaFiles(Event)
+  {
+    console.log("mediafiles");
+    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {focus: true});
+    console.log("individualEvents: ", myModal);
   }
 
 }

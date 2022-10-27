@@ -49,14 +49,14 @@ export default class extends Controller {
         // window.location.href = "/offline";
         throw new Error('Netværksfejl: ', response.status);
       }
-      return response.json()
+
+      console.log('#webapi content-type: ' , response.headers.get('Content-Type'));
+
+      return (response.headers.get('Content-Type') == 'application/json')  ? response.json() : response.text();
     })
     .then((data) =>
     {
       myResult= data;
-      // console.log('#Webapi Data:', data);
-      // console.log('#Webapi Data:', myResult);
-      // return data;
 
     })
     .catch((error) =>
@@ -572,10 +572,10 @@ export default class extends Controller {
 
     //document.get.modal('show');
 
-    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {'focus': true, 'show': true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), {'focus': true, 'show': true});
 
     //const myModal = new bootstrap.Modal(ElementById('exampleModal')document.get);
-    // myModal("show");
+    myModal.show();
     console.log("individualEvents: ", myModal);
 
   }
@@ -590,7 +590,8 @@ export default class extends Controller {
   notes(Event)
   {
     console.log("notes");
-    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {'focus': true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), {'focus': true});
+    myModal.show();
     console.log("individualEvents: ", myModal);
   }
 
@@ -604,7 +605,8 @@ export default class extends Controller {
   sourceCitations(Event)
   {
     console.log("sourceCitations");
-    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {focus: true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), {focus: true});
+    myModal.show();
     console.log("individualEvents: ", myModal);
   }
 
@@ -618,7 +620,7 @@ export default class extends Controller {
   mediaFiles(Event)
   {
     console.log("mediafiles");
-    const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {focus: true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), {focus: true});
     console.log("individualEvents: ", myModal);
   }
 

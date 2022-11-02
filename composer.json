@@ -20,7 +20,7 @@
         "doctrine/annotations": "^1.13",
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.3",
-        "doctrine/orm": "^2.12",
+        "doctrine/orm": "^2.13",
         "league/commonmark": "^2.3",
         "php-ds/php-ds": "^1.4",
         "phpdocumentor/reflection-docblock": "^5.3",

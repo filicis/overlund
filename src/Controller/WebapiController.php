@@ -91,8 +91,8 @@ class WebapiController extends AbstractController
     catch(RouteNotFoundException $e)
     {
       // $this->logger->error('Route not found: ' . $e->getMessage());
-      return $this->json(['stat' => 'Error', 'Message' => 'Metode ikke implementeret: ' . $m]);
-
+      //return $this->json(['stat' => 'Error', 'Message' => 'Metode ikke implementeret: ' . $m]);
+      return $response = new Response('Hello World', 501);
     }
     catch(\Exception $e)
     {

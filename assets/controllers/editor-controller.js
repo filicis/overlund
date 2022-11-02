@@ -46,7 +46,7 @@ export default class extends Controller {
 
           default:
         }
-        // window.location.href = "/offline";
+        window.location.href = "/";
         throw new Error('Netværksfejl: ', response.status);
       }
 
@@ -62,12 +62,8 @@ export default class extends Controller {
     .catch((error) =>
     {
       console.error('Catch Error: ', error.message);
-      //alert(error.message);
     });
-    // console.log("Data: ", data);
-    // console.log("this myResult: ", myResult);
     return myResult;
-
   }
 
 
@@ -214,6 +210,15 @@ export default class extends Controller {
   individualNames(event)
   {
 
+    console.log("individualNames");
+
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), {'focus': true});
+
+    myModal.show();
+    console.log("individualNames: ", myModal);
+
+
+
   }
 
 
@@ -336,7 +341,7 @@ export default class extends Controller {
 
     var arg= {};
     arg[property]= event.target.value;
-    arg['method']= "api_individual_updatePersonalName";
+    arg['method']= "api_individual_updatePersonalNames";
     arg['project']= 'Project01';
     arg['nameId']= event.params['nameId'];
     arg['indiId']= this.indiValue;
@@ -572,7 +577,7 @@ export default class extends Controller {
 
     //document.get.modal('show');
 
-    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), {'focus': true, 'show': true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModalEvent'), {'focus': true});
 
     //const myModal = new bootstrap.Modal(ElementById('exampleModal')document.get);
     myModal.show();
@@ -590,7 +595,7 @@ export default class extends Controller {
   notes(Event)
   {
     console.log("notes");
-    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), {'focus': true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModalEvents'), {'focus': true});
     myModal.show();
     console.log("individualEvents: ", myModal);
   }

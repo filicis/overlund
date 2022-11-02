@@ -1,0 +1,214 @@
+{#
+
+  Individual Event/Attribute Editor
+
+#}
+
+
+{% set taglist= [
+
+"INDI-EVEN",
+"FAM-EVEN",
+"INDI-FACT",
+"FAM-FACT",
+"ADOP",
+"BAPM",
+"BARM",
+"BASM",
+"BIRT",
+"BLES",
+"BURI",
+"INDI-CENS",
+"CHR",
+"CHRA",
+"CONF",
+"CREM",
+"DEAT",
+"EMIG",
+"FCOM",
+"GRAD",
+"IMMI",
+"NATU",
+"ORDN",
+"PROB",
+"RETI",
+"WILL",
+"ANUL",
+"FAM-CENS",
+"DIV",
+"DIVF",
+"ENGA",
+"MARB",
+"MARC",
+"MARL",
+"MARR",
+"MARS",
+"CAST",
+"DSCR",
+"EDUC",
+"IDNO",
+"NATI",
+"INDI-NCHI",
+"NMR",
+"OCCU",
+"PROP",
+"RELI",
+"INDI-RESI",
+"SSN",
+"TITL",
+"FAM-NCHI",
+"FAM-RESI"
+
+
+                ]%}
+
+  <div class="modal fade" id="mlrModalNotes" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+
+        {# Modal Header#}
+
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Event/Attribute for [I346] Olga Jensen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        {# Modal Body#}
+
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+
+              {# GEDCOM Navne Struktur #}
+
+              <div id="NameStr"
+                class="col-9"
+                data-action= "input->editor#updatePersonalNameStructure"
+                data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
+                data-editor-name-id-param= {{ nam ? nam.id : ''
+                }}>
+
+                {# Fornavne #}
+<div class="mb-2 shadow">
+
+                      <label class= "small" for="idEventTag"> {{ 'Type' | trans }}: </label>
+
+<select class="form-select form-select-sm" id="EventTag" aria-label=".form-select-sm example">
+  <option selected>Open this select menu</option>
+
+          {% for p in taglist %}
+
+        <option value="{{ p }}">{{ p | trans }}</option>
+
+        {% endfor %}
+
+</select>
+</div>
+
+                    <div class="mb-2 sshadow">
+                      <label class= "small" for="idYYY0"> {{ 'Type' | trans }}: </label>
+                      <input type="text"
+                      class="form-control form-control-sm shadow"
+                      id="idYYY0"
+                      name= 'npfxxx'
+                      // value="{{ nam ? nam.npfx }}" >
+                    </div>
+
+
+                    <div class="mb-2 sshadow">
+                      <label class= "small" for="idYYY0"> {{ 'Date' | trans }}: </label>
+                      <input type="text"
+                      class="form-control form-control-sm shadow"
+                      id="idYYY0"
+                      name= 'npfxxx'
+                      // value="{{ nam ? nam.npfx }}" >
+                    </div>
+
+                    <div class="mb-2 sshadow">
+                      <label class= "small" for="idYYY0"> {{ 'Address' | trans }}: </label>
+                      <input type="text"
+                      class="form-control form-control-sm shadow"
+                      id="idYYY0"
+                      name= 'npfxxx'
+                      // value="{{ nam ? nam.npfx }}" >
+                    </div>
+
+
+                    <div class="mb-2 sshadow">
+                      <label class= "small" for="idYYY0"> {{ 'Place' | trans }}: </label>
+                      <input type="text"
+                      class="form-control form-control-sm shadow"
+                      id="idYYY0"
+                      name= 'npfxxx'
+                      // value="{{ nam ? nam.npfx }}" >
+                    </div>
+
+
+                    <div class="mb-2 sshadow">
+                      <label class= "small" for="idYYY0"> {{ 'Cause' | trans }}: </label>
+                      <input type="text"
+                      class="form-control form-control-sm shadow"
+                      id="idYYY0"
+                      name= 'npfxxx'
+                      // value="{{ nam ? nam.npfx }}" >
+                    </div>
+
+
+                    <div class="mb-2 sshadow">
+                      <label class= "small" for="idYYY0"> {{ 'Agency' | trans }}: </label>
+                      <input type="text"
+                      class="form-control form-control-sm shadow"
+                      id="idYYY0"
+                      name= 'npfxxx'
+                      // value="{{ nam ? nam.npfx }}" >
+                    </div>
+
+
+
+
+
+               </div>
+
+
+              <div class="col-3">
+  <button role="button"
+    class="btn btn-outline-dark btn-light btn-sm shadow"
+    data-action="click->editor#notes"
+    data-bs-toggle="tooltip"
+    data-bs-placement="bottom"
+    title="{{ 'Notes' | trans }}">
+    {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
+  </button>
+  <button type="button"
+    class="btn btn-outline-dark btn-light btn-sm shadow"
+    data-action="click->editor#sourceCitations"
+    data-bs-toggle="tooltip"
+    data-bs-placement="bottom"
+    title="{{ 'Source Citations' | trans }}">
+    {{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
+  </button>
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {# Modal Footer #}
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+

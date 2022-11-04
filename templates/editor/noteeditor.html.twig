@@ -1,171 +1,124 @@
-{# #}
+{# Note Editor #}
 
 
-  <div class="modal fade" id="mlrModalNoteEditor" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="mlrModalNoteEditor" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
 
-        {# Modal Header#}
+      {# Modal Header#}
 
-        <div class="modal-header">
-          <h5 class="modal-title">Events and Attributes for [I346] Olga Jensen</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+      <div class="modal-header">
+        <h5 class="modal-title">Note Editor</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
 
-        {# Modal Body#}
+      {# Modal Body#}
 
-        <div class="modal-body">
-          <div class="container-fluid">
-            <div class="row">
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
 
-              {# GEDCOM Navne Struktur #}
+            {# GEDCOM Navne Struktur #}
 
-              <div id="NameStructure"
-                class="col-9"
-                data-action= "input->editor#updatePersonalNameStructure"
-                data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
-                data-editor-name-id-param= {{ nam ? nam.id : ''
-                }}>
+            <div id="NodeEditor"
+              class="col-9"
+              _data-action= "input->editor#updatePersonalNameStructure"
+              _data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
+              _data-editor-name-id-param= {{ nam ? nam.id : ''
+              }}>
 
-                {# Fornavne #}
+              {# Fornavne #}
 
-                <div class="row ">
-                  <div class="col-3">
-                    <div class="mb-2 sshadow">
-                      <label class= "small" for="idYYY0"> {{ 'Prefix' | trans }}: </label>
-                      <input type="text"
-                      class="form-control form-control-sm shadow"
-                      id="idYYY0"
-                      name= 'npfx'
-                      value="{{ nam ? nam.npfx }}" >
-                    </div>
-                  </div>
-                  <div class="col-9">
-                    <div class="mb-2">
-                      <label class="small" for="idXXX1"> {{ 'First names' | trans }}:</label>
-
-                      <input type="text"
-                      class="form-control form-control-sm shadow"
-                      id="idXXX1"
-                      name= 'givn'
-                      value="{{ nam ? nam.givn }}" >
-                    </div>
+              <div class="row ">
+                <div class="col">
+                  <div class="mb-2">
+                    <label class= "small" for="idYYY0"> {{ 'Title' | trans }}: </label>
+                    <input type="text"
+                    class="form-control form-control-sm shadow"
+                    id="idYYY0"
+                    name= 'npfx'
+                    value="{{ nam ? nam.npfx }}" >
                   </div>
                 </div>
+              </div>
+              {# Efternavn #}
 
-                {# Efternavn #}
-
-                <div class="row">
-                  <div class="col-3">
-                    <div class="mb-2">
-                      <label class="small" for="idXXX2"> {{ 'Prefix' | trans }}:</label>
-                      <input type="text"
+              <div class="row">
+                <div class="col">
+                  <div class="mb-2">
+                    <label class="small" for="idXXX2"> {{ 'Text' | trans }}:</label>
+                    <textarea type="text"
                       class="form-control form-control-sm shadow"
                       id="idXXX2"
                       name= 'spfx'
-                      value="{{ nam ? nam.spfx }}" >
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="mb-2">
-                      <label class="small" for="idXXX3"> {{ 'Last names' | trans }}: </label>
-                      <input type="text"
-                      class="form-control form-control-sm shadow"
-                      id="idXXX3"
-                      name= 'surn'
-                      value="{{ nam ? nam.surn }}" >
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="mb-2">
-                      <label class="small" for="idXXX4"> {{ 'Suffix' | trans }}:</label>
-                      <input type="text"
-                      class="form-control form-control-sm shadow"
-                      id="idXXX4"
-                      name= 'nsfx'
-                      value="{{ nam ? nam.nsfx }}" >
-                    </div>
+                    value="{{ nam ? nam.spfx }}" ></textarea>
                   </div>
                 </div>
+              </div>
 
-                <!-- Diverse navnestof, etc -->
+              <!-- Diverse navnestof, etc -->
 
-                <div class="row">
-                  <!-- div class="col-3">
+              <div class="row">
+                <div class="col-4">
                   <div class="mb-2">
-                  <label class="small" for="idXXX7"> {{ 'Sex' | trans }}: </label>
-
-                  <select class="form-select form-select-sm shadow"
-                  id="idXXXXXX7"
-                  aria-label="Default select example"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="{{ 'Indicates the sex of the individual at birth' | trans }}"
-                  {{ stimulus_action('editor', 'updateSex', 'input') }}  >
-                  <option value="M" selected> {{ 'Male' | trans }} </option>
-                  <option value="F"> {{ 'Female' | trans }} </option>
-                  <option value="X"> {{ 'Intersex' | trans }} </option>
-                  <option value="U"> {{ 'Unknown' | trans }} </option>
-                  </select>
-                  </div>
-
-                  </div-->
-                  <div class="col-9">
-                    <div class="mb-2">
-                      <label class="small" for="idXXX6"> {{ 'Nicknames' | trans }} </label>
-                      <input type="text"
-                      class="form-control form-control-sm shadow"
+                    <label class="small" for="idXXX6"> {{ 'Content' | trans }} </label>
+                    <select class="form-select form-control-sm shadow"
                       id="idXXX6"
                       name= 'nick'
                       value="{{ nam ? nam.nick }}" >
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="mb-2">
-                      <label for="idXXX5"> {{ 'Type' | trans }} </label>
-                      <input type="text" class="form-control form-control-sm shadow" id="idXXX5" list="idXXXXX5">
-                      <datalist id="idXXXXX5">
-                        <option value="AKA">Alias</option>
-                        <option value="BIRTH"></option>
-                        <option value="IMMIGRANT"></option>
-                        <option value="MAIDEN"></option>
-                        <option value="MARRIED"></option>
-                        <option value="PROFESSIONAL"></option>
+                      <option selected value="1">text/plain</option>
+                      <option value="2">text/markdown</option>
+                      <option value="3">text/html</option>
 
-                      </datalist>
-                    </div>
+                    </select>
                   </div>
-
                 </div>
-              </div>
-              <div class="col-3">
-  <button role="button"
-    class="btn btn-outline-dark btn-light btn-sm shadow"
-    data-action="click->editor#notes"
-    data-bs-toggle="tooltip"
-    data-bs-placement="bottom"
-    title="{{ 'Notes' | trans }}">
-    {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
-  </button>
-  <button type="button"
-    class="btn btn-outline-dark btn-light btn-sm shadow"
-    data-action="click->editor#sourceCitations"
-    data-bs-toggle="tooltip"
-    data-bs-placement="bottom"
-    title="{{ 'Source Citations' | trans }}">
-    {{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
-  </button>
+                <div class="col-4">
+                  <div class="mb-2">
+                    <label for="idXXX5"> {{ 'Language' | trans }} </label>
+                    <input type="text" class="form-control form-control-sm shadow" id="idXXX5" list="idXXXXX5">
+                    <datalist id="idXXXXX5">
+                      <option value="AKA">Alias</option>
+                      <option value="BIRTH"></option>
+                      <option value="IMMIGRANT"></option>
+                      <option value="MAIDEN"></option>
+                      <option value="MARRIED"></option>
+                      <option value="PROFESSIONAL"></option>
+
+                    </datalist>
+                  </div>
+                </div>
 
               </div>
-
+            </div>
+            <div class="col-3">
+              <button role="button"
+                class="btn btn-outline-dark btn-light btn-sm shadow"
+                data-action="click->editor#notes"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="{{ 'Notes' | trans }}">
+                {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
+              </button>
+              <button type="button"
+                class="btn btn-outline-dark btn-light btn-sm shadow"
+                data-action="click->editor#sourceCitations"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="{{ 'Source Citations' | trans }}">
+                {{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
+              </button>
 
             </div>
-            <div class="row mb-2">
-              <div class="col">
 
 
-              <label class="small" for="XXX"> {{ 'Name' | trans }} :</label>
+          </div>
+          <div class="row mb-2">
+            <div class="col">
+
+
+              <label class="small" for="XXX"> {{ 'Translations' | trans }} :</label>
               <select class="form-select form-select-sm shadow" id="XXX" size=5 aria-label="Default select example">
                 <!-- option selected>Open this select menu</option- -->
 
@@ -176,24 +129,86 @@
                 {# % endfor % #}
               </select>
 
-               </div>
             </div>
-
           </div>
 
-        </div>
+
+          {# Table #}
+
+          <div class="table-responsive overflow-scroll" style="height:200px">
 
 
-        {# Modal Footer #}
+          <table class="table table-sm table-bordered" style="height:150px">
+            <caption>
+              Dette er en test
+            </caption>
+            <thead class="position-fixedd">
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+
+            <tr>
+
+
+              <th scope="col">#</th>
+              <th scope="col">LANG</th>
+              <th scope="col">MIME</th>
+              <th scope="col">Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>DA</td>
+              <td>text/plain</td>
+              <td>Dette er titlen på min allerførste note</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>SV</td>
+              <td>text/plain</td>
+              <td>Dette er titlen på min næste meget lange note</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>SV</td>
+              <td>text/html</td>
+              <td>Dette er titlen på min allerførste note</td>
+            </tr>
+            <tr class="overflow-hidden">
+              <th scope="row">4</th>
+              <td>EN</td>
+              <td>text/markdown</td>
+              <td class="overflow-hidden">Dette er titlen på en særdeles lang note der helt givet vil gå over kanten på min minimale tabel</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>FR</td>
+              <td>text/plain</td>
+              <td>Dette er titlen på min allerførste notet</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      </div>
+
     </div>
 
 
+    {# Modal Footer #}
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
   </div>
+</div>
+
+
+</div>
 
 

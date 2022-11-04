@@ -565,6 +565,7 @@ export default class extends Controller {
 
 
 
+
   /**
    *  function individualEvetns(event)
    *
@@ -595,7 +596,7 @@ export default class extends Controller {
   notes(Event)
   {
     console.log("notes");
-    const myModal = new bootstrap.Modal(document.getElementById('mlrModalEvents'), {'focus': true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModalNoteEditor'), {'focus': true});
     myModal.show();
     console.log("individualEvents: ", myModal);
   }

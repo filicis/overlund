@@ -1,5 +1,9 @@
 {# templates/editor/individual-names.html.twig #}
 
+{#
+    Modal navne editor
+#}
+
 
 <div class="modal fade" id="mlrModal" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
 
@@ -126,7 +130,7 @@
                     <label for="idXXX5"> {{ 'Type' | trans }} </label>
                     <input type="text" class="form-control form-control-sm shadow" id="idXXX5" list="idXXXXX5">
                     <datalist id="idXXXXX5">
-                      <option value="AKA">Alias</option>
+                      <option value="AKA"></option>
                       <option value="BIRTH"></option>
                       <option value="IMMIGRANT"></option>
                       <option value="MAIDEN"></option>
@@ -146,7 +150,7 @@
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
                 title="{{ 'Notes' | trans }}">
-                {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
+                {{ icon_notes | raw }}
               </button>
               <button type="button"
                 class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
@@ -154,7 +158,7 @@
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
                 title="{{ 'Source Citations' | trans }}">
-                {{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
+                {{ icon_sources | raw }}
               </button>
 
             </div>
@@ -174,11 +178,11 @@
 
                 {# % for p in parentlist % #}
 
-                <option value="1"  onfocus='kilroy()'>Ludvig Rasmussen</option>
+                <option value="1"><strong class="bg_success">Ludvig</strong> Rasmussen</option>
+                <option value="2" data-content="Hello world"></option>
 
                 {# % endfor % #}
               </select>
-
 
 
 
@@ -190,31 +194,31 @@
                 data-action="click->editor#notes"
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
-                title="{{ 'Notes' | trans }}">
-                {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
+                title="{{ 'New' | trans }}">
+                {{ icon_new | raw }}
               </button>
               <button type="button"
                 class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
                 data-action="click->editor#sourceCitations"
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
-                title="{{ 'Source Citations' | trans }}">
-                {{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
+                title="{{ 'Edit' | trans }}">
+                {{ icon_edit | raw }}
               </button>
 
               <button type="button" disabled
                 class="btn btn-sm btn-outline-dark btn-light shadow mb-2"
                 data-bs-toggle="tooltip"
-                title="{{'Change Pedigree of Child' | trans}}">
-                {{ constant('App\\Controller\\EditorController::ICON_UP') }}
+                title="{{'Up' | trans}}">
+                {{ icon_up | raw }}
 
               </button>
 
               <button type="button" disabled
                 class="btn btn-sm btn-outline-dark btn-light shadow mb-2"
                 data-bs-toggle="tooltip"
-                title="{{'Change Pedigree of Child' | trans}}">
-                {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
+                title="{{'Down' | trans}}">
+                {{ icon_down | raw }}
               </button>
 
               <button type="button"
@@ -222,8 +226,8 @@
                 data-action="click->editor#sourceCitations"
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
-                title="{{ 'Source Citations' | trans }}">
-                {{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
+                title="{{ 'Delete' | trans }}">
+                {{ icon_delete | raw }}
               </button>
 
             </div>

@@ -118,7 +118,7 @@
           </div>
 
         </div>
-        <div class="col-6">
+        <div class="col">
           <label class="small" for="idXXX6"> {{ 'Nicknames' | trans }} </label>
           <div class="mb-2">
             <input type="text"
@@ -127,16 +127,6 @@
             name= 'nick'
             value="{{ nam ? nam.nick }}" >
           </div>
-        </div>
-        <div class="col-3">
-          <button type="button"
-            class="btn btn-outline-dark btn-light"
-            data-action="click->editor#individualNames"
-
-            data-bs-toggle="tooltip"
-            title="{{ 'Next' | trans}}">
-            {{ constant('App\\Controller\\EditorController::ICON_RIGHT') }}
-          </button>
         </div>
         <!-- div class="col-3">
         <div class="form-floating">
@@ -172,5 +162,41 @@
 
 
   </div>
+
+        <div class="row ">
+          <div class="col d-flex justify-content-around">
+
+
+          <button type="button"
+            class="btn btn-sm btn-outline-dark btn-light"
+            data-action="click->editor#individualNames"
+
+            data-bs-toggle="tooltip"
+            title="{{ 'Names' | trans}}">
+            {{ icon_names | raw }}
+          </button>
+
+          <button type="button"
+            class="btn btn-sm btn-outline-dark btn-light"
+            _data-action="click->editor#individualNames"
+
+            data-bs-toggle="tooltip"
+            title="{{ 'Alias' | trans}}">
+            {{ icon_alias | raw }}
+          </button>
+          <button type="button"
+            class="btn btn-sm btn-outline-dark btn-light"
+            _data-action="click->editor#individualNames"
+
+            data-bs-toggle="tooltip"
+            title="{{ 'Assocoation' | trans}}">
+            {{ icon_association | raw }}
+          </button>
+
+
+
+</div>
+      </div>
+
 </div>
 

@@ -7,13 +7,44 @@ parameters:
     locale: da
     app_locales: da|sv|no|en
     app.supported_locales: da|en|no|sv
-    app.icon.locked: &#x1F512;
-    app.icon.unlocked: &#x1F513;
+    app.icon.locked: '&#x1F512;'
+    app.icon.unlocked: '&#x1F513;'
 
 twig:
     globals:
         product: "Codename Overlund"
         copyright: "© 2020-22 Filicis Software - Michael Lindhardt Rasmussen"
+        
+# Iconer
+#	- Alt overvejende i form af Emojis hentet fra søgemaskinen https://emojipedia.org/
+        
+        icon_locked: 					'&#x1F512;'
+        icon_unlocked: 				'&#x1F513;'
+        icon_confidential:
+        icon_private:
+        icon_person:
+        icon_male:
+        icon_female:
+        icon_child:
+        icon_family:
+        icon_researchers:
+        icon_delete: 					'&#x274C;'
+        icon_up:							'&#x1F53A;'		# Red Triangle Pointed Up
+        icon_down:						'&#x1F53B;'		# Red Triangle Pointed Down
+        icon_pedigree:
+        
+        icon_events:					'&#x1F5D3;'		# Spiral Calendar
+        icon_notes:						'&#x1F5D2;'		#	Spiral Notepad	
+        icon_sources:					'&#x1F4DA;'		# Books
+        icon_media:						"🖼️"
+        
+        icon_new:							'&#x1F195;'		# New Sign
+        icon_edit:						'&#x270F;'		# Pencil
+        
+        icon_names:						'&#x1F4C7;'		# Card Index
+        icon_alias:						'&#x1F977;'		# Ninja
+        icon_association:			'&#x26D3;'		# Chains
+        
 
 
 services:

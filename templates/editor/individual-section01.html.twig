@@ -29,15 +29,15 @@
     {# GEDCOM Navne Struktur #}
 
     <div id="NameStructure"
-      class="col-9"
-      data-action= "input->editor#updatePersonalNameStructure"
-      data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
-      data-editor-name-id-param= {{ nam ? nam.id : ''
-      }}>
+          class="col-9"
+          data-action= "input->editor#updatePersonalNameStructure"
+          data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
+          data-editor-name-id-param= {{ nam ? nam.id : ''
+          }}>
 
       {# Fornavne #}
 
-      <div class="row ">
+    <div class="row ">
         <div class="col-3">
           <div class="mb-2 sshadow">
             <label class= "small" for="idYYY0"> {{ 'Prefix' | trans }}: </label>
@@ -59,11 +59,11 @@
             value="{{ nam ? nam.givn }}" >
           </div>
         </div>
-      </div>
+    </div>
 
       {# Efternavn #}
 
-      <div class="row">
+    <div class="row">
         <div class="col-3">
           <div class="mb-2">
             <label class="small" for="idXXX2"> {{ 'Prefix' | trans }}:</label>
@@ -94,11 +94,11 @@
             value="{{ nam ? nam.nsfx }}" >
           </div>
         </div>
-      </div>
+    </div>
 
       <!-- Diverse navnestof, etc -->
 
-      <div class="row">
+    <div class="row">
         <div class="col-3">
           <div class="mb-2">
             <label class="small" for="idXXX7"> {{ 'Sex' | trans }}: </label>
@@ -128,21 +128,6 @@
             value="{{ nam ? nam.nick }}" >
           </div>
         </div>
-        <!-- div class="col-3">
-        <div class="form-floating">
-        <input type="text" class="form-control form-control-sm" id="idXXX5" list="idXXXXX5" placeholder="Tekst" >
-        <label for="idXXX5"> {{ 'Type' | trans }} </label>
-        <datalist id="idXXXXX5">
-        <option value="AKA">Alias</option>
-        <option value="BIRTH"></option>
-        <option value="IMMIGRANT"></option>
-        <option value="MAIDEN"></option>
-        <option value="MARRIED"></option>
-        <option value="PROFESSIONAL"></option>
-
-        </datalist>
-        </div>
-        </div -->
 
       </div>
     </div>
@@ -163,40 +148,47 @@
 
   </div>
 
-        <div class="row ">
-          <div class="col d-flex justify-content-around">
+    {# Knapapparat
+        - Navne
+        - Alias
+        - Association
+    #}
+
+  <div class="row ">
+      <div class="col d-flex justify-content-around">
 
 
-          <button type="button"
-            class="btn btn-sm btn-outline-dark btn-light"
-            data-action="click->editor#individualNames"
+        <button type="button"
+          class="btn btn btn-outline-dark btn-light"
+          data-action="click->editor#individualNames"
 
-            data-bs-toggle="tooltip"
-            title="{{ 'Names' | trans}}">
-            {{ icon_names | raw }}
-          </button>
+          data-bs-toggle="tooltip"
+          title="{{ 'Names' | trans}}">
+          {{ icon_names | raw }}
+        </button>
 
-          <button type="button"
-            class="btn btn-sm btn-outline-dark btn-light"
-            _data-action="click->editor#individualNames"
+        <button type="button"
+          class="btn btn btn-outline-dark btn-light"
+          data-action="click->editor#alias"
 
-            data-bs-toggle="tooltip"
-            title="{{ 'Alias' | trans}}">
-            {{ icon_alias | raw }}
-          </button>
-          <button type="button"
-            class="btn btn-sm btn-outline-dark btn-light"
-            _data-action="click->editor#individualNames"
+          data-bs-toggle="tooltip"
+          title="{{ 'Alias' | trans}}">
+          {{ icon_alias | raw }}
+        </button>
 
-            data-bs-toggle="tooltip"
-            title="{{ 'Assocoation' | trans}}">
-            {{ icon_association | raw }}
-          </button>
+        <button type="button"
+          class="btn btn btn-outline-dark btn-light"
+          data-action="click->editor#associates"
+
+          data-bs-toggle="tooltip"
+          title="{{ 'Assocoation' | trans}}">
+          {{ icon_association | raw }}
+        </button>
 
 
 
-</div>
       </div>
+  </div>
 
 </div>
 

@@ -630,4 +630,31 @@ export default class extends Controller {
     console.log("individualEvents: ", myModal);
   }
 
+
+  /**
+   *  function alias(event)
+   *
+   *
+   */
+
+  alias(Event)
+  {
+    console.log("alias");
+    alert("Alias");
+  }
+
+
+  /**
+   *  function associates(event)
+   *
+   *
+   */
+
+  associates(Event)
+  {
+    console.log("Associates");
+    alert("Associates");
+  }
+
+
 }

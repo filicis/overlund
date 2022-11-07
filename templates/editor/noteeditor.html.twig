@@ -22,13 +22,13 @@
             {# GEDCOM Navne Struktur #}
 
             <div id="NodeEditor"
-              class="col-9"
+              class="col-10"
               _data-action= "input->editor#updatePersonalNameStructure"
               _data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
               _data-editor-name-id-param= {{ nam ? nam.id : ''
               }}>
 
-              {# Fornavne #}
+              {# Title #}
 
               <div class="row ">
                 <div class="col">
@@ -42,57 +42,13 @@
                   </div>
                 </div>
               </div>
-              {# Efternavn #}
 
-              <div class="row">
-                <div class="col">
-                  <div class="mb-2">
-                    <label class="small" for="idXXX2"> {{ 'Text' | trans }}:</label>
-                    <textarea type="text"
-                      class="form-control form-control-sm shadow"
-                      id="idXXX2"
-                      name= 'spfx'
-                    value="{{ nam ? nam.spfx }}" ></textarea>
-                  </div>
-                </div>
-              </div>
+              {# Text #}
 
-              <!-- Diverse navnestof, etc -->
+              {{ include('editor/textEditor.html.twig') }}
 
-              <div class="row">
-                <div class="col-4">
-                  <div class="mb-2">
-                    <label class="small" for="idXXX6"> {{ 'Content' | trans }} </label>
-                    <select class="form-select form-control-sm shadow"
-                      id="idXXX6"
-                      name= 'nick'
-                      value="{{ nam ? nam.nick }}" >
-                      <option selected value="1">text/plain</option>
-                      <option value="2">text/markdown</option>
-                      <option value="3">text/html</option>
-
-                    </select>
-                  </div>
-                </div>
-                <div class="col-4">
-                  <div class="mb-2">
-                    <label for="idXXX5"> {{ 'Language' | trans }} </label>
-                    <input type="text" class="form-control form-control-sm shadow" id="idXXX5" list="idXXXXX5">
-                    <datalist id="idXXXXX5">
-                      <option value="AKA">Alias</option>
-                      <option value="BIRTH"></option>
-                      <option value="IMMIGRANT"></option>
-                      <option value="MAIDEN"></option>
-                      <option value="MARRIED"></option>
-                      <option value="PROFESSIONAL"></option>
-
-                    </datalist>
-                  </div>
-                </div>
-
-              </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <button role="button"
                 class="btn btn-outline-dark btn-light btn-sm shadow"
                 data-action="click->editor#notes"
@@ -114,13 +70,13 @@
 
 
           </div>
-          <div class="row mb-2">
+
+          <!--div class="row mb-2">
             <div class="col">
 
 
               <label class="small" for="XXX"> {{ 'Translations' | trans }} :</label>
               <select class="form-select form-select-sm shadow" id="XXX" size=5 aria-label="Default select example">
-                <!-- option selected>Open this select menu</option- -->
 
                 {# % for p in parentlist % #}
 
@@ -130,7 +86,7 @@
               </select>
 
             </div>
-          </div>
+          </div-->
 
 
           {# Table #}

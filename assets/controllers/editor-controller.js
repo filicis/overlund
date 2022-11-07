@@ -125,9 +125,9 @@ export default class extends Controller {
 
 
 
-  //  famRestrictions()
+  //  restrictions()
 
-  famRestrictions(event)
+  restrictions(event)
   {
     console.log('Name: ', event.target.name);
     console.log('Checked: ', event.target.checked);
@@ -147,25 +147,6 @@ export default class extends Controller {
 
 
 
-  //  indiRestrictions()
-
-  indiRestrictions(event)
-  {
-    console.log('Name: ', event.target.name);
-    console.log('Checked: ', event.target.checked);
-    switch(event.target.name)
-    {
-      case 'locked':
-        break;
-
-      case 'confidential':
-        break;
-
-      case 'privacy':
-        break;
-    }
-
-  }
 
 
   // function famValueChanged()
@@ -611,7 +592,7 @@ export default class extends Controller {
   sourceCitations(Event)
   {
     console.log("sourceCitations");
-    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), {focus: true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModalSourceRecord'), {focus: true});
     myModal.show();
     console.log("individualEvents: ", myModal);
   }

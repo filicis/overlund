@@ -1,0 +1,52 @@
+{# editor/textEditor.html.twig #}
+
+{#
+#}
+
+              <div class="row">
+                <div class="col">
+                  <div class="mb-2">
+                    <label class="small" for="idXXX2"> {{ 'Text' | trans }}:</label>
+                    <textarea type="text"
+                      rows=10
+                      class="form-control form-control-sm shadow"
+                      id="idXXX2"
+                      name= 'spfx'
+                    value="{{ nam ? nam.spfx }}" ></textarea>
+                  </div>
+                </div>
+              </div>
+
+              {# Content - Language  #}
+
+              <div class="row">
+                <div class="col-4">
+                  <!-- div class="mb-2"-->
+                    <label class="small" for="srcont"> {{ 'Content' | trans }} </label>
+                    <select class="form-select form-select-sm shadow"
+                      id="srcont"
+                      name= 'nick'>
+                      <option selected value="1">text/plain</option>
+                      <option value="2">text/markdown</option>
+                      <option value="3">text/html</option>
+
+                    </select>
+                  <!--/div-->
+                </div>
+                <div class="col-4">
+                  <div class="mb-2">
+                    <label class="small" for="srlang"> {{ 'Language' | trans }} </label>
+                    <input type="text" class="form-control form-control-sm shadow" id="idXXX5" list="idXXXXX5">
+                    <datalist id="srlang">
+                      <option value="AKA">Alias</option>
+                      <option value="BIRTH"></option>
+                      <option value="IMMIGRANT"></option>
+                      <option value="MAIDEN"></option>
+                      <option value="MARRIED"></option>
+                      <option value="PROFESSIONAL"></option>
+
+                    </datalist>
+                  </div>
+                </div>
+
+              </div>

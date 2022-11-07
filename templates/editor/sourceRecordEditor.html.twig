@@ -1,0 +1,220 @@
+{#
+
+  Individual Event/Attribute Editor
+
+#}
+
+
+{% set taglist= [
+
+"INDI-EVEN",
+"FAM-EVEN",
+"INDI-FACT",
+"FAM-FACT",
+"ADOP",
+"BAPM",
+"BARM",
+"BASM",
+"BIRT",
+"BLES",
+"BURI",
+"INDI-CENS",
+"CHR",
+"CHRA",
+"CONF",
+"CREM",
+"DEAT",
+"EMIG",
+"FCOM",
+"GRAD",
+"IMMI",
+"NATU",
+"ORDN",
+"PROB",
+"RETI",
+"WILL",
+"ANUL",
+"FAM-CENS",
+"DIV",
+"DIVF",
+"ENGA",
+"MARB",
+"MARC",
+"MARL",
+"MARR",
+"MARS",
+"CAST",
+"DSCR",
+"EDUC",
+"IDNO",
+"NATI",
+"INDI-NCHI",
+"NMR",
+"OCCU",
+"PROP",
+"RELI",
+"INDI-RESI",
+"SSN",
+"TITL",
+"FAM-NCHI",
+"FAM-RESI"
+
+
+                ]%}
+
+
+
+
+<div class="modal fade" id="mlrModalSourceRecord" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      {# Modal Header#}
+
+      <div class="modal-header">
+        <h5 class="modal-title">Source Record</h5>
+
+          {# Restrictions #}
+
+          {{ include('editor/restrictions.html.twig', {form: 'modal'}) }}
+
+
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      {# Modal Body#}
+
+      <form class="modal-body" name="modal">
+        <div class="container-fluid">
+          <div class="row">
+
+            {# GEDCOM Navne Struktur #}
+
+            <div id="NameStr"
+              class="col-10"
+              _data-action= "input->editor#updatePersonalNameStructure"
+              data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
+              data-editor-name-id-param= {{ nam ? nam.id : ''
+              }}>
+
+
+              {# Title #}
+
+              <div class="mb-2 sshadow">
+                <label class= "small" for="idYYY0"> {{ 'Title' | trans }}: </label>
+                <input type="text"
+                class="form-control form-control-sm shadow"
+                id="idYYY0"
+                name= 'npfxxxxx'
+                // value="{{ nam ? nam.npfx }}" >
+              </div>
+
+              {# Abbreviation #}
+
+              <div class="mb-2 sshadow">
+                <label class= "small" for="idYYY0"> {{ 'Abbreviation' | trans }}: </label>
+                <input type="text"
+                class="form-control form-control-sm shadow"
+                id="idYYY0"
+                name= 'npfxxx'
+                // value="{{ nam ? nam.npfx }}" >
+              </div>
+
+              {# Publication#}
+
+              <div class="mb-2 sshadow">
+                <label class= "small" for="idYYY0"> {{ 'Publication' | trans }}: </label>
+                <input type="text"
+                class="form-control form-control-sm shadow"
+                id="idYYY0"
+                name= 'npfxxx'
+                // value="{{ nam ? nam.npfx }}" >
+              </div>
+
+              {# Author #}
+
+              <div class="mb-2 sshadow">
+                <label class= "small" for="idYYY0"> {{ 'Author' | trans }}: </label>
+                <input type="text"
+                class="form-control form-control-sm shadow"
+                id="idYYY0"
+                name= 'npfxxx'
+                // value="{{ nam ? nam.npfx }}" >
+              </div>
+
+              {{ include('editor/textEditor.html.twig') }}
+
+
+
+
+
+
+            </div>
+
+
+            <div class="col-2 mb-2">
+              <button role="button"
+                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                data-action="click->editor#notes"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="{{ 'Notes' | trans }}">
+                {{ icon_notes | raw }}
+              </button>
+              <button type="button"
+                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                _data-action="click->editor#sourceCitations"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="{{ 'Source Citations' | trans }}">
+                {{ icon_sources | raw }}
+              <button type="button"
+                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                _data-action="click->editor#sourceCitations"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="{{ 'Media' | trans }}">
+                {{ icon_media | raw }}
+              </button>
+              <button type="button"
+                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                _data-action="click->editor#sourceCitations"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="{{ 'Associates' | trans }}">
+                {{ icon_association | raw }}
+              </button>
+              <button type="button"
+                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                _data-action="click->editor#sourceCitations"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="{{ 'Identifiers' | trans }}">
+                {{ icon_media | raw }}
+              </button>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </form>
+
+
+      {# Modal Footer #}
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+

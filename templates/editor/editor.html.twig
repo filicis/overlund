@@ -59,12 +59,13 @@
 
   {# Forskellige modaler under udvikling #}
 
-  {% include 'editor/individual-names.html.twig' %}
-  {% include 'editor/individual-events.html.twig' %}
-  {% include 'editor/individual-event.html.twig' %}
+  {{ include('editor/individual-names.html.twig') }}
+  {{ include('editor/individual-events.html.twig') }}
+  {{ include('editor/individual-event.html.twig') }}
 
-  {% include 'editor/notes.html.twig' %}
-  {% include 'editor/noteeditor.html.twig' %}
+  {{ include('editor/notes.html.twig') }}
+  {{ include('editor/noteeditor.html.twig') }}
+  {{ include('editor/sourceRecordEditor.html.twig') }}
 
 
 </div>

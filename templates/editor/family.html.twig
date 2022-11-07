@@ -47,46 +47,47 @@
             data-action="change->editor#famRestrictions"
             >
 
-            <span class=""
+
+
+            <input type="checkbox"
+            id="mlr01"
+            class="btn-check"
+            name= "locked"
+            autocomplete="off">
+            <label class="btn btn-outline-dark btn-light btn-sm"
+              for="mlr01"
               data-bs-toggle="tooltip"
-              title="{{ 'Write protection' | trans }}"
-              aria-label="{{ 'Write protection' | trans }}">
-              <input type="checkbox"
-              class="btn-check"
-              name= "locked"
-              id="btn-check1"
-              autocomplete="off">
-              <label class="btn btn-outline-dark btn-light btn-sm"
-                for="btn-check1">
-                {{ constant('App\\Controller\\EditorController::ICON_LOCKED') }}
-              </label>
-            </span>
-            <span class=""
+              title="{{ 'Write protection' | trans }}">
+              {{ icon_unlocked | raw }}
+            </label>
+
+
+            <input type="checkbox"
+            id="mlr02"
+            class="btn-check"
+            name= "Confidential"
+            checked
+            autocomplete="off">
+            <label class="btn btn-outline-dark btn-light btn-sm"
+              for="mlr02"
               data-bs-toggle="tooltip"
               title= "{{ 'Confidential' | trans }}">
-              <input type="checkbox"
-              class="btn-check"
-              name= "Confidential"
-              id="btn-check2"
-              autocomplete="off">
-              <label class="btn btn-outline-dark btn-light btn-sm"
-                for="btn-check2">
-                {{ constant('App\\Controller\\EditorController::ICON_CONFIDENTIAL') }}
-              </label>
-            </span>
-            <span class=""
+              {{  icon_confidential | raw  }}
+            </label>
+
+
+
+            <input type="checkbox"
+            id="mlr03"
+            class="btn-check"
+            name= "Privacy"
+            autocomplete="off">
+            <label class="btn btn-outline-dark btn-light btn-sm"
+              for="mlr03"
               data-bs-toggle="tooltip"
               title="{{ 'Privacy' | trans }}">
-              <input type="checkbox"
-              class="btn-check"
-              name= "Privacy"
-              id="btn-check3"
-              autocomplete="off">
-              <label class="btn btn-outline-dark btn-light btn-sm"
-                for="btn-check3">
-                {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
-              </label>
-            </span>
+              {{ icon_private | raw }}
+            </label>
 
           </div>
 

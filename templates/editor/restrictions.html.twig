@@ -1,0 +1,55 @@
+{# restrictions.html.twig #}
+
+{#
+    Restrictions
+
+
+
+#}
+
+<div class="col text-end"
+  data-action="change->editor#famRestrictions"
+  >
+
+  <span class=""
+    data-bs-toggle="tooltip"
+    title="{{ 'Write protection' | trans }}"
+    aria-label="{{ 'Write protection' | trans }}">
+    <input type="checkbox"
+    class="btn-check"
+    name= "locked"
+    id="btn-check1"
+    autocomplete="off">
+    <label class="btn btn-outline-dark btn-light btn-sm"
+      for="btn-check1">
+      {{ icon_unlocked | raw }}
+    </label>
+  </span>
+  <span class=""
+    data-bs-toggle="tooltip"
+    title= "{{ 'Confidential' | trans }}">
+    <input type="checkbox"
+    class="btn-check"
+    name= "Confidential"
+    id="btn-check2"
+    autocomplete="off">
+    <label class="btn btn-outline-dark btn-light btn-sm"
+      for="btn-check2">
+      {{ icon_confidential | raw }}
+    </label>
+  </span>
+  <span class=""
+    data-bs-toggle="tooltip"
+    title="{{ 'Privacy' | trans }}">
+    <input type="checkbox"
+    class="btn-check"
+    name= "Privacy"
+    id="btn-check3"
+    autocomplete="off">
+    <label class="btn btn-outline-dark btn-light btn-sm"
+      for="btn-check3">
+      {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
+    </label>
+  </span>
+
+</div>

@@ -20,8 +20,8 @@ twig:
         
         icon_locked: 					'&#x1F512;'
         icon_unlocked: 				'&#x1F513;'
-        icon_confidential:
-        icon_private:
+        icon_confidential:    '&#x1F910;'		# Zipper-Mouth Face
+        icon_private:					'&#x1F6D1;'		# Stop sign
         icon_person:
         icon_male:
         icon_female:

@@ -3,53 +3,61 @@
 {#
     Restrictions
 
-
-
+    Template Variables
+    - resn
+    - form
 #}
 
-<div class="col text-end"
-  data-action="change->editor#famRestrictions"
-  >
+{% set resn= 128 %}
+{% set disabled= resn ? '' : 'disabled' %}
 
-  <span class=""
+
+<fieldset class="form-group col text-end"
+          {{ disabled }}
+          data-action="change->editor#restrictions"
+          data-editor-resn-param= {{ resn }}
+          data-editor-form-param= {{ form }}>
+
+  <input type="checkbox"
+  id="{{ form  ~ 'l' }}"
+  class="btn-check"
+  name= "locked"
+  autocomplete="off">
+  <label class="btn btn-outline-dark btn-light btn-sm"
+    for="{{ form ~ 'l' }}"
     data-bs-toggle="tooltip"
-    title="{{ 'Write protection' | trans }}"
-    aria-label="{{ 'Write protection' | trans }}">
-    <input type="checkbox"
-    class="btn-check"
-    name= "locked"
-    id="btn-check1"
-    autocomplete="off">
-    <label class="btn btn-outline-dark btn-light btn-sm"
-      for="btn-check1">
-      {{ icon_unlocked | raw }}
-    </label>
-  </span>
-  <span class=""
+    title="{{ 'Write protection' | trans }}">
+    {{ icon_unlocked | raw }}
+  </label>
+
+
+
+  <input type="checkbox"
+  id="{{ form ~ '2' }}"
+  class="btn-check"
+  name= "Confidential"
+  autocomplete="off">
+  <label class="btn btn-outline-dark btn-light btn-sm"
+    for="{{ form ~ '2' }}"
     data-bs-toggle="tooltip"
     title= "{{ 'Confidential' | trans }}">
-    <input type="checkbox"
-    class="btn-check"
-    name= "Confidential"
-    id="btn-check2"
-    autocomplete="off">
-    <label class="btn btn-outline-dark btn-light btn-sm"
-      for="btn-check2">
-      {{ icon_confidential | raw }}
-    </label>
-  </span>
-  <span class=""
+    {{  icon_confidential | raw  }}
+  </label>
+
+
+
+  <input type="checkbox"
+  id="{{ form ~ '3' }}"
+  class="btn-check"
+  name= "Privacy"
+  autocomplete="off">
+  <label class="btn btn-outline-dark btn-light btn-sm"
+    for="{{ form ~ '3' }}"
     data-bs-toggle="tooltip"
     title="{{ 'Privacy' | trans }}">
-    <input type="checkbox"
-    class="btn-check"
-    name= "Privacy"
-    id="btn-check3"
-    autocomplete="off">
-    <label class="btn btn-outline-dark btn-light btn-sm"
-      for="btn-check3">
-      {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
-    </label>
-  </span>
+    {{ icon_private | raw }}
+  </label>
 
-</div>
+</fieldset>
+
+

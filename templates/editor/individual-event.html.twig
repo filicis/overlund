@@ -77,59 +77,16 @@
 
           {# Restrictions #}
 
-          <div class="col text-end"
-            _data-action="change->editor#famRestrictions"
-            >
+          {{ include('editor/restrictions.html.twig', {form: 'modal'}) }}
 
-            <span class="mb-2"
-              data-bs-toggle="tooltip"
-              title="{{ 'Write protection' | trans }}"
-              aria-label="{{ 'Write protection' | trans }}">
-              <input type="checkbox"
-              class="btn-check"
-              name= "__locked"
-              id="btn-check1_"
-              autocomplete="off">
-              <label class="btn btn-outline-dark btn-light btn-sm"
-                for="btn-check1_">
-                {{ icon_unlocked | raw }}
-              </label>
-            </span>
-            <span class=""
-              data-bs-toggle="tooltip"
-              title= "{{ 'Confidential' | trans }}">
-              <input type="checkbox"
-              class="btn-check"
-              name= "__Confidential"
-              id="btn-check2_"
-              autocomplete="off">
-              <label class="btn btn-outline-dark btn-light btn-sm"
-                for="btn-check2_">
-                {{ constant('App\\Controller\\EditorController::ICON_CONFIDENTIAL') }}
-              </label>
-            </span>
-            <span class=""
-              data-bs-toggle="tooltip"
-              title="{{ 'Privacy' | trans }}">
-              <input type="checkbox"
-              class="btn-check"
-              name= "__Privacy"
-              id="btn-check3_"
-              autocomplete="off">
-              <label class="btn btn-outline-dark btn-light btn-sm"
-                for="btn-check3_">
-                {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
-              </label>
-            </span>
 
-          </div>
 
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       {# Modal Body#}
 
-      <div class="modal-body">
+      <form class="modal-body" name="modal">
         <div class="container-fluid">
           <div class="row">
 
@@ -284,7 +241,7 @@
 
         </div>
 
-      </div>
+      </form>
 
 
       {# Modal Footer #}

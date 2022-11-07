@@ -43,7 +43,9 @@
 
           {# Restrictions #}
 
-          <div class="col text-end"
+          {{ include('editor/restrictions.html.twig', {form: 'fam'}) }}
+
+          <!--fieldset class="form-group col text-end"
             data-action="change->editor#famRestrictions"
             >
 
@@ -89,7 +91,7 @@
               {{ icon_private | raw }}
             </label>
 
-          </div>
+          </fieldset-->
 
         </div>
 

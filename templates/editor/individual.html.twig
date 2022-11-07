@@ -34,43 +34,10 @@
 
       {# RESN knap apparat #}
 
-      <fieldset class="col text-end"
+          {{ include('editor/restrictions.html.twig', {form: 'fam'}) }}
 
-        data-action="change->editor#indiRestrictions"
-        aria-label="Restriction">
-        <span class=""
-          data-bs-toggle="tooltip"
-          title="{{ 'Write protection' | trans }}"
-          aria-label="{{ 'Write protection' | trans }}"
-          >
-          <input type= "checkbox"
-          class= "btn-check"
-          name= "locked"
-          id="btn-check11"
-          autocomplete="off">
-          <label class="mlr btn btn-outline-dark btn-light btn-sm" for="btn-check11">&#x1F513;</label>
-        </span>
-        <span class=""
-          data-bs-toggle="tooltip"
-          title= "{{ 'Confidential' | trans }}">
-          <input type="checkbox"
-          class="btn-check"
-          name= "confidential"
-          id="btn-check12"
-          autocomplete="off">
-          <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check12">🤐</label>
-        </span>
-        <span class=""
-          data-bs-toggle="tooltip"
-          title="{{ 'Privacy' | trans }}">
-          <input type="checkbox"
-          class="btn-check"
-          name= "privacy"
-          id="btn-check13"
-          autocomplete="off">
-          <label class="btn btn-outline-dark btn-light btn-sm" for="btn-check13">⛔</label>
-        </fieldset>
-      </div>
+
+    </div>
 
 
       {{ include('editor/individual-section01.html.twig') }}

@@ -21,7 +21,7 @@ class RestrictionsRepository extends ServiceEntityRepository
         parent::__construct($registry, Restrictions::class);
     }
 
-    public function add(Restrictions $entity, bool $flush = false): void
+    public function save(Restrictions $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 

@@ -5,7 +5,8 @@
 #}
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+     data-controller="editor">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -52,13 +53,13 @@
         <div class= "nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown03" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Library</a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown03">
-            <a class="dropdown-item" href="sourcerecords">Source Records</a>
-            <a class="dropdown-item" href="repositaryrecords">Repository Records</a>
-            <a class="dropdown-item" href="noterecords">Note Records</a>
+            <a class="dropdown-item" _href="sourcerecords" data-action="click->editor#librarySourceRecords">Source Records</a>
+            <a class="dropdown-item" _href="repositaryrecords" data-action="editor#libraryRepositoryRecords">Repository Records</a>
+            <a class="dropdown-item" _href="noterecords" data-action="editor#libraryNoteRecords">Note Records</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="about">All Media</a>
+            <a class="dropdown-item" _href="about" data-action="editor#libraryMedia">All Media</a>
             <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="{{ path('library') }}" target="iframetest">Modal</a>
-            <a class="dropdown-item" href="{{ path('library') }}" target="iframetest">All Places</a>
+            <a class="dropdown-item" _href="{{ path('library') }}" target="iframetest" data-action="libraryPlaces">All Places</a>
           </div>
         </div>
 

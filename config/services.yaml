@@ -14,10 +14,10 @@ twig:
     globals:
         product: "Codename Overlund"
         copyright: "© 2020-22 Filicis Software - Michael Lindhardt Rasmussen"
-        
+
 # Iconer
 #	- Alt overvejende i form af Emojis hentet fra søgemaskinen https://emojipedia.org/
-        
+
         icon_locked: 					'&#x1F512;'
         icon_unlocked: 				'&#x1F513;'
         icon_confidential:    '&#x1F910;'		# Zipper-Mouth Face
@@ -31,20 +31,22 @@ twig:
         icon_delete: 					'&#x274C;'
         icon_up:							'&#x1F53A;'		# Red Triangle Pointed Up
         icon_down:						'&#x1F53B;'		# Red Triangle Pointed Down
+        icon_left:            '&#x2B05;'    # Left Arrow
+        icon_right:           '&#x27A1;'    # Right Arrow
         icon_pedigree:
-        
+
         icon_events:					'&#x1F5D3;'		# Spiral Calendar
-        icon_notes:						'&#x1F5D2;'		#	Spiral Notepad	
+        icon_notes:						'&#x1F5D2;'		#	Spiral Notepad
         icon_sources:					'&#x1F4DA;'		# Books
         icon_media:						"🖼️"
-        
+
         icon_new:							'&#x1F195;'		# New Sign
         icon_edit:						'&#x270F;'		# Pencil
-        
+
         icon_names:						'&#x1F4C7;'		# Card Index
         icon_alias:						'&#x1F977;'		# Ninja
         icon_association:			'&#x26D3;'		# Chains
-        
+
 
 
 services:

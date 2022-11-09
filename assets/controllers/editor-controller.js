@@ -637,5 +637,22 @@ export default class extends Controller {
     alert("Associates");
   }
 
+  /**
+   *  function associates(event)
+   *
+   *
+   */
+
+  librarySourceRecords(Event)
+  {
+    console.log("Library - Source Records");
+
+    const myModal = new bootstrap.Modal(document.getElementById('modalSourceLibrary'), {'focus': true});
+
+    myModal.show();
+
+    //alert("Source Records");
+  }
+
 
 }

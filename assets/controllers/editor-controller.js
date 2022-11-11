@@ -638,7 +638,7 @@ export default class extends Controller {
   }
 
   /**
-   *  function associates(event)
+   *  function librarySourceRecords(event)
    *
    *
    */
@@ -653,6 +653,80 @@ export default class extends Controller {
 
     //alert("Source Records");
   }
+
+
+  /**
+   *  function libraryRepositoryRecords(event)
+   *
+   *
+   */
+
+  libraryRepositoryRecords(Event)
+  {
+    console.log("Library - Repository Records");
+
+    const myModal = new bootstrap.Modal(document.getElementById('modalRepositoryLibrary'), {'focus': true});
+
+    myModal.show();
+
+    //alert("Source Records");
+  }
+
+
+  /**
+   *  function libraryNoteRecords(event)
+   *
+   *
+   */
+
+  libraryNoteRecords(Event)
+  {
+    console.log("Library - Note Records");
+
+    const myModal = new bootstrap.Modal(document.getElementById('modalNoteLibrary'));
+
+    myModal.show();
+
+    //alert("Source Records");
+  }
+
+
+  /**
+   *  function libraryMediaRecords(event)
+   *
+   *
+   */
+
+  libraryMediaRecords(Event)
+  {
+    console.log("Library - Media Records");
+
+    const myModal = new bootstrap.Modal(document.getElementById('modalMediaLibrary'));
+
+    myModal.show();
+
+    //alert("Source Records");
+  }
+
+
+  /**
+   *  function libraryPlaceRecords(event)
+   *
+   *
+   */
+
+  libraryPlaceRecords(Event)
+  {
+    console.log("Library - Place Records");
+
+    const myModal = new bootstrap.Modal(document.getElementById('modalPlaceLibrary'));
+
+    myModal.show();
+
+    //alert("Source Records");
+  }
+
+
 
 
 }

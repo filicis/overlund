@@ -1,0 +1,120 @@
+{#  editor/librarySourceRecords #}
+
+
+
+
+
+<div class="modal fade" id="modalMediaLibrary" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      {# Modal Header#}
+
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'Media Library' | trans }}</h5>
+
+        {# Restrictions # }
+
+        {{ include('editor/restrictions.html.twig', {form: 'modal'}) } #}
+
+
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      {# Modal Body#}
+
+
+
+      <form class="modal-body" name="modal">
+        <div class="container-fluid">
+          <div class="row">
+
+            <div class="col-12">
+              <div class="mb-2 sshadow">
+                <label class= "small" for="idYYY0"> {{ 'Search term' | trans }}: </label>
+                <input type="text"
+                class="form-control form-control-sm shadow"
+                id="idYYY0"
+                name= 'npfx'
+                value="{{ nam ? nam.npfx }}" >
+              </div>
+            </div>
+
+            <div class="col-12 form-text shadow">
+              <div class="input-group input-group-sm mb-3">
+                Results: (<strong>5048</strong>)
+              </div>
+            </div>
+
+
+            <div class="col-12">
+              <div class="mb-2 sshadow">
+                <label class= "small" for="idYYY01"> {{ 'Source title' | trans }}: </label>
+                <select type="text"
+                  class="form-select form-select-sm shadow"
+                  id="idYYY01"
+                  name='npfx'
+                  multiple
+                  size=10 >
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                  <option value="Suzuki">Suzuki</option>
+                  <option value="Mazda">Mazda</option>
+                  <option value="Toyota">Toyota</option>
+                  <option value="Skoda">Skoda</option>
+                  <option value="Seat">Seat</option>
+                  <option value="VW">VW</option>
+                  <option value="Ferrari">Ferrari</option>
+                  <option value="Mazerati">Mazerati</option>
+                  <option value="Tesla">Tesla</option>
+                  <option value="Ford">Ford</option>
+                  <option value="Bugatti">Bugatti</option>
+                  <option value="Chrysler">Chrysler</option>
+
+                </select>
+              </div>
+            </div>
+
+
+            <div class="col-6">
+              <div class="input-group input-group-sm mb-3">
+                <button class="btn btn-sm btn-outline-secondary" type="button">{{ icon_left | raw}}</button>
+
+                <span class="input-group-text" id="basic-addon1">Page</span>
+                <input type="text" class="form-control form-control-sm" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <span class="input-group-text" id="basic-addon1">of</span>
+                <span class="input-group-text" id="basic-addon1">245</span>
+                <button class="btn btn-sm btn-outline-secondary" type="button" >{{ icon_right | raw}}</button>
+              </div>
+            </div>
+
+            <div class="col-2">
+              Test Col
+            </div>
+
+          </div>  {# row #}
+          <div class="row">
+
+            test row
+
+          </div>  {# row #}
+        </div>  {# Container #}
+      </form> {# Modal Body #}
+
+        {# Modal Footer #}
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>  {# Modal Content#}
+  </div>  {# Modal Dialog #}
+</div>  {# Modal #}
+
+
+
+

@@ -44,7 +44,7 @@
       data-action="editor#newAsWife"
       data-bs-toggle="tooltip"
       title="{{ 'New Individual as Wife' | trans }}">
-      {{ constant('App\\Controller\\EditorController::ICON_FEMALE') }}
+      {{ icon_female | raw }}
     </button>
 
     <button type="button"
@@ -76,7 +76,7 @@
       data-action="editor#notesForWife"
       data-bs-toggle="tooltip"
       title="{{'Notes for Wife' | trans}}">
-      {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
+      {{ icon_notes | raw }}
     </button>
 
   </div>

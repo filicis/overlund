@@ -22,13 +22,13 @@ twig:
         icon_unlocked: 				'&#x1F513;'
         icon_confidential:    '&#x1F910;'		# Zipper-Mouth Face
         icon_private:					'&#x1F6D1;'		# Stop sign
-        icon_person:
-        icon_male:
-        icon_female:
-        icon_child:
-        icon_family:
+        icon_person:          '&#x1F9D1;'   # Person
+        icon_male:            '&#x1F468;'   # Man
+        icon_female:          '&#x1F469;'   # Woman
+        icon_child:           '&#x1F9D2;'   # Child
+        icon_family:          '&#x1F46A;'   # Family
         icon_researchers:
-        icon_delete: 					'&#x274C;'
+        icon_delete: 					'&#x1F5D1;'   # Waste Basket
         icon_up:							'&#x1F53A;'		# Red Triangle Pointed Up
         icon_down:						'&#x1F53B;'		# Red Triangle Pointed Down
         icon_left:            '&#x2B05;'    # Left Arrow
@@ -46,6 +46,10 @@ twig:
         icon_names:						'&#x1F4C7;'		# Card Index
         icon_alias:						'&#x1F977;'		# Ninja
         icon_association:			'&#x26D3;'		# Chains
+
+        icon_ok:              '&#x2714;'    # Check Mark
+        icon_cancel:          '&#x274C;'    # Cross Mark
+        icon_help:            '&#x2754;'    # White Question Mark
 
 
 

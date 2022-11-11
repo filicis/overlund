@@ -728,5 +728,44 @@ export default class extends Controller {
 
 
 
+  /**
+   *  function libraryIndividualRecords(event)
+   *
+   *
+   */
+
+  libraryIndividualRecords(Event)
+  {
+    console.log("Library - Individual Records");
+
+    const myModal = new bootstrap.Modal(document.getElementById('modalIndividualLibrary'));
+
+    myModal.show();
+
+    //alert("Source Records");
+  }
+
+
+
+  /**
+   *  function libraryFamilyRecords(event)
+   *
+   *
+   */
+
+  libraryFamilyRecords(Event)
+  {
+    console.log("Library - Family Records");
+
+    const myModal = new bootstrap.Modal(document.getElementById('modalFamilyLibrary'));
+
+    myModal.show();
+
+    //alert("Source Records");
+  }
+
+
+
+
 
 }

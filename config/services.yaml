@@ -36,9 +36,17 @@ twig:
         icon_pedigree:
 
         icon_events:					'&#x1F5D3;'		# Spiral Calendar
-        icon_notes:						'&#x1F5D2;'		#	Spiral Notepad
+#       icon_notes:						'&#x1F5D2;'		#	Spiral Notepad
+        icon_notes:						'&#x1F4CB;'		#	Clipboard
         icon_sources:					'&#x1F4DA;'		# Books
         icon_media:						"🖼️"
+
+        icon_date:            '&#x1F4C5;'   # Calendar
+        icon_address:					'&#x1F4E9;'   # Envelope with Arrow
+        icon_place:						'&#x1F4CD;'   # Round Pushpin
+
+        icon_identifier:      '&#x1F4DB;'   # Name Badge
+
 
         icon_new:							'&#x1F195;'		# New Sign
         icon_edit:						'&#x270F;'		# Pencil

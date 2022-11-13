@@ -73,7 +73,7 @@
       {# Modal Header#}
 
       <div class="modal-header">
-        <h5 class="modal-title">Edit Event/Attribute for [I346] Olga Jensen</h5>
+        <h5 class="modal-title fs-5">Edit Event/Attribute for [I346] Olga Jensen</h5>
 
           {# Restrictions #}
 
@@ -115,6 +115,17 @@
                 </select>
               </div>
 
+              {# Y / N#}
+
+              <div class="mb-2 shadow">
+                <label class= "small" for="Happenend"> {{ 'Happenend' | trans }}: </label>
+                <select class="form-select form-select-sm" id="Happenend" aria-label=".form-select-sm example">
+                  <option value="" selected></option>
+                  <option value="Y">{{ 'Yes' | trans }}</option>
+                  <option value="N">{{ 'No' | trans }}</option>
+                </select>
+              </div>
+
               {# Descriptiom - Kun defineret for Attributter med Payload #}
 
               <div class="mb-2 sshadow">
@@ -140,30 +151,57 @@
 
               <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Date' | trans }}: </label>
-                <input type="text"
-                class="form-control form-control-sm shadow"
-                id="idYYY0"
-                name= 'npfxxx'
-                // value="{{ nam ? nam.npfx }}" >
+                <div  class="input-group mb-3">
+                  <input type="text"
+                    class="form-control form-control-sm shadow"
+                    id="idYYY0"
+                    name= 'npfxxx' >
+                  <button class="btn  btn-outline-dark btn-light btn-sm"
+                          type="button"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title="{{ 'Format Date' | trans }}">
+                    {{ icon_date | raw }}
+
+                  </button>
+                </div>
               </div>
 
               <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Address' | trans }}: </label>
-                <input type="text"
-                class="form-control form-control-sm shadow"
-                id="idYYY0"
-                name= 'npfxxx'
-                // value="{{ nam ? nam.npfx }}" >
+                <div class="input-group mb-3">
+
+                  <input type="text"
+                    class="form-control form-control-sm shadow"
+                    id="idYYY0"
+                    name= 'npfxxx' >
+                  <button class="btn  btn-outline-dark btn-light btn-sm" type="button"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title="{{ 'Format Address' | trans }}">
+                    {{ icon_address | raw }}
+                  </button>
+                </div>
+
               </div>
 
 
               <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Place' | trans }}: </label>
-                <input type="text"
-                class="form-control form-control-sm shadow"
-                id="idYYY0"
-                name= 'npfxxx'
-                // value="{{ nam ? nam.npfx }}" >
+                <div class="input-group mb-3">
+
+
+                  <input type="text"
+                  class="form-control form-control-sm shadow"
+                  id="idYYY0"
+                  name= 'npfxxx'>
+                  <button class="btn  btn-outline-dark btn-light btn-sm" type="button"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          title="{{ 'Format Place' | trans }}">
+                    {{ icon_place | raw }}
+                  </button>
+                </div>
               </div>
 
 
@@ -231,7 +269,7 @@
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
                 title="{{ 'Identifiers' | trans }}">
-                {{ icon_media | raw }}
+                {{ icon_identifier | raw }}
               </button>
 
             </div>

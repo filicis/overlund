@@ -766,6 +766,12 @@ export default class extends Controller {
 
 
 
+  dummy(event)
+  {
+    console.log("Dummy: ", event);
+    //alert("Click !");
+
+  }
 
 
 }

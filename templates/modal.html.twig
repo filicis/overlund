@@ -1,121 +1,20 @@
+{# modal.html.twig #}
+
 {#
+    Skabelon for vores modale vinduer
 
-  Individual Event/Attribute Editor
 
+    - id
+    - title
+    - body
+    - footer
 #}
 
 
-{% set taglist= [
-
-"EVEN",
-"FACT",
-"ADOP",
-"BAPM",
-"BARM",
-"BASM",
-"BIRT",
-"BLES",
-"BURI",
-"CENS",
-"CHR",
-"CHRA",
-"CONF",
-"CREM",
-"DEAT",
-"EMIG",
-"FCOM",
-"GRAD",
-"IMMI",
-"NATU",
-"ORDN",
-"PROB",
-"RETI",
-"WILL",
-"ANUL",
-"DIV",
-"DIVF",
-"ENGA",
-"MARB",
-"MARC",
-"MARL",
-"MARR",
-"MARS",
-"CAST",
-"DSCR",
-"EDUC",
-"IDNO",
-"NATI",
-"NCHI",
-"NMR",
-"OCCU",
-"PROP",
-"RELI",
-"RESI",
-"SSN",
-"TITL",
-                ]%}
-
-{% set taglist1= [
-
-"INDI-EVEN",
-"FAM-EVEN",
-"INDI-FACT",
-"FAM-FACT",
-"ADOP",
-"BAPM",
-"BARM",
-"BASM",
-"BIRT",
-"BLES",
-"BURI",
-"INDI-CENS",
-"CHR",
-"CHRA",
-"CONF",
-"CREM",
-"DEAT",
-"EMIG",
-"FCOM",
-"GRAD",
-"IMMI",
-"NATU",
-"ORDN",
-"PROB",
-"RETI",
-"WILL",
-"ANUL",
-"FAM-CENS",
-"DIV",
-"DIVF",
-"ENGA",
-"MARB",
-"MARC",
-"MARL",
-"MARR",
-"MARS",
-"CAST",
-"DSCR",
-"EDUC",
-"IDNO",
-"NATI",
-"INDI-NCHI",
-"NMR",
-"OCCU",
-"PROP",
-"RELI",
-"INDI-RESI",
-"SSN",
-"TITL",
-"FAM-NCHI",
-"FAM-RESI"
-
-
-                ]%}
 
 
 
-
-<div class="modal fade" id="mlrModalEvent" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="{% block id %} modal {% endblock %}" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
 
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
@@ -123,7 +22,7 @@
       {# Modal Header#}
 
       <div class="modal-header">
-        <h5 class="modal-title fs-5">Edit Event/Attribute for [I346] Olga Jensen</h5>
+        <h5 class="modal-title fs-5">{% block title %} Edit Event/Attribute for [I346] Olga Jensen {% endblock %}</h5>
 
           {# Restrictions #}
 
@@ -138,17 +37,36 @@
 
       <form class="modal-body" name="modal">
         <div class="container-fluid">
+
+          {% block body %}
+            <div class="row">
+              <div class="col-10">
+                {% block body_left %}{% endblock %}
+              </div>
+              <div class="col-2">
+                {% block body_right %}{% endblock %}
+              </div>
+            </div>
+          {% endblock %}
+
+
           <div class="row">
 
-            {# GEDCOM Event/Attribute Struktur #}
+            {# GEDCOM Navne Struktur #}
 
-            <div class="col-10">
+            <div id="NameStr"
+              class="col-10"
+              _data-action= "input->editor#updatePersonalNameStructure"
+              data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
+              data-editor-name-id-param= {{ nam ? nam.id : ''
+              }}>
 
               {# Tag #}
 
-              <div class="mb-2">
+              <div class="mb-2 shadow">
                 <label class= "small" for="idEventTag"> {{ 'Tag' | trans }}: </label>
-                <select class="form-select form-select-sm shadow" id="EventTag" aria-label=".form-select-sm example">
+                <select class="form-select form-select-sm" id="EventTag" aria-label=".form-select-sm example">
+                  <option selected>Open this select menu</option>
 
                   {% for p in taglist %}
 
@@ -161,9 +79,9 @@
 
               {# Y / N#}
 
-              <div class="mb-2">
-                <label class= "small" for="Happenend"> {{ 'Event Happenend' | trans }}: </label>
-                <select class="form-select form-select-sm shadow" id="Happenend" aria-label=".form-select-sm example">
+              <div class="mb-2 shadow">
+                <label class= "small" for="Happenend"> {{ 'Happenend' | trans }}: </label>
+                <select class="form-select form-select-sm" id="Happenend" aria-label=".form-select-sm example">
                   <option value="" selected></option>
                   <option value="Y">{{ 'Yes' | trans }}</option>
                   <option value="N">{{ 'No' | trans }}</option>
@@ -172,7 +90,7 @@
 
               {# Descriptiom - Kun defineret for Attributter med Payload #}
 
-              <div class="mb-2">
+              <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Description' | trans }}: </label>
                 <input type="text"
                 class="form-control form-control-sm shadow"
@@ -183,7 +101,7 @@
 
               {# Type - valgfri for de fleste tags, obligatorisk for nogle få #}
 
-              <div class="">
+              <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Type' | trans }}: </label>
                 <input type="text"
                 class="form-control form-control-sm shadow"
@@ -195,9 +113,9 @@
 
               <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Date' | trans }}: </label>
-                <div  class="input-group mb-3 shadow">
+                <div  class="input-group mb-3">
                   <input type="text"
-                    class="form-control form-control-sm"
+                    class="form-control form-control-sm shadow"
                     id="idYYY0"
                     name= 'npfxxx' >
                   <button class="btn  btn-outline-dark btn-light btn-sm"
@@ -211,12 +129,12 @@
                 </div>
               </div>
 
-              <div class="mb-2">
+              <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Address' | trans }}: </label>
-                <div class="input-group mb-3 shadow">
+                <div class="input-group mb-3">
 
                   <input type="text"
-                    class="form-control form-control-sm"
+                    class="form-control form-control-sm shadow"
                     id="idYYY0"
                     name= 'npfxxx' >
                   <button class="btn  btn-outline-dark btn-light btn-sm" type="button"
@@ -232,11 +150,11 @@
 
               <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Place' | trans }}: </label>
-                <div class="input-group mb-3 shadow">
+                <div class="input-group mb-3">
 
 
                   <input type="text"
-                  class="form-control form-control-sm"
+                  class="form-control form-control-sm shadow"
                   id="idYYY0"
                   name= 'npfxxx'>
                   <button class="btn  btn-outline-dark btn-light btn-sm" type="button"
@@ -249,7 +167,7 @@
               </div>
 
 
-              <div class="mb-2">
+              <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Cause' | trans }}: </label>
                 <input type="text"
                 class="form-control form-control-sm shadow"
@@ -259,7 +177,7 @@
               </div>
 
 
-              <div class="mb-2">
+              <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Agency' | trans }}: </label>
                 <input type="text"
                 class="form-control form-control-sm shadow"
@@ -321,6 +239,12 @@
 
           </div>
 
+
+
+
+
+
+
         </div>
 
       </form>
@@ -329,10 +253,11 @@
       {# Modal Footer #}
 
       <div class="modal-footer">
-        <button class="btn btn-sm btn-outline-success shadow"  type="submit"><i class="bi bi-check-lg"></i></button>
-        <button class="btn btn-sm btn-outline-danger shadow"  type="submit"><i class="bi bi-x-lg"></i></button>
-        <button class="btn btn-sm btn-outline-primary shadow"  type="submit"><i class="bi bi-question-lg"></i></button>
-
+        {% block footer %}
+          <button class="btn btn-sm btn-outline-success shadow"  type="submit"><!-- i class="bi bi-check-lg" -->{{ icon_ok | raw }}</i></button>
+          <button class="btn btn-sm btn-outline-danger shadow"  type="submit"><i class="bi bi-x-lg" style="font-size: 2rem; color: cornflowerblue;"></i></button>
+          <button class="btn btn-sm btn-outline-primary shadow"  type="submit"><i class="bi bi-question-lg" style="font-size: 2rem; color: cornflowerblue;"></i></button>
+        {% endblock %}
       </div>
     </div>
   </div>

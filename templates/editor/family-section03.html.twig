@@ -19,19 +19,15 @@
 %}
 
 
-{#
-  Har problemer med sticky top - check søsterversionen i individual-section02.html.twig
-#}
-
-<div class="card-body overflow-auto mb-2" style="max-height: 250px">
-  <!--div class="row overflow-auto" style="max-height: 250px">
-    <div class="col ooverflow-auto" style="max-hheight: 250px"-->
-      <!--div class="table-responsive" -->
 
 
-        <table class="table table-bordered table-sm shadow table-light">
+<div class="card-body mb-2">
 
-          <thead  style="position: sticky; top: 0">
+      <div class="table-responsive  shadow" style="max-height: 250px; overflow-x: auto">
+
+        <table class="table table-bordered table-hover table-sm table-light">
+
+          <thead class="small"  style="position: sticky; top: 0">
             <tr>
               <th scope="col">{{'Event' | trans}}</th>
               <th scope="col">{{'Date' | trans}}</th>
@@ -39,7 +35,39 @@
             </tr>
           </thead>
 
-          <tbody>
+          <tbody class="small">
+            {% for e in iEvent %}
+
+
+            <tr class="" role="button" tabindex="0">
+              <td >{{ e[0] }}</td>
+              <td >{{ e[1] }}</td>
+              <td >{{ e[2] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+      </div>
+</div>
+
+{#
+
+<div class="card-body mb-2">
+      <div class="table-responsive _overflow-auto shadow" style="max-height: 250px">
+
+
+        <table class="table w-100 table-bordered table-sm shadow table-light">
+
+          <thead class="d-block w-100 small"  style="position: absolute; ">
+            <tr class="d-block">
+              <th scope="col">{{'Event' | trans}}</th>
+              <th scope="col">{{'Date' | trans}}</th>
+              <th scope="col">{{'Place' | trans}}</th>
+            </tr>
+          </thead>
+
+          <tbody class="d-block w-100 overflow-auto small">
             {% for e in iEvent %}
 
 
@@ -52,8 +80,7 @@
           </tbody>
 
         </table>
-      <!-- /div-->
-    <!--/div>
-  </div-->
+      </div>
 </div>
 
+#}

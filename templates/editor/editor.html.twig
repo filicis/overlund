@@ -24,6 +24,7 @@
 
 
 <div class="container-xxl"
+  data-controller="editor"
   {{ stimulus_controller('editor', {'project': 'Project01', 'indi2': '{{ indiarg }}', 'fam1': '', husband:'', wife: ''}) }}
   data-editor-indi-value="{{ indi ? indi.id : ''}}";
   data-editor-fam-value="{{ fam ? fam.id : '' }}";
@@ -47,10 +48,10 @@
   {# Row 1 #}
 
   <div class="row row-cols-1 row-cols-xxl-2" style="background-color: #FFFFE5">
-    <div class="col"  {{ stimulus_target('editor', 'indiView') }}>
+    <div class="col" data-editor-target="indiView">
       {{ include('editor/individual.html.twig') }}
     </div>
-    <div class="col" {{ stimulus_target('editor', 'famView') }}>
+    <div class="col" data-editor-target="famView">
       {{ include('editor/family.html.twig') }}
     </div>
   </div>

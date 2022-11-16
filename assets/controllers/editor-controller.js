@@ -98,7 +98,8 @@ export default class extends Controller {
   //
   indiValueChanged(value, previousValue)
   {
-    if (! (value === previousValue))
+
+    if (this.hasIndiViewTarget && ! (value === previousValue))
     {
       const myInit= {
         method: 'PUT',
@@ -108,11 +109,11 @@ export default class extends Controller {
         credentials: 'include',
       };
 
-      console.time('render');
+      console.time('render1');
       fetch(this.renderindiValue, myInit)
       .finally(() =>
       {
-        console.timeEnd('render');
+        console.timeEnd('render1');
       })
       .then((response) => response.text())
       .then((data) => this.indiViewTarget.innerHTML= data)
@@ -147,15 +148,17 @@ export default class extends Controller {
 
 
 
-
-
   // function famValueChanged()
   // - opdaterer
   //
   famValueChanged(value, previousValue)
   {
-    if (! (value === previousValue))
+    console.log('FamValue changed: ', value, previousValue);
+
+    if (this.hasFamViewTarget && ! (value === previousValue))
     {
+      console.log('****************');
+      console.log('RenderFam: ', this.renderfamValue);
       const myInit= {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -164,21 +167,23 @@ export default class extends Controller {
         credentials: 'include',
       };
 
-      console.time('render');
+      console.time('render2');
       fetch(this.renderfamValue, myInit)
       .finally(() =>
       {
-        console.timeEnd('render');
+        console.timeEnd('render2');
       })
       .then((response) => response.text())
-      .then((data) => this.famViewTarget.innerHTML= data)
+      .then((data) =>
+      {
+        this.famViewTarget.innerHTML= data;
+        // console.log('Data: ', data)
+      })
       .catch((error) =>
       {
         console.error('Catch Error: ', error)
       });
     }
-
-
   }
 
   /**

@@ -174,6 +174,7 @@ class EditorController extends AbstractController
     $title= $request->getContent();
 
     $family= $project->getFamilies()[$data];
+    //$family= $project->getFamilies()->first();
 
     return $this->render('editor/family.html.twig', [
       'title' => $title,

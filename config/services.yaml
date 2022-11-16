@@ -10,6 +10,11 @@ parameters:
     app.icon.locked: '&#x1F512;'
     app.icon.unlocked: '&#x1F513;'
 
+    app.ievent.tags:
+        - BIRTH:  No01
+        - DEATH:  No02
+        - MARR:   No03
+
 twig:
     globals:
         product: "Codename Overlund"
@@ -58,6 +63,12 @@ twig:
         icon_ok:              '&#x2714;'    # Check Mark
         icon_cancel:          '&#x274C;'    # Cross Mark
         icon_help:            '&#x2754;'    # White Question Mark
+
+        ievent_tags:
+          - BIRTH:  No01
+          - DEATH:  No02
+          - MARR:   No03
+
 
 
 

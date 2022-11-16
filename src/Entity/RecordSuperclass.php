@@ -48,6 +48,9 @@ use       App\Entity\Traits\XrefTrait;
    *  - SourceRecord
    *  - SubmitterRecord
    *
+   *  - PlaceRecord
+   *  - PlaceForm
+   *
    **/
 
 #[ORM\MappedSuperclass(repositoryClass: RecordSuperclassRepository::class)]

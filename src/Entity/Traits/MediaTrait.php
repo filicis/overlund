@@ -31,10 +31,11 @@ use       App\Entity\Media;
    *  - SourceCitation
    **/
 
+
 trait MediaTrait
 {
 
-  #[ORM\OneToOne(targetEntity: "Media", cascade: ['persist', 'remove'])]
+  #[ORM\OneToOne(targetEntity: "Media", cascade: ['persist', 'remove'], fetch: 'LAZY')]
   #[ORM\JoinColumn(nullable: false)]
   private ?Media $media = null;
 
@@ -44,16 +45,9 @@ trait MediaTrait
 
 
   /**
-   *  function __construct
+   *  function getMedia()
    *
-   */
-/*
-  public function __construct()
-  {
-    $this->media= new Media();
-  }
-*/
-
+   **/
 
   public function getMedia(): ?Media
   {

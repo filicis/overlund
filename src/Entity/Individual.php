@@ -32,7 +32,6 @@ use       App\Entity\Media;
    **/
 
 #[ORM\Entity(repositoryClass:  IndividualRepository::class)]
-//# [ ORM\HasLifecycleCallbacks]
 class Individual extends RecordSuperclass
 {
   use Restrictions, MediaTrait;

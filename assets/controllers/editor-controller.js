@@ -1,7 +1,20 @@
+/**
+ * This file is part of the Overlund package.
+ *
+ * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @copyright 2000-2022 Filicis Software
+ * @license MIT
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 // assets/controllers/editor-controller.js
+
 import { Controller } from '@hotwired/stimulus';
 
-export default class extends Controller {
+export default class extends Controller
+{
   static values= {
     project: String,
     indi: String,
@@ -11,60 +24,58 @@ export default class extends Controller {
     renderindi: String,
     renderfam: String,
     webapi: String,
-  }
-  static targets= ['indiView', 'famView', 'indicard', 'personalName', 'tommy']
+}
 
-  //var myResult;
+static targets= ['indiView', 'famView', 'indicard', 'personalName', 'tommy']
 
-  //  function #webapi
-  //  - Den primære indgang til systemets web service
-  //
 
-  async #webapi(arg, mymethod= 'PUT')
+
+/**
+ *  function #webapi
+ *  - Den primære indgang til systemets web service
+ *
+ **/
+
+async #webapi(arg, mymethod= 'PUT')
+{
+  const myInit= {
+    mode: 'cors',
+    credentials: 'include',
+    method: mymethod,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(arg),
+  };
+
+  //console.log('Arg: ', arg);
+  //console.log('myInit: ', myInit)
+  await fetch(this.webapiValue, myInit)
+  .then((response) =>
   {
-    var myResult= "Hej verden";
-    const myInit= {
-      mode: 'cors',
-      credentials: 'include',
-      method: mymethod,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(arg),
-    };
-
-    console.log('Arg: ', arg);
-    console.log('myInit: ', myInit)
-    await fetch(this.webapiValue, myInit)
-    .then((response) =>
+    if (! response.ok)
     {
-      if (! response.ok)
+      switch(response.status)
       {
-        switch(response.status)
-        {
-          case 503:
-            window.location.href = "/offline";
-            throw new Error('System is offline');
+        case 503:
+        window.location.href = "/offline";
+        throw new Error('System is offline');
 
-          default:
-        }
-        window.location.href = "/";
-        throw new Error('Netværksfejl: ', response.status);
+        default:
       }
+      //window.location.href = "/";
+      throw new Error('Netværksfejl: ', response.status);
+    }
 
-      console.log('#webapi content-type: ' , response.headers.get('Content-Type'));
+    console.log('#webapi content-type: ' , response.headers.get('Content-Type'));
 
-      return (response.headers.get('Content-Type') == 'application/json')  ? response.json() : response.text();
-    })
-    .then((data) =>
-    {
-      myResult= data;
-
-    })
-    .catch((error) =>
-    {
-      console.error('Catch Error: ', error.message);
-    });
-    return myResult;
-  }
+    return (response.headers.get('Content-Type') == 'application/json')  ? response.json() : response.text();
+  })
+  .then((data) => myResult= data )
+  .catch((error) =>
+  {
+    console.error('Catch Error: ', error.message);
+  });
+  return myResult;
+}
 
 
 
@@ -92,7 +103,6 @@ export default class extends Controller {
 
 
 
-
   // indiValueChanged()
   // - opdaterer
   //
@@ -101,6 +111,19 @@ export default class extends Controller {
 
     if (this.hasIndiViewTarget && ! (value === previousValue))
     {
+
+    /*
+
+      var arg= {};
+      arg['method']= "editorUpdateIndiCard";
+      arg['project']= 'Project01';
+
+    this.#webapi(arg)
+    .then((data) => this.indiViewTarget.innerHTML= data);
+
+    */
+
+
       const myInit= {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -121,6 +144,7 @@ export default class extends Controller {
       {
       console.error('Catch Error: ', error)
       });
+
     }
   }
 

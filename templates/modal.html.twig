@@ -24,245 +24,231 @@
       <div class="modal-header">
         <h5 class="modal-title fs-5">{% block title %} Edit Event/Attribute for [I346] Olga Jensen {% endblock %}</h5>
 
-          {# Restrictions #}
+        {# Restrictions #}
 
-          {{ include('editor/restrictions.html.twig', {form: 'modal'}) }}
+        {{ include('editor/restrictions.html.twig', {form: 'modal'}) }}
 
 
 
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      {# Modal Body#}
+      {# Modal Body #}
 
       <form class="modal-body" name="modal">
         <div class="container-fluid">
 
           {% block body %}
-            <div class="row">
-              <div class="col-10">
-                {% block body_left %}{% endblock %}
-              </div>
-              <div class="col-2">
-                {% block body_right %}{% endblock %}
-              </div>
-            </div>
-          {% endblock %}
-
-
           <div class="row">
+            <div class="col-10">
+              {% block body_left %}
+              {# GEDCOM Navne Struktur #}
 
-            {# GEDCOM Navne Struktur #}
+              <div id="NameStr"
+                class="col-10"
+                _data-action= "input->editor#updatePersonalNameStructure"
+                data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
+                data-editor-name-id-param= {{ nam ? nam.id : ''
+                }}>
 
-            <div id="NameStr"
-              class="col-10"
-              _data-action= "input->editor#updatePersonalNameStructure"
-              data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
-              data-editor-name-id-param= {{ nam ? nam.id : ''
-              }}>
+                {# Tag #}
 
-              {# Tag #}
+                <div class="mb-2 shadow">
+                  <label class= "small" for="idEventTag"> {{ 'Tag' | trans }}: </label>
+                  <select class="form-select form-select-sm" id="EventTag" aria-label=".form-select-sm example">
+                    <option selected>Open this select menu</option>
 
-              <div class="mb-2 shadow">
-                <label class= "small" for="idEventTag"> {{ 'Tag' | trans }}: </label>
-                <select class="form-select form-select-sm" id="EventTag" aria-label=".form-select-sm example">
-                  <option selected>Open this select menu</option>
+                    {% for p in taglist %}
 
-                  {% for p in taglist %}
+                    <option value="{{ p }}">{{ p | trans }}</option>
 
-                  <option value="{{ p }}">{{ p | trans }}</option>
+                    {% endfor %}
 
-                  {% endfor %}
-
-                </select>
-              </div>
-
-              {# Y / N#}
-
-              <div class="mb-2 shadow">
-                <label class= "small" for="Happenend"> {{ 'Happenend' | trans }}: </label>
-                <select class="form-select form-select-sm" id="Happenend" aria-label=".form-select-sm example">
-                  <option value="" selected></option>
-                  <option value="Y">{{ 'Yes' | trans }}</option>
-                  <option value="N">{{ 'No' | trans }}</option>
-                </select>
-              </div>
-
-              {# Descriptiom - Kun defineret for Attributter med Payload #}
-
-              <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY0"> {{ 'Description' | trans }}: </label>
-                <input type="text"
-                class="form-control form-control-sm shadow"
-                id="idYYY0"
-                name= 'npfxxxxx'
-                // value="{{ nam ? nam.npfx }}" >
-              </div>
-
-              {# Type - valgfri for de fleste tags, obligatorisk for nogle få #}
-
-              <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY0"> {{ 'Type' | trans }}: </label>
-                <input type="text"
-                class="form-control form-control-sm shadow"
-                id="idYYY0"
-                name= 'npfxxx'
-                // value="{{ nam ? nam.npfx }}" >
-              </div>
-
-
-              <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY0"> {{ 'Date' | trans }}: </label>
-                <div  class="input-group mb-3">
-                  <input type="text"
-                    class="form-control form-control-sm shadow"
-                    id="idYYY0"
-                    name= 'npfxxx' >
-                  <button class="btn  btn-outline-dark btn-light btn-sm"
-                          type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="bottom"
-                          title="{{ 'Format Date' | trans }}">
-                    {{ icon_date | raw }}
-
-                  </button>
-                </div>
-              </div>
-
-              <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY0"> {{ 'Address' | trans }}: </label>
-                <div class="input-group mb-3">
-
-                  <input type="text"
-                    class="form-control form-control-sm shadow"
-                    id="idYYY0"
-                    name= 'npfxxx' >
-                  <button class="btn  btn-outline-dark btn-light btn-sm" type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="bottom"
-                          title="{{ 'Format Address' | trans }}">
-                    {{ icon_address | raw }}
-                  </button>
+                  </select>
                 </div>
 
-              </div>
+                {# Y / N#}
 
+                <div class="mb-2 shadow">
+                  <label class= "small" for="Happenend"> {{ 'Happenend' | trans }}: </label>
+                  <select class="form-select form-select-sm" id="Happenend" aria-label=".form-select-sm example">
+                    <option value="" selected></option>
+                    <option value="Y">{{ 'Yes' | trans }}</option>
+                    <option value="N">{{ 'No' | trans }}</option>
+                  </select>
+                </div>
 
-              <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY0"> {{ 'Place' | trans }}: </label>
-                <div class="input-group mb-3">
+                {# Descriptiom - Kun defineret for Attributter med Payload #}
 
-
+                <div class="mb-2 sshadow">
+                  <label class= "small" for="idYYY0"> {{ 'Description' | trans }}: </label>
                   <input type="text"
                   class="form-control form-control-sm shadow"
                   id="idYYY0"
-                  name= 'npfxxx'>
-                  <button class="btn  btn-outline-dark btn-light btn-sm" type="button"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="bottom"
-                          title="{{ 'Format Place' | trans }}">
-                    {{ icon_place | raw }}
+                  name= 'npfxxxxx'
+                  // value="{{ nam ? nam.npfx }}" >
+                </div>
+
+                {# Type - valgfri for de fleste tags, obligatorisk for nogle få #}
+
+                <div class="mb-2 sshadow">
+                  <label class= "small" for="idYYY0"> {{ 'Type' | trans }}: </label>
+                  <input type="text"
+                  class="form-control form-control-sm shadow"
+                  id="idYYY0"
+                  name= 'npfxxx'
+                  // value="{{ nam ? nam.npfx }}" >
+                </div>
+
+
+                <div class="mb-2 sshadow">
+                  <label class= "small" for="idYYY0"> {{ 'Date' | trans }}: </label>
+                  <div  class="input-group mb-3">
+                    <input type="text"
+                    class="form-control form-control-sm shadow"
+                    id="idYYY0"
+                    name= 'npfxxx' >
+                    <button class="btn  btn-outline-dark btn-light btn-sm"
+                      type="button"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title="{{ 'Format Date' | trans }}">
+                      {{ icon_date | raw }}
+
+                    </button>
+                  </div>
+                </div>
+
+                <div class="mb-2 sshadow">
+                  <label class= "small" for="idYYY0"> {{ 'Address' | trans }}: </label>
+                  <div class="input-group mb-3">
+
+                    <input type="text"
+                    class="form-control form-control-sm shadow"
+                    id="idYYY0"
+                    name= 'npfxxx' >
+                    <button class="btn  btn-outline-dark btn-light btn-sm" type="button"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title="{{ 'Format Address' | trans }}">
+                      {{ icon_address | raw }}
+                    </button>
+                  </div>
+
+                </div>
+
+
+                <div class="mb-2 sshadow">
+                  <label class= "small" for="idYYY0"> {{ 'Place' | trans }}: </label>
+                  <div class="input-group mb-3">
+
+
+                    <input type="text"
+                    class="form-control form-control-sm shadow"
+                    id="idYYY0"
+                    name= 'npfxxx'>
+                    <button class="btn  btn-outline-dark btn-light btn-sm" type="button"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title="{{ 'Format Place' | trans }}">
+                      {{ icon_place | raw }}
+                    </button>
+                  </div>
+                </div>
+
+
+                <div class="mb-2 sshadow">
+                  <label class= "small" for="idYYY0"> {{ 'Cause' | trans }}: </label>
+                  <input type="text"
+                  class="form-control form-control-sm shadow"
+                  id="idYYY0"
+                  name= 'npfxxx'
+                  // value="{{ nam ? nam.npfx }}" >
+                </div>
+
+
+                <div class="mb-2 sshadow">
+                  <label class= "small" for="idYYY0"> {{ 'Agency' | trans }}: </label>
+                  <input type="text"
+                  class="form-control form-control-sm shadow"
+                  id="idYYY0"
+                  name= 'npfxxx'
+                  // value="{{ nam ? nam.npfx }}" >
+                </div>
+
+
+
+                {% endblock %}
+              </div>
+              <div class="col-2">
+                {% block body_right %}
+
+                <button role="button"
+                  class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                  data-action="click->editor#notes"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  title="{{ 'Notes' | trans }}">
+                  {{ icon_notes | raw }}
+                </button>
+                <button type="button"
+                  class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                  _data-action="click->editor#sourceCitations"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="bottom"
+                  title="{{ 'Source Citations' | trans }}">
+                  {{ icon_sources | raw }}
+                  <button type="button"
+                    class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                    _data-action="click->editor#sourceCitations"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    title="{{ 'Media' | trans }}">
+                    {{ icon_media | raw }}
                   </button>
+                  <button type="button"
+                    class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                    _data-action="click->editor#sourceCitations"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    title="{{ 'Associates' | trans }}">
+                    {{ icon_association | raw }}
+                  </button>
+                  <button type="button"
+                    class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                    _data-action="click->editor#sourceCitations"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="bottom"
+                    title="{{ 'Identifiers' | trans }}">
+                    {{ icon_identifier | raw }}
+                  </button>
+
+                  {% endblock %}
                 </div>
               </div>
-
-
-              <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY0"> {{ 'Cause' | trans }}: </label>
-                <input type="text"
-                class="form-control form-control-sm shadow"
-                id="idYYY0"
-                name= 'npfxxx'
-                // value="{{ nam ? nam.npfx }}" >
-              </div>
-
-
-              <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY0"> {{ 'Agency' | trans }}: </label>
-                <input type="text"
-                class="form-control form-control-sm shadow"
-                id="idYYY0"
-                name= 'npfxxx'
-                // value="{{ nam ? nam.npfx }}" >
-              </div>
-
-
-
+              {% endblock %}
 
 
             </div>
 
-
-            <div class="col-2 mb-2">
-              <button role="button"
-                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
-                data-action="click->editor#notes"
-                data-bs-toggle="tooltip"
-                data-bs-placement="bottom"
-                title="{{ 'Notes' | trans }}">
-                {{ icon_notes | raw }}
-              </button>
-              <button type="button"
-                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
-                _data-action="click->editor#sourceCitations"
-                data-bs-toggle="tooltip"
-                data-bs-placement="bottom"
-                title="{{ 'Source Citations' | trans }}">
-                {{ icon_sources | raw }}
-              <button type="button"
-                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
-                _data-action="click->editor#sourceCitations"
-                data-bs-toggle="tooltip"
-                data-bs-placement="bottom"
-                title="{{ 'Media' | trans }}">
-                {{ icon_media | raw }}
-              </button>
-              <button type="button"
-                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
-                _data-action="click->editor#sourceCitations"
-                data-bs-toggle="tooltip"
-                data-bs-placement="bottom"
-                title="{{ 'Associates' | trans }}">
-                {{ icon_association | raw }}
-              </button>
-              <button type="button"
-                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
-                _data-action="click->editor#sourceCitations"
-                data-bs-toggle="tooltip"
-                data-bs-placement="bottom"
-                title="{{ 'Identifiers' | trans }}">
-                {{ icon_identifier | raw }}
-              </button>
-
-            </div>
+          </form>
 
 
-          </div>
+          {# Modal Footer #}
 
+          <div class="modal-footer">
 
-
-
-
-
-
-        </div>
-
-      </form>
-
-
-      {# Modal Footer #}
-
-      <div class="modal-footer">
-        {% block footer %}
-          <button class="btn btn-sm btn-outline-success shadow"  type="submit"><!-- i class="bi bi-check-lg" -->{{ icon_ok | raw }}</i></button>
+            {% block footer %}
+            <button class="btn btn-sm btn-outline-success shadow"  type="submit"><!-- i class="bi bi-check-lg" -->{{ icon_ok | raw }}</i></button>
           <button class="btn btn-sm btn-outline-danger shadow"  type="submit"><i class="bi bi-x-lg" style="font-size: 2rem; color: cornflowerblue;"></i></button>
           <button class="btn btn-sm btn-outline-primary shadow"  type="submit"><i class="bi bi-question-lg" style="font-size: 2rem; color: cornflowerblue;"></i></button>
-        {% endblock %}
+          {% endblock %}
+
+        </div>
       </div>
     </div>
+
+
   </div>
-
-
-</div>
 
 

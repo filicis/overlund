@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\SourceRecord;
+use App\Entity\SubmitterStructure;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<SourceRecord>
+ * @extends ServiceEntityRepository<SubmitterStructure>
  *
- * @method SourceRecord|null find($id, $lockMode = null, $lockVersion = null)
- * @method SourceRecord|null findOneBy(array $criteria, array $orderBy = null)
- * @method SourceRecord[]    findAll()
- * @method SourceRecord[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method SubmitterStructure|null find($id, $lockMode = null, $lockVersion = null)
+ * @method SubmitterStructure|null findOneBy(array $criteria, array $orderBy = null)
+ * @method SubmitterStructure[]    findAll()
+ * @method SubmitterStructure[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SourceRecordRepository extends ServiceEntityRepository
+class SubmitterStructureRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, SourceRecord::class);
+        parent::__construct($registry, SubmitterStructure::class);
     }
 
-    public function save(SourceRecord $entity, bool $flush = false): void
+    public function save(SubmitterStructure $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class SourceRecordRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(SourceRecord $entity, bool $flush = false): void
+    public function remove(SubmitterStructure $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class SourceRecordRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return SourceRecord[] Returns an array of SourceRecord objects
+//     * @return SubmitterStructure[] Returns an array of SubmitterStructure objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class SourceRecordRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?SourceRecord
+//    public function findOneBySomeField($value): ?SubmitterStructure
 //    {
 //        return $this->createQueryBuilder('s')
 //            ->andWhere('s.exampleField = :val')

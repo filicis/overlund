@@ -24,7 +24,6 @@ use       App\Entity\PersonalNameStructure;
 use       App\Entity\Traits\MediaTrait;;
 use       App\Entity\Traits\Restrictions;
 use       App\Entity\Media;
-//use       App\Entiry\IdentifierLink;
 
   /**
    *  Individual
@@ -70,8 +69,8 @@ class Individual extends RecordSuperclass
   #[ORM\OneToMany(mappedBy: 'individual', targetEntity: Relation::class, cascade: ["persist"], orphanRemoval: true)]
   private $relations;
 
-  #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-  private ?IdentifierLink $identifierLink = null;
+  #[ORM\OneToMany(mappedBy: 'indi', targetEntity: AliaStructure::class)]
+  private Collection $alia;
 
 
   // ******************************************
@@ -91,8 +90,7 @@ class Individual extends RecordSuperclass
     $n= new PersonalNameStructure();
     $this->addPersonalNameStructure($n);
     $this->media= new Media();
-   $this->identifierLink= new IdentifierLink();
-
+    $this->alia = new ArrayCollection();
   }
 
 
@@ -237,17 +235,34 @@ class Individual extends RecordSuperclass
     });
   }
 
-  public function getIdentifierLink(): ?IdentifierLink
+  /**
+   * @return Collection<int, AliaStructure>
+   */
+  public function getAlia(): Collection
   {
-      return $this->identifierLink;
+      return $this->alia;
   }
 
-  public function setIdentifierLink(?IdentifierLink $identifierLink): self
+  public function addAlium(AliaStructure $alium): self
   {
-      $this->identifierLink = $identifierLink;
+      if (!$this->alia->contains($alium)) {
+          $this->alia->add($alium);
+          $alium->setIndi($this);
+      }
 
       return $this;
   }
 
+  public function removeAlium(AliaStructure $alium): self
+  {
+      if ($this->alia->removeElement($alium)) {
+          // set the owning side to null (unless already changed)
+          if ($alium->getIndi() === $this) {
+              $alium->setIndi(null);
+          }
+      }
+
+      return $this;
+  }
 
 }

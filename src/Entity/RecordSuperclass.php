@@ -30,7 +30,6 @@ use       Doctrine\ORM\Mapping\PrePersist;
 
 use       Doctrine\Persistence\ManagerRegistry;
 
-use       App\Entity\IdentifierLink;
 use       App\Entity\Traits\UlidIdTrait;
 use       App\Entity\Traits\XrefTrait;
 
@@ -64,13 +63,6 @@ class RecordSuperclass
 
 
   /**
-  */
-
-  #[ORM\Column(type: "string", length: 12, nullable: true)]
-  private $rin;
-
-
-  /**
    */
 
   #[ORM\Column(type: "datetime_immutable", nullable: true)]
@@ -83,9 +75,6 @@ class RecordSuperclass
   #[ORM\Column(type: "string", length: 20, nullable: true)]
   private $crea;
 
- // #[ORM\OneToOne(cascade: ['persist', 'remove'])]
- // private ?IdentifierLink $identifierLink = null;
-
 
   /**
    *  function __construct
@@ -94,21 +83,9 @@ class RecordSuperclass
 
   public function __construct()
   {
-   // $this->identifierLink= new IdentifierLink();
   }
 
 
-  public function getRin(): ?string
-  {
-      return $this->rin;
-  }
-
-  public function setRin(?string $rin): self
-  {
-      $this->rin = $rin;
-
-      return $this;
-  }
 
 
   public function getLastChange(): ?\DateTimeImmutable
@@ -183,19 +160,4 @@ class RecordSuperclass
   {
     $this->lastChange= new \DatetimeImmutable();
   }
-/*
-  public function getIdentifierLink(): ?IdentifierLink
-  {
-      return $this->identifierLink;
-  }
-
-  public function setIdentifierLink(IdentifierLink $identifierLink): self
-  {
-      $this->identifierLink = $identifierLink;
-
-      return $this;
-  }
-
-*/
-
 }

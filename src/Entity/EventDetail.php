@@ -18,7 +18,6 @@ namespace App\Entity;
 use       App\Repository\EventDetailRepository;
 use       Doctrine\ORM\Mapping as ORM;
 
-use       App\Entity\IdentifierLink;
 use       App\Entity\Traits\AddressTrait;
 use       App\Entity\Traits\Restrictions;
 
@@ -35,9 +34,6 @@ class EventDetail
   #[ORM\Column(length: 32)]
   private ?string $tag = null;
 
-  #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-  private ?IdentifierLink $identifierLink = null;
-
 
   //***************************************************************************
   //***************************************************************************
@@ -51,7 +47,6 @@ class EventDetail
 
   public function __construct()
   {
-    $this->identifierLink= new IdentifierLink();
   }
 
 
@@ -72,15 +67,5 @@ class EventDetail
     return $this;
   }
 
-  public function getIdentifierLink(): ?IdentifierLink
-  {
-      return $this->identifierLink;
-  }
 
-  public function setIdentifierLink(IdentifierLink $identifierLink): self
-  {
-      $this->identifierLink = $identifierLink;
-
-      return $this;
-  }
 }

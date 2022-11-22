@@ -4,14 +4,28 @@
 	{# Document Header #}
 
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="application-name" content="Codename Overlund">
-    <meta name="description" content="Overlund Gedcom Editor">
-    <meta name="generator" content="Symfony 6.1">
-    <meta name="keywords" content="Gedcom Editor">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+    <meta name="application-name" content="Codename Overlund"/>
+    <meta name="description" content="Overlund Gedcom Editor"/>
+    <meta name="generator" content="PHP 8.1, Symfony 6.1"/>
+    <meta name="keywords" content="Gedcom Editor"/>
 
-  	<meta name="author" content="Michael Lindhardt Rasmussen">
+  	<meta name="author" content="Michael Lindhardt Rasmussen"/>
+    <meta name="designer" content=”Michael Lindhardt Rasmussen”>
+    <meta name="publisher" content=”Michael Lindhardt Rasmussen”>
+
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+
+  	{% block noscript %}
+
+  	  <noscript>
+  	    <meta http-equiv="refresh" content="0;url={{ url('noscript')}}" />
+  	  </noscript>
+
+  	{% endblock %}
 
     <title>{% block title %}{{ product }}{% endblock %}</title>
 
@@ -21,10 +35,8 @@
 
     {% block stylesheets %}
 
-      {# Vi anvender Bootstrap - aktuelt version 5.2.2 #}
+      {# Vi anvender Bootstrap - aktuelt version 5.2.3 #}
 
-      <!-- link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" -->
 
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -41,13 +53,6 @@
     {% endblock stylesheets %}
 
 
-
-
-    {% block javascripts %}
-
-      {# { encore_entry_script_tags('app') } #}
-
-    {% endblock %}
   </head>
 
 
@@ -66,12 +71,7 @@
     {% endblock body %}
 
 
-    {% block jjavascripts %}
-
-
-
-      <!--script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script -->
+    {% block javascripts %}
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
@@ -92,7 +92,7 @@
       {{ encore_entry_script_tags('app') }}
 
 
-    {% endblock jjavascripts %}
+    {% endblock javascripts %}
 
   </body>
 </html>

@@ -39,3 +39,13 @@ offline:
         # the response status code (default: 200)
         statusCode: 503
 
+noscript:
+    path: /noscript
+    controller:    Symfony\Bundle\FrameworkBundle\Controller\TemplateController
+    defaults:
+        # the path of the template to render
+        template:  'static/noscript.html.twig'
+
+        # the response status code (default: 200)
+        # statusCode: 503
+

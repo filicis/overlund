@@ -17,7 +17,10 @@ parameters:
 
 twig:
     globals:
+        author: "Michael Lindhardt Rasmussen"
         product: "Codename Overlund"
+        version: "Version: 0.1.0 alpha"
+        description: "Web-based Genealogy Application"
         copyright: "© 2020-22 Filicis Software - Michael Lindhardt Rasmussen"
 
 # Iconer

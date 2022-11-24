@@ -46,6 +46,10 @@ class SourceRecord  extends RecordSuperclass
   #[ORM\OneToMany(mappedBy: 'sourceRecord', targetEntity: SourceRepositoryCitation::class, orphanRemoval: true)]
   private Collection $repositoryCitations;
 
+  #[ORM\ManyToOne(inversedBy: 'sourceRecords')]
+  #[ORM\JoinColumn(nullable: false)]
+  private ?Project $project = null;
+
   public function __construct()
   {
       parent::__construct();
@@ -159,6 +163,18 @@ class SourceRecord  extends RecordSuperclass
               $repositoryCitation->setSourceRecord(null);
           }
       }
+
+      return $this;
+  }
+
+  public function getProject(): ?Project
+  {
+      return $this->project;
+  }
+
+  public function setProject(?Project $project): self
+  {
+      $this->project = $project;
 
       return $this;
   }

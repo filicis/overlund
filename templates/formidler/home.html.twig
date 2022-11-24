@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{#
+
+    Template variable
+    - project
+#}
+
+{% block title %}
+  {{ 'Home' | trans }}
+{% endblock title%}
+
+
+{% block body  %}
+
+{% if form is defined %}
+  {{ form_start(form) }}
+{% endif %}
+
+<div class="container-xl">
+
+
+  <div class="row aalign-items-center justify-content-center" style="min-height: 100vh" >
+    <div class="col-8">
+
+      {# Statistik #}
+
+      <div class="card mb-3 shadow">
+        <h6 class="card-header text-bg-info">Statistik</h6>
+        <div class="card-body list-group-item-info">
+
+          <ul  class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-info">Individer: {{ project.individuals | length }}
+
+            <li class="list-group-item list-group-item-info">Familier: {{ project.families | length }}
+
+            <li class="list-group-item  list-group-item-info">Medieobjecter: {{ project.mediaRecords | length }}
+
+            <li class="list-group-item list-group-item-info">Kilder: {{ project.sourceRecords | length }}
+
+
+            <li class="list-group-item list-group-item-info">Indsendere: {{ project.submitterRecords | length }}
+
+            <li class="list-group-item list-group-item-info">Repositories: {{ project.repositoryRecords | length }}
+          </ul>
+
+
+
+        </div>
+        <!-- div class="card-footer d-grid d-md-flex gap-2 justify-content-md-end">
+          {% block cardfooter %}
+          <button class="btn btn--sm btn-outline-success"  type="submit"><i class="bi bi-check-lg"></i></button>
+          <button class="btn btn--sm btn-outline-danger"  type="submit"><i class="bi bi-x-lg"></i></button>
+          <button class="btn btn--sm btn-outline-primary"  type="submit"><i class="bi bi-question-lg"></i></button>
+          {% endblock cardfooter %}
+        </div-->
+      </div>
+
+      {{ include('formidler/module.html.twig') }}
+      {{ include('formidler/module.html.twig') }}
+
+    </div>
+    <div class="col-4">
+      {{ include('formidler/module.html.twig') }}
+      {{ include('formidler/module.html.twig') }}
+      {{ include('formidler/module.html.twig') }}
+      {{ include('formidler/module.html.twig') }}
+
+    </div>
+  </div>
+</div>
+
+{% if form is defined %}
+  {{ form_end(form) }}
+{% endif %}
+
+{% endblock body %}
+
+
+
+

@@ -15,18 +15,24 @@
 
 namespace App\Entity;
 
-use App\Repository\MediaRecordRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use       App\Repository\MediaRecordRepository;
+use       Doctrine\Common\Collections\ArrayCollection;
+use       Doctrine\Common\Collections\Collection;
+use       Doctrine\ORM\Mapping as ORM;
+
+use       App\Entity\Traits\Restrictions;
 
 /**
- * @ORM\Entity(repositoryClass=MediaRecordRepository::class)
+ *  class MediaRecord
+ *
+ *  Implementerer Gedcom V7 Multimedia Record
  */
 
 #[ORM\Entity(repositoryClass: MediaRecordRepository::class)]
 class MediaRecord extends RecordSuperclass
 {
+  use Restrictions;
+
   protected const XREF_PREFIX = 'M';
 
   /**

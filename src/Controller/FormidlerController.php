@@ -29,14 +29,14 @@ class FormidlerController extends AbstractController
 
 
   /**
-   *  function index()
+   *  function home()
    *
    **/
 
     #[Route('/tree/{url}', name: 'tree')]
-    public function index(Project $project): Response
+    public function home(Project $project): Response
     {
-        return $this->render('formidler/index.html.twig', [
+        return $this->render('formidler/home.html.twig', [
             'controller_name' => 'FormidlerController',
             'project' => $project,
         ]);

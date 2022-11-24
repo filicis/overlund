@@ -110,6 +110,12 @@ class Project
     #[ORM\Column(length: 30, nullable: true)]
     private ?string $workflowPlace = null;
 
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: SourceRecord::class, orphanRemoval: true)]
+    private Collection $sourceRecords;
+
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: RepositoryRecord::class, orphanRemoval: true)]
+    private Collection $repositoryRecords;
+
 
 
 
@@ -123,6 +129,8 @@ class Project
         $this->gedcomStructures = new ArrayCollection();
 
         $this->workflowPlace= "init";
+        $this->sourceRecords = new ArrayCollection();
+        $this->repositoryRecords = new ArrayCollection();
     }
 
 
@@ -396,6 +404,66 @@ class Project
     public function setWorkflowPlace(?string $workflowPlace): self
     {
         $this->workflowPlace = $workflowPlace;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SourceRecord>
+     */
+    public function getSourceRecords(): Collection
+    {
+        return $this->sourceRecords;
+    }
+
+    public function addSourceRecord(SourceRecord $sourceRecord): self
+    {
+        if (!$this->sourceRecords->contains($sourceRecord)) {
+            $this->sourceRecords->add($sourceRecord);
+            $sourceRecord->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSourceRecord(SourceRecord $sourceRecord): self
+    {
+        if ($this->sourceRecords->removeElement($sourceRecord)) {
+            // set the owning side to null (unless already changed)
+            if ($sourceRecord->getProject() === $this) {
+                $sourceRecord->setProject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RepositoryRecord>
+     */
+    public function getRepositoryRecords(): Collection
+    {
+        return $this->repositoryRecords;
+    }
+
+    public function addRepositoryRecord(RepositoryRecord $repositoryRecord): self
+    {
+        if (!$this->repositoryRecords->contains($repositoryRecord)) {
+            $this->repositoryRecords->add($repositoryRecord);
+            $repositoryRecord->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRepositoryRecord(RepositoryRecord $repositoryRecord): self
+    {
+        if ($this->repositoryRecords->removeElement($repositoryRecord)) {
+            // set the owning side to null (unless already changed)
+            if ($repositoryRecord->getProject() === $this) {
+                $repositoryRecord->setProject(null);
+            }
+        }
 
         return $this;
     }

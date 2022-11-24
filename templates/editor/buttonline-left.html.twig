@@ -5,9 +5,12 @@
 
 {% set history= project.url ~ 'indiHistory' %}
 {% set hlist= app.session.get('IndiHistory') ?: newSet()  %}
+
+{% if indi %}
 {% set tommy= indi.id %}
 {% do hlist.add(tommy.toBase32) %}
 {% do app.session.set(history, hlist) %}
+{% endif %}
 
 
 <button type="button"

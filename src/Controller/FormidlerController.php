@@ -26,8 +26,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FormidlerController extends AbstractController
 {
+
+
   /**
-   *
+   *  function index()
    *
    **/
 
@@ -36,6 +38,7 @@ class FormidlerController extends AbstractController
     {
         return $this->render('formidler/index.html.twig', [
             'controller_name' => 'FormidlerController',
+            'project' => $project,
         ]);
     }
 
@@ -44,11 +47,11 @@ class FormidlerController extends AbstractController
    *
    **/
 
-    #[Route('/tree', name: 'notree')] 
-    public function index1(): Response 
+    #[Route('/tree', name: 'notree')]
+    public function index1(): Response
     {
        return $this->render('formidler/index.html.twig', [
                 'controller_name' => 'FormidlerController',
             ]);
-    }  
+    }
 }

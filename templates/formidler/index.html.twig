@@ -1,20 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FormidlerController!{% endblock %}
+{#
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    Template variable
+    - project
+#}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% block title %}
+  {{ 'Home' | trans }}
+{% endblock title%}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/michael/php/overlund/src/Controller/FormidlerController.php'|file_link(0) }}">src/Controller/FormidlerController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/michael/php/overlund/templates/formidler/index.html.twig'|file_link(0) }}">templates/formidler/index.html.twig</a></code></li>
-    </ul>
+
+{% block body  %}
+
+{% if form is defined %}
+  {{ form_start(form) }}
+{% endif %}
+
+<div class="container-xl">
+
+
+  <div class="row aalign-items-center justify-content-center" style="min-height: 100vh" >
+    <div class="col-sm-8 mb-2">
+
+      <div class="card w-100">
+        <h6 class="card-header">Statistik</h6>
+        <div class="card-body">
+
+          <p>
+            Individer: {{ project.individuals | length }}
+          </p>
+
+          <p>
+            Familier: {{ project.families | length }}
+          </p>
+
+
+        </div>
+        <div class="card-footer d-grid d-md-flex gap-2 justify-content-md-end">
+          {% block cardfooter %}
+          <button class="btn btn--sm btn-outline-success"  type="submit"><i class="bi bi-check-lg"></i></button>
+          <button class="btn btn--sm btn-outline-danger"  type="submit"><i class="bi bi-x-lg"></i></button>
+          <button class="btn btn--sm btn-outline-primary"  type="submit"><i class="bi bi-question-lg"></i></button>
+          {% endblock cardfooter %}
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      Test
+    </div>
+  </div>
 </div>
-{% endblock %}
+
+{% if form is defined %}
+  {{ form_end(form) }}
+{% endif %}
+
+{% endblock body %}
+
+
+
+

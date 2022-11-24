@@ -1,6 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {#
+    Formidlerens startside
+
+    Indeholder et antal moduler der giver informationer om projectet
+    - Velkomst
+    - Seneste ændringer
+    - Nyheder
+    - Mest sete sider
+    - Diagrammer
+    - Diasserie
+    - Favoritter
+    - Statistik
+
 
     Template variable
     - project
@@ -62,7 +74,7 @@
     </div>
     <div class="col-4">
       {{ include('formidler/module.html.twig') }}
-      {{ include('formidler/module.html.twig') }}
+      {{ include('formidler/favoritter.html.twig') }}
       {{ include('formidler/module.html.twig') }}
       {{ include('formidler/module.html.twig') }}
 

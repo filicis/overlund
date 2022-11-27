@@ -36,7 +36,7 @@ trait IdentifierTrait
 {
 
   #[ORM\OneToOne(targetEntity: "IdentifierLink", cascade: ['persist'], fetch: 'LAZY')]
-  #[ORM\JoinColumn(nullable: true, odDelete: 'Cascade')]
+  #[ORM\JoinColumn(nullable: true, onDelete: 'Cascade')]
   private ?IdentifierLink $identifierLink = null;
 
   //***************************************************************************
@@ -60,7 +60,7 @@ trait IdentifierTrait
    *
    **/
 
-  public function getMedia(): ?IdentifierLink
+  public function getIdentifierLink(): ?IdentifierLink
   {
     return ($this->hasIdentifierLink()) ? $this->identifierLink : $this->newIdentifierLink();
   }

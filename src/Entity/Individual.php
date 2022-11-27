@@ -21,8 +21,12 @@ use Doctrine\ORM\Mapping as ORM;
 use       App\Entity\RecordSuperclass;
 use       App\Entity\Relation;
 use       App\Entity\PersonalNameStructure;
+
+use       App\Entity\Traits\IdentifierTrait;;
 use       App\Entity\Traits\MediaTrait;;
 use       App\Entity\Traits\Restrictions;
+
+
 use       App\Entity\Media;
 
   /**
@@ -33,7 +37,7 @@ use       App\Entity\Media;
 #[ORM\Entity(repositoryClass:  IndividualRepository::class)]
 class Individual extends RecordSuperclass
 {
-  use Restrictions, MediaTrait;
+  use IdentifierTrait, Restrictions, MediaTrait;
 
   protected const XREF_PREFIX = 'I';
 

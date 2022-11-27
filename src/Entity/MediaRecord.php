@@ -11,8 +11,6 @@
  * file that was distributed with this source code.
  */
 
-
-
 namespace App\Entity;
 
 use       App\Repository\MediaRecordRepository;
@@ -20,6 +18,7 @@ use       Doctrine\Common\Collections\ArrayCollection;
 use       Doctrine\Common\Collections\Collection;
 use       Doctrine\ORM\Mapping as ORM;
 
+use       App\Entity\Traits\IdentifierTrait;
 use       App\Entity\Traits\Restrictions;
 
 /**
@@ -31,11 +30,12 @@ use       App\Entity\Traits\Restrictions;
 #[ORM\Entity(repositoryClass: MediaRecordRepository::class)]
 class MediaRecord extends RecordSuperclass
 {
-  use Restrictions;
+  use IdentifierTrait, Restrictions;
 
   protected const XREF_PREFIX = 'M';
 
   /**
+   * 
    */
 
   #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "mediaRecords")]
@@ -50,16 +50,29 @@ class MediaRecord extends RecordSuperclass
   #[ORM\OneToMany(mappedBy: 'mediaRecord', targetEntity: FileReference::class)]
   private Collection $fileReferences;
 
+  /**
+   *    function __construct()
+   */
 
   public function __construct()
   {
       $this->fileReferences = new ArrayCollection();
   }
 
+
+  /**
+   *    function getProject()
+   */
+
   public function getProject(): ?Project
   {
       return $this->project;
   }
+
+
+  /**
+   *    function setProject()
+   */
 
   public function setProject(?Project $project): self
   {
@@ -68,13 +81,20 @@ class MediaRecord extends RecordSuperclass
       return $this;
   }
 
+
   /**
    * @return Collection<int, FileReference>
    */
+
   public function getFileReferences(): Collection
   {
       return $this->fileReferences;
   }
+
+
+  /**
+   *    function addFileReference() 
+   */
 
   public function addFileReference(FileReference $fileReference): self
   {
@@ -85,6 +105,11 @@ class MediaRecord extends RecordSuperclass
 
       return $this;
   }
+
+
+  /**
+   *    function removeFileReference() 
+   */
 
   public function removeFileReference(FileReference $fileReference): self
   {

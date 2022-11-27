@@ -36,6 +36,12 @@ class CitationLink
         return $this->citationStructures;
     }
 
+    /**
+     * 
+     * 
+     * 
+     */
+
     public function addCitationStructure(CitationStructure $citationStructure): self
     {
         if (!$this->citationStructures->contains($citationStructure)) {
@@ -45,6 +51,11 @@ class CitationLink
 
         return $this;
     }
+
+    
+    /**
+     * 
+     */
 
     public function removeCitationStructure(CitationStructure $citationStructure): self
     {

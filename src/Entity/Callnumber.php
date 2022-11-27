@@ -11,6 +11,7 @@
  * file that was distributed with this source code.
  */
 
+ 
 
 namespace App\Entity;
 
@@ -107,10 +108,21 @@ class Callnumber
     return $this;
   }
 
+  /**
+   * 
+   * 
+   */
+
   public function getSourceRepositoryCitation(): ?SourceRepositoryCitation
   {
       return $this->sourceRepositoryCitation;
   }
+
+
+  /**
+   * 
+   * 
+   */
 
   public function setSourceRepositoryCitation(?SourceRepositoryCitation $sourceRepositoryCitation): self
   {

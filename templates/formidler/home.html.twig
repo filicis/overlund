@@ -42,18 +42,35 @@
         <div class="card-body list-group-item-info">
 
           <ul  class="list-group list-group-flush">
-            <li class="list-group-item list-group-item-info">Individer: {{ project.individuals | length }}
+            <li class="list-group-item list-group-item-info d-flex justify-content-between align-items-start">
+              <span>Individer:</span>
+              <span class="badge bg-primary rounded-pill">{{ project.individuals | length }}</span>
+            </li>
+            <li class="list-group-item list-group-item-info d-flex justify-content-between align-items-start">
+              <span>Familier:</span>
+              <span class="badge bg-primary rounded-pill">{{ project.families | length }}</span>
+            </li>
 
-            <li class="list-group-item list-group-item-info">Familier: {{ project.families | length }}
+            <li class="list-group-item  list-group-item-info d-flex justify-content-between align-items-start">
+              <span>Medieobjecter:</span>
+              <span class="badge bg-primary rounded-pill">{{ project.mediaRecords | length }}</span>
+            </li>
 
-            <li class="list-group-item  list-group-item-info">Medieobjecter: {{ project.mediaRecords | length }}
+            <li class="list-group-item list-group-item-info d-flex justify-content-between align-items-start">
+              <span>Kilder:</span>
+              <span class="badge bg-primary rounded-pill">{{ project.sourceRecords | length }}</span>
+            </li>
 
-            <li class="list-group-item list-group-item-info">Kilder: {{ project.sourceRecords | length }}
 
+            <li class="list-group-item list-group-item-info d-flex justify-content-between align-items-start">
+              <span>Indsendere:</span>
+              <span class="badge bg-primary rounded-pill">{{ project.submitterRecords | length }}</span>
+            </li>
 
-            <li class="list-group-item list-group-item-info">Indsendere: {{ project.submitterRecords | length }}
-
-            <li class="list-group-item list-group-item-info">Repositories: {{ project.repositoryRecords | length }}
+            <li class="list-group-item list-group-item-info d-flex justify-content-between align-items-start">
+              <span>Opbevaringssteder:</span>
+              <span class="badge bg-primary rounded-pill">{{ project.repositoryRecords | length }}</span>
+            </li>
           </ul>
 
 

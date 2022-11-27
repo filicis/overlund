@@ -14,10 +14,11 @@
 namespace App\Entity;
 
 use       App\Repository\SourceRecordRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use       Doctrine\Common\Collections\ArrayCollection;
+use       Doctrine\Common\Collections\Collection;
 use       Doctrine\ORM\Mapping as ORM;
 
+use       App\Entity\Traits\IdentifierTrait;
 
 /**
  *  class SourceRecord
@@ -28,6 +29,7 @@ use       Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: SourceRecordRepository::class)]
 class SourceRecord  extends RecordSuperclass
 {
+  use IdentifierTrait;
 
   protected const XREF_PREFIX = 'S';
 

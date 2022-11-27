@@ -14,12 +14,14 @@
 namespace App\Entity;
 
 use       App\Repository\RepositoryRecordRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use       Doctrine\Common\Collections\ArrayCollection;
+use       Doctrine\Common\Collections\Collection;
 use       Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\RecordSuperclass;
+
 use       App\Entity\Traits\AddressTrait;
+use       App\Entity\Traits\IdentifierTrait;
 
 
 /**
@@ -33,7 +35,7 @@ use       App\Entity\Traits\AddressTrait;
 #[ORM\Entity(repositoryClass: RepositoryRecordRepository::class)]
 class RepositoryRecord extends RecordSuperclass
 {
-  use AddressTrait;
+  use AddressTrait, IdentifierTrait;
 
   protected const XREF_PREFIX = 'R';
 

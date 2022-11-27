@@ -3,11 +3,13 @@
 /**
  * This file is part of the Overlund package.
  *
- * (c) Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @copyright 2000-2022 Filicis Software
+ * @license MIT
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- **/
+ */
 
 
 namespace App\Entity;
@@ -16,7 +18,9 @@ use       App\Repository\SubmitterRecordRepository;
 use       Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\RecordSuperclass;
+
 use       App\Entity\Traits\AddressTrait;
+use       App\Entity\Traits\IdentifierTrait;
 
   /**
    * @ORM\Entity(repositoryClass=SubmitterRecordRepository::class)
@@ -25,7 +29,7 @@ use       App\Entity\Traits\AddressTrait;
 #[ORM\Entity(repositoryClass: SubmitterRecordRepository::class)]
 class SubmitterRecord extends RecordSuperclass
 {
-  use AddressTrait;
+  use AddressTrait, IdentifierTrait;
 
   protected const XREF_PREFIX = 'S';
 

@@ -36,7 +36,7 @@ trait CitationTrait
 {
 
   #[ORM\OneToOne(targetEntity: "CitationLink", cascade: ['persist'], fetch: 'LAZY')]
-  #[ORM\JoinColumn(nullable: true, odDelete: 'Cascade')]
+  #[ORM\JoinColumn(nullable: true, onDelete: 'Cascade')]
   private ?CitationLink $citationLink = null;
 
   //***************************************************************************

@@ -636,7 +636,8 @@ async #webapi(arg, mymethod= 'PUT')
   mediaFiles(Event)
   {
     console.log("mediafiles");
-    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), {focus: true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModalMediaFiles'), {focus: true});
+    myModal.show();
     console.log("individualEvents: ", myModal);
   }
 

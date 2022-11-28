@@ -12,8 +12,6 @@
  */
 
 
-
-
 namespace App\Entity;
 
 use       App\Repository\MediaLinkRepository;
@@ -23,6 +21,10 @@ use       App\Entity\Traits\UlidIdTrait;
 
   /**
    *  class MediaLink
+   *  - Implementerer Gedcom v7 MEDIA_LINK
+   *  
+   *  Linker til MediaRecord    
+   *    
    **/
 
 #[ORM\Entity(repositoryClass: MediaLinkRepository::class)]
@@ -33,7 +35,7 @@ class MediaLink
 
     /**
      *  mediaRecord
-     *  - linker til en MediaRedor
+     *  - linker til en MediaRecord
      */
 
     #[ORM\ManyToOne(targetEntity: MediaRecord::class, inversedBy: "mediaLinks")]
@@ -52,23 +54,32 @@ class MediaLink
     #[ORM\Column(type: "string", length: 80, nullable: true)]
     private $crop;
 
+    /**
+     * 
+     */
+
     #[ORM\ManyToOne(inversedBy: 'mediaLinks')]
     #[ORM\JoinColumn(nullable: false, onDelete: "Cascade")]
     private ?Media $media = null;
 
+
+  //***************************************************************************
+  //***************************************************************************
+  //***************************************************************************
+
     /**
+     *  function getMediaRecord()
      */
-
-
-
-  //***************************************************************************
-  //***************************************************************************
-  //***************************************************************************
 
     public function getMediaRecord(): ?MediaRecord
     {
         return $this->mediaRecord;
     }
+
+
+    /**
+     *  function setMedisaRecord()
+     */
 
     public function setMediaRecord(?MediaRecord $mediaRecord): self
     {
@@ -77,10 +88,20 @@ class MediaLink
         return $this;
     }
 
+
+    /**
+     *  function getTitle() 
+     */
+
     public function getTitle(): ?string
     {
         return $this->title;
     }
+
+
+    /**
+     *  function setTitle()
+     */
 
     public function setTitle(?string $title): self
     {
@@ -89,10 +110,20 @@ class MediaLink
         return $this;
     }
 
+
+    /**
+     *  function getCrop() 
+     */
+
     public function getCrop(): ?string
     {
         return $this->crop;
     }
+
+
+    /**
+     * function setCrop()
+     */
 
     public function setCrop(?string $crop): self
     {
@@ -101,10 +132,12 @@ class MediaLink
         return $this;
     }
 
+
     public function getMedia(): ?Media
     {
         return $this->media;
     }
+
 
     public function setMedia(?Media $media): self
     {

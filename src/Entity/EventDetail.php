@@ -34,6 +34,25 @@ class EventDetail
   #[ORM\Column(length: 32)]
   private ?string $tag = null;
 
+  /**
+   *  agency
+   *  - Implementerer Gedcom v7 AGNC tag
+   * 
+   *   
+   */
+
+  #[ORM\Column(length: 255, nullable: true)]
+  private ?string $agency = null;
+
+  #[ORM\Column(length: 255, nullable: true)]
+  private ?string $religion = null;
+
+  #[ORM\Column(length: 255, nullable: true)]
+  private ?string $cause = null;
+
+  #[ORM\Column(length: 255, nullable: true)]
+  private ?string $date = null;
+
 
   //***************************************************************************
   //***************************************************************************
@@ -65,6 +84,54 @@ class EventDetail
     $this->tag = $tag;
 
     return $this;
+  }
+
+  public function getAgency(): ?string
+  {
+      return $this->agency;
+  }
+
+  public function setAgency(?string $agency): self
+  {
+      $this->agency = $agency;
+
+      return $this;
+  }
+
+  public function getReligion(): ?string
+  {
+      return $this->religion;
+  }
+
+  public function setReligion(?string $religion): self
+  {
+      $this->religion = $religion;
+
+      return $this;
+  }
+
+  public function getCause(): ?string
+  {
+      return $this->cause;
+  }
+
+  public function setCause(?string $cause): self
+  {
+      $this->cause = $cause;
+
+      return $this;
+  }
+
+  public function getDate(): ?string
+  {
+      return $this->date;
+  }
+
+  public function setDate(?string $date): self
+  {
+      $this->date = $date;
+
+      return $this;
   }
 
 

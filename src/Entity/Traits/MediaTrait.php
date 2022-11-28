@@ -36,7 +36,7 @@ trait MediaTrait
 {
 
   #[ORM\OneToOne(targetEntity: "Media", cascade: ['persist', 'remove'], fetch: 'LAZY')]
-  #[ORM\JoinColumn(nullable: false)]
+  #[ORM\JoinColumn(nullable: true)]
   private ?Media $media = null;
 
   //***************************************************************************
@@ -54,13 +54,27 @@ trait MediaTrait
     return $this->media;
   }
 
+
+  /**
+   *  function hasMedia()
+   */
+
+  public function hasMedia() : bool
+  {
+    return ($this->media != null);
+  }  
+
+
+  /**
+   *  function setMedia()
+   */
+
   public function setMedia(Media $media): self
   {
     $this->media = $media;
 
     return $this;
   }
-
 
 }
 

@@ -20,25 +20,6 @@ use App\Repository\MediaElementRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 
-enum MediaRole: string
-{
-    case AUDIO        = 'Audio';
-    case BOOK         = 'Book';
-    case CARD         = 'Card';
-    case ELECTRNIC    = 'Electronic';
-    case FICHE        = 'Fiche';
-    case FILM         = 'Film';
-    case MAGAZINE     = 'Magazine';
-    case MANUSCRIPT   = 'Manuscript';
-    case MAP          = 'MAP';
-    case NEWSPAPER    = 'Newspaper';
-    case PHOTO        = 'Photo';
-    case TOOMBSTONE   = 'Toombstrone';
-    case VIDEO        = 'Video';
-    case OTHER        = 'Other';
-}
-
-
   /**
    *  class MediaElement
    *  - Implementerer FILE delen af Gedcom Multimedia Record v7.0
@@ -55,23 +36,21 @@ class MediaElement
 
   /**
    *  format
+   *  - MediaType
    *
    */
 
   #[ORM\Column(length: 80)]
   private ?string $format = null;
 
-  /**
-   *  medium
-   *
-   */
-
-  #[ORM\Column(length: 255, nullable: true)]
-  private ?string $medium = null;
 
   /**
    *  file
    *  - fil reference
+   * 
+   *  A URL with scheme ftp, http, or https refers to a web-accessible file.
+   *  A URL with scheme file refers to a machine-local file as defined by RFC 8089.
+   *  A URI reference with no scheme refers to a local file
    *
    */
 
@@ -110,18 +89,6 @@ class MediaElement
   public function setFormat(string $format): self
   {
     $this->format = $format;
-
-    return $this;
-  }
-
-  public function getMedium(): ?string
-  {
-    return $this->medium;
-  }
-
-  public function setMedium(?string $medium): self
-  {
-    $this->medium = $medium;
 
     return $this;
   }

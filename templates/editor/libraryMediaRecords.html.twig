@@ -1,5 +1,13 @@
 {#  editor/librarySourceRecords #}
 
+{#
+
+    Filoversigten skal vise
+    - Anvendt: Antal henvisninger til filen
+    - Titel:
+    - Medium: Foto, gravsten, bog, etc (Gedcom v7 enumset-MEDI)
+    - File:
+#}
 
 
 
@@ -88,25 +96,15 @@
 
             </div>
 
-            <div class="col-2">
-              Test Col
-            </div>
-
-          </div>  {# row #}
-          <div class="row">
-
-            test row
-
+ 
           </div>  {# row #}
         </div>  {# Container #}
       </form> {# Modal Body #}
 
         {# Modal Footer #}
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        {{ include('snippet/modalfooter.html.twig') }}
+
     </div>  {# Modal Content#}
   </div>  {# Modal Dialog #}
 </div>  {# Modal #}

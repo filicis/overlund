@@ -18,6 +18,11 @@
 			[ 'Death',  '8 September 1974',  'Nykøbing Sjælland',],
 			[ 'Burrial',  '13 September 1974',  'Assistens Kirkegaard',],
 	]
+
+%}
+{%
+
+  set iHead= [ 'Event', 'Date', 'Place' ]
 %}
 
 
@@ -30,20 +35,32 @@
 
       <thead class="small" style="position: sticky; top: 0">
         <tr>
-          <th scope="col">{{'Event' | trans}}</th>
+          {% for e in iHead %}
+            <th scope="col">{{ e | trans}}</th>
+          {% endfor %}
+ 
+
+          <!-- th scope="col">{{'Event' | trans}}</th>
           <th scope="col">{{'Date' | trans}}</th>
-          <th scope="col">{{'Place' | trans}}</th>
+          <th scope="col">{{'Place' | trans}}</th-->
         </tr>
       </thead>
       <tbody class="small" _data-action="click->editor#dummy">
 
         {% for e in iEvent %}
+          
+          <tr tabindex="0">
+            {% for i in e %}
+              <td>{{ i }}</td>
+            {% endfor %}
+          </tr>
+          
 
-        <tr tabindex="0" data-action="focus->editor#dummy" >
+        <!-- tr tabindex="0" data-action="focus->editor#dummy" >
           <td>{{ e[0] }}</td>
           <td>{{ e[1] }}</td>
           <td>{{ e[2] }}</td>
-        </tr>
+        </tr -->
 
         {% endfor %}
 

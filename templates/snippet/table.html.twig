@@ -1,0 +1,34 @@
+{# snippet/table.htm.twig #}
+
+{#
+    Forventer 2 variable
+    - header
+    - constent
+
+    TODO: JavaScript functionalitet
+#}
+
+
+<div class="table-responsive  _overflow-auto shadow" style="max-height: 250px">
+
+  <table class="table table-hover table-bordered table-sm table-light" {{ indi ? '' : 'Disabled'}}>
+
+    <thead class="small" style="position: sticky; top: 0">
+      <tr>
+        {% for e in header %}
+        <th scope="col">{{ e | trans}}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+
+    <tbody class="small" _data-action="click->editor#dummy">
+      {% for e in content %}
+      <tr tabindex="0">
+        {% for i in e %}
+          <td>{{ i }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

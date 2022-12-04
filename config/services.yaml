@@ -27,20 +27,20 @@ twig:
 #	- Alt overvejende i form af Emojis hentet fra søgemaskinen https://emojipedia.org/
 
         icon_locked: 					'&#x1F512;'
-        icon_unlocked: 				'&#x1F513;'
-        icon_confidential:    '&#x1F910;'		# Zipper-Mouth Face
+        icon_unlocked: 				    '&#x1F513;'
+        icon_confidential:              '&#x1F910;'		# Zipper-Mouth Face
         icon_private:					'&#x1F6D1;'		# Stop sign
-        icon_person:          '&#x1F9D1;'   # Person
-        icon_male:            '&#x1F468;'   # Man
-        icon_female:          '&#x1F469;'   # Woman
-        icon_child:           '&#x1F9D2;'   # Child
-        icon_family:          '&#x1F46A;'   # Family
+        icon_person:                    '&#x1F9D1;'   # Person
+        icon_male:                      '&#x1F468;'   # Man
+        icon_female:                    '&#x1F469;'   # Woman
+        icon_child:                     '&#x1F9D2;'   # Child
+        icon_family:                    '&#x1F46A;'   # Family
         icon_researchers:
         icon_delete: 					'&#x1F5D1;'   # Waste Basket
-        icon_up:							'&#x1F53A;'		# Red Triangle Pointed Up
+        icon_up:						'&#x1F53A;'		# Red Triangle Pointed Up
         icon_down:						'&#x1F53B;'		# Red Triangle Pointed Down
-        icon_left:            '&#x2B05;'    # Left Arrow
-        icon_right:           '&#x27A1;'    # Right Arrow
+        icon_left:                      '&#x2B05;'    # Left Arrow
+        icon_right:                     '&#x27A1;'    # Right Arrow
         icon_pedigree:
 
         icon_events:					'&#x1F5D3;'		# Spiral Calendar
@@ -49,23 +49,24 @@ twig:
         icon_sources:					'&#x1F4DA;'		# Books
         icon_media:						"🖼️"
 
-        icon_date:            '&#x1F4C5;'   # Calendar
+        icon_date:                      '&#x1F4C5;'   # Calendar
         icon_address:					'&#x1F4E9;'   # Envelope with Arrow
         icon_place:						'&#x1F4CD;'   # Round Pushpin
 
-        icon_identifier:      '&#x1F4DB;'   # Name Badge
+        icon_identifier:                '&#x1F4DB;'   # Name Badge
 
+        icon_internet:                  '&#x1F310;'     # Internet
 
-        icon_new:							'&#x1F195;'		# New Sign
+        icon_new:						'&#x1F195;'		# New Sign
         icon_edit:						'&#x270F;'		# Pencil
 
         icon_names:						'&#x1F4C7;'		# Card Index
         icon_alias:						'&#x1F977;'		# Ninja
-        icon_association:			'&#x26D3;'		# Chains
+        icon_association:			    '&#x26D3;'		# Chains
 
-        icon_ok:              '&#x2714;'    # Check Mark
-        icon_cancel:          '&#x274C;'    # Cross Mark
-        icon_help:            '&#x2754;'    # White Question Mark
+        icon_ok:                        '&#x2714;'    # Check Mark
+        icon_cancel:                    '&#x274C;'    # Cross Mark
+        icon_help:                      '&#x2754;'    # White Question Mark
 
         ievent_tags:
           - BIRTH:  No01

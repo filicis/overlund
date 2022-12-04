@@ -35,7 +35,7 @@
 
 <div class="modal fade" id="modalMediaLibrary" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content">
 
       {# Modal Header#}
@@ -59,7 +59,7 @@
       <form class="modal-body" name="modal">
         <div class="container-fluid">
           <div class="row">
-
+            <div class="col-9">
             <div class="col-12">
               <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Search term' | trans }}: </label>
@@ -70,9 +70,6 @@
                 value="{{ nam ? nam.npfx }}" >
               </div>
             </div>
-          </div>
-
-          <div class="row">
 
             <div class="col-12 form-text shadow mb-2">
               <div class="input-group input-group-sm mb-3">
@@ -80,24 +77,77 @@
               </div>
             </div>
 
-          </div>
-          <div class="row">
-            <div class="col mb-2">
+            <div class="col-12 mb-2">
                 {{ include('snippet/table.html.twig', {header: iHead, content: iContent}) }}
             </div>
-          </div>
-          <div class="row">
 
-            <div class="col mb-2">
+            {# Pagination #}
 
+            <div class="col-12 mb-2">
               {{ include('snippet/pagination.html.twig') }}
+            </div>
 
-             
+            {# Knap apparat #}
+
+            <div class="col-12 d-flex justify-content-around mb-2">
+              <span>
+              <button type="button"
+                class="btn btn-outline-dark btn-sm btn-light"
+                data-bs-toggle="tooltip"
+                title="{{ 'New URL' | trans }}"
+                data-action="editor#newIndividual"
+                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+                 {{ icon_internet | raw }}
+              </button>
+
+              <button type="button"
+                class="btn btn-outline-dark btn-sm btn-light"
+                data-bs-toggle="tooltip"
+                title="{{ 'New remote file' | trans }}"
+                data-action="editor#newIndividual"
+                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+                 {{ icon_association | raw }}
+              </button>
+
+              <button type="button"
+                class="btn btn-outline-dark btn-sm btn-light"
+                data-bs-toggle="tooltip"
+                title="{{ 'Upload file' | trans }}"
+                data-action="editor#newIndividual"
+                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+                 {{ icon_association | raw }}
+              </button>
+              </span>
+              <button type="button"
+                class="btn btn-outline-dark btn-sm btn-light"
+                data-bs-toggle="tooltip"
+                title="{{ 'Edit selected media file' | trans }}"
+                data-action="editor#newIndividual"
+                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+                 {{ icon_association | raw }}
+              </button>
+
+              <button type="button"
+                class="btn btn-outline-dark btn-sm btn-light"
+                data-bs-toggle="tooltip"
+                title="{{ 'Delete selected media file' | trans }}"
+                data-action="editor#newIndividual"
+                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+                 {{ icon_delete | raw }}
+              </button>
+
 
             </div>
+
+            </div>
+            {{ include('snippet/picture.html.twig', {image: url('app_media1'), ddefault: '\male-employee-icon.svg', }) }}
 
  
           </div>  {# row #}
+
+
+
+
         </div>  {# Container #}
       </form> {# Modal Body #}
 

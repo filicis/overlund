@@ -46,7 +46,7 @@ class MediaController extends AbstractController
   {
     BinaryFileResponse::trustXSendfileTypeHeader();
 
-    $file = 'file://localhost/home/michael/php/overlund/data/ludvig.jpg';
+    $file = '/home/michael/php/overlund/data/ludvig.jpg';
     $response = new BinaryFileResponse($file);
     $response->headers->set('Content-Type', 'image/jpeg');
     return $response;

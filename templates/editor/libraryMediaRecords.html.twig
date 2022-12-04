@@ -11,6 +11,25 @@
     - File:
 #}
 
+{%
+	set iContent= [
+			[ '2',  '25 August 1893',  'Svinninge', '', ],
+			[ '12',  '24 September 1893',  'Nørre Asmindrup', '',],
+			[ '4',  '1896',  'Nykøbing Sjælland', '',],
+			[ '8',  '1901',  'Algade 21', '',],
+			[ '9',  '1906',  'Algade 21', '',],
+			[ '16',  '1911',  'Algade 31', '',],
+			[ '1',  '',  '', '',],
+			[ '3',  '8 September 1974',  'Nykøbing Sjælland', '',],
+			[ '4',  '13 September 1974',  'Assistens Kirkegaard', '',],
+	]
+
+%}
+{%
+
+  set iHead= [ 'Used', 'Title', 'File', 'Medium' ]
+%}
+
 
 
 
@@ -51,46 +70,25 @@
                 value="{{ nam ? nam.npfx }}" >
               </div>
             </div>
+          </div>
 
-            <div class="col-12 form-text shadow">
+          <div class="row">
+
+            <div class="col-12 form-text shadow mb-2">
               <div class="input-group input-group-sm mb-3">
                 Results: (<strong>5048</strong>)
               </div>
             </div>
 
-
-            <div class="col-12">
-              <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY01"> {{ 'Source title' | trans }}: </label>
-                <select type="text"
-                  class="form-select form-select-sm shadow"
-                  id="idYYY01"
-                  name='npfx'
-                  multiple
-                  size=10 >
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-                  <option value="Suzuki">Suzuki</option>
-                  <option value="Mazda">Mazda</option>
-                  <option value="Toyota">Toyota</option>
-                  <option value="Skoda">Skoda</option>
-                  <option value="Seat">Seat</option>
-                  <option value="VW">VW</option>
-                  <option value="Ferrari">Ferrari</option>
-                  <option value="Mazerati">Mazerati</option>
-                  <option value="Tesla">Tesla</option>
-                  <option value="Ford">Ford</option>
-                  <option value="Bugatti">Bugatti</option>
-                  <option value="Chrysler">Chrysler</option>
-
-                </select>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col mb-2">
+                {{ include('snippet/table.html.twig', {header: iHead, content: iContent}) }}
             </div>
+          </div>
+          <div class="row">
 
-
-            <div class="col-12">
+            <div class="col mb-2">
 
               {{ include('snippet/pagination.html.twig') }}
 

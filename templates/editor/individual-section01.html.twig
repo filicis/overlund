@@ -137,14 +137,17 @@
     TODO: Grundbilledet <img> skal afspejle individets køn
     #}
 
-    <picture class="col d-flex align-items-center" data-action="error->editor#loaderror" onError="function(){console.log('Load Error...'}">
+    {{ include('snippet/picture.html.twig', {image: url('app_media1'), default: '\male-employee-icon.svg', }) }}
+
+    {#
+    < picture class="col d-flex align-items-center" data-action="error->editor#loaderror" onError="function(){console.log('Load Error...'}">
 
 
-      <source type="image/jpeg" srcset="\ludvig.jpg" data-action="error->editor#loaderror">
-        <img src="\male-employee-icon.svg" class="img-fluid" alt="..." data-action="error->editor#loaderror">
+      <source type="image/jpeg" srcset="{{ url('app_media1') }}" data-action="error->editor#loaderror">
+        <img src="\male-employee-icon.svg" class="img-fluid" alt="Dette er en title" data-action="error->editor#loaderror">
 
-    </picture>
-
+    </picture >
+    #}
 
   </div>
 

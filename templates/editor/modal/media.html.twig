@@ -1,0 +1,78 @@
+{# editor/modal/individual-media.html.twig #}
+
+
+
+{%
+	set iContent= [
+			[ 'Ludvig Rasmussen',  'familie/Ludvig01.jpg', 'image/jpeg', ],
+			[ 'Ludvig Rasmussen',  'familie/Ludvig02.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen som ung',  'familie/Ludvig03.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen',  'familie/Ludvig04.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen, soldat i Århus',  'familie/Ludvig05.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen',  'familie/Ludvig06.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen',  'familie/Ludvig07.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen med barnebarn og avis',  'familie/Ludvig08.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen med søsteren Margrethe',  'familie/Ludvig09.jpg', 'image/jpeg',],
+	]
+
+%}
+{%
+
+  set iHead= [ 'Title', 'File', 'Medium' ]
+%}
+
+
+
+<div class="modal fade" id="mlrModalMediaFiles" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      {# Modal Header#}
+
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'Media Files' | trans}}...</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      {# Modal Body#}
+
+      <div class="modal-body">
+        <div class="container-fluid">
+
+          <div class="row mb-2">
+            <div class="col-9 mb-2">
+
+                {{ include('snippet/table.html.twig', {header: iHead, content: iContent}) }}
+            </div>
+
+          </div>
+
+        </div>
+
+          <div class="row mb-2">
+            <div class="col-9 d-flex justify-content-between mb-2" >
+              <button class="btn btn-sm btn-outline-success shadow"  type="submit"><i class="bi bi-check-lg"></i></button>
+  <button class="btn btn-sm btn-outline-danger shadow"  type="submit"><i class="bi bi-x-lg"></i></button>
+  <button class="btn btn-sm btn-outline-primary shadow"  type="submit"><i class="bi bi-question-lg"></i></button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        {# Modal Footer #}
+
+        {{ include('snippet/modalfooter.html.twig') }}
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+

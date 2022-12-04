@@ -1,0 +1,23 @@
+{# snippet/picture.html.twig #}
+
+{#
+    Forventer følgende 
+    - 
+#}
+
+{% if default is not defined %}
+  {% set default= '\male-employee-icon.svg' %}
+{% endif %}
+
+{% if image is not defined %}
+  {% set image= '\karen.jpg' %}
+{% endif %}
+
+
+  <picture class="col d-flex align-items-center" data-action="error->editor#loaderror" onError="function(){console.log('Load Error...'}">
+
+    <source type="image/jpeg" srcset="{{ image }}" data-action="error->editor#loaderror">
+    <img src={{ default }} class="img-fluid" alt="Dette er en title" data-action="error->editor#loaderror">
+
+  </picture>
+

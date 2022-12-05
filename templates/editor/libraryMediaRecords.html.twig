@@ -62,11 +62,11 @@
             <div class="col-9">
             <div class="col-12">
               <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY0"> {{ 'Search term' | trans }}: </label>
-                <input type="text"
+                <label class= "small" for="idYYY0"> {{ 'Search term (Min. 4 characters)' | trans }}: </label>
+                <input type="search"
                 class="form-control form-control-sm shadow"
                 id="idYYY0"
-                name= 'npfx'
+                name= 'q'
                 value="{{ nam ? nam.npfx }}" >
               </div>
             </div>

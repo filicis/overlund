@@ -67,6 +67,9 @@ twig:
         icon_ok:                        '&#x2714;'    # Check Mark
         icon_cancel:                    '&#x274C;'    # Cross Mark
         icon_help:                      '&#x2754;'    # White Question Mark
+        icon_desktop:                   '&#x2754;'    # White Question Mark
+        icon_folder:                   '&#x2754;'    # White Question Mark
+        icon_edit1:                   '&#x2754;'    # White Question Mark
 
         ievent_tags:
           - BIRTH:  No01

@@ -56,7 +56,7 @@
 
 
 
-      <form class="modal-body" name="modal">
+      <form class="modal-body" name="modal" data-controller="editor">
         <div class="container-fluid">
           <div class="row">
             <div class="col-9">
@@ -100,14 +100,18 @@
                  {{ icon_internet | raw }}
               </button>
 
+              <hidden data-bs-toggle="tooltip" title="{{ 'New remote file' | trans }}">
               <button type="button"
                 class="btn btn-outline-dark btn-sm btn-light"
-                data-bs-toggle="tooltip"
+                ddata-bs-toggle="tooltip"
                 title="{{ 'New remote file' | trans }}"
-                data-action="editor#newIndividual"
+                ddata-action="editor#filemanager"
+                data-bs-target="#ModalFilemanager"
+                data-bs-toggle="modal"
                 data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
                  {{ icon_association | raw }}
               </button>
+              <hidden>
 
               <button type="button"
                 class="btn btn-outline-dark btn-sm btn-light"
@@ -124,7 +128,7 @@
                 title="{{ 'Edit selected media file' | trans }}"
                 data-action="editor#newIndividual"
                 data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
-                 {{ icon_association | raw }}
+                 {{ icon_edit1 | raw }}
               </button>
 
               <button type="button"

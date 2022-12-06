@@ -1,0 +1,87 @@
+{# editor/modal/filemanager.html.twig #}
+
+
+
+{%
+	set iContent= [
+			[ 'Ludvig Rasmussen',  'familie/Ludvig01.jpg', 'image/jpeg', ],
+			[ 'Ludvig Rasmussen',  'familie/Ludvig02.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen som ung',  'familie/Ludvig03.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen',  'familie/Ludvig04.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen, soldat i Århus',  'familie/Ludvig05.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen',  'familie/Ludvig06.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen',  'familie/Ludvig07.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen med barnebarn og avis',  'familie/Ludvig08.jpg', 'image/jpeg',],
+			[ 'Ludvig Rasmussen med søsteren Margrethe',  'familie/Ludvig09.jpg', 'image/jpeg',],
+	]
+
+%}
+{%
+
+  set iHead= [ 'Title', 'File', 'Medium' ]
+%}
+
+/**
+ *
+ */
+
+
+<div class="modal fade" id="ModalFilemanager" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+
+      {# Modal Header#}
+
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'Filemanager' | trans}}...</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      {# Modal Body#}
+
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              Øverste række
+            </div>
+          </div>
+
+          <div class="row" style="height: 500px">
+            <div class="col-2">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><span>{{ icon_desktop | raw}}</span> My Files</li>
+                <li class="list-group-item"><span>{{ icon_folder | raw}}</span> An Item</li>
+                <li class="list-group-item"><span>{{ icon_folder | raw}}An Item</li>
+                <li class="list-group-item"><span>{{ icon_folder | raw}}An Item</li>
+                <li class="list-group-item"><span>{{ icon_folder | raw}}An Item</li>
+                <li class="list-group-item"><span>{{ icon_folder | raw}}An Item</li>
+              </ul>
+            </div>
+            <div class="col">
+              Øverste række
+            </div>
+            <div class="col-3">
+              Øverste række
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              Nederste række
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {# Modal Footer #}
+
+      {{ include('snippet/modalfooter.html.twig') }}
+
+
+    </div> {# Modal Content #}
+  </div>  {# Modal Dialog #}
+</div>  {# Modal #}
+

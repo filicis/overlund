@@ -642,6 +642,23 @@ async #webapi(arg, mymethod= 'PUT')
   }
 
 
+   /**
+   *  function filemanager(event)
+   *
+   *
+   */
+
+    filemanager(Event)
+    {
+      console.log("Filemanager");
+      const myModal = new bootstrap.Modal(document.getElementById('ModalFilemanager'), {focus: true});
+      myModal.show();
+      console.log("Filemanager Event: ", myModal);
+    }
+  
+   
+
+
   /**
    *  function alias(event)
    *

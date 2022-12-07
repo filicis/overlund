@@ -197,6 +197,13 @@ class AppFixtures extends Fixture
         // $manager->persist($project);
         // $manager->persist($record);
       }  
+      for ($i=1; $i < 1000; $i++)
+      {
+        $record= new RepositoryRecord();
+        $record->setName('Repository #'.$i);
+        $project->addRepositoryRecord($record);
+
+      }
 
     }
 }

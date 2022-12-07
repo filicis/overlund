@@ -40,7 +40,7 @@
             <div class="col-12">
               <div class="mb-2 sshadow">
                 <label class= "small" for="idYYY0"> {{ 'Search term' | trans }}: </label>
-                <input type="text"
+                <input type="search"
                 class="form-control form-control-sm shadow"
                 id="idYYY0"
                 name= 'npfx'
@@ -65,7 +65,7 @@
                   multiple
                   size=10 >
 
-                  {% for repo in project.repositoryRecords %}
+                  {% for repo in project.repositoryRecords.slice(0, 10)  %}
                     <option>{{ repo.name }}</option>
                   {% endfor %}
 

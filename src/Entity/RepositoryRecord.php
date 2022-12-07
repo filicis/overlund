@@ -52,7 +52,7 @@ class RepositoryRecord extends RecordSuperclass
   private Collection $citations;
 
   #[ORM\ManyToOne(inversedBy: 'repositoryRecords')]
-  #[ORM\JoinColumn(nullable: false)]
+  //# [ ORM\JoinColumn(nullable: false)]
   private ?Project $project = null;
 
   public function __construct()

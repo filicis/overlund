@@ -23,6 +23,7 @@ use       App\Entity\Traits\UlidIdTrait;
 use       App\Entity\GedcomStructure;
 
 use       App\Entity\MediaRecord;
+use       App\Entity\SubmitterRecord;
 
 
   /**
@@ -77,7 +78,7 @@ class Project
      *
      */
 
-    #[ORM\OneToMany(targetEntity: MediaRecord::class, mappedBy: "project", cascade: ["persist"], fetch: "EXTRA_LAZY")]
+    #[ORM\OneToMany(targetEntity: MediaRecord::class, mappedBy: "project", fetch: "EXTRA_LAZY")]
     private $mediaRecords;
 
     /**

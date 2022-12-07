@@ -9,11 +9,15 @@ use       App\Entity\User;
 use       App\Entity\Project;
 
 use       App\Entity\Individual;
+use       App\Entity\Family;
 
 use       App\Entity\PersonalNameStructure;
 
 use       App\Entity\MediaRecord;
 use       App\Entity\FileReference;
+
+use       App\Entity\SubmitterRecord;
+use       App\Entity\RepositoryRecord;
 
 
 class AppFixtures extends Fixture
@@ -25,7 +29,11 @@ class AppFixtures extends Fixture
   const PROJECT= array('demo', 'project01', 'project02');
 
   const INDIVIDUAL= array('', '', '', '');
+  const FAMILY= array('', '', '', '');
   const NAME= array('', '', '', '');
+  const SUBMITTER= array('', '', '', '');
+  const REPOSITORY= array('', '', '', '');
+
 
   const MEDIA= array(
     array('Title 1', '', ''),
@@ -33,6 +41,8 @@ class AppFixtures extends Fixture
     array('Title 3', '', ''),
     array('Title 4', '', ''),
   );
+
+
 
   /**
    * function load
@@ -62,7 +72,10 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         $this->individual($project, $manager);
+        $this->family($project, $manager);
         //$this->media($project, $manager);
+        // $this->submitterRecord($project, $manager);
+        $this->repositoryRecord($project, $manager);
 
         $manager->persist($project);
       }
@@ -105,12 +118,24 @@ class AppFixtures extends Fixture
           $indi->addPersonalNameStructure($p);
         }
         $manager->persist($indi);
+        $manager->flush();
 
       }  
 
     }
     
 
+
+    private function family($project, ObjectManager $manager)
+    {
+      foreach (self::FAMILY as $family)
+      {
+        $fam= new Family();
+        $project->addFamily($fam);
+        $manager->persist($fam);
+      }
+    }  
+  
 
 
 
@@ -128,6 +153,46 @@ class AppFixtures extends Fixture
 
         //$record->addFileReference($ref);
         $project->addMediaRecord($record);
+        $manager->persist($record);
+      }  
+
+    }
+
+    /**
+     *  function submitterRecords() 
+     */
+
+    private function submitterRecord($project, ObjectManager $manager)
+    {
+      foreach (self::SUBMITTER as $submitter)
+      {
+        $record= new SubmitterRecord();
+        //$ref= new FileReference();
+        //$ref->setTitle($media[0]);
+
+        //$record->addFileReference($ref);
+        $project->addSubmitterRecord($record);
+        // $manager->persist($project);
+        $manager->persist($record);
+      }  
+
+    }
+
+    /**
+     *  function repositoryRecords() 
+     */
+
+    private function repositoryRecord($project, ObjectManager $manager)
+    {
+      foreach (self::REPOSITORY as $repos)
+      {
+        $record= new RepositoryRecord();
+        //$ref= new FileReference();
+        //$ref->setTitle($media[0]);
+
+        //$record->addFileReference($ref);
+        $project->addRepositoryRecord($record);
+        // $manager->persist($project);
         $manager->persist($record);
       }  
 

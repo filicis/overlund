@@ -52,7 +52,7 @@ class MediaRecord extends RecordSuperclass
    *
    */
 
-  #[ORM\OneToMany(mappedBy: 'mediaRecord', targetEntity: FileReference::class)]
+  #[ORM\OneToMany(targetEntity: FileReference::class, mappedBy: 'mediaRecord', fetch: "EXTRA_LAZY")]
   private Collection $fileReferences;
 
   /**

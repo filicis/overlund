@@ -26,7 +26,7 @@ export default class extends Controller
     webapi: String,
 }
 
-static targets= ['indiView', 'famView', 'indicard', 'personalName', 'tommy']
+static targets= ['modalView', 'indiView', 'famView', 'indicard', 'personalName', 'tommy',  ]
 
 
 
@@ -712,11 +712,9 @@ async #webapi(arg, mymethod= 'PUT')
   {
     console.log("Library - Repository Records");
 
-    const myModal = new bootstrap.Modal(document.getElementById('modalRepositoryLibrary'), {'focus': true});
+      const myModal= new bootstrap.Modal(this.modalViewTarget);
+      myModal.show();
 
-    myModal.show();
-
-    //alert("Source Records");
   }
 
 

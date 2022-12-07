@@ -23,7 +23,7 @@
 
     <tbody class="small" _data-action="click->editor#dummy">
       {% for e in content %}
-      <tr tabindex="0" data-action="click->snippet#select">
+      <tr tabindex="-1" data-action="click->snippet#select">
         {% for i in e %}
           <td>{{ i }}</td>
         {% endfor %}

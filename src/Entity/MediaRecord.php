@@ -16,8 +16,12 @@ namespace App\Entity;
 use       App\Repository\MediaRecordRepository;
 use       Doctrine\Common\Collections\ArrayCollection;
 use       Doctrine\Common\Collections\Collection;
+use       Doctrine\ORM\Mapping\Entity;
+use       Doctrine\ORM\Mapping\Table;
+
 use       Doctrine\ORM\Mapping as ORM;
 
+use       App\Entity\RecordSuperclass;
 use       App\Entity\Traits\IdentifierTrait;
 use       App\Entity\Traits\Restrictions;
 
@@ -28,6 +32,7 @@ use       App\Entity\Traits\Restrictions;
  */
 
 #[ORM\Entity(repositoryClass: MediaRecordRepository::class)]
+#[ORM\Table(name: "media_record")]
 class MediaRecord extends RecordSuperclass
 {
   use IdentifierTrait, Restrictions;

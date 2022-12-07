@@ -22,6 +22,9 @@ use       Doctrine\ORM\Mapping as ORM;
 use       App\Entity\Traits\UlidIdTrait;
 use       App\Entity\GedcomStructure;
 
+use       App\Entity\MediaRecord;
+
+
   /**
    *  Project
    *  -
@@ -74,7 +77,7 @@ class Project
      *
      */
 
-    #[ORM\OneToMany(targetEntity: MediaRecord::class, mappedBy: "project", fetch: "EXTRA_LAZY")]
+    #[ORM\OneToMany(targetEntity: MediaRecord::class, mappedBy: "project", cascade: ["persist"], fetch: "EXTRA_LAZY")]
     private $mediaRecords;
 
     /**

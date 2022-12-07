@@ -32,7 +32,7 @@ use       App\Entity\Traits\Restrictions;
  */
 
 #[ORM\Entity(repositoryClass: MediaRecordRepository::class)]
-#[ORM\Table(name: "media_record")]
+#[ORM\Table(name: "mediarecord")]
 class MediaRecord extends RecordSuperclass
 {
   use IdentifierTrait, Restrictions;

@@ -24,6 +24,7 @@ use       App\Entity\GedcomStructure;
 
 use       App\Entity\MediaRecord;
 use       App\Entity\SubmitterRecord;
+use       App\Entity\RepositoryRecord;
 
 
   /**
@@ -117,7 +118,7 @@ class Project
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: SourceRecord::class, orphanRemoval: true)]
     private Collection $sourceRecords;
 
-    #[ORM\OneToMany(mappedBy: 'project', targetEntity: RepositoryRecord::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: RepositoryRecord::class, orphanRemoval: true, cascade: ["persist", ], fetch: "EXTRA_LAZY")]
     private Collection $repositoryRecords;
 
 

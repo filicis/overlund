@@ -28,6 +28,7 @@ use       App\Entity\Traits\IdentifierTrait;
    **/
 
 #[ORM\Entity(repositoryClass: SubmitterRecordRepository::class)]
+#[ORM\Table(name: "submitterrecord")]
 class SubmitterRecord extends RecordSuperclass
 {
   use AddressTrait, IdentifierTrait;

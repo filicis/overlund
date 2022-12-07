@@ -103,7 +103,7 @@ class EditorController extends AbstractController
   #[Route('/editor', name: 'defaultEditor')]
   public function index1(Request $request) : Response
   {
-    return $this->redirectToRoute('editor', ['url' => 'Project01']);
+    return $this->redirectToRoute('editor', ['url' => 'project01']);
   }
 
 

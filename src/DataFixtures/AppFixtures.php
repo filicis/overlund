@@ -32,7 +32,7 @@ class AppFixtures extends Fixture
   const FAMILY= array('', '', '', '');
   const NAME= array('', '', '', '');
   const SUBMITTER= array('', '', '', '');
-  const REPOSITORY= array('', '', '', '');
+  const REPOSITORY= array('Mit hemmelige sted', 'Erik Brejls hjemmeside', 'Rigsarkivet', 'Danske Slægtsforskere');
 
 
   const MEDIA= array(
@@ -73,8 +73,8 @@ class AppFixtures extends Fixture
 
         $this->individual($project, $manager);
         $this->family($project, $manager);
-        //$this->media($project, $manager);
-        // $this->submitterRecord($project, $manager);
+        $this->media($project, $manager);
+        $this->submitterRecord($project, $manager);
         $this->repositoryRecord($project, $manager);
 
         $manager->persist($project);
@@ -187,13 +187,15 @@ class AppFixtures extends Fixture
       foreach (self::REPOSITORY as $repos)
       {
         $record= new RepositoryRecord();
+        $record->setName($repos);
         //$ref= new FileReference();
         //$ref->setTitle($media[0]);
 
         //$record->addFileReference($ref);
+        // $manager->persist($record);
         $project->addRepositoryRecord($record);
         // $manager->persist($project);
-        $manager->persist($record);
+        // $manager->persist($record);
       }  
 
     }

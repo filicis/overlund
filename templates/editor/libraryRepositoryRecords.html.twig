@@ -1,5 +1,11 @@
 {#  editor/librarySourceRecords #}
 
+{#
+
+    Template 
+    - project
+#}
+
 
 
 
@@ -44,7 +50,7 @@
 
             <div class="col-12 form-text shadow">
               <div class="input-group input-group-sm mb-3">
-                Results: (<strong>5048</strong>)
+                Results: (<strong>{{ project.repositoryRecords | length }}</strong>)
               </div>
             </div>
 
@@ -58,22 +64,10 @@
                   name='npfx'
                   multiple
                   size=10 >
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-                  <option value="Suzuki">Suzuki</option>
-                  <option value="Mazda">Mazda</option>
-                  <option value="Toyota">Toyota</option>
-                  <option value="Skoda">Skoda</option>
-                  <option value="Seat">Seat</option>
-                  <option value="VW">VW</option>
-                  <option value="Ferrari">Ferrari</option>
-                  <option value="Mazerati">Mazerati</option>
-                  <option value="Tesla">Tesla</option>
-                  <option value="Ford">Ford</option>
-                  <option value="Bugatti">Bugatti</option>
-                  <option value="Chrysler">Chrysler</option>
+
+                  {% for repo in project.repositoryRecords %}
+                    <option>{{ repo.name }}</option>
+                  {% endfor %}
 
                 </select>
               </div>

@@ -33,6 +33,7 @@ use       App\Entity\Traits\IdentifierTrait;
  **/
 
 #[ORM\Entity(repositoryClass: RepositoryRecordRepository::class)]
+#[ORM\Table(name: 'repositoryrecord')]
 class RepositoryRecord extends RecordSuperclass
 {
   use AddressTrait, IdentifierTrait;

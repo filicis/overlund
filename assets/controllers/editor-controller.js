@@ -711,6 +711,8 @@ async #webapi(arg, mymethod= 'PUT')
   libraryRepositoryRecords(Event)
   {
     console.log("Library - Repository Records");
+    console.log(event.params.formurl);
+    console.log(event.params);
 
       const myModal= new bootstrap.Modal(this.modalViewTarget);
       myModal.show();

@@ -70,6 +70,7 @@ twig:
         icon_desktop:                   '&#x1F5A5;'    # White Question Mark
         icon_folder:                   '&#x1F4C1;'    # White Question Mark
         icon_edit1:                   '&#x2754;'    # White Question Mark
+        icon_envelope:                  '&#x1F583;'     # Enveloper
 
         ievent_tags:
           - BIRTH:  No01

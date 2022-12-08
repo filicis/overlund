@@ -1,121 +1,90 @@
 {# editor/modal/repository1.html.twig #}
 
-
 {% set content %}
 
 
-        <div class="container-fluid">
-          <div class="card alert-warning shadow">
-            <div class="card-header">
-              {{ 'Repositories' | trans }}
-            </div>
-          <div class="card-body">
-          <div class="row">
+<div class="container-fluid">
+	<div
+		class="card alert-warning shadow">
 
-            <div class="col-12">
-              <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY0"> {{ 'Search term' | trans }}: </label>
-                <input type="search"
-                class="form-control form-control-sm shadow"
-                id="idYYY0"
-                name= 'npfx'
-                value="" >
-              </div>
-            </div>
+		{# card Header #}
 
-            <div class="col-12 form-text shadow">
-              <div class="input-group input-group-sm mb-3">
-                Results: (<strong>{{ project.repositoryRecords | length }}</strong>)
-              </div>
-            </div>
+		<div class="card-header">
+			{{ 'New Repository' | trans }}
+		</div>
 
+		{# Card Body #}
 
-            <div class="col-12">
-              <div class="mb-2 sshadow">
-                <label class= "small" for="idYYY01"> {{ 'Source title' | trans }}: </label>
-                <select type="text"
-                  class="form-select form-select-sm shadow"
-                  id="idYYY01"
-                  name='npfx'
-                  multiple
-                  size=10 >
+		<div class="card-body">
+			<div class="row">
+				<div class="col-10">
 
-                  {% for repo in project.repositoryRecords.slice(0, 10)  %}
-                    <option>{{ repo.name }}</option>
-                  {% endfor %}
+					<div
+						class="row">
 
-                </select>
-              </div>
-            </div>
+						{# Descriptiom - Kun defineret for Attributter med Payload #}
+
+						<div class="col-12 mb-2">
+							<label class="small shadow" for="idYYY0">
+								{{ 'Name' | trans }}:
+							</label>
+							<input type="text" class="form-control form-control-sm shadow" id="idYYY0" name='name' ">
+						</div>
 
 
-            <div class="col-6">
-              <div class="input-group input-group-sm mb-3">
-                <button class="btn btn-sm btn-outline-secondary" type="button">{{ icon_left | raw}}</button>
+						<div class="col-12 mb-2">
+							<label class="small shadow" for="_addr">{{ 'Address' | trans }}:</label>
+							<div class="input-group">
+								<input type="text" class=" form-control form-control-sm shadow" id="_addr" name='addr' ">
+								<button class="btn btn-outline-secondary shadow" type="button" id="button-addon2" data-bs-toggle="tooltip" title="{{ 'Format Address' | trans }}">{{ icon_envelope | raw }}</button>
+							</div>
+						</div>
 
-                <span class="input-group-text" id="basic-addon1">Page</span>
-                <input type="text" class="form-control form-control-sm" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                <span class="input-group-text" id="basic-addon1">of</span>
-                <span class="input-group-text" id="basic-addon1">245</span>
-                <button class="btn btn-sm btn-outline-secondary" type="button" >{{ icon_right | raw}}</button>
-              </div>
-            </div>
+						<div class="col-6 mb-2">
+							<label class="small" for="_addr">
+								{{ 'Phone' | trans }}:
+							</label>
+							<input type="tel" class="form-control form-control-sm shadow" id="_addr" name='addr' ">
+						</div>
+						<div class="col-6 mb-2">
+							<label class="small" for="_addr">
+								{{ 'Fax' | trans }}:
+							</label>
+							<input type="tel" class="form-control form-control-sm shadow" id="_addr" name='addr' ">
+						</div>
+						<div class="col-6 mb-2">
+							<label class="small" for="_addr">
+								{{ 'Email' | trans }}:
+							</label>
+							<input type="text" class="form-control form-control-sm shadow" id="_addr" name='addr' ">
+						</div>
+						<div class="col-6 mb-2">
+							<label class="small" for="_addr">
+								{{ 'WWW' | trans }}:
+							</label>
+							<input type="url" class="form-control form-control-sm shadow" id="_addr" name='addr' ">
+						</div>
+					</div>
 
+				</div>
+				<div class="col-2">
+					<button role="button" class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2" data-action="click->editor#notes" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ 'Notes' | trans }}">
+						{{ icon_notes | raw }}
+					</button>
+					<button type="button" class="btn btn-outline-primary border-3 btn-light btn-sm shadow w-100 mb-2" _data-action="click->editor#sourceCitations" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ 'Identifiers' | trans }}">
+						{{ icon_sources | raw }}
+					</button>
 
-          </div>  {# row #}
-        </div>    {# card-body #}  
-          <div class="card-footer d-flex justify-content-around">
-            {# Knap apparat #}
-
-            <!--div class="d-flex justify-content-around" -->
-              
-              <button type="button"
-                class="btn btn-outline-dark btn-sm btn-light shadow"
-                data-bs-toggle="tooltip"
-                title="{{ 'References' | trans }}"
-                ddata-action="editor#newIndividual"
-                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
-                 {{ icon_internet | raw }}
-              </button>
-
-              <button type="button"
-                class="btn btn-outline-dark btn-sm btn-light shadow"
-                data-bs-toggle="tooltip"
-                title="{{ 'New' | trans }}"
-                data-action="editor#newRepositoryRecord"
-                data-editor-formurl-param="{{ url('newrepository', {url: project.url} ) }} ">
-                 {{ icon_association | raw }}
-              </button>
-              
-              <button type="button"
-                class="btn btn-outline-dark btn-sm btn-light shadow"
-                data-bs-toggle="tooltip"
-                title="{{ 'Edit' | trans }}"
-                ddata-action="editor#newIndividual"
-                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
-                 {{ icon_edit1 | raw }}
-              </button>
-
-              <button type="button"
-                class="btn btn-outline-dark btn-sm btn-light shadow"
-                data-bs-toggle="tooltip"
-                title="{{ 'Delete' | trans }}"
-                ddata-action="editor#newIndividual"
-                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
-                 {{ icon_delete | raw }}
-              </button>
-            <!--/div-->
-            
-          </div>
-        </div> {# card #}
-        </div>  {# Container #}
-      </form> {# Modal Body #}
-
-{% endset %}
+				</div</div>
+				{# row #}
+			</div>
+			{# card-body #}
 
 
-
-{{ include('editor/modal/_modalDialog.html.twig', {modalTitle: 'Test', modalContent: content, modalSize: 'modal-xl' })}}
-
-
-
+			<!--div class="card-footer d-flex justify-content-around">
+																																										</div-->
+		</div>
+	</div>
+	{# card #}
+</div>
+{# Container #}</form>{# Modal Body #}{% endset %}{{ include('editor/modal/_modalDialog.html.twig', {modalTitle: 'Repository Library', modalContent: content })}}

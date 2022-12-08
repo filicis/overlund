@@ -1,5 +1,4 @@
 {# editor/modal/repository1.html.twig #}
-
 {% set content %}
 
 
@@ -32,13 +31,66 @@
 						</div>
 
 
-						<div class="col-12 mb-2">
+						<div class="col-12 mb-2" data-bs-toggle="tooltip" title="{{ 'Format Address' | trans }}">
 							<label class="small shadow" for="_addr">{{ 'Address' | trans }}:</label>
 							<div class="input-group">
-								<input type="text" class=" form-control form-control-sm shadow" id="_addr" name='addr' ">
-								<button class="btn btn-outline-secondary shadow" type="button" id="button-addon2" data-bs-toggle="tooltip" title="{{ 'Format Address' | trans }}">{{ icon_envelope | raw }}</button>
+								<input type="text" class="form-control form-control-sm shadow" id="_addr" name='addr' ">
+								<button class="btn btn-sm btn-outline-primary shadow" type="button" id="button-addon2" data-bs-toggle="button">{{ icon_envelope | raw }}</button>
 							</div>
 						</div>
+
+						<fieldset class="d-none">
+							<div class="col-12 mb-2">
+								<label class="small shadow" for="_adr1">
+									{{ 'Address Line 1' | trans }}:
+								</label>
+								<input type="text" class="form-control form-control-sm shadow" id="_adr1" name='adr1' ">
+							</div>
+
+							<div class="col-12 mb-2">
+								<label class="small shadow" for="_adr2">
+									{{ 'Address Line 2' | trans }}:
+								</label>
+								<input type="text" class="form-control form-control-sm shadow" id="_adr2" name='adr2' ">
+							</div>
+
+							<div class="col-12 mb-2">
+								<label class="small shadow" for="_adr3">
+									{{ 'Address Line 3' | trans }}:
+								</label>
+								<input type="text" class="form-control form-control-sm shadow" id="_adr3" name='adr3' ">
+							</div>
+							<div class="row">
+								<div class="col-3 mb-2">
+									<label class="small shadow" for="_adr3">
+										{{ 'Post code' | trans }}:
+									</label>
+									<input type="text" class="form-control form-control-sm shadow" id="_adr3" name='adr3' ">
+								</div>
+
+								<div class="col-9 mb-2">
+									<label class="small shadow" for="_adr3">
+										{{ 'City' | trans }}:
+									</label>
+									<input type="text" class="form-control form-control-sm shadow" id="_adr3" name='adr3' ">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-6 mb-2">
+									<label class="small shadow" for="_adr3">
+										{{ 'State' | trans }}:
+									</label>
+									<input type="text" class="form-control form-control-sm shadow" id="_adr3" name='adr3' ">
+								</div>
+
+								<div class="col-6 mb-2">
+									<label class="small shadow" for="_adr3">
+										{{ 'Country' | trans }}:
+									</label>
+									<input type="text" class="form-control form-control-sm shadow" id="_adr3" name='adr3' ">
+								</div>
+							</row>
+						</fieldset>
 
 						<div class="col-6 mb-2">
 							<label class="small" for="_addr">
@@ -46,18 +98,21 @@
 							</label>
 							<input type="tel" class="form-control form-control-sm shadow" id="_addr" name='addr' ">
 						</div>
+
 						<div class="col-6 mb-2">
 							<label class="small" for="_addr">
 								{{ 'Fax' | trans }}:
 							</label>
 							<input type="tel" class="form-control form-control-sm shadow" id="_addr" name='addr' ">
 						</div>
+
 						<div class="col-6 mb-2">
 							<label class="small" for="_addr">
 								{{ 'Email' | trans }}:
 							</label>
 							<input type="text" class="form-control form-control-sm shadow" id="_addr" name='addr' ">
 						</div>
+
 						<div class="col-6 mb-2">
 							<label class="small" for="_addr">
 								{{ 'WWW' | trans }}:
@@ -82,7 +137,7 @@
 
 
 			<!--div class="card-footer d-flex justify-content-around">
-																																										</div-->
+																																																																																																																		</div-->
 		</div>
 	</div>
 	{# card #}

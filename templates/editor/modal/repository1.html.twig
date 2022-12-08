@@ -1,38 +1,9 @@
-{#  editor/librarySourceRecords #}
-
-{#
-
-    Template 
-    - project
-#}
+{# editor/modal/repository1.html.twig #}
 
 
+{% set content %}
 
 
-<div class="modal fade" id="modalRepositoryLibrary" data-editor-target="modalView" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-
-      {# Modal Header#}
-
-      <div class="modal-header">
-        <h5 class="modal-title">{{ 'Repository Library' | trans }}</h5>
-
-        {# Restrictions # }
-
-        {{ include('editor/restrictions.html.twig', {form: 'modal'}) } #}
-
-
-
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      {# Modal Body#}
-
-
-
-      <form class="modal-body" data-editor-target="modalContent">
         <div class="container-fluid">
           <div class="card alert-warning shadow">
             <div class="card-header">
@@ -48,7 +19,7 @@
                 class="form-control form-control-sm shadow"
                 id="idYYY0"
                 name= 'npfx'
-                value="{{ nam ? nam.npfx }}" >
+                value="" >
               </div>
             </div>
 
@@ -111,7 +82,6 @@
                 class="btn btn-outline-dark btn-sm btn-light shadow"
                 data-bs-toggle="tooltip"
                 title="{{ 'New' | trans }}"
-                data-bs-dismiss="modal"
                 data-action="editor#newRepositoryRecord"
                 data-editor-formurl-param="{{ url('newrepository', {url: project.url} ) }} ">
                  {{ icon_association | raw }}
@@ -141,13 +111,11 @@
         </div>  {# Container #}
       </form> {# Modal Body #}
 
-        {# Modal Footer #}
+{% endset %}
 
-      {{ include('snippet/modalfooter.html.twig') }}
 
-    </div>  {# Modal Content#}
-  </div>  {# Modal Dialog #}
-</div>  {# Modal #}
+
+{{ include('editor/modal/_modalDialog.html.twig', {modalTitle: 'Test', modalContent: content, modalSize: 'modal-xl' })}}
 
 
 

@@ -78,7 +78,7 @@ class RepositoryController extends AbstractController
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
-			  return $this->redirectToRoute('/da');
+			  //return $this->redirectToRoute('/da');
       }
       catch(\Exception $e)
       {
@@ -87,9 +87,9 @@ class RepositoryController extends AbstractController
 
 
 
-    return $this->renderForm('project/newProject.html.twig', [
+    return $this->renderForm('editor/modal/repository1.html.twig', [
     'form' => $form,
-    'formTitle' => 'Create New Project',
+    'project' => $project,
     'controller_name' => 'ProjectController',
     ]);
 

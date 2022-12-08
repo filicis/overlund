@@ -754,7 +754,13 @@ async #webapi(arg, mymethod= 'PUT')
         console.timeEnd('render1');
       })
       .then((response) => response.text())
-      .then((data) => this.modalContentTarget.innerHTML= "Loading...")
+      .then((data) => 
+      { 
+        this.modalViewTarget.innerHTML= data;
+        const mymodal= new bootstrap.Modal(this.modalViewTarget);
+        mymodal.show()
+      })
+
       .catch((error) =>
       {
       console.error('Catch Error: ', error)

@@ -99,7 +99,7 @@ abstract class AbstractGedParser
    *
    **/
 
-  final private function parseToplevel(String $callable)
+  private function parseToplevel(String $callable)
   {
     echo "Parse Toplevel Start\r\n";
     do

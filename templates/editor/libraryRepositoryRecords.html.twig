@@ -32,7 +32,7 @@
 
 
 
-      <form class="modal-body" name="modal">
+      <form class="modal-body" data-editor-target="modalContent">
         <div class="container-fluid">
           <div class="card alert-warning shadow">
             <div class="card-header">
@@ -93,8 +93,48 @@
 
           </div>  {# row #}
         </div>    {# card-body #}  
-          <div class="card-footer">
-            Test
+          <div class="card-footer d-flex justify-content-around">
+            {# Knap apparat #}
+
+            <!--div class="d-flex justify-content-around" -->
+              
+              <button type="button"
+                class="btn btn-outline-dark btn-sm btn-light shadow"
+                data-bs-toggle="tooltip"
+                title="{{ 'References' | trans }}"
+                ddata-action="editor#newIndividual"
+                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+                 {{ icon_internet | raw }}
+              </button>
+
+              <button type="button"
+                class="btn btn-outline-dark btn-sm btn-light shadow"
+                data-bs-toggle="tooltip"
+                title="{{ 'New' | trans }}"
+                data-action="editor#newRepositoryRecord"
+                data-editor-formurl-param="{{ url('newrepository', {url: project.url} ) }} ">
+                 {{ icon_association | raw }}
+              </button>
+              
+              <button type="button"
+                class="btn btn-outline-dark btn-sm btn-light shadow"
+                data-bs-toggle="tooltip"
+                title="{{ 'Edit' | trans }}"
+                ddata-action="editor#newIndividual"
+                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+                 {{ icon_edit1 | raw }}
+              </button>
+
+              <button type="button"
+                class="btn btn-outline-dark btn-sm btn-light shadow"
+                data-bs-toggle="tooltip"
+                title="{{ 'Delete' | trans }}"
+                ddata-action="editor#newIndividual"
+                data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
+                 {{ icon_delete | raw }}
+              </button>
+            <!--/div-->
+            
           </div>
         </div> {# card #}
         </div>  {# Container #}

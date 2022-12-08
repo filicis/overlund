@@ -26,7 +26,7 @@ export default class extends Controller
     webapi: String,
 }
 
-static targets= ['modalView', 'indiView', 'famView', 'indicard', 'personalName', 'tommy',  ]
+static targets= ['modalView', 'modalContent', 'indiView', 'famView', 'indicard', 'personalName', 'tommy',  ]
 
 
 
@@ -684,6 +684,9 @@ async #webapi(arg, mymethod= 'PUT')
     alert("Associates");
   }
 
+ 
+
+
   /**
    *  function librarySourceRecords(event)
    *
@@ -703,24 +706,85 @@ async #webapi(arg, mymethod= 'PUT')
 
 
   /**
-   *  function libraryRepositoryRecords(event)
+   *  function newRepositoryRecord(event)
    *
    *
    */
 
-  libraryRepositoryRecords(Event)
+  newRepositoryRecord(Event)
   {
-    console.log("Library - Repository Records");
+    console.log("New Repository Records");
     console.log(event.params.formurl);
     console.log(event.params);
+    if (this.hasModalContentTarget)
+      console.log('modalContentTarget found');
+    else
+      console.log('modalContentTarget **not** found');
 
-      const myModal= new bootstrap.Modal(this.modalViewTarget);
-      myModal.show();
+    //  const myModal= new bootstrap.Modal(this.modalViewTarget);
+    //  myModal.show();
+
+    if (this.hasModalViewTarget && this.hasModalContentTarget)
+    {
+
+    /*
+
+      var arg= {};
+      arg['method']= "editorUpdateIndiCard";
+      arg['project']= 'Project01';
+
+    this.#webapi(arg)
+    .then((data) => this.indiViewTarget.innerHTML= data);
+
+    */
+
+
+      const myInit= {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        //body: JSON.stringify(value),
+        mode: 'cors',
+        credentials: 'include',
+      };
+
+      console.time('render1');
+      fetch(event.params.formurl, myInit)
+      .finally(() =>
+      {
+        console.timeEnd('render1');
+      })
+      .then((response) => response.text())
+      .then((data) => this.modalContentTarget.innerHTML= "Loading...")
+      .catch((error) =>
+      {
+      console.error('Catch Error: ', error)
+      });
+
+    }
+
 
   }
 
 
   /**
+   *  function libraryRepositoryRecords(event)
+   *
+   *
+   */
+
+   libraryRepositoryRecords(Event)
+   {
+     console.log("Library - Repository Records");
+     console.log(event.params.formurl);
+     console.log(event.params);
+ 
+       const myModal= new bootstrap.Modal(this.modalViewTarget);
+       myModal.show();
+ 
+   }
+ 
+ 
+   /**
    *  function libraryNoteRecords(event)
    *
    *

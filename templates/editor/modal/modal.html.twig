@@ -1,0 +1,47 @@
+{#  editor/modal/modal.html.twig #}
+
+{#
+    Den grundlæggende skabelon for modale vinduer
+#}
+
+{% set modalTitle= 'Repository Library' %}
+
+
+<div class="modal fade" data-editor-target="modalView" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      {# Modal Header#}
+
+      <div class="modal-header">
+        <h5 class="modal-title">{{ modalTitle | trans }}</h5>
+
+        {# Restrictions # }
+
+        {{ include('editor/restrictions.html.twig', {form: 'modal'}) } #}
+
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      {# Modal Body#}
+
+
+
+      <form class="modal-body">
+
+        {{ modalContent|default('Loading...') }}
+        
+      </form> {# Modal Body #}
+
+        {# Modal Footer #}
+
+      {{ include('snippet/modalfooter.html.twig') }}
+
+    </div>  {# Modal Content#}
+  </div>  {# Modal Dialog #}
+</div>  {# Modal #}
+
+
+

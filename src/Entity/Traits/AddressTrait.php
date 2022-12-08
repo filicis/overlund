@@ -33,35 +33,35 @@ trait AddressTrait
 {
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     *
      **/
 
     #[ORM\Column(type: "text", nullable: true)]
     private $addr;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     *
      **/
 
     #[ORM\Column(type:"string", length: 60, nullable: true)]
     private $adr1;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     *
      **/
 
     #[ORM\Column(type: "string", length: 60, nullable: true)]
     private $adr2;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     *
      **/
 
     #[ORM\Column(type: "string", length: 60, nullable: true)]
     private $adr3;
 
     /**
-     * @ORM\Column(type="string", length=60, nullable=true)
+     *
      **/
 
     #[ORM\Column(type: "string", length: 60, nullable: true)]

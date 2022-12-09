@@ -16,12 +16,12 @@ namespace App\Entity;
 use App\Repository\AddressStructureRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ ORM\Entity( repositoryClass: AddressStructureRepository::class ) ]
-
 /**
 *  class AddressStructure
 *  - Implementerer Gercom V7 ADDRESS_STRUCTURE
 */
+
+#[ ORM\Entity( repositoryClass: AddressStructureRepository::class ) ]
 
 class AddressStructure {
 

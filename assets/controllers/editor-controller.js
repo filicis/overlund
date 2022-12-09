@@ -13,9 +13,8 @@
 
 import { Controller } from '@hotwired/stimulus';
 
-export default class extends Controller
-{
-  static values= {
+export default class extends Controller {
+  static values = {
     project: String,
     indi: String,
     fam: String,
@@ -24,77 +23,70 @@ export default class extends Controller
     renderindi: String,
     renderfam: String,
     webapi: String,
-}
+  }
 
-static targets= ['modalView', 'modalContent', 'indiView', 'famView', 'indicard', 'personalName', 'tommy',  ]
+  static targets = ['modalView', 'modalContent', 'indiView', 'famView', 'indicard', 'personalName', 'tommy',]
 
 
 
-/**
- *  function #webapi
- *  - Den primære indgang til systemets web service
- *
- **/
+  /**
+   *  function #webapi
+   *  - Den primære indgang til systemets web service
+   *
+   **/
 
-async #webapi(arg, mymethod= 'PUT')
-{
-  const myInit= {
-    mode: 'cors',
-    credentials: 'include',
-    method: mymethod,
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(arg),
-  };
+  async #webapi(arg, mymethod = 'PUT') {
+    const myInit = {
+      mode: 'cors',
+      credentials: 'include',
+      method: mymethod,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(arg),
+    };
 
-  //console.log('Arg: ', arg);
-  //console.log('myInit: ', myInit)
-  await fetch(this.webapiValue, myInit)
-  .then((response) =>
-  {
-    if (! response.ok)
-    {
-      switch(response.status)
-      {
-        case 503:
-        window.location.href = "/offline";
-        throw new Error('System is offline');
+    //console.log('Arg: ', arg);
+    //console.log('myInit: ', myInit)
+    await fetch(this.webapiValue, myInit)
+      .then((response) => {
+        if (!response.ok) {
+          switch (response.status) {
+            case 503:
+              window.location.href = "/offline";
+              throw new Error('System is offline');
 
-        default:
-      }
-      //window.location.href = "/";
-      throw new Error('Netværksfejl: ', response.status);
-    }
+            default:
+          }
+          //window.location.href = "/";
+          throw new Error('Netværksfejl: ', response.status);
+        }
 
-    console.log('#webapi content-type: ' , response.headers.get('Content-Type'));
+        console.log('#webapi content-type: ', response.headers.get('Content-Type'));
 
-    return (response.headers.get('Content-Type') == 'application/json')  ? response.json() : response.text();
-  })
-  .then((data) => myResult= data )
-  .catch((error) =>
-  {
-    console.error('Catch Error: ', error.message);
-  });
-  return myResult;
-}
+        return (response.headers.get('Content-Type') == 'application/json') ? response.json() : response.text();
+      })
+      .then((data) => myResult = data)
+      .catch((error) => {
+        console.error('Catch Error: ', error.message);
+      });
+    return myResult;
+  }
 
 
 
   // import())
   // - importerer en ny GEDCOM fil
 
-  import(event)
-  {
+  import(event) {
     console.log('Import called now...')
-    var file= event.target.files[0];
+    var file = event.target.files[0];
     console.log('Filename: ', file.name);
     console.log('Filesize: ', file.size);
     console.log('Filetype: ', file.type);
-    var reader= new FileReader();
-    reader.onload= function(e)
-    {
+    var reader = new FileReader();
+    reader.onload = function (e) {
       console.log('Loaded')
-      var text= e.target.result;
-      var lines= text.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
+      var text = e.target.result;
+      var lines = text.split(/[\r\n]+/g); // tolerate both Windows and Unix linebreaks
       console.log('Line: ', lines[0]);
     }
     console.log('Read file');
@@ -106,25 +98,23 @@ async #webapi(arg, mymethod= 'PUT')
   // indiValueChanged()
   // - opdaterer
   //
-  indiValueChanged(value, previousValue)
-  {
+  indiValueChanged(value, previousValue) {
 
-    if (this.hasIndiViewTarget && ! (value === previousValue))
-    {
+    if (this.hasIndiViewTarget && !(value === previousValue)) {
 
-    /*
-
-      var arg= {};
-      arg['method']= "editorUpdateIndiCard";
-      arg['project']= 'Project01';
-
-    this.#webapi(arg)
-    .then((data) => this.indiViewTarget.innerHTML= data);
-
-    */
+      /*
+  
+        var arg= {};
+        arg['method']= "editorUpdateIndiCard";
+        arg['project']= 'Project01';
+  
+      this.#webapi(arg)
+      .then((data) => this.indiViewTarget.innerHTML= data);
+  
+      */
 
 
-      const myInit= {
+      const myInit = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(value),
@@ -134,16 +124,14 @@ async #webapi(arg, mymethod= 'PUT')
 
       console.time('render1');
       fetch(this.renderindiValue, myInit)
-      .finally(() =>
-      {
-        console.timeEnd('render1');
-      })
-      .then((response) => response.text())
-      .then((data) => this.indiViewTarget.innerHTML= data)
-      .catch((error) =>
-      {
-      console.error('Catch Error: ', error)
-      });
+        .finally(() => {
+          console.timeEnd('render1');
+        })
+        .then((response) => response.text())
+        .then((data) => this.indiViewTarget.innerHTML = data)
+        .catch((error) => {
+          console.error('Catch Error: ', error)
+        });
 
     }
   }
@@ -152,12 +140,10 @@ async #webapi(arg, mymethod= 'PUT')
 
   //  restrictions()
 
-  restrictions(event)
-  {
+  restrictions(event) {
     console.log('Name: ', event.target.name);
     console.log('Checked: ', event.target.checked);
-    switch(event.target.name)
-    {
+    switch (event.target.name) {
       case 'locked':
         break;
 
@@ -175,15 +161,13 @@ async #webapi(arg, mymethod= 'PUT')
   // function famValueChanged()
   // - opdaterer
   //
-  famValueChanged(value, previousValue)
-  {
+  famValueChanged(value, previousValue) {
     console.log('FamValue changed: ', value, previousValue);
 
-    if (this.hasFamViewTarget && ! (value === previousValue))
-    {
+    if (this.hasFamViewTarget && !(value === previousValue)) {
       console.log('****************');
       console.log('RenderFam: ', this.renderfamValue);
-      const myInit= {
+      const myInit = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(value),
@@ -193,20 +177,17 @@ async #webapi(arg, mymethod= 'PUT')
 
       console.time('render2');
       fetch(this.renderfamValue, myInit)
-      .finally(() =>
-      {
-        console.timeEnd('render2');
-      })
-      .then((response) => response.text())
-      .then((data) =>
-      {
-        this.famViewTarget.innerHTML= data;
-        // console.log('Data: ', data)
-      })
-      .catch((error) =>
-      {
-        console.error('Catch Error: ', error)
-      });
+        .finally(() => {
+          console.timeEnd('render2');
+        })
+        .then((response) => response.text())
+        .then((data) => {
+          this.famViewTarget.innerHTML = data;
+          // console.log('Data: ', data)
+        })
+        .catch((error) => {
+          console.error('Catch Error: ', error)
+        });
     }
   }
 
@@ -217,12 +198,11 @@ async #webapi(arg, mymethod= 'PUT')
    *  - Individdet er allerede defineret i this.indi
    */
 
-  individualNames(event)
-  {
+  individualNames(event) {
 
     console.log("individualNames");
 
-    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), {'focus': true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModal'), { 'focus': true });
 
     myModal.show();
     console.log("individualNames: ", myModal);
@@ -236,21 +216,19 @@ async #webapi(arg, mymethod= 'PUT')
   // function newFamily
   //
   //
-  newFamily(event)
-  {
-    var arg= {};
-    arg['method']= "api_family_new";
-    arg['project']= 'Project01';
+  newFamily(event) {
+    var arg = {};
+    arg['method'] = "api_family_new";
+    arg['project'] = 'Project01';
 
     this.#webapi(arg)
-    .then((data) =>
-    {
-      console.log('newFamily Result: ', data);
-      console.log('newFamily Result: ', data.stat);
+      .then((data) => {
+        console.log('newFamily Result: ', data);
+        console.log('newFamily Result: ', data.stat);
 
-      if (data.stat == 'Ok')
-        this.famValue= data.result.id;
-    });
+        if (data.stat == 'Ok')
+          this.famValue = data.result.id;
+      });
   }
 
 
@@ -258,21 +236,19 @@ async #webapi(arg, mymethod= 'PUT')
   //
   //
 
-  newIndividual(event)
-  {
-    var arg= {};
-    arg['method']= "api_individual_new";
-    arg['project']= 'Project01';
+  newIndividual(event) {
+    var arg = {};
+    arg['method'] = "api_individual_new";
+    arg['project'] = 'Project01';
 
     this.#webapi(arg)
-    .then((data) =>
-    {
-      console.log('newIndividual Result: ', data);
-      console.log('newIndividual Result: ', data.stat);
+      .then((data) => {
+        console.log('newIndividual Result: ', data);
+        console.log('newIndividual Result: ', data.stat);
 
-      if (data.stat == 'Ok')
-        this.indiValue= data.result.id;
-    });
+        if (data.stat == 'Ok')
+          this.indiValue = data.result.id;
+      });
   }
 
 
@@ -280,11 +256,10 @@ async #webapi(arg, mymethod= 'PUT')
   //
   //
 
-  selectIndividual(event)
-  {
+  selectIndividual(event) {
     console.log("SelectIndividual: ", event);
     console.log("SelectIndividual id: ", event.params.id);
-    this.indiValue= event.params.id;
+    this.indiValue = event.params.id;
     event.stopPropagation();
   }
 
@@ -293,9 +268,8 @@ async #webapi(arg, mymethod= 'PUT')
   //
   //
 
-  selectWife(event)
-  {
-    this.indiValue= this.wifeValue;
+  selectWife(event) {
+    this.indiValue = this.wifeValue;
     event.stopPropagation();
   }
 
@@ -304,8 +278,7 @@ async #webapi(arg, mymethod= 'PUT')
   //
   //
 
-  unlinkChild(event)
-  {
+  unlinkChild(event) {
     console.log('Called: unlinkChild');
   }
 
@@ -313,10 +286,9 @@ async #webapi(arg, mymethod= 'PUT')
   //
   //
 
-  unlinkHusband(event)
-  {
+  unlinkHusband(event) {
     console.log('Called: unlinkHusband');
-    this.husbandValue== "";
+    this.husbandValue == "";
     event.stopPropagation();
   }
 
@@ -325,10 +297,9 @@ async #webapi(arg, mymethod= 'PUT')
   //
   //
 
-  unlinkWife(event)
-  {
+  unlinkWife(event) {
     console.log('Called: unlinkWife');
-    this.wifeValue= "";
+    this.wifeValue = "";
     event.stopPropagation();
   }
 
@@ -343,35 +314,32 @@ async #webapi(arg, mymethod= 'PUT')
   //
   //  TODO: Skal opdatere navn relevante steder på websiden
 
-  updatePersonalNameStructure(event)
-  {
-    const property= event.target.attributes.name.value;
+  updatePersonalNameStructure(event) {
+    const property = event.target.attributes.name.value;
 
-    var that= this;
+    var that = this;
 
-    var arg= {};
-    arg[property]= event.target.value;
-    arg['method']= "api_individual_updatePersonalNames";
-    arg['project']= 'Project01';
-    arg['nameId']= event.params['nameId'];
-    arg['indiId']= this.indiValue;
+    var arg = {};
+    arg[property] = event.target.value;
+    arg['method'] = "api_individual_updatePersonalNames";
+    arg['project'] = 'Project01';
+    arg['nameId'] = event.params['nameId'];
+    arg['indiId'] = this.indiValue;
 
     this.#webapi(arg)
-    .then((data) =>
-    {
+      .then((data) => {
         console.log('Result: ', data);
 
-        let cmd= "[title='".concat(that.indiValue, "']");
+        let cmd = "[title='".concat(that.indiValue, "']");
         // console.log("Cmd: ", cmd);
         // let nodes= document.querySelectorAll("span[title='01GEN5HWT6ANXP0X5K22WSPTW9']");
-        let nodes= document.querySelectorAll(cmd);
+        let nodes = document.querySelectorAll(cmd);
 
-        nodes.forEach((element) =>
-        {
-          element.innerText= data.result.name;
+        nodes.forEach((element) => {
+          element.innerText = data.result.name;
         });
         // console.log("Nodes: ", nodes);
-    });
+      });
   }
 
 
@@ -380,24 +348,21 @@ async #webapi(arg, mymethod= 'PUT')
   // updateSex()
   //
   //
-  updateSex(event)
-  {
-    if (this.hasIndicardTarget)
-    {
-      switch (event.target.value)
-      {
+  updateSex(event) {
+    if (this.hasIndicardTarget) {
+      switch (event.target.value) {
         case 'M':
-          this.indicardTarget.style.backgroundColor= "#DBFFFE";
+          this.indicardTarget.style.backgroundColor = "#DBFFFE";
           break;
         case 'F':
-          this.indicardTarget.style.backgroundColor= "#FFF2F2";
+          this.indicardTarget.style.backgroundColor = "#FFF2F2";
           break;
         case 'U':
         case 'N':
-          this.indicardTarget.style.backgroundColor= "#F0FFEF";
+          this.indicardTarget.style.backgroundColor = "#F0FFEF";
           break;
         default:
-          this.indicardTarget.style.backgroundColor= "#F0FFEF";
+          this.indicardTarget.style.backgroundColor = "#F0FFEF";
       }
     }
     event.stopPropagation();
@@ -408,8 +373,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  newAsHusband(event)
   */
 
-  newAsHusband(event)
-  {
+  newAsHusband(event) {
     console.log('Called: newAsHusband');
   }
 
@@ -418,11 +382,10 @@ async #webapi(arg, mymethod= 'PUT')
    *  newAsChild(event)
   */
 
-  newAsChild(event)
-  {
-    var arg= {};
-    arg['method']= "api_family_newAsChild";
-    arg['project']= 'Project01';
+  newAsChild(event) {
+    var arg = {};
+    arg['method'] = "api_family_newAsChild";
+    arg['project'] = 'Project01';
     console.log('Called: newAsChild');
     return this.#webapi(arg);
   }
@@ -432,8 +395,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  newAsWife(event)
   */
 
-  newAsWife(event)
-  {
+  newAsWife(event) {
     console.log('Called: newAsWife');
   }
 
@@ -442,8 +404,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  linkAsChild(event)
   */
 
-  linkAsChild(event)
-  {
+  linkAsChild(event) {
     console.log('Called: linkAsChild');
   }
 
@@ -451,8 +412,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  linkAsHusband(event)
   */
 
-  linkAsHusband(event)
-  {
+  linkAsHusband(event) {
     console.log('Called: linkAsHusband');
   }
 
@@ -461,8 +421,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  linkAsWife(event)
   */
 
-  linkAsWife(event)
-  {
+  linkAsWife(event) {
     console.log('Called: linkAsWife');
   }
 
@@ -471,8 +430,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  searchForChild(event)
   */
 
-  searchForChild(event)
-  {
+  searchForChild(event) {
     console.log('Called: searchForChild');
   }
 
@@ -480,8 +438,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  searchForHusband(event)
   */
 
-  searchForHusband(event)
-  {
+  searchForHusband(event) {
     console.log('Called: searchForHusband');
   }
 
@@ -490,8 +447,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  searchForWife(event)
   */
 
-  searchForWife(event)
-  {
+  searchForWife(event) {
     console.log('Called: searchForWife');
   }
 
@@ -500,8 +456,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  notesForChild(event)
   */
 
-  notesForChild(event)
-  {
+  notesForChild(event) {
     console.log('Called: notesForChild');
   }
 
@@ -512,8 +467,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  notesForHusband(event)
   */
 
-  notesForHusband(event)
-  {
+  notesForHusband(event) {
     console.log('Called: notesForHusband');
   }
 
@@ -522,8 +476,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  notesForWife(event)
   */
 
-  notesForWife(event)
-  {
+  notesForWife(event) {
     console.log('Called: notesForWife');
   }
 
@@ -532,8 +485,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  pedigreeOfChild(event)
   */
 
-  pedigreeOfChild(event)
-  {
+  pedigreeOfChild(event) {
     console.log('Called: pedigreeOfChild');
   }
 
@@ -542,8 +494,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  moveChildUp(event)
   */
 
-  moveChildUp(event)
-  {
+  moveChildUp(event) {
     console.log('Called: moveChildUp');
   }
 
@@ -552,8 +503,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  moveChildDown(event)
   */
 
-  moveChildDown(event)
-  {
+  moveChildDown(event) {
     console.log('Called: moveChildDown');
   }
 
@@ -564,8 +514,7 @@ async #webapi(arg, mymethod= 'PUT')
    *  TODO: skal slette alle <source> elementer...
    */
 
-  loaderror(event)
-  {
+  loaderror(event) {
     console.log('Load Error: !!', event.target.src);
     console.log('Load Error: !!', event.currentTarget.parentNode.children[0]);
     console.log('Load Error: !!', event.currentTarget.parentNode.children[1]);
@@ -582,13 +531,12 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  individualEvents(Event)
-  {
+  individualEvents(Event) {
     console.log("individualEvents");
 
     //document.get.modal('show');
 
-    const myModal = new bootstrap.Modal(document.getElementById('mlrModalEvent'), {'focus': true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModalEvent'), { 'focus': true });
 
     //const myModal = new bootstrap.Modal(ElementById('exampleModal')document.get);
     myModal.show();
@@ -603,10 +551,9 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  notes(Event)
-  {
+  notes(Event) {
     console.log("notes");
-    const myModal = new bootstrap.Modal(document.getElementById('mlrModalNoteEditor'), {'focus': true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModalNoteEditor'), { 'focus': true });
     myModal.show();
     console.log("individualEvents: ", myModal);
   }
@@ -618,10 +565,9 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  sourceCitations(Event)
-  {
+  sourceCitations(Event) {
     console.log("sourceCitations");
-    const myModal = new bootstrap.Modal(document.getElementById('mlrModalSourceRecord'), {focus: true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModalSourceRecord'), { focus: true });
     myModal.show();
     console.log("individualEvents: ", myModal);
   }
@@ -633,30 +579,28 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  mediaFiles(Event)
-  {
+  mediaFiles(Event) {
     console.log("mediafiles");
-    const myModal = new bootstrap.Modal(document.getElementById('mlrModalMediaFiles'), {focus: true});
+    const myModal = new bootstrap.Modal(document.getElementById('mlrModalMediaFiles'), { focus: true });
     myModal.show();
     console.log("individualEvents: ", myModal);
   }
 
 
-   /**
-   *  function filemanager(event)
-   *
-   *
-   */
+  /**
+  *  function filemanager(event)
+  *
+  *
+  */
 
-    filemanager(Event)
-    {
-      console.log("Filemanager");
-      const myModal = new bootstrap.Modal(document.getElementById('ModalFilemanager'), {focus: true});
-      myModal.show();
-      console.log("Filemanager Event: ", myModal);
-    }
-  
-   
+  filemanager(Event) {
+    console.log("Filemanager");
+    const myModal = new bootstrap.Modal(document.getElementById('ModalFilemanager'), { focus: true });
+    myModal.show();
+    console.log("Filemanager Event: ", myModal);
+  }
+
+
 
 
   /**
@@ -665,8 +609,7 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  alias(Event)
-  {
+  alias(Event) {
     console.log("alias");
     alert("Alias");
   }
@@ -678,13 +621,12 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  associates(Event)
-  {
+  associates(Event) {
     console.log("Associates");
     alert("Associates");
   }
 
- 
+
 
 
   /**
@@ -693,11 +635,10 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  librarySourceRecords(Event)
-  {
+  librarySourceRecords(Event) {
     console.log("Library - Source Records");
 
-    const myModal = new bootstrap.Modal(document.getElementById('modalSourceLibrary'), {'focus': true});
+    const myModal = new bootstrap.Modal(document.getElementById('modalSourceLibrary'), { 'focus': true });
 
     myModal.show();
 
@@ -711,8 +652,7 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  newRepositoryRecord(Event)
-  {
+  newRepositoryRecord(Event) {
     console.log("New Repository Records");
     console.log(event.params.formurl);
     console.log(event.params);
@@ -724,22 +664,21 @@ async #webapi(arg, mymethod= 'PUT')
     //  const myModal= new bootstrap.Modal(this.modalViewTarget);
     //  myModal.show();
 
-    if (this.hasModalViewTarget && this.hasModalContentTarget)
-    {
+    if (this.hasModalViewTarget && this.hasModalContentTarget) {
 
-    /*
+      /*
+  
+        var arg= {};
+        arg['method']= "editorUpdateIndiCard";
+        arg['project']= 'Project01';
+  
+      this.#webapi(arg)
+      .then((data) => this.indiViewTarget.innerHTML= data);
+  
+      */
 
-      var arg= {};
-      arg['method']= "editorUpdateIndiCard";
-      arg['project']= 'Project01';
 
-    this.#webapi(arg)
-    .then((data) => this.indiViewTarget.innerHTML= data);
-
-    */
-
-
-      const myInit= {
+      const myInit = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         //body: JSON.stringify(value),
@@ -749,22 +688,19 @@ async #webapi(arg, mymethod= 'PUT')
 
       console.time('render1');
       fetch(event.params.formurl, myInit)
-      .finally(() =>
-      {
-        console.timeEnd('render1');
-      })
-      .then((response) => response.text())
-      .then((data) => 
-      { 
-        this.modalViewTarget.innerHTML= data;
-        const mymodal= new bootstrap.Modal(this.modalViewTarget);
-        mymodal.show()
-      })
+        .finally(() => {
+          console.timeEnd('render1');
+        })
+        .then((response) => response.text())
+        .then((data) => {
+          this.modalViewTarget.innerHTML = data;
+          const mymodal = new bootstrap.Modal(this.modalViewTarget);
+          mymodal.show()
+        })
 
-      .catch((error) =>
-      {
-      console.error('Catch Error: ', error)
-      });
+        .catch((error) => {
+          console.error('Catch Error: ', error)
+        });
 
     }
 
@@ -778,26 +714,24 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-   libraryRepositoryRecords(Event)
-   {
-     console.log("Library - Repository Records");
-     console.log(event.params.formurl);
-     console.log(event.params);
- 
-       const myModal= new bootstrap.Modal(this.modalViewTarget);
-       myModal.show();
- 
-   }
- 
- 
-   /**
-   *  function libraryNoteRecords(event)
-   *
-   *
-   */
+  libraryRepositoryRecords(Event) {
+    console.log("Library - Repository Records");
+    console.log(event.params.formurl);
+    console.log(event.params);
 
-  libraryNoteRecords(Event)
-  {
+    const myModal = new bootstrap.Modal(this.modalViewTarget);
+    myModal.show();
+
+  }
+
+
+  /**
+  *  function libraryNoteRecords(event)
+  *
+  *
+  */
+
+  libraryNoteRecords(Event) {
     console.log("Library - Note Records");
 
     const myModal = new bootstrap.Modal(document.getElementById('modalNoteLibrary'));
@@ -814,8 +748,7 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  libraryMediaRecords(Event)
-  {
+  libraryMediaRecords(Event) {
     console.log("Library - Media Records");
 
     const myModal = new bootstrap.Modal(document.getElementById('modalMediaLibrary'));
@@ -832,8 +765,7 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  libraryPlaceRecords(Event)
-  {
+  libraryPlaceRecords(Event) {
     console.log("Library - Place Records");
 
     const myModal = new bootstrap.Modal(document.getElementById('modalPlaceLibrary'));
@@ -851,8 +783,7 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  libraryIndividualRecords(Event)
-  {
+  libraryIndividualRecords(Event) {
     console.log("Library - Individual Records");
 
     const myModal = new bootstrap.Modal(document.getElementById('modalIndividualLibrary'));
@@ -870,8 +801,7 @@ async #webapi(arg, mymethod= 'PUT')
    *
    */
 
-  libraryFamilyRecords(Event)
-  {
+  libraryFamilyRecords(Event) {
     console.log("Library - Family Records");
 
     const myModal = new bootstrap.Modal(document.getElementById('modalFamilyLibrary'));
@@ -883,8 +813,7 @@ async #webapi(arg, mymethod= 'PUT')
 
 
 
-  dummy(event)
-  {
+  dummy(event) {
     console.log("Dummy: ", event);
     //alert("Click !");
 

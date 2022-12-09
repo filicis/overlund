@@ -2,7 +2,7 @@
 {% set content %}
 
 
-<div class="container-fluid">
+<div class="container-fluid" data-controller="repositories">
 	<div
 		class="card alert-warning shadow">
 
@@ -35,11 +35,11 @@
 							<label class="small shadow" for="_addr">{{ 'Address' | trans }}:</label>
 							<div class="input-group">
 								<input type="text" class="form-control form-control-sm shadow" id="_addr" name='addr' ">
-								<button class="btn btn-sm btn-outline-primary shadow" type="button" id="button-addon2" data-bs-toggle="button">{{ icon_envelope | raw }}</button>
+								<button class="btn btn-sm btn-outline-primary shadow" type="button" id="button-addon2" data-bs-toggle="button" data-action="repositories#toggle">{{ icon_envelope | raw }}</button>
 							</div>
 						</div>
 
-						<fieldset class="d-none">
+						<fieldset class="d-none" data-repositories-target="address">
 							<div class="col-12 mb-2">
 								<label class="small shadow" for="_adr1">
 									{{ 'Address Line 1' | trans }}:
@@ -137,7 +137,7 @@
 
 
 			<!--div class="card-footer d-flex justify-content-around">
-																																																																																																																		</div-->
+																																																																																																																														</div-->
 		</div>
 	</div>
 	{# card #}

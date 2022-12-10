@@ -25,7 +25,7 @@ use       Doctrine\Persistence\ManagerRegistry;
 use       App\Entity\Project;
 use       App\Entity\RepositoryRecord;
 use       App\Entity\AddressStructure;
-use       App\Form\AddressType;
+use       App\Form\RepositoryRecordType;
 
 class RepositoryController extends AbstractController {
     #[ Route( '/repository', name: 'app_repository' ) ]
@@ -64,7 +64,7 @@ class RepositoryController extends AbstractController {
         ->getForm();
         */
 
-        $form = $this->createForm( AddressType::class, $record );
+        $form = $this->createForm( RepositoryRecordType::class, $record );
 
         $form->handleRequest( $request );
 

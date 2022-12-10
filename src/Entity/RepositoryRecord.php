@@ -24,6 +24,8 @@ use       App\Entity\AddressStructure;
 use       App\Entity\Traits\AddressTrait;
 use       App\Entity\Traits\IdentifierTrait;
 
+use       Symfony\Component\Validator\Constraints as Assert;
+
 /**
 *  Class RepositoryRecord
 *
@@ -49,6 +51,8 @@ class RepositoryRecord extends RecordSuperclass {
     #[ ORM\Column( type: 'string', length: 255 ) ]
     private $name;
 
+    #[ Assert\Type( type: AddressStructure::class ) ]
+    #[ Assert\Valid ]
     #[ Embedded( class: AddressStructure::class ) ]
     private AddressStructure $address;
 
@@ -59,7 +63,7 @@ class RepositoryRecord extends RecordSuperclass {
     //# [ ORM\JoinColumn( nullable: false ) ]
     private ?Project $project = null;
 
-    public function __construct()  {
+    public function __construct() {
         parent::__construct();
         $this->address = new AddressStructure();
         $this->citations = new ArrayCollection();
@@ -119,5 +123,13 @@ class RepositoryRecord extends RecordSuperclass {
         $this->project = $project;
 
         return $this;
+    }
+
+    public function getAddress(): ?AddressStructure {
+        return $this->address;
+    }
+
+    public function setAddress( ?AddressStructure $address ) {
+        $this->address = $address;
     }
 }

@@ -72,6 +72,57 @@ export default class extends Controller {
   }
 
 
+  /**
+   *  function modalForm()
+   *  - Generisk funktion til håndtering af modale vinduer  
+   * 
+   *  @param {*} event 
+   */
+
+  async modalForm(event) {
+    console.log('*** modalForm ***');
+    console.log('formURL: ', event.params.formurl);
+    console.log('params', event.params);
+
+    if (this.hasModalContentTarget)
+      console.log('modalContentTarget found');
+    else
+      console.log('modalContentTarget **not** found');
+
+    if (this.hasModalViewTarget && this.hasModalContentTarget) {
+
+      const myInit =
+      {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'fetch': 1 },
+        body: JSON.stringify(event.params),
+        mode: 'cors',
+        credentials: 'include',
+      };
+
+      console.time('render1');
+
+      await fetch(event.params.formurl, myInit)
+        .finally(() => {
+          console.timeEnd('render1');
+        })
+        .then((response) => response.text())
+        .then((data) => {
+          console.log('Data: ', data);
+          this.modalViewTarget.innerHTML = data;
+          console.log('innerHTML');
+          const mymodal = new bootstrap.Modal(this.modalViewTarget);
+          mymodal.show()
+        })
+
+        .catch((error) => {
+          console.error('Catch Error: ', error)
+        });
+
+    }
+  }
+
+
 
   // import())
   // - importerer en ny GEDCOM fil
@@ -680,7 +731,7 @@ export default class extends Controller {
 
       const myInit = {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'fetch': 1 },
         //body: JSON.stringify(value),
         mode: 'cors',
         credentials: 'include',

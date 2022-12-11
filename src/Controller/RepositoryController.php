@@ -28,10 +28,16 @@ use       App\Entity\AddressStructure;
 use       App\Form\RepositoryRecordType;
 
 class RepositoryController extends AbstractController {
-    #[ Route( '/repository', name: 'app_repository' ) ]
 
-    public function index(): Response {
-        return $this->render( 'repository/index.html.twig', [
+    /**
+    *  function library
+    */
+
+    #[ Route( '/repository/{url}', name: 'app_repository' ) ]
+
+    public function index( Project $project ): Response {
+        return $this->render( 'repository/library.html.twig', [
+            'project' => $project,
             'controller_name' => 'RepositoryController',
         ] );
     }
@@ -44,25 +50,6 @@ class RepositoryController extends AbstractController {
 
     public function new( Request $request, Project $project, ManagerRegistry $doctrine ): Response {
         $record = new RepositoryRecord();
-
-        /*
-        $form = $this->createFormBuilder( $record )
-        ->add( 'name', TextType::class )
-        ->add( 'addr', TextType::class )
-        ->add( 'adr1', TextType::class )
-        ->add( 'adr2', TextType::class )
-        ->add( 'adr3', TextType::class )
-
-        ->add( 'post', TextType::class )
-        ->add( 'city', TextType::class )
-        ->add( 'stae', TextType::class )
-        ->add( 'ctry', TextType::class )
-        ->add( 'phon', TextType::class )
-        ->add( 'email', TextType::class )
-        ->add( 'fax', TextType::class )
-        ->add( 'www', TextType::class )
-        ->getForm();
-        */
 
         $form = $this->createForm( RepositoryRecordType::class, $record );
 

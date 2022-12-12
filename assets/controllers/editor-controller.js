@@ -153,18 +153,6 @@ export default class extends Controller {
 
     if (this.hasIndiViewTarget && !(value === previousValue)) {
 
-      /*
-  
-        var arg= {};
-        arg['method']= "editorUpdateIndiCard";
-        arg['project']= 'Project01';
-  
-      this.#webapi(arg)
-      .then((data) => this.indiViewTarget.innerHTML= data);
-  
-      */
-
-
       const myInit = {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },

@@ -1,0 +1,14 @@
+{# modal/_modalbase.html.twig #}
+
+{#
+    Den grundlæggende skabelon for modale vinduer
+#}
+
+<div class="modal fade" data-editor-target="modalView" tabindex="-1 aria-labelledby="exampleModalLabel" aria-hidden="true">
+  {% block modaldialog %}
+    {% include('modal/_modaldialog.html.twig') %}
+  {% endblock modaldialog  %}
+</div> // Modal
+
+
+

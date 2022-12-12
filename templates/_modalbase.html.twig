@@ -1,0 +1,32 @@
+{# _modaldialog.html.twig #}
+
+{#
+  Den grundlæggende skabelon for modal-dialog
+#}
+
+<div class="modal-dialog modal-lg modal-dialog-centered">
+  <div class="modal-content">
+    {# Modal Header #}
+    <div class="modal-header">
+      <h5 class="modal-title">{{ modalTitle|trans }}</h5>
+
+      {# Restrictions # }
+        {{ include('editor/restrictions.html.twig', {form: 'modal'}) } #}
+
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+
+    {# Modal Body #}
+    <div class="modal-body">
+    
+      {% block modalbody %}
+        Loading...
+      {% endblock modalbody %}  
+
+    </div> // Modal Body
+
+    {# Modal Footer #}
+
+    {{ include('snippet/modalfooter.html.twig') }}
+  </div>// Modal Content
+</div>// Modal Dialog

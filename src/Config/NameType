@@ -1,0 +1,19 @@
+<?php
+
+namespace   App\Config;
+
+/**
+ *  enum NameType
+ *  - Representerer Gedcom v7 enumset-NAME-TYPE
+ *
+ */
+
+enum NameType
+{
+  case: AKA;
+  case: BIRTH;
+  case: IMMIGRANT;
+  case: MAIDEN;
+  case: MARRIED;
+  case: PROFESSIONAL;
+}

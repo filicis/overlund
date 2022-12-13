@@ -19,17 +19,9 @@
   {#
       Bootstrap 'container' der indeholder hele Gedcom Editoren
 
-      Definerer samtidig Stimulis controlleren 'editor' med samt variablerne
+      Definerer samtidig Stimulis controllerbe 'editor' med samt variablerne
   #}
-{#
-<div
-  data-controller="reload-content"
-  data-action="editor:success->reload-content#flash"
-  data-reload-content-target="content"    
 
-
->
-#}
 <div class="container-xxl"
    data-controller="editor"
    data-editor-project-value="project01"

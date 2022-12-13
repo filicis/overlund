@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\NameStructure;
+use App\Entity\NameTranslation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<NameStructure>
+ * @extends ServiceEntityRepository<NameTranslation>
  *
- * @method NameStructure|null find($id, $lockMode = null, $lockVersion = null)
- * @method NameStructure|null findOneBy(array $criteria, array $orderBy = null)
- * @method NameStructure[]    findAll()
- * @method NameStructure[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method NameTranslation|null find($id, $lockMode = null, $lockVersion = null)
+ * @method NameTranslation|null findOneBy(array $criteria, array $orderBy = null)
+ * @method NameTranslation[]    findAll()
+ * @method NameTranslation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class NameStructureRepository extends ServiceEntityRepository
+class NameTranslationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, NameStructure::class);
+        parent::__construct($registry, NameTranslation::class);
     }
 
-    public function save(NameStructure $entity, bool $flush = false): void
+    public function save(NameTranslation $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class NameStructureRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(NameStructure $entity, bool $flush = false): void
+    public function remove(NameTranslation $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class NameStructureRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return NameStructure[] Returns an array of NameStructure objects
+//     * @return NameTranslation[] Returns an array of NameTranslation objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class NameStructureRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?NameStructure
+//    public function findOneBySomeField($value): ?NameTranslation
 //    {
 //        return $this->createQueryBuilder('n')
 //            ->andWhere('n.exampleField = :val')

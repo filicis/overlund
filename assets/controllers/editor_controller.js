@@ -373,7 +373,7 @@ export default class extends Controller {
         console.log('Result: ', data);
 
         let cmd = "[title='".concat(that.indiValue, "']");
-        // console.log("Cmd: ", cmd);
+        console.log("Cmd: ", cmd);
         // let nodes= document.querySelectorAll("span[title='01GEN5HWT6ANXP0X5K22WSPTW9']");
         let nodes = document.querySelectorAll(cmd);
 

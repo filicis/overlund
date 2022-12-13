@@ -59,7 +59,9 @@
 
 	{# Document Body #}
 
-  <body data-controller="editor">
+  <body data-controller="editor reload-content"
+    data-action="editor:success->reload-content#flash"
+    data-reload-content-target="content">
 
 		{% block navbar %}
 

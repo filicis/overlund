@@ -21,23 +21,37 @@
 
       Definerer samtidig Stimulis controlleren 'editor' med samt variablerne
   #}
+{#
+<div
+  data-controller="reload-content"
+  data-action="editor:success->reload-content#flash"
+  data-reload-content-target="content"    
 
 
+>
+#}
 <div class="container-xxl"
-  ddata-controller="editor"
-  {{ stimulus_controller('editor', {'project': 'Project01', 'indi2': '{{ indiarg }}', 'fam1': '', husband:'', wife: ''}) }}
-  data-editor-indi-value="{{ indi ? indi.id : ''}}";
-  data-editor-fam-value="{{ fam ? fam.id : '' }}";
+   data-controller="editor"
+   data-editor-project-value="project01"
+   data-editor-indi2-value=""
+   data-editor-fam1-value=""
+   data-editor-husband-value=""
+   data-editor-wife-value=""
+
+  data-editor-indi-value="{{ indi ? indi.id : ''}}"
+  data-editor-fam-value="{{ fam ? fam.id : '' }}"
   data-editor-renderindi-value="{{ url('editorUpdateIndiCard', {url: 'Project01'} ) }}"
   data-editor-renderfam-value="{{ url('editorUpdateFamCard', {url: 'Project01'} ) }}"
   data-editor-webapi-value="{{ url('webapi') }}"
 
-
+  data-reload-content-url=""
   >
 
 
 
-  <div class="row">
+  <div class="row"   
+
+>
 
     {% block toprow %}
     {% endblock toprow %}

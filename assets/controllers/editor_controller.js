@@ -13,6 +13,7 @@
 
 import { Controller } from '@hotwired/stimulus';
 
+
 export default class extends Controller {
   static values = {
     project: String,
@@ -150,7 +151,8 @@ export default class extends Controller {
   // - opdaterer
   //
   indiValueChanged(value, previousValue) {
-
+    this.dispatch('success');
+    console.log('IndiValue changed: ', value, previousValue);
     if (this.hasIndiViewTarget && !(value === previousValue)) {
 
       const myInit = {
@@ -202,6 +204,7 @@ export default class extends Controller {
   //
   famValueChanged(value, previousValue) {
     console.log('FamValue changed: ', value, previousValue);
+    this.dispatch('success');
 
     if (this.hasFamViewTarget && !(value === previousValue)) {
       console.log('****************');
@@ -695,6 +698,7 @@ export default class extends Controller {
     console.log("New Repository Records");
     console.log(event.params.formurl);
     console.log(event.params);
+    this.dispatch('success');
     if (this.hasModalContentTarget)
       console.log('modalContentTarget found');
     else
@@ -856,6 +860,11 @@ export default class extends Controller {
     console.log("Dummy: ", event);
     //alert("Click !");
 
+  }
+
+
+  flash(event) {
+    console.error('**** SUCCESS ****');
   }
 
 

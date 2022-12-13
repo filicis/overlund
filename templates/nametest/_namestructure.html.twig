@@ -1,0 +1,79 @@
+
+            <div id="NameStructure"
+              class="col-10"
+              data-action= "input->editor#updatePersonalNameStructure"
+              data-editor-url-param="{{ url('api_individual_updatePersonalName', {url: 'Project01'} ) }}"
+              data-editor-name-id-param= "">
+
+              {# Fornavne #}
+
+              <div class="row ">
+
+                <div class="col-3">
+                  <div class="mb-2">
+                    {{ form_label(form.namePieces.npfx, "Prefix", {'label_attr': {'class': 'small'}}) }}
+                    {{ form_widget(form.namePieces.npfx, {'attr': {'class': 'form-control form-control-sm shadow' }})}}
+                  </div>
+                </div>
+
+                <div class="col-9">
+                  <div class="mb-2">
+                    {{ form_label(form.namePieces.givn, "First names", {'label_attr': {'class': 'small'}}) }}
+                    {{ form_widget(form.namePieces.givn, {'attr': {'class': 'form-control form-control-sm shadow' }})}}
+
+                  </div>
+                </div>
+              </div>
+
+              {# Efternavn #}
+
+              <div class="row">
+
+                <div class="col-3">
+                  <div class="mb-2">
+                    {{ form_label(form.namePieces.spfx, "Prefix", {'label_attr': {'class': 'small'}}) }}
+                    {{ form_widget(form.namePieces.spfx, {'attr': {'class': 'form-control form-control-sm shadow' }})}}
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="mb-2">
+                    {{ form_label(form.namePieces.surn, "Last names", {'label_attr': {'class': 'small'}}) }}
+                    {{ form_widget(form.namePieces.surn, {'attr': {'class': 'form-control-sm shadow' }})}}
+                  </div>
+                </div>
+
+                <div class="col-3">
+                  <div class="mb-2">
+                    {{ form_label(form.namePieces.nsfx, "Suffix", {'label_attr': {'class': 'small'}}) }}
+                    {{ form_widget(form.namePieces.nsfx, {'attr': {'class': 'form-control-sm shadow' }})}}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Diverse navnestof, etc -->
+
+              <div class="row">
+                <div class="col-9">
+                  <div class="mb-2">
+                    {{ form_label(form.namePieces.nick, "Nick names", {'label_attr': {'class': 'small'}}) }}
+                    {{ form_widget(form.namePieces.nick, {'attr': {'class': 'form-control-sm shadow' }})}}
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="mb-2">
+                    {{ form_label(form.nameType, "Type", {'label_attr': {'class': 'small'}}) }}
+                    {{ form_widget(form.nameType, {'attr': {'class': 'form-control-sm shadow', 'list': 'enum-name-type' }})}}
+                    <datalist id="enum-name-type">
+                      <option value="AKA"></option>
+                      <option value="BIRTH"></option>
+                      <option value="IMMIGRANT"></option>
+                      <option value="MAIDEN"></option>
+                      <option value="MARRIED"></option>
+                      <option value="PROFESSIONAL"></option>
+
+                    </datalist>
+                  </div>
+                </div>
+
+              </div>

@@ -23,8 +23,11 @@ class NametestController extends AbstractController
     $name= new NameStructure();
 
     $form = $this->createFormBuilder($name)
+                 ->add('personalName', TextType::class, ['label' => 'Personal Name'])
+      ->add('nameType', TextType::class,['label' => 'Nametype'])         
       ->add('save', SubmitType::class, ['label' => 'Submit'])
       ->add('namePieces', NamePiecesType::class)
+    
       ->getForm();
     return $this->render('nametest/index.html.twig', [
       'controller_name' => 'NametestController',

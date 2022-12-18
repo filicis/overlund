@@ -1,17 +1,15 @@
 <?php
 
 /**
- * This file is part of the Overlund package.
- *
- * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
- * @copyright 2000-2022 Filicis Software
- * @license MIT
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-
+* This file is part of the Overlund package.
+*
+* @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+* @copyright 2000-2022 Filicis Software
+* @license MIT
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
 
 namespace App\Controller;
 
@@ -33,193 +31,171 @@ use       Ds\Set;
 
 use Doctrine\Persistence\ManagerRegistry;
 
-  /**
-   *  EditorController
-   *
-   **/
+/**
+*  EditorController
+*
+**/
 
-class EditorController extends AbstractController
-{
-  private $es;
-  private $entityManager;
-  private $doctrine;
+class EditorController extends AbstractController {
+    private $es;
+    private $entityManager;
+    private $doctrine;
 
+    public const ICON_LOCKED            = '🔏';
+    public const ICON_UNLOCKED          = '🔓';
+    public const ICON_CONFIDENTIAL      = '🤐';
+    public const ICON_PRIVATE           = '⛔';
 
-  public const ICON_LOCKED            = "🔏";
-  public const ICON_UNLOCKED          = "🔓";
-  public const ICON_CONFIDENTIAL      = "🤐";
-  public const ICON_PRIVATE           = "⛔";
+    public const ICON_PERSON            = '👱';
+    public const ICON_MALE              = '👨';
+    public const ICON_FEMALE            = '👩';
+    public const ICON_CHILD             = '👶';
+    public const ICON_FAMILY            = '👪';
+    public const ICON_RESEARCHERS       = '🕵️';
 
-  public const ICON_PERSON            = "👱";
-  public const ICON_MALE              = "👨";
-  public const ICON_FEMALE            = "👩";
-  public const ICON_CHILD             = "👶";
-  public const ICON_FAMILY            = "👪";
-  public const ICON_RESEARCHERS       = "🕵️";
+    public const ICON_PEDIGREE       =    '👶🔗👪';
 
-  public const ICON_PEDIGREE       =    "👶🔗👪";
+    public const ICON_SEARCH_L          = '🔍';
+    public const ICON_SEARCH_R          = '🔎';
 
+    public const ICON_EVENTS            = '📅';
+    public const ICON_NOTES             = '📝';
+    public const ICON_SOURCES           = '📚';
+    public const ICON_MEDIA             = '🖼️';
 
+    public const ICON_UP                = '🔺';
+    public const ICON_DOWN              = '🔻';
+    public const ICON_LEFT              = '👈';
+    public const ICON_RIGHT             = '👉️';
 
-  public const ICON_SEARCH_L          = "🔍";
-  public const ICON_SEARCH_R          = "🔎";
+    public const ICON_LINK             = '🔗';
+    public const ICON_REMOVE             = '❌';
 
-  public const ICON_EVENTS            = "📅";
-  public const ICON_NOTES             = "📝";
-  public const ICON_SOURCES           = "📚";
-  public const ICON_MEDIA             = "🖼️";
+    /**
+    *  function __constructor()
+    *
+    **/
 
-  public const ICON_UP                = "🔺";
-  public const ICON_DOWN              = "🔻";
-  public const ICON_LEFT              = "👈";
-  public const ICON_RIGHT             = "👉️";
-
-  public const ICON_LINK             = "🔗";
-  public const ICON_REMOVE             = "❌";
-
-
-
-
-  /**
-   *  function __constructor()
-   *
-   **/
-
-  public function __construct(ManagerRegistry $doctrine, EditorService $es)
-  {
-    $this->doctrine= $doctrine;
-    $this->entityManager= $doctrine->getManager();
-    $this->es= $es;
-  }
-
-
-  /**
-   *  Default Editor
-   *  - Hvis projectlisten er tom oprettes et standard project
-   *  - Er der flere projecter i listen får brugeren mulighed for at vælge project
-   *
-   **/
-
-  #[Route('/editor', name: 'defaultEditor')]
-  public function index1(Request $request) : Response
-  {
-    return $this->redirectToRoute('editor', ['url' => 'project01']);
-  }
-
-
-
-  /**
-   *  index
-   *  - primære indgang til Editor
-   *
-   *  TODO:
-   **/
-
-  #[Route('/editor/{url}', name: 'editor', defaults: ['p1' => null, 'p2' => null])]
-  public function index(Request $request, Project $project, ?string  $p1= null, ?string $p2= null): Response
-  {
-    switch($project->getWorkflowPlace())
-    {
-      case 'import':       // Omdirigerer til en statusside for import funktionen
-
-      case 'editor':
-      case 'published':
-        break;
-
-      default:              // Videresender til en Project administrativ side...
+    public function __construct( ManagerRegistry $doctrine, EditorService $es ) {
+        $this->doctrine = $doctrine;
+        $this->entityManager = $doctrine->getManager();
+        $this->es = $es;
     }
 
+    /**
+    *  Default Editor
+    *  - Hvis projectlisten er tom oprettes et standard project
+    *  - Er der flere projecter i listen får brugeren mulighed for at vælge project
+    *
+    **/
 
-    $session= $request->getSession();
+    #[ Route( '/editor', name: 'defaultEditor' ) ]
 
-    $individual= $project->getIndividuals()->first();
-
-    //$individual= new Individual();
-    // $individual= null;
-    //if ($individual->getPersonalNameStructures()->isEmpty())
-    //{
-    //  $this->es->newPersonalName($individual);
-    //}
-    $family= $project->getFamilies()->first();
-
-    return $this->render('editor/editor.html.twig', [
-
-      'project' => $project,
-      'fam' => $family,
-      'indi' => $individual,
-
-    ]);
-  }
-
-
-
-
-  /**
-   *  function updateFamCard
-   *
-   *  TODO: skal opdatere FamHistory i session.
-   **/
-
-  #[Route('/editor/{url}/updateFamCard', name: 'editorUpdateFamCard', methods: ['PUT'])]
-  public function updateFamCard(Request $request, Project $project): Response
-  {
-    $data = json_decode($request->getContent(), true);
-    $session= $request->getSession();
-    $set= $session->get('FamHistory');
-    if (!$set)
-      $set= new Set();
-    $set->add($data);
-    $session->set('FamHistory', $set);
-
-    $title= $request->getContent();
-
-    $family= $project->getFamilies()[$data];
-    //$family= $project->getFamilies()->first();
-
-    return $this->render('editor/family.html.twig', [
-      'title' => $title,
-      'project' => $project,
-      'fam' => $family,
-
-      ]);
-
-  }
-
-
-
-
-  /**
-   *  function updateIndiCard
-   *
-   **/
-
-  #[Route('/editor/{url}/updateIndiCard', name: 'editorUpdateIndiCard', methods: ['PUT'])]
-  public function updateIndiCard(Request $request, Project $project): Response
-  {
-    $data = json_decode($request->getContent(), true);
-    $session= $request->getSession();
-    $set= $session->get('IndiHistory');
-    if (!$set)
-      $set= new Set();
-    $set->add($data);
-    $session->set('IndiHistory', $set);
-
-    $title= $request->getContent();
-
-    $individual= $project->getIndividuals()[$data];
-
-
-
-    if ($individual->getPersonalNameStructures()->isEmpty())
-    {
-      $this->es->newPersonalName($individual);
+    public function index1( Request $request ) : Response {
+        return $this->redirectToRoute( 'editor', [ 'url' => 'project01' ] );
     }
 
-    return $this->render('editor/individual.html.twig', [
-      'title' => $data,
-      'project' => $project,
-      'indi' => $individual,
-     ]);
+    /**
+    *  index
+    *  - primære indgang til Editor
+    *
+    *  TODO:
+    **/
 
-  }
+    #[ Route( '/editor/{url}', name: 'editor', defaults: [ 'p1' => null, 'p2' => null ] ) ]
+
+    public function index( Request $request, Project $project, ?string  $p1 = null, ?string $p2 = null ): Response {
+        switch( $project->getWorkflowPlace() ) {
+            case 'import':       // Omdirigerer til en statusside for import funktionen
+
+            case 'editor':
+            case 'published':
+            break;
+
+            default:              // Videresender til en Project administrativ side...
+        }
+
+        $session = $request->getSession();
+
+        $individual = $project->getIndividuals()->first();
+
+        //$individual = new Individual();
+        // $individual = null;
+        //if ( $individual->getPersonalNameStructures()->isEmpty() )
+        // {
+        //  $this->es->newPersonalName( $individual );
+        //}
+        $family = $project->getFamilies()->first();
+
+        return $this->render( 'editor/editor.html.twig', [
+
+            'project' => $project,
+            'fam' => $family,
+            'indi' => $individual,
+
+        ] );
+    }
+
+    /**
+    *  function updateFamCard
+    *
+    *  TODO: skal opdatere FamHistory i session.
+    **/
+
+    #[ Route( '/editor/{url}/updateFamCard', name: 'editorUpdateFamCard', methods: [ 'PUT' ] ) ]
+
+    public function updateFamCard( Request $request, Project $project ): Response {
+        $data = json_decode( $request->getContent(), true );
+        $session = $request->getSession();
+        $set = $session->get( 'FamHistory' );
+        if ( !$set )
+        $set = new Set();
+        $set->add( $data );
+        $session->set( 'FamHistory', $set );
+
+        $title = $request->getContent();
+
+        $family = $project->getFamilies()[ $data ];
+        //$family = $project->getFamilies()->first();
+
+        return $this->render( 'editor/family.html.twig', [
+            'title' => $title,
+            'project' => $project,
+            'fam' => $family,
+
+        ] );
+
+    }
+
+    /**
+    *  function updateIndiCard
+    *
+    **/
+
+    #[ Route( '/editor/{url}/updateIndiCard', name: 'editorUpdateIndiCard', methods: [ 'PUT' ] ) ]
+
+    public function updateIndiCard( Request $request, Project $project ): Response {
+        $data = json_decode( $request->getContent(), true );
+        $session = $request->getSession();
+        $set = $session->get( 'IndiHistory' );
+        if ( !$set )
+        $set = new Set();
+        $set->add( $data );
+        $session->set( 'IndiHistory', $set );
+
+        $title = $request->getContent();
+
+        $individual = $project->getIndividuals()[ $data ];
+
+        if ( $individual->getNames()->isEmpty() ) {
+            $this->es->newPersonalName( $individual );
+        }
+
+        return $this->render( 'editor/individual.html.twig', [
+            'title' => $data,
+            'project' => $project,
+            'indi' => $individual,
+        ] );
+
+    }
 }

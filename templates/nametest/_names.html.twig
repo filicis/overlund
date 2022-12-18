@@ -1,0 +1,85 @@
+{#  #}
+
+<div class="row">
+  {% include 'nametest/_namestructure.html.twig' %}
+  <div class="col-2">
+    <button role="button" class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2" data-action="click->editor#notes" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ 'Notes'|trans }}">{{ icon_notes|raw }}</button>
+    <button type="button" class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2" data-action="click->editor#sourceCitations" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ 'Source Citations'|trans }}">{{ icon_sources|raw }}</button>
+  </div>
+</div>
+
+{##}
+
+          <hr class="shadow">
+
+          <div class="row mb-2">
+            <div class="col-10">
+
+              <label class="small" for="XXXz"> {{ 'Name' | trans }} :</label>
+              <select class="form-select form-select-sm shadow" id="XXXz" size=5 aria-label="Default select example">
+                <!-- option selected>Open this select menu</option- -->
+
+                {# % for p in parentlist % #}
+
+                <option value="1"><strong class="bg_success">Ludvig</strong> Rasmussen</option>
+                <option value="2" data-content="Hello world"></option>
+
+                {# % endfor % #}
+              </select>
+
+
+
+            </div>
+
+            <div class="col-2 text-center">
+              <button role="button"
+                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                data-action="click->editor#notes"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="{{ 'New' | trans }}">
+                {{ icon_new | raw }}
+              </button>
+              <button type="button"
+                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                data-action="click->editor#sourceCitations"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="{{ 'Edit' | trans }}">
+                {{ icon_edit | raw }}
+              </button>
+
+              <button type="button" disabled
+                class="btn btn-sm btn-outline-dark btn-light shadow mb-2"
+                data-bs-toggle="tooltip"
+                title="{{'Up' | trans}}">
+                {{ icon_up | raw }}
+
+              </button>
+
+              <button type="button" disabled
+                class="btn btn-sm btn-outline-dark btn-light shadow mb-2"
+                data-bs-toggle="tooltip"
+                title="{{'Down' | trans}}">
+                {{ icon_down | raw }}
+              </button>
+
+              <button type="button"
+                class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2"
+                data-action="click->editor#sourceCitations"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="{{ 'Delete' | trans }}">
+                {{ icon_delete | raw }}
+              </button>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+

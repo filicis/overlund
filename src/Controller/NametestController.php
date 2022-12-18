@@ -13,20 +13,27 @@ use Symfony\Component\HttpFoundation\Request;
 
 use App\Entity\NameStructure;
 use App\Form\NamePiecesType;
+use App\Form\NameStructureType;
+
+/**
+*  NametestController
+*/
 
 class NametestController extends AbstractController {
+
     #[ Route( '/nametest', name: 'app_nametest' ) ]
 
     public function index(): Response {
-        $name = new NameStructure();
+        $nameStructure = new NameStructure();
 
-        $form = $this->createFormBuilder( $name )
+        $form = $this->createFormBuilder( $nameStructure )
         ->add( 'personalName', TextType::class, [ 'label' => 'Personal Name' ] )
         ->add( 'nameType', TextType::class, [ 'label' => 'Nametype' ] )
-        ->add( 'save', SubmitType::class, [ 'label' => 'Submit' ] )
+        //->add( 'save', SubmitType::class, [ 'label' => 'Submit' ] )
         ->add( 'namePieces', NamePiecesType::class )
-
+        //->add( 'nameStructure', NameStructureType::class )
         ->getForm();
+
         return $this->render( 'nametest/index.html.twig', [
             'controller_name' => 'NametestController',
             'form' => $form,

@@ -20,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\RecordSuperclass;
 use       App\Entity\Relation;
-use       App\Entity\PersonalNameStructure;
+use       App\Entity\NameStructure;
 
 use       App\Entity\Traits\IdentifierTrait;;
 use       App\Entity\Traits\MediaTrait;;
@@ -50,12 +50,6 @@ class Individual extends RecordSuperclass
   #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "individuals")]
   private $project;
 
-  /**
-  *
-  */
-
-  #[ORM\OneToMany(targetEntity: PersonalNameStructure::class, mappedBy: "individual", indexBy: "id", cascade: ["persist"], fetch: "EAGER")]
-  private $personalNameStructures;
 
   /**
   *
@@ -76,6 +70,9 @@ class Individual extends RecordSuperclass
   #[ORM\OneToMany(mappedBy: 'indi', targetEntity: AliaStructure::class)]
   private Collection $alia;
 
+  #[ORM\OneToMany(mappedBy: 'individual', targetEntity: NameStructure::class, indexBy: "id", cascade: ["persist"], fetch: "EAGER" )]
+  private Collection $names;
+
 
   // ******************************************
   // ******************************************
@@ -89,12 +86,13 @@ class Individual extends RecordSuperclass
 
   public function __construct()
   {
-    $this->personalNameStructures = new ArrayCollection();
-    $this->relations = new ArrayCollection();
-    $n= new PersonalNameStructure();
-    $this->addPersonalNameStructure($n);
-    $this->media= new Media();
     $this->alia = new ArrayCollection();
+    $this->names = new ArrayCollection();
+    $this->relations = new ArrayCollection();
+
+    $n= new NameStructure();
+    $this->addName($n);
+    $this->media= new Media();
   }
 
 
@@ -111,36 +109,6 @@ class Individual extends RecordSuperclass
     return $this;
   }
 
-  /**
-  *
-  */
-
-  public function getPersonalNameStructures(): Collection
-  {
-    return $this->personalNameStructures;
-  }
-
-  public function addPersonalNameStructure(PersonalNameStructure $personalNameStructure): self
-  {
-    if (!$this->personalNameStructures->contains($personalNameStructure)) {
-      $this->personalNameStructures[] = $personalNameStructure;
-      $personalNameStructure->setIndividual($this);
-    }
-
-    return $this;
-  }
-
-  public function removePersonalNameStructure(PersonalNameStructure $personalNameStructure): self
-  {
-    if ($this->personalNameStructures->removeElement($personalNameStructure)) {
-      // set the owning side to null (unless already changed)
-      if ($personalNameStructure->getIndividual() === $this) {
-        $personalNameStructure->setIndividual(null);
-      }
-    }
-
-    return $this;
-  }
 
   public function getSex(): ?string
   {
@@ -195,7 +163,7 @@ class Individual extends RecordSuperclass
 
   public function getName()
   {
-    return $this->getPersonalNameStructures()->first()->getPersonalName();
+    return $this->getNames()->first()->getPersonalName();
   }
 
   /**
@@ -263,6 +231,36 @@ class Individual extends RecordSuperclass
           // set the owning side to null (unless already changed)
           if ($alium->getIndi() === $this) {
               $alium->setIndi(null);
+          }
+      }
+
+      return $this;
+  }
+
+  /**
+   * @return Collection<int, NameStructure>
+   */
+  public function getNames(): Collection
+  {
+      return $this->names;
+  }
+
+  public function addName(NameStructure $name): self
+  {
+      if (!$this->names->contains($name)) {
+          $this->names->add($name);
+          $name->setIndividual($this);
+      }
+
+      return $this;
+  }
+
+  public function removeName(NameStructure $name): self
+  {
+      if ($this->names->removeElement($name)) {
+          // set the owning side to null (unless already changed)
+          if ($name->getIndividual() === $this) {
+              $name->setIndividual(null);
           }
       }
 

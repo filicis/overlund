@@ -11,53 +11,33 @@
     - indi
 #}
 
-
-
-<div class="card border-dark text-dark bg-gradient h-100 shadow-lg p-3 mb-5  rounded"
-  style="background-color: #DBFFFE"
-  {{ stimulus_target('editor', 'indicard') }}>
+<div class="card border-dark text-dark bg-gradient h-100 shadow-lg p-3 mb-5 rounded" style="background-color: #DBFFFE" {{ stimulus_target('editor', 'indicard') }}>
   <fieldset {{ indi ? '' : 'Disabled' }}>
-
     <div class="row card-header border-dark">
       {% if indi %}
-      <div class="col-8 text-nowrap overflow-hidden">
-        <pre class="d-inline">[{{ indi.xref }}]  </pre>
-        <span {{ stimulus_target('editor', 'personalName') }}
-          title="{{ indi.id }}"
-          >
-          {{ indi ? indi.personalNameStructures.first.personalName : '' }}
-        </span>
-      </div>
+        <div class="col-8 text-nowrap overflow-hidden">
+          <pre class="d-inline">[{{ indi.xref }}]</pre>
+          <span {{ stimulus_target('editor', 'personalName') }} title="{{ indi.id }}">{{ indi ? indi.names.first.personalName : '' }}</span>
+        </div>
       {% else %}
-      Helloo world !
+        Helloo world !
       {% endif %}
 
       {# RESN knap apparat #}
 
-          {{ include('editor/restrictions.html.twig', {form: 'fam'}) }}
-
-
+      {{ include('editor/restrictions.html.twig', { form: 'fam' }) }}
     </div>
 
+    {{ include('editor/individual-section01.html.twig') }}
 
-      {{ include('editor/individual-section01.html.twig') }}
+    {{ include('editor/individual-section02.html.twig') }}
 
-      {{ include('editor/individual-section02.html.twig') }}
+    {{ include('editor/individual-section03.html.twig') }}
+  </fieldset>
 
-      {{ include('editor/individual-section03.html.twig') }}
-
-    </fieldset>
-
-    {#
+  {#
       Afsluttende knap apparat
     #}
 
-    <div class="card-footer border-dark d-flex justify-content-between">
-      {{ include('editor/buttonline-left.html.twig') }}
-
-    </div>
-
-
-
-  </div>
-
+  <div class="card-footer border-dark d-flex justify-content-between">{{ include('editor/buttonline-left.html.twig') }}</div>
+</div>

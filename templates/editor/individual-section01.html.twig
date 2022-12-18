@@ -19,7 +19,7 @@
     - indi
 #}
 
-  {% set nam=  indi ?  indi.personalNameStructures.first : null %}
+  {% set nam=  indi ?  indi.names.first : null %}
 
 
 
@@ -45,7 +45,7 @@
             class="form-control form-control-sm shadow"
             id="idYYY0"
             name= 'npfx'
-            value="{{ nam ? nam.npfx }}" >
+            value="{{ nam ? nam.namePieces.npfx }}" >
           </div>
         </div>
         <div class="col-9">
@@ -56,7 +56,7 @@
             class="form-control form-control-sm shadow"
             id="idXXX1"
             name= 'givn'
-            value="{{ nam ? nam.givn }}" >
+            value="{{ nam ? nam.namePieces.givn }}" >
           </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
             class="form-control form-control-sm shadow"
             id="idXXX2"
             name= 'spfx'
-            value="{{ nam ? nam.spfx }}" >
+            value="{{ nam ? nam.namePieces.spfx }}" >
           </div>
         </div>
         <div class="col-6">
@@ -81,7 +81,7 @@
             class="form-control form-control-sm shadow"
             id="idXXX3"
             name= 'surn'
-            value="{{ nam ? nam.surn }}" >
+            value="{{ nam ? nam.namePieces.surn }}" >
           </div>
         </div>
         <div class="col-3">
@@ -91,7 +91,7 @@
             class="form-control form-control-sm shadow"
             id="idXXX4"
             name= 'nsfx'
-            value="{{ nam ? nam.nsfx }}" >
+            value="{{ nam ? nam.namePieces.nsfx }}" >
           </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
             class="form-control form-control-sm shadow"
             id="idXXX6"
             name= 'nick'
-            value="{{ nam ? nam.nick }}" >
+            value="{{ nam ? nam.namePieces.nick }}" >
           </div>
         </div>
 
@@ -160,10 +160,14 @@
   <div class="row ">
       <div class="col d-flex justify-content-around">
 
+        {#
+            Names  
+        #}      
 
         <button type="button"
           class="btn btn btn-outline-dark btn-light"
           data-action="click->editor#individualNames"
+          data-editor-id-param={{ indi ? indi.id : '' }}
 
           data-bs-toggle="tooltip"
           title="{{ 'Names' | trans}}">

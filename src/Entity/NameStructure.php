@@ -26,6 +26,9 @@ class NameStructure
   #[ORM\Embedded(class: NamePieces::class)]
   protected NamePieces $namePieces;
 
+  #[ORM\ManyToOne(inversedBy: 'names')]
+  private ?Individual $individual = null;
+
   /**
    *  function __construct()
    */  
@@ -70,6 +73,18 @@ class NameStructure
     public function setNameType(?string $nameType): self
     {
         $this->nameType = $nameType;
+
+        return $this;
+    }
+
+    public function getIndividual(): ?Individual
+    {
+        return $this->individual;
+    }
+
+    public function setIndividual(?Individual $individual): self
+    {
+        $this->individual = $individual;
 
         return $this;
     }

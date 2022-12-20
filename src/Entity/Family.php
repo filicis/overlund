@@ -61,7 +61,7 @@ class Family extends RecordSuperclass
    *
    */
 
-  #[ORM\OneToMany(mappedBy: 'family', targetEntity: Relation::class, indexBy: 'individual', cascade: ["persist"], orphanRemoval: true)]
+  #[ORM\OneToMany(mappedBy: 'family', targetEntity: Relation::class, /*indexBy: 'individual',*/ cascade: ["persist"], orphanRemoval: true)]
   private $relations;
 
   #[ORM\OneToOne(cascade: ['persist', 'remove'])]

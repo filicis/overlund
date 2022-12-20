@@ -18,6 +18,9 @@ use       App\Entity\Individual;
 use       App\Entity\PersonalNameStructure;
 use       App\Entity\Project;
 
+use       App\Form\IndividualType;
+use       App\Form\FamilyType;
+
 use       App\Service\EditorService;
 
 use       Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,7 +32,7 @@ use       Symfony\Component\Routing\Annotation\Route;
 
 use       Ds\Set;
 
-use Doctrine\Persistence\ManagerRegistry;
+use       Doctrine\Persistence\ManagerRegistry;
 
 /**
 *  EditorController
@@ -118,14 +121,18 @@ class EditorController extends AbstractController {
         $session = $request->getSession();
 
         $individual = $project->getIndividuals()->first();
+        $indiform = $this->createForm( IndividualType::class, $individual );
 
         $family = $project->getFamilies()->first();
+        $famform = $this->createForm( FamilyType::class, $family );
 
         return $this->render( 'editor/editor.html.twig', [
 
             'project' => $project,
             'fam' => $family,
             'indi' => $individual,
+            'indiform' => $indiform,
+            'famform' => $famform,
 
         ] );
     }

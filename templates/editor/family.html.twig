@@ -16,7 +16,8 @@
 <div class="card border-dark text-dark bg-gradient h-100 shadow-lg p-3 mb-5 rounded"
   style="background-color: #F0FFEF"
   >
-  <fieldset {{ fam ? '' : 'Disabled'}}>
+  {# <fieldset {{ fam ? '' : 'Disabled'}}> #}
+  {{ form_start(famform) }}
 
 
 
@@ -102,7 +103,8 @@
 
         {{ include('editor/family-section03.html.twig') }}
 
-      </fieldset>
+      {{ form_end(famform) }}
+      {# </fieldset> #}
 
       {# Afsluttende knap apparat#}
 

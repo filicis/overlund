@@ -157,12 +157,15 @@ class EditorController extends AbstractController {
         $title = $request->getContent();
 
         $family = $project->getFamilies()[ $data ];
+        $famform = $this->createForm( FamilyType::class, $family );
+
         //$family = $project->getFamilies()->first();
 
         return $this->render( 'editor/family.html.twig', [
             'title' => $title,
             'project' => $project,
             'fam' => $family,
+            'famform' => $famform,
 
         ] );
 
@@ -187,6 +190,7 @@ class EditorController extends AbstractController {
         $title = $request->getContent();
 
         $individual = $project->getIndividuals()[ $data ];
+        $indiform = $this->createForm( IndividualType::class, $individual );
 
         if ( $individual->getNames()->isEmpty() ) {
             $this->es->newPersonalName( $individual );
@@ -196,6 +200,7 @@ class EditorController extends AbstractController {
             'title' => $data,
             'project' => $project,
             'indi' => $individual,
+            'indiform' => $indiform,
         ] );
 
     }

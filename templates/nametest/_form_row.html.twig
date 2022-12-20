@@ -1,0 +1,11 @@
+{# nametest.html.twig #}
+
+{#
+    Forventer to variable:
+    - field
+    - label
+#}
+<div class="mb-2">
+  {{ form_label(field, t(label), {'label_attr': {'class': 'small'}}) }}
+  {{ form_widget(field, {'attr': {'class': 'form-control-sm shadow' }})}}
+</div>

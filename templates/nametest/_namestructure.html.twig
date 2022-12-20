@@ -7,33 +7,23 @@
 
   {# Personal Name #}
 
-  <div class="row">
-    <div class="col">
-      <div class="mb-2">
-                    {{ form_label(form.personalName, t("Personal Name"), {'label_attr': {'class': 'small'}}) }}
-                    {{ form_widget(form.personalName, {'attr': {'class': 'form-control-sm shadow' }})}}
-      </div>
+  <div class="row d-none">
+    <div class="col mb2">
+                 {{ form_row(form.personalName) }}
     </div>
   </div>
 
 
   {# Fornavne #}
 
-  <div class="row ">
+  <div class="row mb-2">
 
-    <div class="col-3">
-      <div class="mb-2">
-                    {{ form_label(form.namePieces.npfx, t("Prefix"), {'label_attr': {'class': 'small'}}) }}
-                    {{ form_widget(form.namePieces.npfx, {'attr': {'class': 'form-control-sm shadow' }})}}
-      </div>
+    <div class="col-3 mb2">
+                 {{ form_row(form.namePieces.npfx) }}
     </div>
 
     <div class="col-9">
-      <div class="mb-2">
-                    {{ form_label(form.namePieces.givn, t('First names'), {'label_attr': {'class': 'small'}}) }}
-                    {{ form_widget(form.namePieces.givn, {'attr': {'class': 'form-control-sm shadow' }})}}
-
-      </div>
+                  {{ form_row(form.namePieces.givn) }}
     </div>
   </div>
 
@@ -42,24 +32,16 @@
   <div class="row">
 
     <div class="col-3">
-                  <div class="mb-2">
-                    {{ form_label(form.namePieces.spfx, t("Prefix"), {'label_attr': {'class': 'small'}}) }}
-                    {{ form_widget(form.namePieces.spfx, {'attr': {'class': 'form-control-sm shadow' }})}}
-                  </div>
+                 {{ form_row(form.namePieces.spfx) }}
     </div>
 
     <div class="col-6">
-                  <div class="mb-2">
-                    {{ form_label(form.namePieces.surn, t("Last names"), {'label_attr': {'class': 'small'}}) }}
-                    {{ form_widget(form.namePieces.surn, {'attr': {'class': 'form-control-sm shadow' }})}}
-                  </div>
+                 {{ form_row(form.namePieces.surn) }}
     </div>
 
     <div class="col-3">
-                  <div class="mb-2">
-                    {{ form_label(form.namePieces.nsfx, t("Suffix"), {'label_attr': {'class': 'small'}}) }}
-                    {{ form_widget(form.namePieces.nsfx, {'attr': {'class': 'form-control-sm shadow' }})}}
-                  </div>
+                 {{ form_row(form.namePieces.nsfx) }}
+ 
     </div>
   </div>
 
@@ -68,10 +50,8 @@
   <div class="row">
 
     <div class="col-9">
-                  <div class="mb-2">
-                    {{ form_label(form.namePieces.nick, t("Nick names"), {'label_attr': {'class': 'small'}}) }}
-                    {{ form_widget(form.namePieces.nick, {'attr': {'class': 'form-control-sm shadow' }})}}
-                  </div>
+                  {{ form_row(form.namePieces.nick) }}
+                  
     </div>
   
     <div class="col-3">

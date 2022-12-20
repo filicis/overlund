@@ -9,32 +9,32 @@ use       Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use       App\Entity\NamePieces;
 
-class NamePiecesType extends AbstractType
-{
-  /**
-   *
-   */
+class NamePiecesType extends AbstractType {
 
-  public function buildForm(FormBuilderInterface $builder, array $options): void
-  {
-    $builder
-      ->add('npfx', TextType::class, ['label' => 'Prefix:',])
-      ->add('givn', TextType::class, ['label' => 'First names:', 'help' => 'Fornavne'])
-      ->add('nick', TextType::class, ['label' => 'Nicknames:',])
-      ->add('spfx', TextType::class, ['label' => 'Prefix:',])
-      ->add('surn', TextType::class, ['label' => 'Last name:',])
-      ->add('nsfx', TextType::class, ['label' => 'Suffix:',])
-    ;
-  }
+    const ATTR = "'label_attr' => [ 'class' => 'small' ], 'attr' => [ 'class' => 'form-control-sm shadow' ]";
 
-  /**
-   *
-   */
+    /**
+    *
+    */
 
-  public function configureOptions(OptionsResolver $resolver): void
-  {
-    $resolver->setDefaults([
-      'data_class' => NamePieces::class,
-    ]);
-  }
+    public function buildForm( FormBuilderInterface $builder, array $options ): void {
+        $builder
+        ->add( 'npfx', TextType::class, [ 'label' => 'Prefix',  'label_attr' => [ 'class' => 'small' ], 'attr' => [ 'class' => 'form-control-sm shadow' ] ] )
+        ->add( 'givn', TextType::class, [ 'label' => 'First names', 'label_attr' => [ 'class' => 'small' ], 'attr' => [ 'class' => 'form-control-sm shadow' ] ] )
+        ->add( 'nick', TextType::class, [ 'label' => 'Nicknames', 'label_attr' => [ 'class' => 'small' ], 'attr' => [ 'class' => 'form-control-sm shadow' ] ] )
+        ->add( 'spfx', TextType::class, [ 'label' => 'Prefix',  'label_attr' => [ 'class' => 'small' ], 'attr' => [ 'class' => 'form-control-sm shadow' ] ] )
+        ->add( 'surn', TextType::class, [ 'label' => 'Last name', 'label_attr' => [ 'class' => 'small' ], 'attr' => [ 'class' => 'form-control-sm shadow' ] ] )
+        ->add( 'nsfx', TextType::class, [ 'label' => 'Suffix',  'label_attr' => [ 'class' => 'small' ], 'attr' => [ 'class' => 'form-control-sm shadow' ] ] )
+        ;
+    }
+
+    /**
+    *
+    */
+
+    public function configureOptions( OptionsResolver $resolver ): void {
+        $resolver->setDefaults( [
+            'data_class' => NamePieces::class,
+        ] );
+    }
 }

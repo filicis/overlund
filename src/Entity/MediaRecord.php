@@ -1,15 +1,15 @@
 <?php
 
 /**
- * This file is part of the Overlund package.
- *
- * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
- * @copyright 2000-2022 Filicis Software
- * @license MIT
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+* This file is part of the Overlund package.
+*
+* @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+* @copyright 2000-2022 Filicis Software
+* @license MIT
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
 
 namespace App\Entity;
 
@@ -26,107 +26,95 @@ use       App\Entity\Traits\IdentifierTrait;
 use       App\Entity\Traits\Restrictions;
 
 /**
- *  class MediaRecord
- *
- *  Implementerer Gedcom V7 Multimedia Record
- */
+*  class MediaRecord
+*
+*  Implementerer Gedcom V7 Multimedia Record
+*/
 
-#[ORM\Entity(repositoryClass: MediaRecordRepository::class)]
-#[ORM\Table(name: "mediarecord")]
-class MediaRecord extends RecordSuperclass
-{
-  use IdentifierTrait, Restrictions;
+#[ ORM\Entity( repositoryClass: MediaRecordRepository::class ) ]
+#[ ORM\Table( name: 'mediarecord' ) ]
 
-  protected const XREF_PREFIX = 'M';
+class MediaRecord extends RecordSuperclass {
+    use IdentifierTrait, Restrictions;
 
-  /**
-   * 
-   */
+    protected const XREF_PREFIX = 'M';
 
-  #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "mediaRecords")]
-  #[ORM\JoinColumn(onDelete: "Cascade")]
-  private $project;
+    /**
+    *
+    */
 
-  /**
-   *
-   *
-   */
+    #[ ORM\ManyToOne( targetEntity: Project::class, inversedBy: 'mediaRecords' ) ]
+    #[ ORM\JoinColumn( onDelete: 'Cascade' ) ]
+    private $project;
 
-  #[ORM\OneToMany(targetEntity: FileReference::class, mappedBy: 'mediaRecord', fetch: "EXTRA_LAZY")]
-  private Collection $fileReferences;
+    /**
+    *
+    *
+    */
 
-  /**
-   *    function __construct()
-   */
+    #[ ORM\OneToMany( targetEntity: FileReference::class, mappedBy: 'mediaRecord', cascade: [ 'persist' ], fetch: 'EXTRA_LAZY' ) ]
+    private Collection $fileReferences;
 
-  public function __construct()
-  {
-      $this->fileReferences = new ArrayCollection();
-  }
+    /**
+    *    function __construct()
+    */
 
+    public function __construct() {
+        $this->fileReferences = new ArrayCollection();
+    }
 
-  /**
-   *    function getProject()
-   */
+    /**
+    *    function getProject()
+    */
 
-  public function getProject(): ?Project
-  {
-      return $this->project;
-  }
+    public function getProject(): ?Project {
+        return $this->project;
+    }
 
+    /**
+    *    function setProject()
+    */
 
-  /**
-   *    function setProject()
-   */
+    public function setProject( ?Project $project ): self {
+        $this->project = $project;
 
-  public function setProject(?Project $project): self
-  {
-      $this->project = $project;
+        return $this;
+    }
 
-      return $this;
-  }
+    /**
+    * @return Collection<int, FileReference>
+    */
 
+    public function getFileReferences(): Collection {
+        return $this->fileReferences;
+    }
 
-  /**
-   * @return Collection<int, FileReference>
-   */
+    /**
+    *    function addFileReference()
+    */
 
-  public function getFileReferences(): Collection
-  {
-      return $this->fileReferences;
-  }
+    public function addFileReference( FileReference $fileReference ): self {
+        if ( !$this->fileReferences->contains( $fileReference ) ) {
+            $this->fileReferences->add( $fileReference );
+            $fileReference->setMediaRecord( $this );
+        }
 
+        return $this;
+    }
 
-  /**
-   *    function addFileReference() 
-   */
+    /**
+    *    function removeFileReference()
+    */
 
-  public function addFileReference(FileReference $fileReference): self
-  {
-      if (!$this->fileReferences->contains($fileReference)) {
-          $this->fileReferences->add($fileReference);
-          $fileReference->setMediaRecord($this);
-      }
+    public function removeFileReference( FileReference $fileReference ): self {
+        if ( $this->fileReferences->removeElement( $fileReference ) ) {
+            // set the owning side to null ( unless already changed )
+            if ( $fileReference->getMediaRecord() === $this ) {
+                $fileReference->setMediaRecord( null );
+            }
+        }
 
-      return $this;
-  }
-
-
-  /**
-   *    function removeFileReference() 
-   */
-
-  public function removeFileReference(FileReference $fileReference): self
-  {
-      if ($this->fileReferences->removeElement($fileReference)) {
-          // set the owning side to null (unless already changed)
-          if ($fileReference->getMediaRecord() === $this) {
-              $fileReference->setMediaRecord(null);
-          }
-      }
-
-      return $this;
-  }
-
+        return $this;
+    }
 
 }

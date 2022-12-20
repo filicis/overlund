@@ -119,12 +119,6 @@ class EditorController extends AbstractController {
 
         $individual = $project->getIndividuals()->first();
 
-        //$individual = new Individual();
-        // $individual = null;
-        //if ( $individual->getPersonalNameStructures()->isEmpty() )
-        // {
-        //  $this->es->newPersonalName( $individual );
-        //}
         $family = $project->getFamilies()->first();
 
         return $this->render( 'editor/editor.html.twig', [

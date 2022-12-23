@@ -1,291 +1,145 @@
 <?php
 
 /**
- * This file is part of the Overlund package.
- *
- * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
- * @copyright 2000-2022 Filicis Software
- * @license MIT
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-
+* This file is part of the Overlund package.
+*
+* @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+* @copyright 2000-2022 Filicis Software
+* @license MIT
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
 
 namespace App\Entity;
 
-use       App\Repository\FamilyRepository;
-use       Doctrine\Common\Collections\ArrayCollection;
-use       Doctrine\Common\Collections\Collection;
-use       Doctrine\ORM\Mapping as ORM;
+use App\Repository\FamilyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
-use       App\Entity\Individual;
-use       App\Entity\RecordSuperclass;
-use       App\Entity\Relation;
+use App\Entity\Individual;
+use App\Entity\RecordSuperclass;
+use App\Entity\Relation;
 
-use       App\Entity\Traits\IdentifierTrait;
-use       App\Entity\Traits\MediaTrait;
-use       App\Entity\Traits\Restrictions;
+use App\Entity\Traits\IdentifierTrait;
+use App\Entity\Traits\MediaTrait;
+use App\Entity\Traits\Restrictions;
 
-use       App\Entity\Media;
+use App\Entity\Media;
 
+/**
+*  Family
+*  Implementerer Gedcom FAMILY_RECORD
+*
+*  @link https://gedcom.io/terms/v7/record-FAM
+*
+*/
 
+#[ ORM\Entity( repositoryClass: FamilyRepository::class ) ]
 
-  /**
-   *  Family
-   *  Implementerer Gedcom FAMILY_RECORD
-   *
-   *  @link https://gedcom.io/terms/v7/record-FAM
-   *
-   */
+class Family extends RecordSuperclass {
+    use IdentifierTrait, Restrictions, MediaTrait;
 
-#[ORM\Entity(repositoryClass: FamilyRepository::class)]
-class Family extends RecordSuperclass
-{
-  use IdentifierTrait, Restrictions, MediaTrait;
+    protected const XREF_PREFIX = 'F';
 
-  protected const XREF_PREFIX = 'F';
+    /**
+    *    project
+    */
 
-  /**
-   *
-   */
+    #[ ORM\ManyToOne( targetEntity: Project::class, inversedBy: 'families' ) ]
+    private $project;
 
-  #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: "families")]
-  private $project;
+    /**
+    *  chil
+    *  - Implementerer Gedcom chil
+    */
 
-  /**
-   *  relation
-   *
-   *  - Association class between FAM and HUSB/WIFE/INDI
-   *
-   */
+    #[ ORM\OneToMany( mappedBy: 'family', targetEntity: Relation::class, cascade: [ 'persist', ], ) ]
+    private Collection $chil;
 
-  #[ORM\OneToMany(mappedBy: 'family', targetEntity: Relation::class, /*indexBy: 'individual',*/ cascade: ["persist"], orphanRemoval: true)]
-  private $relations;
+    #[ ORM\OneToOne( inversedBy: 'family_id1', cascade: [ 'persist', 'remove' ] ) ]
+    private ? Relation $husb = null;
 
-  #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-  private ?Relation $husbandRelation = null;
+    #[ ORM\OneToOne( inversedBy: 'family_id2', cascade: [ 'persist', 'remove' ] ) ]
+    private ? Relation $wife = null;
 
-  #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-  private ?Relation $wifeRelation = null;
+    // ********************************************
+    // ********************************************
+    // ********************************************
 
+    /**
+    * Summary of __construct
+    */
 
-  // ********************************************
-  // ********************************************
-  // ********************************************
+    public function __construct() {
+        $this->chil = new ArrayCollection();
+    }
 
-  public function __construct()
-  {
-      $this->relations = new ArrayCollection();
-      $this->media= new Media();
-  }
+    /**
+    *  function getProject()
+    */
 
+    public function getProject(): ? Project {
+        return $this->project;
+    }
 
-  /**
-   *  function getProject()
-   */
+    /**
+    *  function setProject()
+    */
 
-  public function getProject(): ?Project
-  {
-      return $this->project;
-  }
+    public function setProject( ? Project $project ): self {
+        $this->project = $project;
 
+        return $this;
+    }
 
-  /**
-   *  function setProject()
-   */
+    /**
+    * @return Collection<int, Relation>
+    */
 
-  public function setProject(?Project $project): self
-  {
-      $this->project = $project;
+    public function getChil(): Collection {
+        return $this->chil;
+    }
 
-      return $this;
-  }
+    public function addChil( Relation $chil ): self {
+        if ( !$this->chil->contains( $chil ) ) {
+            $this->chil->add( $chil );
+            $chil->setFamily( $this );
+        }
 
+        return $this;
+    }
 
-  /**
-   *  getRelations
-   */
+    public function removeChil( Relation $chil ): self {
+        if ( $this->chil->removeElement( $chil ) ) {
+            // set the owning side to null ( unless already changed )
+            if ( $chil->getFamily() === $this ) {
+                $chil->setFamily( null );
+            }
+        }
 
-  public function getRelations(): Collection
-  {
-      return $this->relations;
-  }
+        return $this;
+    }
 
+    public function getHusb(): ? Relation {
+        return $this->husb;
+    }
 
-  /**
-   *  function addRelation()
-   */
+    public function setHusb( ? Relation $husb ): self {
+        $this->husb = $husb;
 
-  public function addRelation(Relation $relation): self
-  {
-      if (!$this->relations->contains($relation)) {
-          $this->relations[] = $relation;
-          $relation->setFamily($this);
-      }
-      return $this;
-  }
+        return $this;
+    }
 
+    public function getWife(): ? Relation {
+        return $this->wife;
+    }
 
-  /**
-   *  function removeRelation()
-   */
+    public function setWife( ? Relation $wife ): self {
+        $this->wife = $wife;
 
-  public function removeRelation(Relation $relation): self
-  {
-      if ($this->relations->removeElement($relation)) {
-          // set the owning side to null (unless already changed)
-          if ($relation->getFamily() === $this) {
-              $relation->setFamily(null);
-          }
-      }
-      return $this;
-  }
-
-
-
-  /**
-   *  function getChildRelations()
-   *
-   *  - Returns alle the elements of collection releations for which 'role' == FamilyRole::CHIL
-   *
-   */
-
-  public function getChildRelations(): Collection
-  {
-    return $this->relations->filter(function($element) { $element->isChild(); });
-  }
-
-
-  /**
-   *
-   *
-   */
-
-  public function getHusband(): ?Individual
-  {
-      return $this->husbandRelation != null ? $this->husbandRelation->getIndividual() : null;
-  }
-
-
-
-  /**
-   *
-   *
-   */
-
-  public function getHusbandRelation(): ?Relation
-  {
-      return $this->husbandRelation;
-  }
-
-  /**
-   *
-   *
-   */
-
-  public function setHusbandRelation(?Relation $husbandRelation): self
-  {
-      $this->husbandRelation = $husbandRelation;
-      $this->husbandRelation->setRole(FamilyRole::HUSB);
-      $this->addRelation($this->husbandRelation);
-
-      return $this;
-  }
-
-
-
-  /**
-   *
-   *
-   */
-
-  public function getwife(): ?Individual
-  {
-      return $this->wifeRelation != null ? $this->wifeRelation->getIndividual() : null;
-  }
-
-
-
-
-  /**
-   *
-   *
-   */
-
-  public function getWifeRelation(): ?Relation
-  {
-      return $this->wifeRelation;
-  }
-
-  /**
-   *
-   *
-   */
-
-  public function setWifeRelation(?Relation $wifeRelation): self
-  {
-      $this->wifeRelation = $wifeRelation;
-      $this->wifeRelation->setRole(FamilyRole::WIFE);
-      $this->addRelation($this->wifeRelation);
-
-      return $this;
-  }
-
-
-
-  /**
-   *  function addChild()
-   *
-   */
-
-  public function addChild(Individual $child)
-  {
-    $relation= new Relation();
-    $relation->setFamily($this);
-    $reletion->setIndividual($child);
-    return $this->addRelation($relation);
-  }
-
-
-
-  /**
-   *  function setHusband()
-   *
-   */
-
-  public function setHusband(Individual $husband)
-  {
-    $relation= new Relation();
-    $relation->setFamily($this);
-    $reletion->setIndividual($husband);
-    return $this->setHusbandRelation($relation);
-  }
-
-  /**
-   *  function setWife()
-   *
-   */
-
-  public function setWife(Individual $wife)
-  {
-    $relation= new Relation();
-    $relation->setFamily($this);
-    $reletion->setIndividual($wife);
-    return $this->setWifeRelation($relation);
-  }
-
-
-  /**
-   *  function individualExits()
-   *
-   *  Checker om en given id allerede findes i 'relations' kollektionen
-   */
-
-  public function individualExits(ulid $id) : bool
-  {
-    return $id ? array_key_exits($id, $this->getRelations())  : false;
-  }
+        return $this;
+    }
 
 }

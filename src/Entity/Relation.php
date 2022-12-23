@@ -1,17 +1,15 @@
 <?php
 
 /**
- * This file is part of the Overlund package.
- *
- * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
- * @copyright 2000-2022 Filicis Software
- * @license MIT
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-
+* This file is part of the Overlund package.
+*
+* @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+* @copyright 2000-2022 Filicis Software
+* @license MIT
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
 
 namespace App\Entity;
 
@@ -22,38 +20,33 @@ use       App\Entity\Individual;
 use       App\Entity\Family;
 
 /**
- *  TODO:
- */
+*  TODO:
+*/
 
-enum FamilyRole: string
-{
+enum FamilyRole: string {
     case CHIL = 'C';
     case HUSB = 'H';
     case WIFE = 'W';
 }
 
-
-
 /**
- *  class Relation
- *
- *  Association class between FAM and HUSB / WIFE /INDI
- * Gedcom FAMC, FAMS, HUSB, WIFE, CHIL
- */
+*  class Relation
+*  - Forenings klasse mellem Family og Individual der implementerer Gedcom FAMC, FAMS, HUSB, WIFE, CHIL
+*
+*/
 
-#[ORM\Entity(repositoryClass: RelationRepository::class)]
-class Relation
-{
+#[ ORM\Entity( repositoryClass: RelationRepository::class ) ]
 
-  #[ORM\Id]
-  #[ORM\GeneratedValue]
-  #[ORM\Column(type: 'integer')]
-  private $id;
+class Relation {
 
+    #[ ORM\Id ]
+    #[ ORM\GeneratedValue ]
+    #[ ORM\Column( type: 'integer' ) ]
+    private $id;
 
-  /**
-   *  familyRole
-   *  - Defines The individual's role in the current family
+    /**
+    *  familyRole
+    *  - Defines The individual's role in the current family
    */
 
   #[ORM\Column(type: 'string', enumType: FamilyRole::class)]
@@ -80,156 +73,187 @@ class Relation
    *
    */
 
+
+      /**
+     *  family
+     */
+
+  #[ORM\ManyToOne(targetEntity: "Family", inversedBy: 'chil', fetch: 'LAZY' ) ]
+  #[ ORM\JoinColumn(name: 'family_id', referencedColumnName: 'id', nullable: false, onDelete: 'Cascade' ) ]
+  private ?Family $family = null;
+    
+
   /**
    *  individual
    *
    *
    */
 
-  #[ORM\ManyToOne(targetEntity: Individual::class, inversedBy: 'relations')]
-  #[OrderBy(["csortorder" => "ASC"])]
-  #[ORM\JoinColumn(onDelete: "Cascade")]
-  private $individual;
+  #[ORM\ManyToOne(targetEntity: Individual::class, inversedBy: 'fams', fetch: 'LAZY' ) ]
+  #[ OrderBy( [ 'csortorder' => 'ASC' ] ) ]
+  #[ ORM\JoinColumn(name: 'individual_id', referencedColumnName: 'id', nullable: true, onDelete: 'Cascade' ) ]
+    private $individual;
 
-  /**
-   *  family
-   *
-   */
+    /**
+    *  family_id1
+    *  - Virtuel kolonne der spejler family_id
+    */
 
-  #[ORM\ManyToOne(targetEntity: Family::class, inversedBy: 'relations')]
-  #[OrderBy(["fsortorder" => "ASC"])]
-  #[ORM\JoinColumn(nullable: false, onDelete: "Cascade")]
-  private $family;
+  #[ Column( type: 'binary', name: 'family_id', insertable: false, updatable: false ) ]
+  public $family_id1;
 
-  #[ORM\Column(nullable: true)]
-  private ?int $fsortorder = null;
+    /**
+    *  family_id2
+    *  - Virtuel kolonne der spejler family_id
+    */
 
-  #[ORM\Column(nullable: true)]
-  private ?int $csortorder = null;
+  #[ Column( type: 'binary', name: 'family_id', insertable: false, updatable: false ) ]
+    public $family_id2;
 
+    #[ ORM\Column( nullable: true ) ]
+    private ?int $fsortorder = null;
 
-  // ********************************************
-  // ********************************************
-  // ********************************************
+    #[ ORM\Column( nullable: true ) ]
+    private ?int $csortorder = null;
 
+    // ********************************************
+    // ********************************************
+    // ********************************************
 
-  public function __construct()
-  {
-    $this->role= FamilyRole::CHIL;
-  }
+    public function __construct() {
+        $this->role = FamilyRole::CHIL;
+    }
 
+    public function getId(): ?int {
+        return $this->id;
+    }
 
+    /**
+    *
+    *  @return string Indicates the type of this relation, eg Husband, Wife, Child
+    */
 
-  public function getId(): ?int
-  {
-    return $this->id;
-  }
+    public function getType(): ?string {
+        return $this->type;
+    }
 
+    public function setType( string $type ): self {
+        $this->type = $type;
 
-  /**
-   *
-   *  @return string Indicates the type of this relation, eg Husband, Wife, Child
-   */
+        return $this;
+    }
 
-  public function getType(): ?string
-  {
-    return $this->type;
-  }
+    public function getPedi(): ?string {
+        return $this->pedi;
+    }
 
-  public function setType(string $type): self
-  {
-    $this->type = $type;
+    public function setPedi( ?string $pedi ): self {
+        $this->pedi = $pedi;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  public function getPedi(): ?string
-  {
-    return $this->pedi;
-  }
+    public function getStat(): ?string {
+        return $this->stat;
+    }
 
-  public function setPedi(?string $pedi): self
-  {
-    $this->pedi = $pedi;
+    public function setStat( ?string $stat ): self {
+        $this->stat = $stat;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  public function getStat(): ?string
-  {
-    return $this->stat;
-  }
+    public function getIndividual(): ?Individual {
+        return $this->individual;
+    }
 
-  public function setStat(?string $stat): self
-  {
-    $this->stat = $stat;
+    public function setIndividual( ?Individual $individual ): self {
+        $this->individual = $individual;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  public function getIndividual(): ?Individual
-  {
-    return $this->individual;
-  }
+    public function getPhrase(): ?string {
+        return $this->phrase;
+    }
 
-  public function setIndividual(?Individual $individual): self
-  {
-    $this->individual = $individual;
+    public function setPhrase( ?string $phrase ): self {
+        $this->phrase = $phrase;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  public function getFamily(): ?Family
-  {
-    return $this->family;
-  }
+    public function isChild() : bool {
+        return $this->role == FamilyRole::CHIL;
+    }
 
-  public function setFamily(?Family $family): self
-  {
-    $this->family = $family;
+    public function getFsortorder(): ?int {
+        return $this->fsortorder;
+    }
 
-    return $this;
-  }
+    public function setFsortorder( ?int $fsortorder ): self {
+        $this->fsortorder = $fsortorder;
 
-  public function getPhrase(): ?string
-  {
-      return $this->phrase;
-  }
+        return $this;
+    }
 
-  public function setPhrase(?string $phrase): self
-  {
-      $this->phrase = $phrase;
+    public function getCsortorder(): ?int {
+        return $this->csortorder;
+    }
 
-      return $this;
-  }
+    public function setCsortorder( ?int $csortorder ): self {
+        $this->csortorder = $csortorder;
 
+        return $this;
+    }
 
-  public function isChild() : bool
-  {
-    return $this->role == FamilyRole::CHIL;
-  }
+    public function getFamily(): ?Family {
+        return $this->family;
+    }
 
-  public function getFsortorder(): ?int
-  {
-      return $this->fsortorder;
-  }
+    public function setFamily( ?Family $family ): self {
+        $this->family = $family;
 
-  public function setFsortorder(?int $fsortorder): self
-  {
-      $this->fsortorder = $fsortorder;
+        return $this;
+    }
 
-      return $this;
-  }
+    public function getFamilyId1(): ?Family {
+        return $this->family_id1;
+    }
 
-  public function getCsortorder(): ?int
-  {
-      return $this->csortorder;
-  }
+    public function setFamilyId1( ?Family $family_id1 ): self {
+        // unset the owning side of the relation if necessary
+        if ( $family_id1 === null && $this->family_id1 !== null ) {
+            $this->family_id1->setHusb( null );
+        }
 
-  public function setCsortorder(?int $csortorder): self
-  {
-      $this->csortorder = $csortorder;
+        // set the owning side of the relation if necessary
+        if ( $family_id1 !== null && $family_id1->getHusb() !== $this ) {
+            $family_id1->setHusb( $this );
+        }
 
-      return $this;
-  }
+        $this->family_id1 = $family_id1;
+
+        return $this;
+    }
+
+    public function getFamilyId2(): ?Family {
+        return $this->family_id2;
+    }
+
+    public function setFamilyId2( ?Family $family_id2 ): self {
+        // unset the owning side of the relation if necessary
+        if ( $family_id2 === null && $this->family_id2 !== null ) {
+            $this->family_id2->setWife( null );
+        }
+
+        // set the owning side of the relation if necessary
+        if ( $family_id2 !== null && $family_id2->getWife() !== $this ) {
+            $family_id2->setWife( $this );
+        }
+
+        $this->family_id2 = $family_id2;
+
+        return $this;
+    }
 }

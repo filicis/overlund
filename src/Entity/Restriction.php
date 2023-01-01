@@ -2,17 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\RestrictionsRepository;
+//use Doctrine\ORM\Mapping\Embeddable;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: RestrictionsRepository::class)]
-class Restrictions
+#[ORM\Embeddable]
+class Restriction
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
     #[ORM\Column]
     private ?bool $locked = false;
 
@@ -21,11 +16,6 @@ class Restrictions
 
     #[ORM\Column]
     private ?bool $privacy = false;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function isLocked(): ?bool
     {

@@ -11,10 +11,10 @@
 
 #}
 
+{# % set form= famform % #}
 
-
-<div class="card border-dark text-dark bg-gradient h-100 shadow-lg p-3 mb-5 rounded"
-  style="background-color: #F0FFEF"
+<div class="card border-dark text-dark bg-success-subtle bs-tertiary-bg bgg-gradient h-100 shadow-lg p-3 mb-5 rounded"
+  styless="background-color: #F0FFEF"
   >
   {# <fieldset {{ fam ? '' : 'Disabled'}}> #}
   {{ form_start(famform) }}
@@ -44,7 +44,7 @@
 
           {# Restrictions #}
 
-          {{ include('editor/restrictions.html.twig', {form: 'fam'}) }}
+          {{ include('editor/restrictions.html.twig', {form: famform} ) }}
 
           <!--fieldset class="form-group col text-end"
             data-action="change->editor#famRestrictions"

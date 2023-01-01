@@ -16,47 +16,20 @@
           {{ disabled }}
           data-action="change->editor#restrictions"
           data-editor-resn-param= {{ resn }}
-          data-editor-form-param= {{ form }}>
+          data-editor-form-param= "" >
 
-  <input type="checkbox"
-  id="{{ form  ~ 'l' }}"
-  class="btn-check"
-  name= "locked"
-  autocomplete="off">
-  <label class="btn btn-outline-dark btn-light btn-sm"
-    for="{{ form ~ 'l' }}"
-    data-bs-toggle="tooltip"
-    title="{{ 'Write protection' | trans }}">
-    {{ icon_unlocked | raw }}
-  </label>
+  {{ form_widget(form.locked, {'label': icon_locked,
+    'attr': {'class': 'btn-check'},
+    'label_attr': {'class': 'btn btn-outline-dark btn-light btn-sm'}}) }}
 
+  {{ form_widget(form.confidential, {'label': icon_confidential,
+    'attr': {'class': 'btn-check'},
+    'label_attr': {'class': 'btn btn-outline-dark btn-light btn-sm'}})}}
 
+  {{ form_widget(form.privacy, {'label': icon_private, 
+    'attr': {'class': 'btn-check'},
+    'label_attr': {'class': 'btn btn-outline-dark btn-light btn-sm' }}) | raw }}
 
-  <input type="checkbox"
-  id="{{ form ~ '2' }}"
-  class="btn-check"
-  name= "Confidential"
-  autocomplete="off">
-  <label class="btn btn-outline-dark btn-light btn-sm"
-    for="{{ form ~ '2' }}"
-    data-bs-toggle="tooltip"
-    title= "{{ 'Confidential' | trans }}">
-    {{  icon_confidential | raw  }}
-  </label>
-
-
-
-  <input type="checkbox"
-  id="{{ form ~ '3' }}"
-  class="btn-check"
-  name= "Privacy"
-  autocomplete="off">
-  <label class="btn btn-outline-dark btn-light btn-sm"
-    for="{{ form ~ '3' }}"
-    data-bs-toggle="tooltip"
-    title="{{ 'Privacy' | trans }}">
-    {{ icon_private | raw }}
-  </label>
 
 </fieldset>
 

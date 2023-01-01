@@ -26,10 +26,10 @@ twig:
 # Iconer
 #	- Alt overvejende i form af Emojis hentet fra søgemaskinen https://emojipedia.org/
 
-        icon_locked: 					          '&#x1F512;'
-        icon_unlocked: 				          '&#x1F513;'
-        icon_confidential:              '&#x1F910;'		# Zipper-Mouth Face
-        icon_private:					          '&#x1F6D1;'		# Stop sign
+        icon_locked:				          "\U0001F512"
+        icon_unlocked: 				        "\U0001F513"
+        icon_confidential:            "\U0001F910"		# Zipper-Mouth Face
+        icon_private:					        "\U0001F6D1"		# Stop sign
         icon_person:                    '&#x1F9D1;'   # Person
         icon_male:                      '&#x1F468;'   # Man
         icon_female:                    '&#x1F469;'   # Woman

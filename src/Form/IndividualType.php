@@ -24,12 +24,13 @@ class IndividualType extends AbstractType {
         //->add( 'identifierLink' )
         //->add( 'media' )
         ;
-
+/*
         $builder
         ->add( 'names', CollectionType::class, [
             'entry_type' => NameStructureType::class,
             'entry_options' => [ 'label' => false ]
         ] );
+ */
     }
 
     public function configureOptions( OptionsResolver $resolver ): void {

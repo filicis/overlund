@@ -63,10 +63,10 @@ class Individual extends RecordSuperclass {
 
     */
 
-    #[ ORM\OneToMany( mappedBy: 'individual', targetEntity: Relation::class, , fetch: 'EAGER' ) ]
+    #[ ORM\OneToMany( mappedBy: 'individual', targetEntity: Relation::class, fetch: 'EAGER' ) ]
     private $fams;
 
-    #[ ORM\OneToMany( mappedBy: 'individual', targetEntity: Relation::class, , fetch: 'EAGER' ) ]
+    #[ ORM\OneToMany( mappedBy: 'individual', targetEntity: Relation::class, fetch: 'EAGER' ) ]
     private $famc;
 
     /**

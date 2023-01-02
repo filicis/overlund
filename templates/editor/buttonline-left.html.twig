@@ -14,7 +14,7 @@
 
 
 <button type="button"
-  class="btn btn-outline-dark  btn-light"
+  class= "{{ app_btn_class }}"
   data-bs-toggle="tooltip"
   title="{{ 'New Individual' | trans }}"
   data-action="editor#newIndividual"
@@ -22,7 +22,7 @@
   {{ constant('App\\Controller\\EditorController::ICON_PERSON') }}
 </button>
 <button type="button"
-  class="btn btn-outline-dark btn-light"
+  class= "{{ app_btn_class }}"
   data-bs-toggle="tooltip"
   data-action="editor#libraryIndividualRecords"
   title="{{ 'Search for individual' | trans }}">
@@ -33,7 +33,7 @@
 <div class="dropup dropup-center">
 
   <button type="button"
-    class="btn btn-outline-dark btn-light dropdown-toggle"
+    class= "{{ app_btn_class }} dropdown-toggle"
     data-bs-toggle="dropdown"
     data-bs-auto-close="true"
     title="{{ 'History' | trans}}">
@@ -63,19 +63,19 @@
 
 
 <button type="button"
-  class="btn btn-outline-dark btn-light"
+  class= "{{ app_btn_class }}"
   data-bs-toggle="tooltip"
   title="{{ 'Next' | trans}}">
   {{ constant('App\\Controller\\EditorController::ICON_RIGHT') }}
 </button>
 <button type="button"
-  class="btn btn-outline-dark btn-light"
+  class= "{{ app_btn_class }}"
   data-bs-toggle="tooltip"
   title="{{ 'Delete individual' | trans }}">
   {{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}
 </button>
 <button type="button"
-  class="btn btn-outline-dark btn-light"
+  class= "{{ app_btn_class }}"
   data-bs-toggle="tooltip"
   title="Search for individual">
 

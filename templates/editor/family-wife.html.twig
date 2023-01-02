@@ -4,80 +4,35 @@
 
 #}
 
-
-<div class="row"
-     data-action="editor#selectWife">
-
-
+<div class="row" data-action="editor#selectWife">
   {# Wifes Picture #}
 
   <picture class="col-1 d-flex align-items-center p-1">
+    <source srcset="\karen.jpg" />
 
-      <source srcset="\karen.jpg">
-
-      <img src="\female-employee-icon.svg" class="img-fluid" alt="">
+    <img src="\female-employee-icon.svg" class="img-fluid" alt="" />
   </picture>
-
 
   {# Wifes name #}
 
-  <div class="col"
-       data-action="click->editor#selectIndividual"
-       data-editor-id-param="01GFNSC6E2KNHT8GF1QT5X19D9">
+  <div class="col" data-action="click->editor#selectIndividual" data-editor-id-param="01GFNSC6E2KNHT8GF1QT5X19D9">
     <div class="mb-2">
-      <label class="small" for="idWife">{{ 'Wife' | trans }}:</label>
-      <input type="text"
-          class="form-control form-control-sm shadow-lg"
-          id="idWife"
-          placeholder="Tekst"
-          value="Anne Margrethe Sørensdatter" readonly>
+      <label class="small" for="idWife">{{ 'Wife'|trans }}:</label>
+      <input type="text" class="form-control form-control-sm shadow-lg" id="idWife" placeholder="Tekst" value="Anne Margrethe Sørensdatter" readonly />
     </div>
   </div>
-
 
   {# Tilhørende knap-apparat #}
 
   <div class="col-3 text-end">
+    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#newAsWife" data-bs-toggle="tooltip" title="{{ 'New Individual as Wife'|trans }}">{{ icon_female|raw }}</button>
 
-    <button type="button"
-      class="btn btn-sm btn-outline-dark btn-light"
-      data-action="editor#newAsWife"
-      data-bs-toggle="tooltip"
-      title="{{ 'New Individual as Wife' | trans }}">
-      {{ icon_female | raw }}
-    </button>
+    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#linkAsWife" data-bs-toggle="tooltip" title="{{ 'Link current Individual as Wife'|trans }}">{{ constant('App\\Controller\\EditorController::ICON_LINK') }}</button>
 
-    <button type="button"
-      class="btn btn-sm btn-outline-dark btn-light"
-      data-action="editor#linkAsWife"
-      data-bs-toggle="tooltip"
-      title="{{ 'Link current Individual as Wife' | trans  }}">
-      {{ constant('App\\Controller\\EditorController::ICON_LINK') }}
-    </button>
+    <button type="button" data-action="editor#unlinkWife" class="{{ app_btn_class_sm }}" data-bs-toggle="tooltip" title="{{ 'Remove as Wife'|trans }}">{{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}</button>
 
-    <button type="button"
-      data-action="editor#unlinkWife"
-      class="btn btn-sm btn-outline-dark btn-light"
-      data-bs-toggle="tooltip"
-      title="{{'Remove as Wife' | trans }}">
-      {{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}
-    </button>
+    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#searchForWife" data-bs-toggle="tooltip" title="{{ 'Search for Wife'|trans }}">{{ constant('App\\Controller\\EditorController::ICON_SEARCH_L') }}</button>
 
-    <button type="button"
-      class="btn btn-sm btn-outline-dark btn-light"
-      data-action="editor#searchForWife"
-      data-bs-toggle="tooltip"
-      title="{{ 'Search for Wife' | trans }}">
-      {{ constant('App\\Controller\\EditorController::ICON_SEARCH_L') }}
-    </button>
-
-    <button type="button"
-      class="btn btn-sm btn-outline-dark btn-light"
-      data-action="editor#notesForWife"
-      data-bs-toggle="tooltip"
-      title="{{'Notes for Wife' | trans}}">
-      {{ icon_notes | raw }}
-    </button>
-
+    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#notesForWife" data-bs-toggle="tooltip" title="{{ 'Notes for Wife'|trans }}">{{ icon_notes|raw }}</button>
   </div>
 </div>

@@ -41,7 +41,7 @@
 
 
       <button type="button"
-        class="btn btn-sm btn-outline-dark btn-light"
+        class= "{{ app_btn_class_sm }}"
         data-action="editor#newAsChild"
         data-bs-toggle="tooltip"
         title="{{'New Individual as Child' | trans}}">
@@ -49,7 +49,7 @@
       </button>
 
       <button type="button"
-        class="btn btn-sm btn-outline-dark btn-light"
+        class= "{{ app_btn_class_sm }}"
         data-action="editor#linkAsChild"
         data-bs-toggle="tooltip"
         title="{{'Link current Individual as Child' | trans}}">
@@ -57,7 +57,7 @@
       </button>
 
       <button type="button"
-        class="btn btn-sm btn-outline-dark btn-light"
+        class= "{{ app_btn_class_sm }}"
         data-action="editor#unlinkChild"
         data-bs-toggle="tooltip"
         title="{{'Remove as Child' | trans}}">
@@ -65,7 +65,7 @@
       </button>
 
       <button type="button"
-        class="btn btn-sm btn-outline-dark btn-light"
+        class= "{{ app_btn_class_sm }}"
         data-action="editor#searchForChild"
         data-bs-toggle="tooltip"
         title="{{'Search for Child' | trans}}">
@@ -73,14 +73,14 @@
       </button>
 
       <button type="button"
-        class="btn btn-sm btn-outline-dark btn-light"
+        class= "{{ app_btn_class_sm }}"
         data-action="editor#notesForChild"
         data-bs-toggle="tooltip"
         title="{{'Notes for Child' | trans}}">
         {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
       </button>
       <button type="button"
-        class="btn btn-sm btn-outline-dark btn-light"
+        class= "{{ app_btn_class_sm }}"
         data-action="editor#pedigreeOfChild"
         data-bs-toggle="tooltip"
         title="{{'Change Pedigree of Child' | trans}}">
@@ -90,7 +90,7 @@
       <br>
 
       <button type="button"
-        class="btn btn-sm btn-outline-dark btn-light"
+        class= "{{ app_btn_class_sm }}"
         data-action="editor#moveChildUp"
         data-bs-toggle="tooltip"
         title="{{'Move Child up' | trans}}">
@@ -100,7 +100,7 @@
 
 
       <button type="button"
-        class="btn btn-sm btn-outline-dark btn-light"
+        class= "{{ app_btn_class_sm }}"
         data-action="editor#moveChildDown"
         data-bs-toggle="tooltip"
         title="{{'Move Child down' | trans}}">
@@ -117,7 +117,7 @@
 <div class="card-body d-flex justify-content-between">
 
   <button type="button"
-    class="btn btn-ssm btn-outline-dark shadow btn-light"
+    class= "{{ app_btn_class }}"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Events and Attributes">
@@ -125,7 +125,7 @@
   </button>
 
   <button role="button"
-    class="btn btn-ssm  btn-outline-dark shadow btn-light"
+    class= "{{ app_btn_class }}"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Notes">
@@ -134,7 +134,7 @@
   </button>
 
   <button type="button"
-    class="btn btn-ssm btn-outline-dark shadow btn-light"
+    class= "{{ app_btn_class }}"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Source Citations">
@@ -142,7 +142,7 @@
   </button>
 
   <button type="button"
-    class="btn btn-ssm btn-outline-dark shadow btn-light"
+    class= "{{ app_btn_class }}"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Media">
@@ -151,7 +151,7 @@
   </button>
 
   <button type="button"
-    class="btn btn-ssm btn-outline-dark shadow btn-light"
+    class= "{{ app_btn_class }}"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Last Change / Restrictions">
@@ -159,7 +159,7 @@
   </button>
 
   <button type="button"
-    class="btn btn-ssm btn-outline-dark shadow btn-light"
+    class= "{{ app_btn_class }}"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Researchers">

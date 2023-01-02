@@ -19,16 +19,16 @@
           data-editor-form-param= "" >
 
   {{ form_widget(form.locked, {'label': icon_locked,
-    'attr': {'class': 'btn-check'},
-    'label_attr': {'class': 'btn btn-outline-dark btn-light btn-sm'}}) }}
+    'attr': {'class': 'btn-check shadow-lg'},
+    'label_attr': {'class': app_btn_class_sm }}) }}
 
   {{ form_widget(form.confidential, {'label': icon_confidential,
     'attr': {'class': 'btn-check'},
-    'label_attr': {'class': 'btn btn-outline-dark btn-light btn-sm'}})}}
+    'label_attr': {'class': app_btn_class_sm }})}}
 
   {{ form_widget(form.privacy, {'label': icon_private, 
     'attr': {'class': 'btn-check'},
-    'label_attr': {'class': 'btn btn-outline-dark btn-light btn-sm' }}) | raw }}
+    'label_attr': {'class': app_btn_class_sm }}) }}
 
 
 </fieldset>

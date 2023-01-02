@@ -21,6 +21,9 @@ use       App\Entity\Family;
 
 /**
 *  TODO:
+*      - function personalName() der henter individdets fulde navn
+*      - function media() der henter billeder af individdet, formentlig som en Collection
+*      - function xxxx() der henter individdets fødsels- og dødsår
 */
 
 enum FamilyRole: string {

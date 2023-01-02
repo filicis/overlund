@@ -1,41 +1,24 @@
 {# templates/editor/buttonline-right.html.twig #}
 
-
-<button type="button"
-  class="btn btn-outline-dark btn-light"
-  data-bs-toggle="tooltip"
-  title="Add new family"
-  data-action="editor#newFamily"
-  data-editor-myurl-param="{{ url('api_family_new', {url: 'Project01'} ) }} ">
-  {{ constant('App\\Controller\\EditorController::ICON_FAMILY') }}
-</button>
-<button type="button"
-  data-action="editor#libraryFamilyRecords"
-  class="btn btn-outline-dark btn-light" data-bs-toggle="tooltip" title="Search for family">
-  {{ constant('App\\Controller\\EditorController::ICON_SEARCH_L') }}
-</button>
+<button type="button" class="{{ app_btn_class }}" data-bs-toggle="tooltip" title="Add new family" data-action="editor#newFamily" data-editor-myurl-param="{{ url('api_family_new', { url: 'Project01' }) }} ">{{ constant('App\\Controller\\EditorController::ICON_FAMILY') }}</button>
+<button type="button" data-action="editor#libraryFamilyRecords" class="{{ app_btn_class }}" data-bs-toggle="tooltip" title="Search for family">{{ constant('App\\Controller\\EditorController::ICON_SEARCH_L') }}</button>
 <div class="dropup dropup-center">
-
-  <button type="button"
-    class="btn btn-outline-dark btn-light dropdown-toggle"
-    data-bs-toggle="dropdown"
-    data-bs-auto-close="true"
-    title="{{ 'Previous' | trans}}">
-    {{ constant('App\\Controller\\EditorController::ICON_LEFT') }}
-  </button>
+  <button type="button" class="{{ app_btn_class }} dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="true" title="{{ 'Previous'|trans }}">{{ constant('App\\Controller\\EditorController::ICON_LEFT') }}</button>
   <ul class="dropdown-menu">
-    <li class=""><h6 class="dropdown-header">Dropdown header</h6></li>
-    <li class=""><a class="dropdown-item" href="#"><pre class="d-inline">  [F52] </pre>Jens Peter Jensen - Dorthea Marie Jørgensen (1901)</a></li>
-    <li class=""><a class="dropdown-item" href="#"><pre class="d-inline">   [F7] </pre>Ludvig Rasmussen - Karen Marie Jensen (1919)</a></li>
-    <li class=""><a class="dropdown-item" href="#"><pre class="d-inline">[F8120] </pre>Thorvald Aron Jensen - Else Kirstine Pedersen (1934)</a></li>
+    <li class="">
+      <h6 class="dropdown-header">Dropdown header</h6>
+    </li>
+    <li class="">
+      <a class="dropdown-item" href="#"><pre class="d-inline">[F52]</pre>Jens Peter Jensen - Dorthea Marie Jørgensen (1901)</a>
+    </li>
+    <li class="">
+      <a class="dropdown-item" href="#"><pre class="d-inline">[F7]</pre>Ludvig Rasmussen - Karen Marie Jensen (1919)</a>
+    </li>
+    <li class="">
+      <a class="dropdown-item" href="#"><pre class="d-inline">[F8120]</pre>Thorvald Aron Jensen - Else Kirstine Pedersen (1934)</a>
+    </li>
   </ul>
 </div>
-<button type="button" class="btn btn-outline-dark btn-light">
-  {{ constant('App\\Controller\\EditorController::ICON_RIGHT') }}
-</button>
-<button type="button" class="btn btn-outline-dark btn-light">
-  {{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}
-</button>
-<button type="button" class="btn btn-outline-dark btn-light"><i class="bi bi-file-lock text-danger"></i>
-</button>
-
+<button type="button" class="{{ app_btn_class }}">{{ constant('App\\Controller\\EditorController::ICON_RIGHT') }}</button>
+<button type="button" class="{{ app_btn_class }}">{{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}</button>
+<button type="button" class="{{ app_btn_class }}"><i class="bi bi-file-lock text-danger"></i></button>

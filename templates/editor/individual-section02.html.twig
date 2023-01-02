@@ -43,7 +43,7 @@
       <div class="text-end">
 
         <button type="button"
-          class="btn btn-sm btn-outline-dark btn-light"
+          class= "{{ app_btn_class_sm }}"
           data-bs-toggle="tooltip"
           title="{{'Change Pedigree of Child' | trans}}">
           {{ constant('App\\Controller\\EditorController::ICON_UP') }}
@@ -51,7 +51,7 @@
         </button>
 
         <button type="button"
-          class="btn btn-sm btn-outline-dark btn-light"
+          class= "{{ app_btn_class_sm }}"
           data-bs-toggle="tooltip"
           title="{{'Change Pedigree of Child' | trans}}">
           {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
@@ -103,7 +103,7 @@
 
 <div class="card-body d-flex justify-content-between">
   <button type="button"
-    class="btn btn-outline-dark btn-light shadow"
+    class= "{{ app_btn_class }}"
     data-action="click->editor#individualEvents"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
@@ -111,7 +111,7 @@
     {{ constant('App\\Controller\\EditorController::ICON_EVENTS') }}
   </button>
   <button role="button"
-    class="btn btn-outline-dark btn-light shadow"
+    class= "{{ app_btn_class }}"
     data-action="click->editor#notes"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
@@ -119,7 +119,7 @@
     {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
   </button>
   <button type="button"
-    class="btn btn-outline-dark btn-light shadow"
+    class= "{{ app_btn_class }}"
     data-action="click->editor#sourceCitations"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
@@ -127,7 +127,7 @@
     {{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
   </button>
   <button type="button"
-    class="btn btn-outline-dark btn-light shadow"
+    class= "{{ app_btn_class }}"
     data-action="click->editor#mediaFiles"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
@@ -135,14 +135,14 @@
     {{ constant('App\\Controller\\EditorController::ICON_MEDIA') }}
   </button>
   <button type="button"
-    class="btn btn-outline-dark btn-light shadow"
+    class= "{{ app_btn_class }}"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Last Change / Restrictions">
     {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
   </button>
   <button type="button"
-    class="btn btn-outline-dark btn-light shadow"
+    class= "{{ app_btn_class }}"
     data-bs-toggle="modal"
     data-bs-target="#mlrModal"
     data-bs-placement="bottom"

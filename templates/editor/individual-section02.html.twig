@@ -46,7 +46,7 @@
           class= "{{ app_btn_class_sm }}"
           data-bs-toggle="tooltip"
           title="{{'Change Pedigree of Child' | trans}}">
-          {{ constant('App\\Controller\\EditorController::ICON_UP') }}
+          {{ icon_up }}
 
         </button>
 
@@ -54,7 +54,7 @@
           class= "{{ app_btn_class_sm }}"
           data-bs-toggle="tooltip"
           title="{{'Change Pedigree of Child' | trans}}">
-          {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
+          {{ icon_down }}
         </button>
       </div>
     </div>
@@ -80,18 +80,18 @@
       <div class="text-end">
 
         <button type="button" disabled
-          class="btn btn-sm btn-outline-dark btn-light"
+          class="{{ app_btn_class_sm }}"
           data-bs-toggle="tooltip"
           title="{{'Change Pedigree of Child' | trans}}">
-          {{ constant('App\\Controller\\EditorController::ICON_UP') }}
+          {{ icon_up }}
 
         </button>
 
         <button type="button" disabled
-          class="btn btn-sm btn-outline-dark btn-light"
+          class="{{ app_btn_class_sm }}"
           data-bs-toggle="tooltip"
           title="{{'Change Pedigree of Child' | trans}}">
-          {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
+          {{ icon_down }}
         </button>
 
       </div>
@@ -108,7 +108,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="{% trans %} Events and Attributes {% endtrans %}">
-    {{ constant('App\\Controller\\EditorController::ICON_EVENTS') }}
+    {{ icon_events }}
   </button>
   <button role="button"
     class= "{{ app_btn_class }}"
@@ -116,7 +116,8 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="{{ 'Notes' | trans }}">
-    {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
+    {{ icon_notes }}
+
   </button>
   <button type="button"
     class= "{{ app_btn_class }}"
@@ -124,7 +125,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="{{ 'Source Citations' | trans }}">
-    {{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
+    {{ icon_sources }}
   </button>
   <button type="button"
     class= "{{ app_btn_class }}"
@@ -132,14 +133,14 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="{{ 'Media' | trans }}">
-    {{ constant('App\\Controller\\EditorController::ICON_MEDIA') }}
+    {{ icon_media }}
   </button>
   <button type="button"
     class= "{{ app_btn_class }}"
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Last Change / Restrictions">
-    {{ constant('App\\Controller\\EditorController::ICON_PRIVATE') }}
+    {{ icon_private }}
   </button>
   <button type="button"
     class= "{{ app_btn_class }}"
@@ -147,7 +148,7 @@
     data-bs-target="#mlrModal"
     data-bs-placement="bottom"
     title="{{ 'Researchers' | trans }}">
-    {{ constant('App\\Controller\\EditorController::ICON_RESEARCHERS') }}
+    {{ icon_researchers }}
   </button>
 </div>
 

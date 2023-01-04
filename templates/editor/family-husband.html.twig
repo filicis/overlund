@@ -18,7 +18,7 @@
   {% set synlig = 'visible' %}
 {% endif %}
 
-{% set btnclass= "btn btn-outline-dark btn-light btn-sm" %}
+{% set btnclass = 'btn btn-outline-dark btn-light btn-sm' %}
 
 <div class="row" data-action="editor#selectHusband">
   {# Billede
@@ -46,12 +46,12 @@
   <div class="col-3 text-end">
     <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#newAsHusband" data-bs-toggle="tooltip" title="{{ 'New Individual as Husband'|trans }}">{{ icon_male|raw }}</button>
 
-    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#linkAsHusband" data-bs-toggle="tooltip" title="{{ 'Link current Individual as Husband'|trans }}">{{ constant('App\\Controller\\EditorController::ICON_LINK') }}</button>
+    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#linkAsHusband" data-bs-toggle="tooltip" title="{{ 'Link current Individual as Husband'|trans }}">{{ icon_link }}</button>
 
-    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#unlinkHusband" data-bs-toggle="tooltip" title="{{ 'Remove as Husband'|trans }}">{{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}</button>
+    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#unlinkHusband" data-bs-toggle="tooltip" title="{{ 'Remove as Husband'|trans }}">{{ icon_remove }}</button>
 
-    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#searchForHusband" data-bs-toggle="tooltip" title="{{ 'Search for Husband'|trans }}">{{ constant('App\\Controller\\EditorController::ICON_SEARCH_L') }}</button>
+    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#searchForHusband" data-bs-toggle="tooltip" title="{{ 'Search for Husband'|trans }}">{{ icon_search_l }}</button>
 
-    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#notesForHusband" data-bs-toggle="tooltip" title="{{ 'Notes for Husband'|trans }}">{{ icon_notes|raw }}</button>
+    <button type="button" class="{{ app_btn_class_sm }}" data-action="editor#notesForHusband" data-bs-toggle="tooltip" title="{{ 'Notes for Husband'|trans }}">{{ icon_notes }}</button>
   </div>
 </div>

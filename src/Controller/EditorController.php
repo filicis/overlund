@@ -40,39 +40,10 @@ use       Doctrine\Persistence\ManagerRegistry;
 **/
 
 class EditorController extends AbstractController {
+
     private $es;
     private $entityManager;
     private $doctrine;
-
-    public const ICON_LOCKED            = '🔏';
-    public const ICON_UNLOCKED          = '🔓';
-    public const ICON_CONFIDENTIAL      = '🤐';
-    public const ICON_PRIVATE           = '⛔';
-
-    public const ICON_PERSON            = '👱';
-    public const ICON_MALE              = '👨';
-    public const ICON_FEMALE            = '👩';
-    public const ICON_CHILD             = '👶';
-    public const ICON_FAMILY            = '👪';
-    public const ICON_RESEARCHERS       = '🕵️';
-
-    public const ICON_PEDIGREE       =    '👶🔗👪';
-
-    public const ICON_SEARCH_L          = '🔍';
-    public const ICON_SEARCH_R          = '🔎';
-
-    public const ICON_EVENTS            = '📅';
-    public const ICON_NOTES             = '📝';
-    public const ICON_SOURCES           = '📚';
-    public const ICON_MEDIA             = '🖼️';
-
-    public const ICON_UP                = '🔺';
-    public const ICON_DOWN              = '🔻';
-    public const ICON_LEFT              = '👈';
-    public const ICON_RIGHT             = '👉️';
-
-    public const ICON_LINK             = '🔗';
-    public const ICON_REMOVE             = '❌';
 
     /**
     *  function __constructor()

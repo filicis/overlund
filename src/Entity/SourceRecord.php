@@ -1,15 +1,15 @@
 <?php
 
 /**
- * This file is part of the Overlund package.
- *
- * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
- * @copyright 2000-2022 Filicis Software
- * @license MIT
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+* This file is part of the Overlund package.
+*
+* @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+* @copyright 2000-2022 Filicis Software
+* @license MIT
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
 
 namespace App\Entity;
 
@@ -18,166 +18,155 @@ use       Doctrine\Common\Collections\ArrayCollection;
 use       Doctrine\Common\Collections\Collection;
 use       Doctrine\ORM\Mapping as ORM;
 
+use       App\Entity\RecordSuperclass;
+use       App\Entity\Project;
 use       App\Entity\Traits\IdentifierTrait;
 
 /**
- *  class SourceRecord
- *
- *  Implementerer Gedcom v7 SOURCE_RECORD
- **/
+*  class SourceRecord
+*
+*  Implementerer Gedcom v7 SOURCE_RECORD
+**/
 
-#[ORM\Entity(repositoryClass: SourceRecordRepository::class)]
-class SourceRecord  extends RecordSuperclass
-{
-  use IdentifierTrait;
+#[ ORM\Entity( repositoryClass: SourceRecordRepository::class ) ]
+#[ ORM\Table( name: 'sourcerecord' ) ]
 
-  protected const XREF_PREFIX = 'S';
+class SourceRecord  extends RecordSuperclass {
+    use IdentifierTrait;
 
-  #[ORM\Column(length: 255, nullable: true)]
-  private ?string $author = null;
+    protected const XREF_PREFIX = 'S';
 
-  #[ORM\Column(length: 255, nullable: true)]
-  private ?string $title = null;
+    #[ ORM\Column( length: 255, nullable: true ) ]
+    private ?string $author = null;
 
-  #[ORM\Column(length: 255, nullable: true)]
-  private ?string $Abbreviation = null;
+    #[ ORM\Column( length: 255, nullable: true ) ]
+    private ?string $title = null;
 
-  #[ORM\Column(length: 255, nullable: true)]
-  private ?string $publication = null;
+    #[ ORM\Column( length: 255, nullable: true ) ]
+    private ?string $Abbreviation = null;
 
-  #[ORM\OneToMany(mappedBy: 'sourceRecord', targetEntity: SourceRepositoryCitation::class, orphanRemoval: true)]
-  private Collection $repositoryCitations;
+    #[ ORM\Column( length: 255, nullable: true ) ]
+    private ?string $publication = null;
 
-  #[ORM\ManyToOne(inversedBy: 'sourceRecords')]
-  #[ORM\JoinColumn(nullable: false)]
-  private ?Project $project = null;
+    #[ ORM\OneToMany( mappedBy: 'sourceRecord', targetEntity: SourceRepositoryCitation::class, orphanRemoval: true ) ]
+    private Collection $repositoryCitations;
 
-  public function __construct()
-  {
-      parent::__construct();
-      $this->repositoryCitations = new ArrayCollection();
-  }
+    #[ ORM\ManyToOne( inversedBy: 'sourceRecords' ) ]
+    #[ ORM\JoinColumn( nullable: false ) ]
+    private ?Project $project = null;
 
+    public function __construct() {
+        parent::__construct();
+        $this->repositoryCitations = new ArrayCollection();
+    }
 
-  /**
-   *
-   **/
+    /**
+    *
+    **/
 
-  public function getAuthor(): ?string
-  {
-    return $this->author;
-  }
+    public function getAuthor(): ?string {
+        return $this->author;
+    }
 
-  /**
-   *
-   **/
+    /**
+    *
+    **/
 
-  public function setAuthor(?string $author): self
-  {
-    $this->author = $author;
+    public function setAuthor( ?string $author ): self {
+        $this->author = $author;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  /**
-   *
-   **/
+    /**
+    *
+    **/
 
-  public function getTitle(): ?string
-  {
-    return $this->title;
-  }
+    public function getTitle(): ?string {
+        return $this->title;
+    }
 
-  /**
-   *
-   **/
+    /**
+    *
+    **/
 
-  public function setTitle(?string $title): self
-  {
-    $this->title = $title;
+    public function setTitle( ?string $title ): self {
+        $this->title = $title;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  /**
-   *
-   **/
+    /**
+    *
+    **/
 
-  public function getAbbreviation(): ?string
-  {
-    return $this->Abbreviation;
-  }
+    public function getAbbreviation(): ?string {
+        return $this->Abbreviation;
+    }
 
-  /**
-   *
-   **/
+    /**
+    *
+    **/
 
-  public function setAbbreviation(?string $Abbreviation): self
-  {
-    $this->Abbreviation = $Abbreviation;
+    public function setAbbreviation( ?string $Abbreviation ): self {
+        $this->Abbreviation = $Abbreviation;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  /**
-   *
-   **/
+    /**
+    *
+    **/
 
-  public function getPublication(): ?string
-  {
-    return $this->publication;
-  }
+    public function getPublication(): ?string {
+        return $this->publication;
+    }
 
-  /**
-   *
-   **/
+    /**
+    *
+    **/
 
-  public function setPublication(?string $publication): self
-  {
-    $this->publication = $publication;
+    public function setPublication( ?string $publication ): self {
+        $this->publication = $publication;
 
-    return $this;
-  }
+        return $this;
+    }
 
-  /**
-   * @return Collection<int, SourceRepositoryCitation>
-   */
-  public function getRepositoryCitations(): Collection
-  {
-      return $this->repositoryCitations;
-  }
+    /**
+    * @return Collection<int, SourceRepositoryCitation>
+    */
 
-  public function addRepositoryCitation(SourceRepositoryCitation $repositoryCitation): self
-  {
-      if (!$this->repositoryCitations->contains($repositoryCitation)) {
-          $this->repositoryCitations->add($repositoryCitation);
-          $repositoryCitation->setSourceRecord($this);
-      }
+    public function getRepositoryCitations(): Collection {
+        return $this->repositoryCitations;
+    }
 
-      return $this;
-  }
+    public function addRepositoryCitation( SourceRepositoryCitation $repositoryCitation ): self {
+        if ( !$this->repositoryCitations->contains( $repositoryCitation ) ) {
+            $this->repositoryCitations->add( $repositoryCitation );
+            $repositoryCitation->setSourceRecord( $this );
+        }
 
-  public function removeRepositoryCitation(SourceRepositoryCitation $repositoryCitation): self
-  {
-      if ($this->repositoryCitations->removeElement($repositoryCitation)) {
-          // set the owning side to null (unless already changed)
-          if ($repositoryCitation->getSourceRecord() === $this) {
-              $repositoryCitation->setSourceRecord(null);
-          }
-      }
+        return $this;
+    }
 
-      return $this;
-  }
+    public function removeRepositoryCitation( SourceRepositoryCitation $repositoryCitation ): self {
+        if ( $this->repositoryCitations->removeElement( $repositoryCitation ) ) {
+            // set the owning side to null ( unless already changed )
+            if ( $repositoryCitation->getSourceRecord() === $this ) {
+                $repositoryCitation->setSourceRecord( null );
+            }
+        }
 
-  public function getProject(): ?Project
-  {
-      return $this->project;
-  }
+        return $this;
+    }
 
-  public function setProject(?Project $project): self
-  {
-      $this->project = $project;
+    public function getProject(): ?Project {
+        return $this->project;
+    }
 
-      return $this;
-  }
+    public function setProject( ?Project $project ): self {
+        $this->project = $project;
+
+        return $this;
+    }
 }

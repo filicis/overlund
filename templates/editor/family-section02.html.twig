@@ -45,7 +45,7 @@
         data-action="editor#newAsChild"
         data-bs-toggle="tooltip"
         title="{{'New Individual as Child' | trans}}">
-        {{ constant('App\\Controller\\EditorController::ICON_CHILD') }}
+        {{ icon_child}}
       </button>
 
       <button type="button"
@@ -53,7 +53,7 @@
         data-action="editor#linkAsChild"
         data-bs-toggle="tooltip"
         title="{{'Link current Individual as Child' | trans}}">
-        {{ constant('App\\Controller\\EditorController::ICON_LINK') }}
+        {{ icon_link}}
       </button>
 
       <button type="button"
@@ -61,7 +61,7 @@
         data-action="editor#unlinkChild"
         data-bs-toggle="tooltip"
         title="{{'Remove as Child' | trans}}">
-        {{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}
+        {{ icon_remove }}
       </button>
 
       <button type="button"
@@ -69,7 +69,7 @@
         data-action="editor#searchForChild"
         data-bs-toggle="tooltip"
         title="{{'Search for Child' | trans}}">
-        {{ constant('App\\Controller\\EditorController::ICON_SEARCH_L') }}
+        {{ icon_search_l}}
       </button>
 
       <button type="button"
@@ -77,14 +77,16 @@
         data-action="editor#notesForChild"
         data-bs-toggle="tooltip"
         title="{{'Notes for Child' | trans}}">
-        {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
+        {{ icon_notes }}
       </button>
       <button type="button"
         class= "{{ app_btn_class_sm }}"
         data-action="editor#pedigreeOfChild"
         data-bs-toggle="tooltip"
         title="{{'Change Pedigree of Child' | trans}}">
-        {{ constant('App\\Controller\\EditorController::ICON_PEDIGREE') }}
+        {{ icon_child }}
+        {{ icon_link }}
+        {{ icon_family }}
       </button>
 
       <br>
@@ -94,7 +96,7 @@
         data-action="editor#moveChildUp"
         data-bs-toggle="tooltip"
         title="{{'Move Child up' | trans}}">
-        {{ constant('App\\Controller\\EditorController::ICON_UP') }}
+        {{ icon_up }}
 
       </button>
 
@@ -104,7 +106,7 @@
         data-action="editor#moveChildDown"
         data-bs-toggle="tooltip"
         title="{{'Move Child down' | trans}}">
-        {{ constant('App\\Controller\\EditorController::ICON_DOWN') }}
+        {{ icon_down }}
       </button> </div>
 
     </div>
@@ -121,7 +123,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Events and Attributes">
-    {{ constant('App\\Controller\\EditorController::ICON_EVENTS') }}
+    {{ icon_events }}
   </button>
 
   <button role="button"
@@ -129,8 +131,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Notes">
-    {{ constant('App\\Controller\\EditorController::ICON_NOTES') }}
-
+    {{ icon_notes }}
   </button>
 
   <button type="button"
@@ -138,7 +139,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Source Citations">
-    {{ constant('App\\Controller\\EditorController::ICON_SOURCES') }}
+    {{ icon_sources }}
   </button>
 
   <button type="button"
@@ -146,8 +147,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Media">
-    {{ constant('App\\Controller\\EditorController::ICON_MEDIA') }}
-
+    {{ icon_media}}
   </button>
 
   <button type="button"
@@ -155,7 +155,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Last Change / Restrictions">
-    {{ constant('App\\Controller\\EditorController::ICON_MEDIA') }}
+    {{ icon_media }}
   </button>
 
   <button type="button"
@@ -163,7 +163,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="bottom"
     title="Researchers">
-    {{ constant('App\\Controller\\EditorController::ICON_RESEARCHERS') }}
+    {{ icon_researchers }}
   </button>
 </div>
 

@@ -7,8 +7,8 @@ parameters:
     locale: da
     app_locales: da|sv|no|en
     app.supported_locales: da|en|no|sv
-    app.icon.locked: '&#x1F512;'
-    app.icon.unlocked: '&#x1F513;'
+    app.icon.locked: "\U0001F512"
+    app.icon.unlocked: "\U0001F513"
 
     app.ievent.tags:
         - BIRTH:  No01
@@ -32,49 +32,51 @@ twig:
 
         icon_locked:				          "\U0001F512"
         icon_unlocked: 				        "\U0001F513"
-        icon_confidential:            "\U0001F910"		# Zipper-Mouth Face
+        icon_confidential:            "\U0001F910"    # Zipper-Mouth Face
         icon_private:					        "\U0001F6D1"		# Stop sign
-        icon_person:                  "\U0001F9D1"   # Person
-        icon_male:                    "\U0001F468"   # Man
-        icon_female:                  "\U0001F469"   # Woman
-        icon_child:                   "\U0001F9D2"   # Child
-        icon_family:                  "\U0001F46A"   # Family
-        icon_researchers:
-        icon_delete: 					        "\U0001F5D1"   # Waste Basket
+        icon_person:                  "\U0001F9D1"    # Person
+        icon_male:                    "\U0001F468"    # Man
+        icon_female:                  "\U0001F469"    # Woman
+        icon_child:                   "\U0001F9D2"    # Child
+        icon_family:                  "\U0001F46A"    # Family
+        icon_researchers:             "\U0001F575"    # Detective
+        icon_delete: 					        "\U0001F5D1"    # Waste Basket
         icon_up:						          "\U0001F53A"		# Red Triangle Pointed Up
         icon_down:						        "\U0001F53B"		# Red Triangle Pointed Down
-        icon_left:                    "\U00002B05"    # Left Arrow
-        icon_right:                   "\U000027A1"    # Right Arrow
+        _icon_left:                   "\U00002B05"   # Left Arrow
+        icon_left:                    "\U0001F448"    # Pointing Left
+        _icon_right:                  "\U000027A1"    # Right Arrow
+        icon_right:                   "\U0001F449"    # Pointing Right
         icon_pedigree:
-
         icon_events:		          		"\U0001F5D3"		# Spiral Calendar
-#       icon_notes:						        "\U0001F5D2"		#	Spiral Notepad
-        icon_notes:						        "\U0001F4CB"		#	Clipboard
+#       _icon_notes:						        "\U0001F5D2"		#	Spiral Notepad
+        _icon_notes:						        "\U0001F4CB"		#	Clipboard
+        icon_notes:						        "\U0001F4DD"		#	Memo
         icon_sources:					        "\U0001F4DA"		# Books
-        icon_media:						"🖼️"
+        icon_media:						        "🖼️"
+        icon_date:                    "\U0001F4C5"    # Calendar
+        icon_address:					        "\U0001F4E9"    # Envelope with Arrow
+        icon_place:						        "\U0001F4CD"    # Round Pushpin
+        icon_identifier:              "\U0001F4DB"    # Name Badge
+        icon_internet:                "\U0001F310"    # Internet
+        icon_new:						          "\U0001F195"		# New Sign
+        icon_edit:						        "\U0000270F"		# Pencil
+        icon_names:						        "\U0001F4C7"		# Card Index
+        icon_alias:						        "\U0001F977"		# Ninja
+        icon_association:			        "\U000026D3"		# Chains
+        icon_ok:                      "\U00002714"    # Check Mark
+        icon_cancel:                  "\U0000274C"    # Cross Mark
+        icon_help:                    "\U00002754"    # White Question Mark
+        icon_desktop:                 "\U0001F5A5"    # White Question Mark
+        icon_folder:                  "\U0001F4C1"    # White Question Mark
+        icon_edit1:                   "\U00002754"    # White Question Mark
+        icon_envelope:                "\U0001F583"    # Enveloper
 
-        icon_date:                    "\U0001F4C5"   # Calendar
-        icon_address:					        "\U0001F4E9"   # Envelope with Arrow
-        icon_place:						        "\U0001F4CD"   # Round Pushpin
+        icon_remove:                "\U0000274C"    # Cross Mark
+        icon_search_r:               "\U0001f50E"    # Cross Mark
+        icon_search_l:               "\U0001f50D"    # Cross Mark
+        icon_link:               "\U0001f517"    # Link Symbol
 
-        icon_identifier:                '&#x1F4DB;'   # Name Badge
-
-        icon_internet:                  '&#x1F310;'     # Internet
-
-        icon_new:						'&#x1F195;'		# New Sign
-        icon_edit:						'&#x270F;'		# Pencil
-
-        icon_names:						'&#x1F4C7;'		# Card Index
-        icon_alias:						'&#x1F977;'		# Ninja
-        icon_association:			    '&#x26D3;'		# Chains
-
-        icon_ok:                        '&#x2714;'    # Check Mark
-        icon_cancel:                    '&#x274C;'    # Cross Mark
-        icon_help:                      '&#x2754;'    # White Question Mark
-        icon_desktop:                   '&#x1F5A5;'    # White Question Mark
-        icon_folder:                   '&#x1F4C1;'    # White Question Mark
-        icon_edit1:                   '&#x2754;'    # White Question Mark
-        icon_envelope:                  '&#x1F583;'     # Enveloper
 
         ievent_tags:
           - BIRTH:  No01

@@ -19,14 +19,14 @@
   title="{{ 'New Individual' | trans }}"
   data-action="editor#newIndividual"
   data-editor-myurl-param="{{ url('api_individual_new', {url: 'Project01'} ) }} ">
-  {{ constant('App\\Controller\\EditorController::ICON_PERSON') }}
+  {{ icon_person }}
 </button>
 <button type="button"
   class= "{{ app_btn_class }}"
   data-bs-toggle="tooltip"
   data-action="editor#libraryIndividualRecords"
   title="{{ 'Search for individual' | trans }}">
-  {{ constant('App\\Controller\\EditorController::ICON_SEARCH_R') }}
+  {{ icon_search_r }}
 </button>
 
 
@@ -37,7 +37,7 @@
     data-bs-toggle="dropdown"
     data-bs-auto-close="true"
     title="{{ 'History' | trans}}">
-    {{ constant('App\\Controller\\EditorController::ICON_LEFT') }}
+    {{ icon_left }}
   </button>
   <ul class="dropdown-menu border border-primary shadow-lg">
     <li class=""><h6 class="dropdown-header">Dropdown header</h6></li>
@@ -66,13 +66,13 @@
   class= "{{ app_btn_class }}"
   data-bs-toggle="tooltip"
   title="{{ 'Next' | trans}}">
-  {{ constant('App\\Controller\\EditorController::ICON_RIGHT') }}
+  {{ icon_right }}
 </button>
 <button type="button"
   class= "{{ app_btn_class }}"
   data-bs-toggle="tooltip"
   title="{{ 'Delete individual' | trans }}">
-  {{ constant('App\\Controller\\EditorController::ICON_REMOVE') }}
+  {{ icon_remove }}
 </button>
 <button type="button"
   class= "{{ app_btn_class }}"

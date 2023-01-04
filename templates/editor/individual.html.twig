@@ -11,15 +11,16 @@
     - indi
 #}
 
-<div class="card bg-info-subtle border-dark text-dark bg-gradient h-100 shadow-lg p-3 mb-5 rounded" sstyle="background-color: #DBFFFE" {{ stimulus_target('editor', 'indicard') }}>
+<div class="card bg-info-subtle border-dark text-dark bg-gradient h-100 shadow-lg p-3 mb-5 rounded" {{ stimulus_target('editor', 'indicard') }}>
   {# <fieldset {{ indi ? '' : 'Disabled' }}> #}
   {{ form_start(indiform) }}
   <div class="row card-header border-dark">
     {% if indi %}
       <div class="col-8 text-nowrap overflow-hidden">
         {# <pre class="d-inline">[{{ indiform.xref }}]</pre> #}
-        {{ form_widget(indiform.xref) }}
-        <span {{ stimulus_target('editor', 'personalName') }} title="{{ indi.id }}">{{ indi ? indi.names.first.personalName : '' }}</span>
+        <span>{{ form_widget(indiform.xref) }}</span>
+        <!-- span {{ stimulus_target('editor', 'personalName') }} title="{{ indi.id }}">{{ indi ? indi.names.first.personalName : '' }}</span -->
+        <span {{ stimulus_target('editor', 'personalName') }} title="{{ indi.id }}">Anders Hansen Nielsen</span>
       </div>
     {% else %}
       Helloo world !

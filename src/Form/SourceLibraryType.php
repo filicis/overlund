@@ -8,6 +8,8 @@ use       Symfony\Component\Form\FormBuilderInterface;
 use       Symfony\Component\OptionsResolver\OptionsResolver;
 
 use       Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use       Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use       Symfony\Component\Form\Extension\Core\Type\SearchType;
 
 use       App\Form\SourceRecordType;
 
@@ -18,6 +20,8 @@ class SourceLibraryType extends AbstractType {
         'entry_options' => [
             'attr' => [ 'class' => '' ]
         ] ] )
+        ->add( 'searchTerm', SearchType::class, [ 'mapped' => false ] )
+        ->add( 'page', IntegerType::class, [ 'mapped' => false ] )
         ;
     }
 

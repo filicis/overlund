@@ -13,30 +13,25 @@
 
 namespace App\Form;
 
-use App\Entity\RepositoryRecord;
-use App\Entity\AddressStructure;
-use App\Form\AddressType;
-
+use App\Entity\SubmitterRecord;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-/**
-* Summary of RepositoryRecordType
-*/
-
-class RepositoryRecordType extends AbstractType {
+class SubmitterRecordType extends AbstractType {
     public function buildForm( FormBuilderInterface $builder, array $options ): void {
         $builder
-        ->add( 'name', TextType::class )
-        ->add( 'address', AddressType::class )
+        //->add( 'lastChange' )
+        //->add( 'crea' )
+        //->add( 'xref' )
+        ->add( 'project' )
+        ->add( 'identifierLink' )
         ;
     }
 
     public function configureOptions( OptionsResolver $resolver ): void {
         $resolver->setDefaults( [
-            'data_class' => RepositoryRecord::class,
+            'data_class' => SubmitterRecord::class,
         ] );
     }
 }

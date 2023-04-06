@@ -46,13 +46,17 @@ export default class extends Controller {
         //that.holgerTarget.innerText= JSON.stringify(text.split(/[\r\n]+/g));
         //that.holgerTarget.innerText = text.split(/[\r\n]+/g);
         //that.holgerTarget.innerText = text;
+        console.log('** Tester **');
+        console.log(that.holgerTarget.textContent);
+        console.log('** Tester **');
         that.holgerTarget.textContent = text;
+        console.log(that.holgerTarget.textContent);
+        console.log('** Tester **');
       }
       else
         console.log("Target not found");
-      var lines = text.split(eol).map(function (str) { return str.match(mstr) }); // tolerate both Windows and Unix linebreaks
 
-      //lines.forEach(function (item, index, arr) { /* ... */ });
+      var lines = text.split(eol).map(function (str) { return str.match(mstr) }); // tolerate both Windows and Unix linebreaks
 
       console.log('Line: ', lines[0]);
       //console.log(lines);
@@ -73,12 +77,12 @@ export default class extends Controller {
 
     reader.onloadstart = function (e) {
       // TODO: Tilføj spinner
-      that.holgerTarget.innerText = "";
+      that.holgerTarget.textContent = "";
       that.spinnerTarget.className = "visible";
       console.log('ClassName: ', that.spinnerTarget.className)
 
 
-      that.holgerTarget.value = "";
+      //that.holgerTarget.value = "";
     }
 
     // filereader.onprogress
@@ -100,7 +104,7 @@ export default class extends Controller {
 
   submit(event) {
     console.log("Submit called...")
-    this.holgerTarget.value = "** Hello There **"
+    //this.holgerTarget.value = "** Hello There **"
   }
 
 }

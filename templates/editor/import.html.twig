@@ -19,22 +19,21 @@
 
 {% endif %}
 
-<div class="d-flex justify-content-center">
+<div class="container-fluid">
+<div class="d-flex align-items-center justify-content-center">
   <div class="card w-50"
     data-controller="gedcom"
     >
 
     <h2 class="card-header text-center">
       {% block cardheader %}
-
-      {{ formTitle|trans }}
-
-
+        {{ formTitle|trans }}
       {% endblock cardheader %}
     </h2>
+
     <div class="card-body">
       {% if warning is defined %}
-      <div class="alert alert-warning"> {{ warning|trans }}</div>
+        <div class="alert alert-warning"> {{ warning|trans }}</div>
       {% endif %}
 
       <div class="mb-3">
@@ -51,10 +50,8 @@
 
       {% block cardbody %}
       {{ form_widget(myform) }}
-
-      <div data-gedcom-target= "polyview holger">
-
-      </div>
+      <!--div data-gedcom-target= "polyview holger">
+      </div-->
 
       {# % if error %}
       <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -94,6 +91,7 @@
     </div>
 
   </div>
+</div>
 </div>
 
 {% if myform is defined %}

@@ -193,9 +193,6 @@ class ProjectController extends AbstractController
 
     $defaultData = ['message' => 'Type your message here'];
     $form= $this->createFormBuilder($defaultData)
-      // -> add('filename', FileType::class, ['allow_file_upload' => true])
-      //-> add('preview', TextareaType::class, ['attr' => ['data-gedcom-target' => 'preview holger']])
-      //-> add('knap', SubmitType::class)
       -> getForm();
 
     $form->handleRequest($request);

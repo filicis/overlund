@@ -1,8 +1,27 @@
+/**
+ * This file is part of the Overlund package.
+ *
+ * @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+ * @copyright 2000-2023 Filicis Software
+ * @license MIT
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+/**
+ *  gedcom-controller.js 
+ * 
+ * 
+ */
+
 // assets/controllers/gedcom-controller.js
 import { Controller } from '@hotwired/stimulus';
+//import { ulid } from 'ulid';
 
 export default class extends Controller {
-  static targets = ['polyview', 'holger', 'spinner']
+  static targets = ['polyview', 'holger', 'spinner', 'textarea', 'select', 'input'];
+
 
 
 
@@ -11,17 +30,31 @@ export default class extends Controller {
 
   import(event) {
     console.log('Import called now...')
-    var file = event.target.files[0];
+    console.log("Ulid: ", ULID.ulid());
+    // var file = event.target.files[0];
+
+
+    // Henter aktuelle encoding
+
+    var enc = this.selectTarget.selectedOptions[0].value;
+    console.log('Enc: ', enc);
+
+    var file = this.inputTarget.files[0];
+    if (file == null)
+      return;
     console.log('Filename: ', file.name);
     console.log('Filesize: ', file.size);
     console.log('Filetype: ', file.type);
+
     var reader = new FileReader();
     var that = this;
 
     // filereader.error
+    //
+    //
 
     reader.onerror = function (e) {
-      console.log("Unable ro read file");
+      console.log("Unable ro read file", e);
     }
 
     // filereader.onload
@@ -42,28 +75,22 @@ export default class extends Controller {
 
       //console.log('ClassName: ', that.spinnerTarget.className)
 
-      if (that.hasHolgerTarget) {
-        //that.holgerTarget.innerText= JSON.stringify(text.split(/[\r\n]+/g));
-        //that.holgerTarget.innerText = text.split(/[\r\n]+/g);
-        //that.holgerTarget.innerText = text;
-        console.log('** Tester **');
-        console.log(that.holgerTarget.textContent);
-        console.log('** Tester **');
-        that.holgerTarget.textContent = text;
-        console.log(that.holgerTarget.textContent);
-        console.log('** Tester **');
+      if (that.hasTextareaTarget) {
+        that.textareaTarget.textContent = text;
       }
       else
         console.log("Target not found");
 
-      var lines = text.split(eol).map(function (str) { return str.match(mstr) }); // tolerate both Windows and Unix linebreaks
+      const arr1 = ["Cecilie", "Lone"];
+      //var lines = text.split(eol).map(function (str) { return str.match(mstr) }); // tolerate both Windows and Unix linebreaks
+      var lines = that.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "Lone"]; return arr1.concat(str.match(mstr)) }); // tolerate both Windows and Unix linebreaks
 
       console.log('Line: ', lines[0]);
-      //console.log(lines);
       console.table(lines);
     }
 
     //  filereader.onloadend
+    //
     //  - fjerner spinner igen
 
     reader.onloadend = function (e) {
@@ -74,10 +101,11 @@ export default class extends Controller {
 
 
     // filereader.onloadstart
+    //
+    //
 
     reader.onloadstart = function (e) {
-      // TODO: Tilføj spinner
-      that.holgerTarget.textContent = "";
+      that.textareaTarget.textContent = "";
       that.spinnerTarget.className = "visible";
       console.log('ClassName: ', that.spinnerTarget.className)
 
@@ -86,16 +114,16 @@ export default class extends Controller {
     }
 
     // filereader.onprogress
+    //
+    //
 
     reader.onprogress = function (e) {
       console.log("Progress", e);
     }
 
-    console.log('Read file');
-    reader.readAsText(file, 'latin1');
 
-    if (this.hasHolgerTarget)
-      console.log("YES !");
+    console.log('Read file');
+    reader.readAsText(file, enc);
 
   }
 

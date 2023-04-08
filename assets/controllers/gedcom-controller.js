@@ -81,11 +81,14 @@ export default class extends Controller {
       else
         console.log("Target not found");
 
-      const arr1 = ["Cecilie", "Lone"];
+      const arr1 = ["Cecilie", null, "Project"];
+      const level = [];
       //var lines = text.split(eol).map(function (str) { return str.match(mstr) }); // tolerate both Windows and Unix linebreaks
-      var lines = that.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "Lone"]; return arr1.concat(str.match(mstr)) }); // tolerate both Windows and Unix linebreaks
+      var lines = that.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "", "Project"]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
+      //var lines = that.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "Lone"]; const arr2 = str.match(mstr); level[arr2[1]] = arr1[0]; return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
 
       console.log('Line: ', lines[0]);
+      console.log('Level: ', level);
       console.table(lines);
     }
 

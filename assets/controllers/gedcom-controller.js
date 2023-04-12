@@ -59,7 +59,7 @@ export default class extends Controller {
 
     // filereader.onload
     //
-    // Validerer at første linie er '0 HEAD'
+    // Validerer at første linie er '0 HEAD' og at der findes en trailer '0 TRLR'
 
     reader.onload = function (e) {
 
@@ -70,10 +70,14 @@ export default class extends Controller {
       var text = e.target.result;
 
       const result = /^0 HEAD/.test(text);
+      console.log('HEAD: ', result);
 
-      console.log('Result: ', result);
+      const result1 = /[\r\n]0 TRLR/.test(text);
+      console.log('TRLR: ', result1);
 
-      //console.log('ClassName: ', that.spinnerTarget.className)
+
+
+
 
       if (that.hasTextareaTarget) {
         that.textareaTarget.textContent = text;
@@ -84,10 +88,17 @@ export default class extends Controller {
       const arr1 = ["Cecilie", null, "Project"];
       const level = [];
       //var lines = text.split(eol).map(function (str) { return str.match(mstr) }); // tolerate both Windows and Unix linebreaks
-      var lines = that.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "", "Project"]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
+      //var lines = that.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "", "Project"]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
+
+      var lines = text.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "", "Project"]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
+
+      window.localStorage.setItem('gedcom', lines);
+
       //var lines = that.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "Lone"]; const arr2 = str.match(mstr); level[arr2[1]] = arr1[0]; return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
 
-      console.log('Line: ', lines[0]);
+      //that.textareaTarget.textContent = Object.entries(lines);
+
+      console.log('Line: ', JSON.stringify(lines));
       console.log('Level: ', level);
       console.table(lines);
     }

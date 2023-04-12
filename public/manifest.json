@@ -3,7 +3,7 @@
   "name": "Codename Overlund",
   "icons": [
     {
-      "src": "/images/icons-vector.svg",
+      "src": "/icons/tree.svg",
       "type": "image/svg+xml",
       "sizes": "512x512"
     },
@@ -19,9 +19,9 @@
     }
   ],
   "id": "/?source=pwa",
-  "start_url": "/?source=pwa",
+  "start_url": "/en/tree/project01",
   "background_color": "#3367D6",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "/",
   "theme_color": "#3367D6",
   "shortcuts": [
@@ -40,7 +40,7 @@
       "icons": [{ "src": "/images/tomorrow.png", "sizes": "192x192" }]
     }
   ],
-  "description": "Weather forecast information",
+  "description": "Webbased Gedcom Editor",
   "screenshots": [
     {
       "src": "/images/screenshot1.png",

@@ -1,20 +1,20 @@
 <?php
 
 /**
-* This file is part of the Overlund package.
-*
-* ( c ) Michael Lindhardt Rasmussen <filicis@gmail.com>
-*
-* For the full copyright and license information, please view the LICENSE
-* file that was distributed with this source code.
-**/
+ * This file is part of the Overlund package.
+ *
+ * ( c ) Michael Lindhardt Rasmussen <filicis@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ **/
 
 namespace App\Controller;
 
-use       App\Entity\Project;
-use       App\Form\ProjectType;
-use       App\Form\ProjectsType;
-use	      App\Form\GedcomImportType;
+use App\Entity\Project;
+use App\Form\ProjectType;
+use App\Form\ProjectsType;
+use App\Form\GedcomImportType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -28,40 +28,48 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Workflow\WorkflowInterface;
 
-use       Doctrine\Persistence\ManagerRegistry;
-use       Doctrine\ORM\ORMException;
+//use Symfony\Component\String\u;
+use Symfony\Component\String\UnicodeString;
+use function Symfony\Component\String\u;
 
-use       Psr\Log\LoggerInterface;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\ORMException;
+
+use Psr\Log\LoggerInterface;
 
 /**
-*  ProjectController
-*  - Indeholder alle system administrative funktioner omkring projecter
-*
-**/
+ *  ProjectController
+ *  - Indeholder alle system administrative funktioner omkring projecter
+ *
+ **/
 
-class ProjectController extends AbstractController {
+class ProjectController extends AbstractController
+{
     private $projectStateMachine;
 
-    public function __construct( WorkflowInterface $projectStateMachine ) {
+    public function __construct(WorkflowInterface $projectStateMachine)
+    {
         $this->projectStateMachine = $projectStateMachine;
     }
 
-    #[ Route( '/admin/project', name: 'adminProject' ) ]
+    #[Route('/admin/project', name: 'adminProject')]
 
-    public function index(): Response {
-        return $this->render( 'project/index.html.twig', [
+    public function index(): Response
+    {
+        return $this->render('project/index.html.twig', [
             'controller_name' => 'ProjectController',
-        ] );
+        ]);
     }
 
     /**
-    *  new
-    *
-    **/
+     *  new
+     *
+     **/
 
-    #[ Route( '/admin/newProject', name: 'adminNewProject' ) ]
+    #[Route('/admin/newProject', name: 'adminNewProject')]
 
-    public function new( Request $request, ManagerRegistry $doctrine ): Response {
+    public function new(Request $request, ManagerRegistry $doctrine): Response
+    {
         $project = new Project();
 
         /*
@@ -71,133 +79,147 @@ class ProjectController extends AbstractController {
         ->getForm();
         */
 
-        $form = $this->createForm( ProjectType::class, $project );
+        $form = $this->createForm(ProjectType::class, $project);
 
-        $form->handleRequest( $request );
+        $form->handleRequest($request);
 
-        if ( $form->isSubmitted() && $form->isValid() )
-        {
-            try
-            {
+        if ($form->isSubmitted() && $form->isValid()) {
+            try {
                 $entityManager = $doctrine->getManager();
 
                 // tell Doctrine you want to ( eventually ) save the Product ( no queries yet )
-                $entityManager->persist( $project );
+                $entityManager->persist($project);
 
                 // actually executes the queries ( i.e. the INSERT query )
                 $entityManager->flush();
 
-                return $this->redirectToRoute( '/da' );
-            } catch( \Exception $e ) {
+                return $this->redirectToRoute('/da');
+            } catch (\Exception $e) {
             }
         }
 
-        return $this->renderForm( 'project/newProject.html.twig', [
-            'form' => $form,
-            'formTitle' => 'Create New Project',
+        return $this->renderForm('project/newProject.html.twig', [
+            'form'            => $form,
+            'formTitle'       => 'Create New Project',
             'controller_name' => 'ProjectController',
-        ] );
+        ]);
     }
 
     /**
-    *  openProject()
-    **/
+     *  openProject()
+     **/
 
-    #[ Route( '/admin/openProject', name: 'adminOpenProject' ) ]
+    #[Route('/admin/openProject', name: 'adminOpenProject')]
 
-    public function open( Request $request, ManagerRegistry $doctrine ) : Response {
-        $projecter = $doctrine->getRepository( Project::class )->findAll();
+    public function open(Request $request, ManagerRegistry $doctrine): Response
+    {
+        $projecter = $doctrine->getRepository(Project::class)->findAll();
 
-        $form = $this->createFormBuilder( $projecter )
-        -> add( 'project', EntityType::class, [ 'class' => Project::class, 'multiple' => false, 'expanded' => false, 'help' => 'Hjælpetekst' ] )
-        -> getForm();
+        $form = $this->createFormBuilder($projecter)
+            ->add('project', EntityType::class, ['class' => Project::class, 'multiple' => false, 'expanded' => false, 'help' => 'Hjælpetekst'])
+            ->getForm();
         ;
 
-        $form->handleRequest( $request );
+        $form->handleRequest($request);
 
-        if ( $form->isSubmitted() && $form->isValid() ) {
-            return $this->redirectToRoute( 'editor', [ 'url' => $form->get( 'project' )->getData()->getUrl() ] );
+        if ($form->isSubmitted() && $form->isValid()) {
+            return $this->redirectToRoute('editor', ['url' => $form->get('project')->getData()->getUrl()]);
         }
-        return $this->renderForm( 'card.html.twig', [
-            'form' => $form,
+        return $this->renderForm('card.html.twig', [
+            'form'      => $form,
             'formTitle' => 'Select Project'
-        ] );
+        ]);
     }
 
     /**
-    *  import
-    *  - Importerer en Gedcom fil til det aktuelle project
-    *  ** DEPRECATED **
-    **/
+     *  import
+     *  - Importerer en Gedcom fil til det aktuelle project
+     *  ** DEPRECATED **
+     **/
 
-    #[ Route( '/editor/{url}/import', name: 'editorImport' ) ]
+    #[Route('/editor/{url}/import', name: 'editorImport')]
 
-    public function import( Request $request, Project $project, ManagerRegistry $doctrine ): Response {
-        $form = $this->createForm( GedcomImportType::class, $project );
-        $form->handleRequest( $request );
+    public function import(Request $request, Project $project, ManagerRegistry $doctrine): Response
+    {
+        $form = $this->createForm(GedcomImportType::class, $project);
+        $form->handleRequest($request);
 
-        if ( $form->isSubmitted() && $form->isValid() ) {
+        if ($form->isSubmitted() && $form->isValid()) {
             try {
                 $entityManager = $doctrine->getManager();
                 // tell Doctrine you want to ( eventually ) save the Product ( no queries yet )
-                $entityManager->persist( $project );
+                $entityManager->persist($project);
                 // actually executes the queries ( i.e. the INSERT query )
                 $entityManager->flush();
 
-                return $this->redirectToRoute( '/da' );
-            } catch( \Exception $e ) {
+                return $this->redirectToRoute('/da');
+            } catch (\Exception $e) {
             }
-            return $this->redirectToRoute( 'editor', [ 'url' => $project->getUrl() ] );
+            return $this->redirectToRoute('editor', ['url' => $project->getUrl()]);
 
         }
-        return $this->renderForm( 'card.html.twig', [
-            'form' => $form,
+        return $this->renderForm('card.html.twig', [
+            'form'      => $form,
             'formTitle' => 'Import GEDCOM file',
-            'warning' => 'The will delete all the genealogy data and replace with data from a GEDCOM file',
-        ] );
+            'warning'   => 'The will delete all the genealogy data and replace with data from a GEDCOM file',
+        ]);
 
     }
 
     /**
-    *  import1
-    *  - Importerer en Gedcom fil til det aktuelle project
-    *
-    *  - Her dropper vi Symfony Forms til fordel for ren javascript løsning med Filereader, Formdata og Fetch
-    **/
+     *  import1
+     *  - Importerer en Gedcom fil til det aktuelle project
+     *
+     *  - Her dropper vi Symfony Forms til fordel for ren javascript løsning med Filereader, Formdata og Fetch
+     **/
 
-    #[ Route( '/editor/{url}/import1', name: 'editorImport1' ) ]
+    #[Route('/editor/{url}/import1', name: 'editorImport1')]
 
-    public function import1( Request $request, Project $project, ManagerRegistry $doctrine, LoggerInterface $logger ): Response {
+    public function import1(Request $request, Project $project, ManagerRegistry $doctrine, LoggerInterface $logger): Response
+    {
 
         // $workflow = $this->container->get( 'workflow.project' );
 
-        $this->projectStateMachine->apply( $project, 'to_editor' );
+        $this->projectStateMachine->apply($project, 'to_editor');
 
-        $defaultData = [ 'message' => 'Type your message here' ];
-        $form = $this->createFormBuilder( $defaultData )
-        -> getForm();
+        $defaultData = ['message' => 'Type your message here'];
+        $form        = $this->createFormBuilder($defaultData)
+            ->getForm();
 
-        $form->handleRequest( $request );
-        if ( $form->isSubmitted() && $form->isValid() ) {
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
             try {
-                $data = $form->getData();
+                // $data = $form->getData();
+                $data = $request->request->get('preview');
 
-                $logger->error( 'Helloo there !' );
+                $logger->info('Helloo there !');
 
-                $logger->error( count( $data ) );
+                // $logger->info( count( $data ) );
 
-                $logger->error( array_key_first( $data ) );
+                $b = "\r\n";
+                $mstr = '/^(\d|[1 - 9]\d)(?:\x20@([0-9a-zA-z]{1,20})@)?\x20(\w{1,31})(?:\x20@([0-9a-zA-z]{1,20})@)?(?:\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?(?:\x20(.*))?/';
 
-            } catch( \Exception $e ) {
+                $a = u($data)->split($b);
+                foreach($a as $value)
+                {
+                    $logger->info('Data:', $value->match($mstr));
+                    
+                }
+
+                // $logger->info( 'Data: \r\n' . $data );
+                //$logger->info('Data logget', $a);
+                // $logger->info( $data );
+
+            } catch (\Exception $e) {
             }
             //return $this->redirectToRoute( 'editor', [ 'url' => $project->getUrl() ] );
 
         }
-        return $this->renderForm( 'editor/import.html.twig', [
-            'myform' => $form,
+        return $this->renderForm('editor/import.html.twig', [
+            'myform'    => $form,
             'formTitle' => 'Import GEDCOM file',
-            'warning' => 'The will delete all the genealogy data and replace with data from a GEDCOM file',
-        ] );
+            'warning'   => 'The will delete all the genealogy data and replace with data from a GEDCOM file',
+        ]);
 
     }
 

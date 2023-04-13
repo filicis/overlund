@@ -17,7 +17,6 @@
 
 // assets/controllers/gedcom-controller.js
 import { Controller } from '@hotwired/stimulus';
-//import { ulid } from 'ulid';
 
 export default class extends Controller {
   static targets = ['polyview', 'holger', 'spinner', 'textarea', 'select', 'input'];
@@ -25,14 +24,11 @@ export default class extends Controller {
 
 
 
-  // import())
-  // - importerer en ny GEDCOM fil
+  // load())
+  // - Indlæser en local GEDCOM fil fra brugerens computer til browseren
 
-  import(event) {
-    console.log('Import called now...')
-    console.log("Ulid: ", ULID.ulid());
-    // var file = event.target.files[0];
-
+  load(event) {
+    console.log('Loading GEDCOM file to browser...')
 
     // Henter aktuelle encoding
 
@@ -42,6 +38,7 @@ export default class extends Controller {
     var file = this.inputTarget.files[0];
     if (file == null)
       return;
+
     console.log('Filename: ', file.name);
     console.log('Filesize: ', file.size);
     console.log('Filetype: ', file.type);
@@ -54,7 +51,7 @@ export default class extends Controller {
     //
 
     reader.onerror = function (e) {
-      console.log("Unable ro read file", e);
+      console.log("Unable to read file", e);
     }
 
     // filereader.onload
@@ -72,35 +69,41 @@ export default class extends Controller {
       const result = /^0 HEAD/.test(text);
       console.log('HEAD: ', result);
 
-      const result1 = /[\r\n]0 TRLR/.test(text);
+      const mstr1 = /[\r\n]0 TRLR[\r\n]|$/g;
+      const result1 = mstr1.test(text);
       console.log('TRLR: ', result1);
+      console.table(mstr1);
+      console.log("lastIndex: ", mstr1.lastIndex)
 
 
+      //const mstr2 = /^(0[\s\S]*[\r\n]0 TRLR)/;
+      const l = mstr1.lastIndex;
+
+      console.log('l: ', l);
+      //console.log('l: ', l.isInteger());
 
 
+      const result2 = text.slice(0, l);
+      console.log("Trim: ", result2);
 
-      if (that.hasTextareaTarget) {
-        that.textareaTarget.textContent = text;
-      }
-      else
-        console.log("Target not found");
+      // Fremviser GEDCOM filen i preview
+      //
+      // - OBS: En noget tidskrævende process for større filer
+
+      that.textareaTarget.textContent = result2;
 
       const arr1 = ["Cecilie", null, "Project"];
       const level = [];
-      //var lines = text.split(eol).map(function (str) { return str.match(mstr) }); // tolerate both Windows and Unix linebreaks
-      //var lines = that.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "", "Project"]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
 
-      var lines = text.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "", "Project"]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
 
-      window.localStorage.setItem('gedcom', lines);
+      // var lines = text.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "", "Project"]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
 
-      //var lines = that.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), "Lone"]; const arr2 = str.match(mstr); level[arr2[1]] = arr1[0]; return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
+      //window.localStorage.setItem('gedcom', lines);
 
-      //that.textareaTarget.textContent = Object.entries(lines);
 
-      console.log('Line: ', JSON.stringify(lines));
-      console.log('Level: ', level);
-      console.table(lines);
+      //console.log('Line: ', JSON.stringify(lines));
+      //console.log('Level: ', level);
+      //console.table(lines);
     }
 
     //  filereader.onloadend
@@ -136,7 +139,7 @@ export default class extends Controller {
     }
 
 
-    console.log('Read file');
+    // console.log('Read file');
     reader.readAsText(file, enc);
 
   }

@@ -22,6 +22,50 @@ export default class extends Controller {
   static targets = ['polyview', 'holger', 'spinner', 'textarea', 'select', 'input'];
 
 
+  /**
+   *  function #webapi
+   *
+   *  TODO: Skal tilrettes og optimeres, og siden flyttes ud i selvstændig controller
+   **/
+
+  async #webapi(api, arg, mymethod = 'PUT') {
+    const myInit = {
+      mode: 'cors',
+      credentials: 'include',
+      method: mymethod,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(arg),
+    };
+
+    //console.log('Arg: ', arg);
+    //console.log('myInit: ', myInit)
+    await fetch(api, myInit)
+      .then((response) => {
+        if (!response.ok) {
+          switch (response.status) {
+            case 503:
+              window.location.href = "/offline";
+              throw new Error('System is offline');
+
+            default:
+          }
+          //window.location.href = "/";
+          throw new Error('Netværksfejl: ', response.status);
+        }
+
+        console.log('#webapi content-type: ', response.headers.get('Content-Type'));
+
+        return (response.headers.get('Content-Type') == 'application/json') ? response.json() : response.text();
+      })
+      .then((data) => myResult = data)
+      .catch((error) => {
+        console.error('Catch Error: ', error.message);
+      });
+    return myResult;
+  }
+
+
+
 
 
   // load())
@@ -57,6 +101,7 @@ export default class extends Controller {
     // filereader.onload
     //
     // Validerer at første linie er '0 HEAD' og at der findes en trailer '0 TRLR'
+    // Trimmer filen efter traileren
 
     reader.onload = function (e) {
 
@@ -84,7 +129,6 @@ export default class extends Controller {
 
 
       const result2 = text.slice(0, l);
-      console.log("Trim: ", result2);
 
       // Fremviser GEDCOM filen i preview
       //
@@ -145,11 +189,41 @@ export default class extends Controller {
   }
 
 
-  // submit()
+  // upload()
+  //
+  //
 
-  submit(event) {
-    console.log("Submit called...")
-    //this.holgerTarget.value = "** Hello There **"
+  upload(event) {
+
+    //    console.log('URL: ', event.params.url);
+
+    const eol = /[\r\n]+/g;
+    const mstr = /^(\d|[1 - 9]\d)(?:\x20@([0-9a-zA-z]{1,20})@)?\x20(\w{1,31})(?:\x20@([0-9a-zA-z]{1,20})@)?(?:\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?(?:\x20(.*))?/;
+    // const arr1 = ["Cecilie", null, "Project"];
+    const level = [];
+
+    console.log("Submit called...");
+    console.log('URL: ', event.params.url);
+    console.log('Spinner on...');
+    this.spinnerTarget.className = "visible";
+
+    event.preventDefault();
+    var lines = this.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), ""]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
+
+    console.table(lines);
+    // console.log('textContent: ', this.textareaTarget.textContent)
+
+    this.spinnerTarget.className = "invisible";
+    console.log('Spinner off...');
+
+  }
+
+  // invalid()
+  //
+  //
+
+  invalid(event) {
+    console.error('Invalid Event');
   }
 
 }

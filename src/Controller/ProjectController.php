@@ -212,7 +212,7 @@ class ProjectController extends AbstractController
 
             } catch (\Exception $e) {
             }
-            //return $this->redirectToRoute( 'editor', [ 'url' => $project->getUrl() ] );
+            return $this->redirectToRoute( 'editor', [ 'url' => $project->getUrl() ] );
 
         }
         return $this->renderForm('editor/import.html.twig', [

@@ -1,13 +1,18 @@
 <?php
 
+
 /**
- * This file is part of the Overlund package.
- *
- * ( c ) Michael Lindhardt Rasmussen <filicis@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- **/
+* This file is part of the Overlund package.
+*
+* @author Michael Lindhardt Rasmussen <filicis@gmail.com>
+* @copyright 2000-2022 Filicis Software
+* @license MIT
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+*/
+
+
 
 namespace App\Controller;
 

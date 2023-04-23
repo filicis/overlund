@@ -32,7 +32,7 @@ use       App\Entity\Project;
 
 class GedcomService
 {
-  private $entityManager;
+  private $em;
 
   /**
    *  function __construct()
@@ -41,7 +41,7 @@ class GedcomService
 
   function __construct(ManagerRegistry $doctrine)
   {
-    $this->entityManager= $doctrine->getManager();
+    $this->em= $doctrine->getManager();
   }
 
 
@@ -52,6 +52,11 @@ class GedcomService
 
   public function reset(Project $project)
   {
+    $cmd= 'DELETE MyProject\Model\User u WHERE u.id = 4';
+
+    $query= $em->createQuery($cmd);
+    $query->setParameter(1, 12);
+    $res= $query->getResult();
   }
 
 
@@ -64,5 +69,25 @@ class GedcomService
   public function import(Project $project, Array $lines)
   {
   }  
+
+  /**
+   * function concat()
+   * - Concat pseudo-structures CONC/CONT into superstructures payload
+   *
+   **/ 
+
+  public function concat(Project $project)
+  {}
+
+
+  /**
+   * function split(Project $project)
+   * - Split payload into pseudo-structures CONC/CONT
+   *
+   **/
+
+  public function split(Project $project)
+  {}  
+
 }
 

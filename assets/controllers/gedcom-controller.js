@@ -70,6 +70,7 @@ export default class extends Controller {
 
   // load())
   // - Indlæser en local GEDCOM fil fra brugerens computer til browseren
+  //
 
   load(event) {
     console.log('Loading GEDCOM file to browser...')
@@ -206,6 +207,8 @@ export default class extends Controller {
     console.log('URL: ', event.params.url);
     console.log('Spinner on...');
     this.spinnerTarget.className = "visible";
+    console.log('ClassName: ', this.spinnerTarget.className)
+
 
     event.preventDefault();
     var lines = this.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), ""]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
@@ -214,6 +217,8 @@ export default class extends Controller {
     // console.log('textContent: ', this.textareaTarget.textContent)
 
     this.spinnerTarget.className = "invisible";
+    console.log('ClassName: ', this.spinnerTarget.className)
+
     console.log('Spinner off...');
 
   }

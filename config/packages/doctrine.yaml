@@ -21,10 +21,10 @@ doctrine:
             App:
                 type: attribute
                 is_bundle: false
-<<<<<<< ours
-                type: attribute
-=======
->>>>>>> theirs
+#<<<<<<< ours
+#                type: attribute
+#=======
+#>>>>>>> theirs
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App

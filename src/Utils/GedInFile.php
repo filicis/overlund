@@ -249,7 +249,7 @@ class GedInFile extends GedFile  implements \Iterator
    *
    * */
 
- public function current()
+ public function current() : mixed
   {
     return $this->curr;
   }

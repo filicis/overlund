@@ -103,7 +103,7 @@ class ProjectController extends AbstractController
             }
         }
 
-        return $this->renderForm('project/newProject.html.twig', [
+        return $this->render('project/newProject.html.twig', [
             'form'            => $form,
             'formTitle'       => 'Create New Project',
             'controller_name' => 'ProjectController',
@@ -130,7 +130,7 @@ class ProjectController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             return $this->redirectToRoute('editor', ['url' => $form->get('project')->getData()->getUrl()]);
         }
-        return $this->renderForm('card.html.twig', [
+        return $this->render('card.html.twig', [
             'form'      => $form,
             'formTitle' => 'Select Project'
         ]);
@@ -163,7 +163,7 @@ class ProjectController extends AbstractController
             return $this->redirectToRoute('editor', ['url' => $project->getUrl()]);
 
         }
-        return $this->renderForm('card.html.twig', [
+        return $this->render('card.html.twig', [
             'form'      => $form,
             'formTitle' => 'Import GEDCOM file',
             'warning'   => 'The will delete all the genealogy data and replace with data from a GEDCOM file',
@@ -220,7 +220,7 @@ class ProjectController extends AbstractController
             return $this->redirectToRoute( 'editor', [ 'url' => $project->getUrl() ] );
 
         }
-        return $this->renderForm('editor/import.html.twig', [
+        return $this->render('editor/import.html.twig', [
             'myform'    => $form,
             'formTitle' => 'Import GEDCOM file',
             'warning'   => 'The will delete all the genealogy data and replace with data from a GEDCOM file',

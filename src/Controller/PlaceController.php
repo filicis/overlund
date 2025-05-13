@@ -30,7 +30,7 @@ class PlaceController extends AbstractController
       
       $form= $this->createForm(PlaceRecordType::class, $plac);
       
-        return $this->renderForm('card.html.twig', [
+        return $this->render('card.html.twig', [
             'form' => $form,
             'formTitle' => 'Ny location'
         ]);

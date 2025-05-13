@@ -70,7 +70,7 @@ class RepositoryController extends AbstractController {
             }
         }
 
-        return $this->renderForm( 'editor/modal/repository1.html.twig', [
+        return $this->render( 'editor/modal/repository1.html.twig', [
             'form' => $form,
             'project' => $project,
             'controller_name' => 'ProjectController',

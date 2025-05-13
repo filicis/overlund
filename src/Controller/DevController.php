@@ -36,7 +36,7 @@ class DevController extends AbstractController
       
       $form= $this->createForm(PersonalNameStructureType::class, $name);
       
-        return $this->renderForm('card.html.twig', [
+        return $this->render('card.html.twig', [
             'form' => $form,
             'formTitle' => 'Udfyld navn'
         ]);

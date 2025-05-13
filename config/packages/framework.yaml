@@ -20,7 +20,8 @@ framework:
 
     # Ændrer til nyere Form Validation Messages
     form:
-        legacy_error_messages: false
+#        legacy_error_messages: false
+#        csrf_protection: enabled
 
 when@test:
     framework:

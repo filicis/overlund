@@ -63,6 +63,7 @@ class RecordSuperclass
 
 
   /**
+   * Implmementerer <<CHANGE_DATE>>
    */
 
   #[ORM\Column(type: "datetime_immutable", nullable: true)]
@@ -70,6 +71,7 @@ class RecordSuperclass
 
 
   /**
+   * Implementerer GEDCOM <<CREATION_DATE>>
    **/
 
   #[ORM\Column(type: "string", length: 20, nullable: true)]

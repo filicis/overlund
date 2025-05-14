@@ -15,6 +15,8 @@ namespace App\Entity;
 
 use App\Repository\AddressStructureRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\DBAL\Types\Types;
 
 /**
 *  class AddressStructure
@@ -90,22 +92,22 @@ class AddressStructure {
     * @ORM\Column( type = 'array', nullable = true )
     **/
 
-    #[ ORM\Column( type: 'array', nullable: true ) ]
+    #[ ORM\Column( type: Types::SIMPLE_ARRAY, nullable: true ) ]
     private $phon = [];
 
     /**
-    * @ORM\Column( type = 'array', nullable = true )
+    * @ORM\Column( type = Types::ARRAY, nullable = true )
     **/
 
     #[ Assert\Email ]
-    #[ ORM\Column( type: 'array', nullable: true ) ]
+    #[ ORM\Column( type: Types::SIMPLE_ARRAY, nullable: true ) ]
     private $email = [];
 
     /**
     * @ORM\Column( type = 'array', nullable = true )
     **/
 
-    #[ ORM\Column( type: 'array', nullable: true ) ]
+    #[ ORM\Column( type: Types::SIMPLE_ARRAY, nullable: true ) ]
     private $fax = [];
 
     /**
@@ -113,7 +115,7 @@ class AddressStructure {
     **/
 
     #[ Assert\Url ]
-    #[ ORM\Column( type: 'array', nullable: true ) ]
+    #[ ORM\Column( type: Types::SIMPLE_ARRAY, nullable: true ) ]
     private $www = [];
 
     /**

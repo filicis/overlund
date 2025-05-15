@@ -12,20 +12,21 @@
  */
 
 
-namespace App\Entity\Traits;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-trait Restrictions
+#[ORM\Embeddable]
+Class Restrictions
 {
     #[ORM\Column(nullable: true)]
-    private ?bool $locked = false;
+    public ?bool $locked = false;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $confidential = false;
+    public ?bool $confidential = false;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $privacy = false;
+    public ?bool $privacy = false;
 
 
     public function isLocked(): ?bool

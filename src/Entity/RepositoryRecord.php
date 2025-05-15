@@ -49,7 +49,7 @@ class RepositoryRecord extends RecordSuperclass {
 
     #[ Assert\Type( type: AddressStructure::class ) ]
     #[ Assert\Valid ]
-    #[ Embedded( class: AddressStructure::class ) ]
+    #[ Embedded( class: AddressStructure::class, columnPrefix: false ) ]
     private AddressStructure $address;
 
     #[ ORM\OneToMany( mappedBy: 'repositoryRecord', targetEntity: SourceRepositoryCitation::class, orphanRemoval: true ) ]

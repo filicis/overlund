@@ -18,12 +18,10 @@ use       Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\AddressStructure;
 
-use       App\Entity\Traits\Restrictions;
 
 #[ ORM\Entity( repositoryClass: EventDetailRepository::class ) ]
 
 class EventDetail {
-    use Restrictions;
 
     #[ ORM\Id ]
     #[ ORM\GeneratedValue ]
@@ -33,15 +31,19 @@ class EventDetail {
     #[ ORM\Column( length: 32 ) ]
     private ?string $tag = null;
 
-    #[ Embedded( class: AddressStructure::class ) ]
-    private AddressStructure $address;
+    #[ Embedded( class: AddressStructure::class, columnPrefix: false ) ]
+    public AddressStructure $address;
+
+    #[Embedded(class: Restrictions::class, columnPrefix: false)]
+    public Restrictions $restrictions;
+
 
     /**
-    *  agency
-    *  - Implementerer Gedcom v7 AGNC tag
-    *
-    *
-    */
+     *  agency
+     *  - Implementerer Gedcom v7 AGNC tag
+     *
+     *
+     */
 
     #[ ORM\Column( length: 255, nullable: true ) ]
     private ?string $agency = null;

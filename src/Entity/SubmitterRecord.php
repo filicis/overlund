@@ -31,8 +31,8 @@ class SubmitterRecord extends RecordSuperclass {
 
     protected const XREF_PREFIX = 'S';
 
-    #[ Embedded( class: AddressStructure::class ) ]
-    private AddressStructure $address;
+    #[ Embedded( class: AddressStructure::class, columnPrefix: false ) ]
+    public AddressStructure $address;
 
     /**
     */

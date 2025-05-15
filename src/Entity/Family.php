@@ -22,9 +22,6 @@ use App\Entity\Individual;
 use App\Entity\RecordSuperclass;
 use App\Entity\Relation;
 
-use App\Entity\Traits\MediaTrait;
-use App\Entity\Traits\Restrictions;
-
 use App\Entity\Media;
 
 /**
@@ -38,13 +35,17 @@ use App\Entity\Media;
 #[ ORM\Entity( repositoryClass: FamilyRepository::class ) ]
 
 class Family extends RecordSuperclass {
-    use Restrictions, MediaTrait;
 
     protected const XREF_PREFIX = 'F';
 
+    #[Embedded(class: Restrictions::class, columnPrefix: false)]
+    public Restrictions $restrictions;
+
+
+
     /**
-    *    project
-    */
+     *    project
+     */
 
     #[ ORM\ManyToOne( targetEntity: Project::class, inversedBy: 'families' ) ]
     private $project;
@@ -140,5 +141,43 @@ class Family extends RecordSuperclass {
 
         return $this;
     }
+
+
+    public function isLocked(): ?bool
+    {
+        return $this->restrictions->locked;
+    }
+
+    public function setLocked(bool $locked): self
+    {
+        $this->restrictions->locked = $locked;
+
+        return $this;
+    }
+
+    public function isConfidential(): ?bool
+    {
+        return $this->restrictions->confidential;
+    }
+
+    public function setConfidential(bool $confidential): self
+    {
+        $this->restrictions->confidential = $confidential;
+
+        return $this;
+    }
+
+    public function isPrivacy(): ?bool
+    {
+        return $this->restrictions->privacy;
+    }
+
+    public function setPrivacy(bool $privacy): self
+    {
+        $this->restrictions->privacy = $privacy;
+
+        return $this;
+    }
+
 
 }

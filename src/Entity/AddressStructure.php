@@ -20,7 +20,7 @@ use Doctrine\DBAL\Types\Types;
 
 /**
 *  class AddressStructure
-*  - Implementerer Gercom V7 ADDRESS_STRUCTURE
+*  - Implementerer Gedcom V7 ADDRESS_STRUCTURE
 */
 
 #[ ORM\Entity( repositoryClass: AddressStructureRepository::class ) ]

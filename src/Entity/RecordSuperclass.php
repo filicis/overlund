@@ -31,7 +31,6 @@ use       Doctrine\ORM\Mapping\PrePersist;
 use       Doctrine\Persistence\ManagerRegistry;
 
 use       App\Entity\Traits\UlidIdTrait;
-use       App\Entity\Traits\XrefTrait;
 
 
   /**
@@ -59,7 +58,30 @@ class RecordSuperclass
   const dummy= "SELECT xref FROM family where xref REGEXP 'F\d*' ORDER BY xref desc";
   protected const XREF_PREFIX = '_';
 
-  use UlidIdTrait, XrefTrait;
+  use UlidIdTrait;
+
+
+    /**
+   *  xref
+   */
+
+   #[ORM\Column(type: "string", length: 20, nullable: true)]
+   private $xref;
+ 
+ 
+   public function getXref(): ?string
+   {
+       return $this->xref;
+   }
+ 
+ 
+   public function setXref(?string $xref): self
+   {
+       $this->xref = $xref;
+ 
+       return $this;
+   }
+ 
 
 
   /**

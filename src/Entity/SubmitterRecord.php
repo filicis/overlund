@@ -20,7 +20,6 @@ use       App\Entity\RecordSuperclass;
 use       App\Entity\AddressStructure;
 
 use       App\Entity\Traits\AddressTrait;
-use       App\Entity\Traits\IdentifierTrait;
 
 /**
 *  class SubmitterRecord
@@ -30,7 +29,6 @@ use       App\Entity\Traits\IdentifierTrait;
 #[ ORM\Table( name: 'submitterrecord' ) ]
 
 class SubmitterRecord extends RecordSuperclass {
-    use IdentifierTrait;
 
     protected const XREF_PREFIX = 'S';
 

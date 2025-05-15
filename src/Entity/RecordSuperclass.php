@@ -69,6 +69,15 @@ class RecordSuperclass
    #[ORM\Column(type: "string", length: 20, nullable: true)]
    private $xref;
 
+     /**
+      * IdentifierLink
+      */
+
+   #[ ORM\OneToOne( targetEntity: 'IdentifierLink', cascade: [ 'persist' ], fetch: 'LAZY' ) ]
+   #[ ORM\JoinColumn( nullable: true, onDelete: 'Cascade' ) ]
+   private ? IdentifierLink $identifierLink = null;
+
+
 
   /**
    *  getId()
@@ -182,6 +191,45 @@ class RecordSuperclass
     $this->lastChange= new \DatetimeImmutable();
 
   }
+
+
+  /**
+   *  function hasIdentifierLink()
+   *
+   **/
+
+  public function hasIdentifierLink(): bool
+  {
+    return ($this->identifierLink != null);
+  }
+
+  /**
+   *  function getIdentifierLink()
+   *
+   **/
+
+  public function getIdentifierLink(): ?IdentifierLink
+  {
+    return ($this->hasIdentifierLink()) ? $this->identifierLink : $this->newIdentifierLink();
+  }
+
+  private function newIdentifierLink(): IdentifierLink
+  {
+    return $this->identifierLink = new IdentifierLink();
+  }
+
+  /**
+   *  function setIdentifierlink()
+   *
+   **/
+
+  public function setIdentifierLink(IdentifierLink $identifierLink): self
+  {
+    $this->identifierLink = $identifierLink;
+
+    return $this;
+  }
+
 
 
   /**

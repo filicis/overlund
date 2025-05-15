@@ -20,7 +20,6 @@ use       Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\RecordSuperclass;
 use       App\Entity\Project;
-use       App\Entity\Traits\IdentifierTrait;
 
 /**
 *  class SourceRecord
@@ -32,7 +31,6 @@ use       App\Entity\Traits\IdentifierTrait;
 #[ ORM\Table( name: 'sourcerecord' ) ]
 
 class SourceRecord  extends RecordSuperclass {
-    use IdentifierTrait;
 
     protected const XREF_PREFIX = 'S';
 

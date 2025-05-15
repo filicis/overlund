@@ -22,8 +22,6 @@ use       App\Entity\RecordSuperclass;
 use       App\Entity\Relation;
 use       App\Entity\NameStructure;
 
-use       App\Entity\Traits\IdentifierTrait;
-;
 use       App\Entity\Traits\MediaTrait;
 ;
 use       App\Entity\Traits\Restrictions;
@@ -38,7 +36,7 @@ use       App\Entity\Media;
 #[ ORM\Entity( repositoryClass:  IndividualRepository::class ) ]
 
 class Individual extends RecordSuperclass {
-    use IdentifierTrait, Restrictions, MediaTrait;
+    use Restrictions, MediaTrait;
 
     protected const XREF_PREFIX = 'I';
 

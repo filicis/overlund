@@ -22,7 +22,6 @@ use       Doctrine\ORM\Mapping\Table;
 use       Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\RecordSuperclass;
-use       App\Entity\Traits\IdentifierTrait;
 use       App\Entity\Traits\Restrictions;
 
 /**
@@ -35,7 +34,7 @@ use       App\Entity\Traits\Restrictions;
 #[ ORM\Table( name: 'mediarecord' ) ]
 
 class MediaRecord extends RecordSuperclass {
-    use IdentifierTrait, Restrictions;
+    use Restrictions;
 
     protected const XREF_PREFIX = 'M';
 

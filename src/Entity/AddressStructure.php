@@ -26,10 +26,6 @@ use Doctrine\DBAL\Types\Types;
 #[ ORM\Embeddable ]
 class AddressStructure {
 
-    public function __construct()
-    {
-       $this->address = new AddressStructure();
-    }
 
     /**
     *
@@ -117,25 +113,21 @@ class AddressStructure {
     #[ ORM\Column( type: Types::SIMPLE_ARRAY, nullable: true ) ]
     private $www = [];
 
-    /**
-    *  function __construct()
-    *
-    **/
 
-    public function __construct() {
+    /**
+     *  function __construct()
+     *
+     **/
+
+    public function __construct()
+    {
         $this->phon = array();
         $this->email = array();
         $this->fax = array();
         $this->www = array();
     }
 
-    public function getId(): ?int {
-        return $this->id;
-    }
 
-    public function getAddr(): ?string {
-        return $this->addr;
-    }
 
     public function setAddr( ?string $addr ): self {
         $this->addr = $addr;

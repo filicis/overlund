@@ -16,8 +16,9 @@ namespace App\Entity;
 
 use       App\Repository\MediaLinkRepository;
 use       Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Types\UlidType;
+use Symfony\Component\Uid\Ulid;
 
-use       App\Entity\Traits\UlidIdTrait;
 
   /**
    *  class MediaLink
@@ -30,7 +31,24 @@ use       App\Entity\Traits\UlidIdTrait;
 #[ORM\Entity(repositoryClass: MediaLinkRepository::class)]
 class MediaLink
 {
-  use UlidIdTrait;
+  #[ORM\Id]
+  #[ORM\Column(type: UlidType::NAME, unique: true)]
+  #[ORM\GeneratedValue(strategy: "CUSTOM")]
+  #[ORM\CustomIdGenerator(class: 'doctrine.ulid_generator')]
+  private $id;
+
+
+  /**
+   *  getId()
+   *
+   **/
+
+  public function getId(): ?Ulid
+  {
+    return $this->id;
+  }
+
+
 
 
     /**

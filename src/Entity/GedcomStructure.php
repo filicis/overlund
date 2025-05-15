@@ -21,7 +21,10 @@ use       Doctrine\Common\Collections\Collection;
 use       Doctrine\DBAL\Types\Types;
 use       Doctrine\ORM\Mapping as ORM;
 
-use       App\Entity\Traits\UlidIdTrait;
+use       Symfony\Bridge\Doctrine\Types\UlidType;
+use        Symfony\Component\Uid\Ulid;
+
+
 
 
   /**
@@ -32,7 +35,15 @@ use       App\Entity\Traits\UlidIdTrait;
 #[ORM\Entity(repositoryClass: GedcomStructureRepository::class)]
 class GedcomStructure
 {
-   use UlidIdTrait;
+
+
+  #[ORM\Id]
+  #[ORM\Column(type: UlidType::NAME, unique: true)]
+  #[ORM\GeneratedValue(strategy: "CUSTOM")]
+  #[ORM\CustomIdGenerator(class: 'doctrine.ulid_generator')]
+  private $id;
+
+
 
   /**
    *  project
@@ -93,6 +104,17 @@ class GedcomStructure
   {
     $this->children = new ArrayCollection();
   }
+
+  /**
+   *  getId()
+   *
+   **/
+
+  public function getId(): ?Ulid
+  {
+    return $this->id;
+  }
+
 
   public function getLevel(): ?int
   {

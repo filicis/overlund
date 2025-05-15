@@ -15,8 +15,6 @@
 
 namespace	App\Entity;
 
-//use       App\Entity\
-
 use 			Doctrine\ORM\Mapping as ORM;
 use 			Doctrine\ORM\Mapping\Index;
 use       Doctrine\ORM\Event;
@@ -25,12 +23,10 @@ use       Doctrine\ORM\Event\LifecycleEventArgs;
 use       Doctrine\ORM\Mapping\Entity;
 use       Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 use       Doctrine\ORM\Mapping\PrePersist;
-//use       Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
-//use       Symfony\Component\Uid\Ulid;
-
 use       Doctrine\Persistence\ManagerRegistry;
 
-use       App\Entity\Traits\UlidIdTrait;
+use       Symfony\Bridge\Doctrine\Types\UlidType;
+use       Symfony\Component\Uid\Ulid;
 
 
   /**
@@ -55,21 +51,38 @@ use       App\Entity\Traits\UlidIdTrait;
 #[ORM\HasLifecycleCallbacks]
 class RecordSuperclass
 {
+
   const dummy= "SELECT xref FROM family where xref REGEXP 'F\d*' ORDER BY xref desc";
   protected const XREF_PREFIX = '_';
 
-  use UlidIdTrait;
+  #[ORM\Id]
+  #[ORM\Column(type: UlidType::NAME, unique: true)]
+  #[ORM\GeneratedValue(strategy: "CUSTOM")]
+  #[ORM\CustomIdGenerator(class: 'doctrine.ulid_generator')]
+  private $id;
 
 
-    /**
+  /**
    *  xref
    */
 
    #[ORM\Column(type: "string", length: 20, nullable: true)]
    private $xref;
- 
- 
-   public function getXref(): ?string
+
+
+  /**
+   *  getId()
+   *
+   **/
+
+  public function getId(): ?Ulid
+  {
+    return $this->id;
+  }
+
+
+
+  public function getXref(): ?string
    {
        return $this->xref;
    }

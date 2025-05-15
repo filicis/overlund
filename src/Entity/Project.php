@@ -11,14 +11,16 @@
 
 namespace App\Entity;
 
+use       Doctrine\ORM\Mapping as ORM;
+
 use       Doctrine\Common\Collections\ArrayCollection;
 use       Doctrine\Common\Collections\Collection;
 use       Symfony\Bridge\Doctrine\IdGenerator\UlidGenerator;
 use       Symfony\Component\Uid\Ulid;
-use       App\Repository\ProjectRepository;
-use       Doctrine\ORM\Mapping as ORM;
+use       Symfony\Bridge\Doctrine\Types\UlidType;
 
-use       App\Entity\Traits\UlidIdTrait;
+use       App\Repository\ProjectRepository;
+
 use       App\Entity\GedcomStructure;
 
 use       App\Entity\MediaRecord;
@@ -36,11 +38,17 @@ use       App\Entity\SourceRecord;
 #[ ORM\Entity( repositoryClass: ProjectRepository::class ) ]
 
 class Project {
-    use UlidIdTrait;
+
+    #[ORM\Id]
+    #[ORM\Column(type: UlidType::NAME, unique: true)]
+    #[ORM\GeneratedValue(strategy: "CUSTOM")]
+    #[ORM\CustomIdGenerator(class: 'doctrine.ulid_generator')]
+    private $id;
+
 
     /**
-    *  title
-    */
+     *  title
+     */
 
     #[ ORM\Column( type: 'string', length: 80 ) ]
     private $title;
@@ -131,21 +139,27 @@ class Project {
         $this->repositoryRecords = new ArrayCollection();
     }
 
+
+
     /**
-    *
-    **/
+     *  getId()
+     *
+     **/
+
+    public function getId(): ?Ulid
+    {
+        return $this->id;
+    }
+
+
+    /**
+     *
+     **/
 
     public function __toString() {
         return $this->url . ' - ' . $this->title;
     }
 
-    /**
-    *
-    **/
-
-    public function getId(): ?Ulid {
-        return $this->id;
-    }
 
     public function getTitle(): ?string {
         return $this->title;

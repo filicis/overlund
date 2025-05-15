@@ -18,7 +18,6 @@ use       Doctrine\ORM\Mapping as ORM;
 
 use       App\Entity\AddressStructure;
 
-use       App\Entity\Traits\AddressTrait;
 use       App\Entity\Traits\Restrictions;
 
 #[ ORM\Entity( repositoryClass: EventDetailRepository::class ) ]

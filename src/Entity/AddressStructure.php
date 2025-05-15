@@ -23,14 +23,13 @@ use Doctrine\DBAL\Types\Types;
 *  - Implementerer Gedcom V7 ADDRESS_STRUCTURE
 */
 
-#[ ORM\Entity( repositoryClass: AddressStructureRepository::class ) ]
-
+#[ ORM\Embeddable ]
 class AddressStructure {
 
-    #[ ORM\Id ]
-    #[ ORM\GeneratedValue ]
-    #[ ORM\Column ]
-    private ?int $id = null;
+    public function __construct()
+    {
+       $this->address = new AddressStructure();
+    }
 
     /**
     *

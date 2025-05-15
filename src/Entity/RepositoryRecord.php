@@ -21,8 +21,6 @@ use       Doctrine\ORM\Mapping as ORM;
 use       App\Entity\RecordSuperclass;
 use       App\Entity\AddressStructure;
 
-use       App\Entity\Traits\AddressTrait;
-
 use       Symfony\Component\Validator\Constraints as Assert;
 
 /**

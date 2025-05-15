@@ -24,13 +24,7 @@ use Doctrine\ORM\Mapping as ORM;
    *  class IdentifierLink
    *
    *  Anvendes af
-   *  - Family
-   *  - Individual
-   *  - MediaRecord
-   *  - RepositoryRecord
-   *  - SharedNoteRecord
-   *  - SourceRecord
-   *  - SubmitterRecord
+   *  - RecordSuperclass
    */
 
 #[ORM\Entity(repositoryClass: IdentifierLinkRepository::class)]

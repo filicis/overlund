@@ -185,7 +185,8 @@ export default class extends Controller {
 
 
     // console.log('Read file');
-    reader.readAsText(file, enc);
+    //reader.readAsText(file, enc);
+    reader.readAsText(file);
 
   }
 

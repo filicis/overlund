@@ -19,7 +19,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets = ['polyview', 'holger', 'spinner', 'textarea', 'select', 'input', 'advanced', "advancedArea"];
+  static targets = ['polyview', 'holger', 'spinner', 'textarea', 'select', 'input', 'previewSize', 'version', 'advanced', "advancedArea"];
 
 
   /**
@@ -69,6 +69,8 @@ export default class extends Controller {
   // - FileReader.readAsText i Promise-baseret tilgang
 
   reader(blob, enc) {
+    var iconv = require('iconv-lite');
+    console.log("Encoding: ", enc)
     return new Promise((resolve, reject) => {
       const fr = new FileReader();
       fr.onload = () => resolve(fr);
@@ -96,10 +98,37 @@ export default class extends Controller {
     {
       const blob = file.slice(0, 500);
       this.reader(blob, "")
-      .then((value) => console.log('loadFile: ', value.result))
+        .then((value) => {
+          console.log('loadFile: ', value.result);
+          const res = /^0 HEAD/.test(value.result);
+          console.log('HEAD: ', res);
+          const res1 = / FORM LINEAGE-LINKED/.test(value.result);
+          this.versionTarget.value = (res1 ? "5" : "7");
+          //console.log('LINEAGE-LINKED: ', res1);
+          const matches = / CHAR (\S+)/.exec(value.result);
+          if (matches)
+          {
+            switch (matches[1])
+            {
+              case "ANSEL":
+                //this.selectTarget.value= "ANSEL"
+                //break;
+              case "ANSI":
+              case "ASCII":
+                this.selectTarget.value = "iso-8859-1"
+                break;
+              default:
+                console.log("File encoding:", matches[1] )
+
+            }
+          }  
+
+        });
     }
     var enc = this.selectTarget.selectedOptions[0].value;
-    this.reader(file.slice(0, 500), enc)
+    var siz = this.previewSizeTarget.value;
+    console.log('Preview Size: ', siz);
+    this.reader(file.slice(0, siz), enc)
       .then((value) => this.textareaTarget.textContent = value.result)
 
 

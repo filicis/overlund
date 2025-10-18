@@ -24,6 +24,11 @@
         </h2>
 
         <div class="card-body">
+
+          {% block cardbody %}
+
+
+
           {% if warning is defined %}
             <div class="alert alert-warning">{{ warning|trans }}</div>
           {% endif %}
@@ -36,12 +41,14 @@
           <div class="form-check mb-3">
             <input class="form-check-input" data-gedcom-target="advanced" data-action="change->gedcom#changeAdvanced" type="checkbox" value="" id="checkAdvanced">
             <label class="form-check-label" for="checkAdvanced">
-              Advanced
+              Advanced Options
             </label>
           </div>
-        </div> {# card-body #}
-        <div class="card-body d-none" data-gedcom-target="advancedArea">
-
+          {#
+        </div>  card-body 
+          #}
+        <div class="d-none" data-gedcom-target="advancedArea">
+          
 
           {#
        #  Encoding
@@ -51,8 +58,8 @@
        #  - https://github.com/whatwg/encoding/blob/main/encodings.json
        #  
        #}
-
-          <div class="" mb-3>
+          <div class="row">
+          <div class="col col-4" mb-3>
             <label for="cars">Encoding:</label>
             <select class="form-control" data-gedcom-target="select" data-action="change->gedcom#load" form="dummy" name="cars" id="cars">
               <optgroup label="Standard encodings">
@@ -61,6 +68,7 @@
               <optgroup label="Legacy single-byte encodings">
                 <option value="ANSEL">ANSEL</option>
                 <option value="866">IBM866</option>
+                <option value="iso-8859-1">ISO-8859-1 (Latin1)</option>
                 <option value="iso-8859-2">ISO-8859-2 (Latin2)</option>
                 <option value="iso-8859-3">ISO-8859-3 (Latin3)</option>
                 <option value="iso-8859-4">ISO-8859-4 (Latin4)</option>
@@ -112,53 +120,45 @@
               </optgroup>
             </select>
           </div>
-          <div>
+          <div class="col col-4">
             <label for="version">Gedcom version:</label>
             <select class="form-control" data-gedcom-target="version" data-action="change->gedcom#load" form="dummy" name="version" id="version">
                 <option value="5" selected>Version 5.*</option>
                 <option value="7">Version 7.*</option>
             </select>  
           </div>  
-          <div>
+          <div class="col col-4">
             <label for="previewSize">Preview Size (Bytes):</label>
             <select class="form-control" data-gedcom-target="previewSize" data-action="change->gedcom#load" form="dummy" name="previewSize" id="previewSize">
                 <option value=500 selected>500 bytes</option>
                 <option value=1000>1000 bytes</option>
                 <option value=2000>2000 bytes</option>
-                <option value="">All</option>
+                <option value="-1">All</option>
             </select>  
           </div>  
+          </div>
 
           
 
-          {% block cardbody %}
-            <hr />
-
-            {# % if error %}
-      <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-      {% endif % #}
 
             <div>
-              <label for="floatingTextarea2">Preview</label>
+              <label for="preview">Preview</label>
 
               <textarea class="form-control" 
-                        id="floatingTextarea2" 
-                        autocorrect="off" 
-                        form="birger" 
+                        id="preview" 
                         data-gedcom-target="textarea" 
                         data-action="submit->gedcom#upload:stop" 
-                        data-gedcom-url-param="{{ url('api_individual_updatePersonalName', { url: 'Project01' }) }}"
                         aria-label= "Preview" 
                         rows=10 
                         name= "preview" 
                         wrap= "off" 
-                        minlength= 100 
                         placeholder="Preview of the selected GEDCOM file..." 
-                        rrrreadonly 
-                        required onkeypress="return false;"
-                        required>
+                        readonly>
                 </textarea>
             </div>
+            </div>
+
+            
           {% endblock %}
         </div>
 

@@ -278,56 +278,69 @@ export default class extends Controller {
   //
   //
 
-  async upload(event) {
-
-    try {
-
-      //    console.log('URL: ', event.params.url);
-
-      const eol = /[\r\n]+/g;
-      const mstr = /^(\d|[1 - 9]\d)(?:\x20@([0-9a-zA-z]{1,20})@)?\x20(\w{1,31})(?:\x20@([0-9a-zA-z]{1,20})@)?(?:\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?(?:\x20(.*))?/;
-      // const arr1 = ["Cecilie", null, "Project"];
-      const level = [];
-
-      var lines;
-
-      console.log("Submit called...");
-      console.log('URL: ', event.params.url);
-      console.log('Spinner on...');
-      this.spinnerTarget.className = "visible";
-      console.log('ClassName: ', this.spinnerTarget.className)
+  upload(event) {
 
 
-      event.preventDefault();
+    //    console.log('URL: ', event.params.url);
 
-      console.log('Await');
+    const eol = /[\r\n]+/g;
+    const mstr = /^(\d|[1 - 9]\d)(?:\x20@([0-9a-zA-z]{1,20})@)?\x20(\w{1,31})(?:\x20@([0-9a-zA-z]{1,20})@)?(?:\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?(?:\x20(.*))?/;
+    // const arr1 = ["Cecilie", null, "Project"];
+    const level = [];
 
-      lines = await this.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), ""]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) });
-      //  .finally(() => {
-      //    //console.timeEnd('render1');
-      //    this.spinnerTarget.className = "invisible";
-      //    console.log('ClassName: ', this.spinnerTarget.className)
-      //
-      //    console.log('Spinner off...');
+    var lines;
 
-      //  })
-      //  .catch((error) => {
-      //    console.error('Catch Error: ', error)
-      //  });
+    console.log("Submit called...");
+    console.log('URL: ', event.params.url);
+    console.log('Spinner on...');
+    this.spinnerTarget.className = "visible";
+    console.log('ClassName: ', this.spinnerTarget.className)
 
-      // tolerate both Windows and Unix linebreaks
 
-      console.table(lines);
-      // console.log('textContent: ', this.textareaTarget.textContent)
+    event.preventDefault();
 
-      that.spinnerTarget.className = "invisible";
-      console.log('ClassName: ', this.spinnerTarget.className)
+    console.log('Await');
 
-      console.log('Spinner off...');
-    }
-    catch (error) {
-      console.log(error);
-    }
+    const delim = String.fromCodePoint(0xF0001);
+
+    const promise1 = new Promise((resolve, reject) => {
+
+     resolve(this.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), ""]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2).join(delim) }).join('\n'));
+    });
+
+    promise1.then((value) => {
+      const a = value;
+      //const json = JSON.stringify(value);
+      //console.log(json);
+      //console.log("");
+      //console.log(a);
+      this.textareaTarget.textContent = value;
+      // console.log(a);
+      // Expected output: "Success!"
+    });
+  
+
+    //  .finally(() => {
+    //    //console.timeEnd('render1');
+    //    this.spinnerTarget.className = "invisible";
+    //    console.log('ClassName: ', this.spinnerTarget.className)
+    //
+    //    console.log('Spinner off...');
+
+    //  })
+    //  .catch((error) => {
+    //    console.error('Catch Error: ', error)
+    //  });
+
+    // tolerate both Windows and Unix linebreaks
+
+    console.table(lines);
+    // console.log('textContent: ', this.textareaTarget.textContent)
+
+    this.spinnerTarget.className = "invisible";
+    console.log('ClassName: ', this.spinnerTarget.className)
+
+    console.log('Spinner off...');
 
 
   }

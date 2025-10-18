@@ -33,6 +33,16 @@
             <input type="file" name="file" accept=".ged" form="dummy" class="form-control" data-gedcom-target="input" data-action="change->gedcom#load" id="inputGroupFile01" required />
           </div>
 
+          <div class="form-check mb-3">
+            <input class="form-check-input" data-gedcom-target="advanced" data-action="change->gedcom#changeAdvanced" type="checkbox" value="" id="checkAdvanced">
+            <label class="form-check-label" for="checkAdvanced">
+              Advanced
+            </label>
+          </div>
+        </div> {# card-body #}
+        <div class="card-body d-none" data-gedcom-target="advancedArea">
+
+
           {#
        #  Encoding
        #
@@ -49,6 +59,7 @@
                 <option value="utf8" selected data-bs-toggle="tooltip" title="Standard encoding">UTF-8</option>
               </optgroup>
               <optgroup label="Legacy single-byte encodings">
+                <option value="ANSEL">ANSEL</option>
                 <option value="866">IBM866</option>
                 <option value="iso-8859-2">ISO-8859-2 (Latin2)</option>
                 <option value="iso-8859-3">ISO-8859-3 (Latin3)</option>
@@ -101,6 +112,24 @@
               </optgroup>
             </select>
           </div>
+          <div>
+            <label for="version">Gedcom version:</label>
+            <select class="form-control" data-gedcom-target="version" data-action="change->gedcom#load" form="dummy" name="version" id="version">
+                <option value="5" selected>Version 5.*</option>
+                <option value="7">Version 7.*</option>
+            </select>  
+          </div>  
+          <div>
+            <label for="previewSize">Preview Size (Bytes):</label>
+            <select class="form-control" data-gedcom-target="previewSize" data-action="change->gedcom#load" form="dummy" name="previewSize" id="previewSize">
+                <option value=500 selected>500 bytes</option>
+                <option value=1000>1000 bytes</option>
+                <option value=2000>2000 bytes</option>
+                <option value="">All</option>
+            </select>  
+          </div>  
+
+          
 
           {% block cardbody %}
             <hr />

@@ -19,7 +19,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
-  static targets = ['polyview', 'holger', 'spinner', 'textarea', 'select', 'input'];
+  static targets = ['polyview', 'holger', 'spinner', 'textarea', 'select', 'input', 'advanced', "advancedArea"];
 
 
   /**
@@ -65,6 +65,58 @@ export default class extends Controller {
   }
 
 
+  // reader()
+  // - FileReader.readAsText i Promise-baseret tilgang
+
+  reader(blob, enc) {
+    return new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.onload = () => resolve(fr);
+      fr.onerror = (err) => reject(err);
+      fr.readAsText(blob, enc);
+    });
+  }
+
+
+
+
+  // loadFile()
+  //
+
+  loadFile(event)
+  {
+
+   console.log('Loading GEDCOM file to browser...')
+
+    var file = this.inputTarget.files[0];
+    if (file == null)
+      return;
+
+    if (!this.advancedTarget.checked)
+    {
+      const blob = file.slice(0, 500);
+      this.reader(blob, "")
+      .then((value) => console.log('loadFile: ', value.result))
+    }
+    var enc = this.selectTarget.selectedOptions[0].value;
+    this.reader(file.slice(0, 500), enc)
+      .then((value) => this.textareaTarget.textContent = value.result)
+
+
+  }
+
+
+  // changeAdvanced
+  //
+  //
+
+  changeAdvanced(event)
+  {
+    if (this.advancedTarget.checked)
+      this.advancedAreaTarget.classList.remove("d-none");
+    else
+      this.advancedAreaTarget.classList.add("d-none");
+  }
 
 
 
@@ -73,7 +125,10 @@ export default class extends Controller {
   //
 
   load(event) {
+    
+    this.loadFile(event);
     console.log('Loading GEDCOM file to browser...')
+    return;
 
     // Henter aktuelle encoding
 
@@ -185,8 +240,8 @@ export default class extends Controller {
 
 
     // console.log('Read file');
-    //reader.readAsText(file, enc);
-    reader.readAsText(file);
+    reader.readAsText(file, enc);
+    //reader.readAsText(file);
 
   }
 
@@ -195,32 +250,57 @@ export default class extends Controller {
   //
   //
 
-  upload(event) {
+  async upload(event) {
 
-    //    console.log('URL: ', event.params.url);
+    try {
 
-    const eol = /[\r\n]+/g;
-    const mstr = /^(\d|[1 - 9]\d)(?:\x20@([0-9a-zA-z]{1,20})@)?\x20(\w{1,31})(?:\x20@([0-9a-zA-z]{1,20})@)?(?:\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?(?:\x20(.*))?/;
-    // const arr1 = ["Cecilie", null, "Project"];
-    const level = [];
+      //    console.log('URL: ', event.params.url);
 
-    console.log("Submit called...");
-    console.log('URL: ', event.params.url);
-    console.log('Spinner on...');
-    this.spinnerTarget.className = "visible";
-    console.log('ClassName: ', this.spinnerTarget.className)
+      const eol = /[\r\n]+/g;
+      const mstr = /^(\d|[1 - 9]\d)(?:\x20@([0-9a-zA-z]{1,20})@)?\x20(\w{1,31})(?:\x20@([0-9a-zA-z]{1,20})@)?(?:\x20@#([a-zA-Z][a-zA-Z\x20]{1,20})@)?(?:\x20(.*))?/;
+      // const arr1 = ["Cecilie", null, "Project"];
+      const level = [];
+
+      var lines;
+
+      console.log("Submit called...");
+      console.log('URL: ', event.params.url);
+      console.log('Spinner on...');
+      this.spinnerTarget.className = "visible";
+      console.log('ClassName: ', this.spinnerTarget.className)
 
 
-    event.preventDefault();
-    var lines = this.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), ""]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) }); // tolerate both Windows and Unix linebreaks
+      event.preventDefault();
 
-    console.table(lines);
-    // console.log('textContent: ', this.textareaTarget.textContent)
+      console.log('Await');
 
-    this.spinnerTarget.className = "invisible";
-    console.log('ClassName: ', this.spinnerTarget.className)
+      lines = await this.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), ""]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2) });
+      //  .finally(() => {
+      //    //console.timeEnd('render1');
+      //    this.spinnerTarget.className = "invisible";
+      //    console.log('ClassName: ', this.spinnerTarget.className)
+      //
+      //    console.log('Spinner off...');
 
-    console.log('Spinner off...');
+      //  })
+      //  .catch((error) => {
+      //    console.error('Catch Error: ', error)
+      //  });
+    
+      // tolerate both Windows and Unix linebreaks
+
+      console.table(lines);
+      // console.log('textContent: ', this.textareaTarget.textContent)
+
+      that.spinnerTarget.className = "invisible";
+      console.log('ClassName: ', this.spinnerTarget.className)
+
+      console.log('Spinner off...');
+    }
+    catch (error) {
+      console.log(error);
+    }
+
 
   }
 

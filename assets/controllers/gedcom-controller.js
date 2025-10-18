@@ -67,12 +67,14 @@ export default class extends Controller {
 
   // reader()
   // - FileReader.readAsText i Promise-baseret tilgang
+  //
+  // Indtil videre uden ANSEL support, anvender iso-8859-1 som nødløsning
 
   reader(blob, enc) {
-    var iconv = require('iconv-lite');
-    console.log("Encoding: ", enc)
     return new Promise((resolve, reject) => {
       const fr = new FileReader();
+      fr.onloadstart = () => this.spinnerTarget.className = "visible";
+      fr.onloadend = () => this.spinnerTarget.className = "invisible";
       fr.onload = () => resolve(fr);
       fr.onerror = (err) => reject(err);
       fr.readAsText(blob, enc);
@@ -84,19 +86,19 @@ export default class extends Controller {
 
   // loadFile()
   //
+  // Indtil videre uden ANSEL support, anvender iso-8859-1 som nødløsning
 
-  loadFile(event)
-  {
+  loadFile(event) {
 
-   console.log('Loading GEDCOM file to browser...')
+    console.log('Loading GEDCOM file to browser...')
 
     var file = this.inputTarget.files[0];
     if (file == null)
       return;
 
-    if (!this.advancedTarget.checked)
-    {
+    if (!this.advancedTarget.checked) {
       const blob = file.slice(0, 500);
+      //const dummy = blob.bytes();
       this.reader(blob, "")
         .then((value) => {
           console.log('loadFile: ', value.result);
@@ -106,22 +108,20 @@ export default class extends Controller {
           this.versionTarget.value = (res1 ? "5" : "7");
           //console.log('LINEAGE-LINKED: ', res1);
           const matches = / CHAR (\S+)/.exec(value.result);
-          if (matches)
-          {
-            switch (matches[1])
-            {
+          if (matches) {
+            switch (matches[1]) {
               case "ANSEL":
-                //this.selectTarget.value= "ANSEL"
-                //break;
+              //this.selectTarget.value= "ANSEL"
+              //break;
               case "ANSI":
               case "ASCII":
                 this.selectTarget.value = "iso-8859-1"
                 break;
               default:
-                console.log("File encoding:", matches[1] )
+                console.log("File encoding:", matches[1])
 
             }
-          }  
+          }
 
         });
     }
@@ -139,8 +139,7 @@ export default class extends Controller {
   //
   //
 
-  changeAdvanced(event)
-  {
+  changeAdvanced(event) {
     if (this.advancedTarget.checked)
       this.advancedAreaTarget.classList.remove("d-none");
     else
@@ -154,7 +153,7 @@ export default class extends Controller {
   //
 
   load(event) {
-    
+
     this.loadFile(event);
     console.log('Loading GEDCOM file to browser...')
     return;
@@ -315,7 +314,7 @@ export default class extends Controller {
       //  .catch((error) => {
       //    console.error('Catch Error: ', error)
       //  });
-    
+
       // tolerate both Windows and Unix linebreaks
 
       console.table(lines);

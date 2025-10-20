@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{#
+    Generisk formular skabelon
+#}
+
+{% block title %}
+  {{ formTitle|trans }}
+{% endblock title%}
+
+
+{% block body  %}
+
+{% if form is defined %}
+  {{ form_start(form) }}
+{% endif %}
+
+<div class="container-fluid">
+
+
+  <div class="row align-items-center justify-content-center" style="min-height: 100vh" >
+    <div class="col-sm-6">
+
+
+      <div class="card w-100 aalign-self-center" data-controller="editor">
+        <h2 class="card-header text-center">
+          {% block cardheader %}
+
+          {{ formTitle|trans }}
+
+
+          {% endblock cardheader %}
+        </h2>
+        <div class="card-body">
+          {% if warning is defined %}
+          <div class="alert alert-warning"> {{ warning|trans }}</div>
+          {% endif %}
+          {% block cardbody %}
+          {{ form_widget(form) }}
+
+
+          {# % if error %}
+          <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+          {% endif % #}
+          {% endblock cardbody %}
+        </div>
+        <div class="card-footer d-grid d-md-flex gap-2 justify-content-md-end">
+          {% block cardfooter %}
+          <button class="btn btn--sm btn-outline-success"  type="submit"><i class="bi bi-check-lg"></i></button>
+          <button class="btn btn--sm btn-outline-danger"  type="submit"><i class="bi bi-x-lg"></i></button>
+          <button class="btn btn--sm btn-outline-primary"  type="submit"><i class="bi bi-question-lg"></i></button>
+          {% endblock cardfooter %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if form is defined %}
+  {{ form_end(form) }}
+{% endif %}
+
+{% endblock body %}
+
+

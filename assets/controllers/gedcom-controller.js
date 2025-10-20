@@ -277,7 +277,7 @@ export default class extends Controller {
   // upload()
   //
   //
-
+/*
   upload(event) {
 
 
@@ -303,7 +303,17 @@ export default class extends Controller {
 
     const delim = String.fromCodePoint(0xF0001);
 
+
+    promise = this.reader(this.inputTarget.files[0], this.selectTarget.selectedOptions[0].value)
+      .then((value) => resolve(value.split(eol)))
+      .then((array) => { 
+        array.forEach((element) => console.log(element));
+  });
+
+  /*
     const promise1 = new Promise((resolve, reject) => {
+
+      const arr= 
 
      resolve(this.textareaTarget.textContent.split(eol).map(function (str) { const arr1 = [ULID.ulid(), ""]; const arr2 = str.match(mstr); if (arr2) { const i = arr2[1]; level[i] = arr1[0]; if (i > 0) arr1[1] = level[(i - 1)] } return arr1.concat(arr2).join(delim) }).join('\n'));
     });
@@ -344,7 +354,7 @@ export default class extends Controller {
 
 
   }
-
+*/
   // invalid()
   //
   //

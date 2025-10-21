@@ -79,7 +79,6 @@
 
 				{% endif %}
 
-
 				<div class="nav.item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown05" role="button" data-bs-toggle="dropdown">Help</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown05">
@@ -97,6 +96,22 @@
 			class="navbar-expand d-flex flex-row-reverse" id="navbarNavAltMarkup">
 			<!-- div class="navbar-expand justify-content-end" id="navbarNavAltMarkup" -->
 			<div class="navbar-nav mr_auto">
+
+				{#
+						Næste element er til udvikling af brugerfladen
+				#}
+
+			  <div class='nav-item dropdown'>
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDev" role="button" data-bs-toggle="dropdown">Udvikling</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDev">
+						<a class="dropdown-item" href="{{ url('app_formidler_type_a') }}">Formidler Type A</a>
+						<a class="dropdown-item" href="{{ url('app_formidler_type_b') }}">Formidler Type B</a>
+						<a class="dropdown-item" href="{{ url('app_form_type_a') }}">Formular Type A</a>
+						<a class="dropdown-item" href="{{ url('app_form_type_b') }}">Formular Type B</a>
+						<hr class="dropdown-divider">
+						<a class="dropdown-item" rel="license" href="{{ path('about') }}">About</a>
+					</div>
+				</div>
 
 				{% set locale= app.request.getLocale() %}
 

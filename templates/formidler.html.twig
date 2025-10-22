@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{#
+    Formidler skabelon
+#}
+
+{% block title %}
+  Formidler
+{% endblock %}
+
+{% block body %}
+  <div class="container-xl">
+    <div class="card min-vh-100 shadow col-12">
+      <div class="card-header h4 text-center">
+        Formidler
+      </div>
+      <div class="card-body">
+        {% block indhold %}
+        <div class="row">
+            <div class="col-8">
+              {% block left %}
+                Venstre kolonne brødtekst
+              {% endblock %}
+            </div>    
+            <div class="col-4">
+              {% block right %}
+                Højre kolonne brødtekst
+              {% endblock %}
+            </div>    
+        {% endblock %}
+      </div>
+    </div>
+    <div class="card-footer text-bg-info bg-opacity-50 text-center">
+      <p>Overlund</p>
+      <p>
+        For teknisk hjælp og slægtsspørgsmål, kontakt <a href="mailto:someone@example.com">Webmaster</a>
+      </p>
+      <p>Privatlivspolitik</p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,18 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Kolofon{% endblock %}
+{% block title %}Kolofon
+{% endblock %}
 
 {% block body %}
-  <div class="container-xl">
-        <div class="card _min-vh-100 shadow col-12" style="height: 400px">
-          <div class="card-header h4 text-center">Webside med kolofon</div>
-          <div class="card-body">Brødtekst</div>
+	<div class="container-xl">
+		<div class="card _min-vh-100 shadow col-12" style="height: 400px">
+			<div class="card-header h4 text-center">Webside med kolofon</div>
+			<div class="card-body">Brødtekst</div>
 
-          <div class="card-footer text-bg-info bg-opacity-50 text-center">
-            <p>Overlund</p>
-            <p>For teknisk hjælp og slægtsspørgsmål, kontakt <a href="mailto:someone@example.com">Webmaster</a></p>
-            <p>Privatlivspolitik</p>    
-          </div>
-        </div>
-  </div>
+			<div class="card-footer text-bg-info bg-opacity-50 text-center">
+				<p>Overlund</p>
+				<p>For teknisk hjælp og slægtsspørgsmål, kontakt
+					<a href="mailto:someone@example.com">Webmaster</a>
+				</p>
+				<p>
+					<a href="{{ url('app_privacy_policy') }}">Privatlivspolitik</a>
+
+
+				</p>
+
+			</div>
+		</div>
+	</div>
 {% endblock %}

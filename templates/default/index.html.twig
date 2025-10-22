@@ -1,37 +1,33 @@
-﻿{% extends 'base.html.twig' %}
+﻿{% extends 'formidler.html.twig' %}
 
 {% block title %}
-  Hello ProjectController!
+  Overlund
 {% endblock %}
 
-{% block body %}
-  <!-- div class="container-fluid" -->
 
-  <div class="row align-items-center justify-content-center" style="min-height: 100vh">
-    <div class="col-sm-10">
-      <div class="card w-100 bg-light center">
-        <h5 class="card-header">Projekter</h5>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-10">
-              <ul class="list-group list-group-flush">
-                {% for tree in trees %}
-                  {% set _url = tree.url %}
-                  {% set _title = tree.title %}
-
-                  <a href="{{ url('tree', { url: _url }) }}" class="list-group-item list-group-item-action">{{ tree.__toString }}</a>
-                {% endfor %}
-              </ul>
-            </div>
-            <div class="col-2 text-center">
-              <button role="button" class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2" data-action="click->editor#notes" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ 'New Project'|trans }}">New</button>
-              <button type="button" class="btn btn-outline-dark btn-light btn-sm shadow w-100 mb-2" data-action="click->editor#sourceCitations" data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ 'Open system in demo mode'|trans }}">Demo</button>
-            </div>
-          </div>
-        </div>
-        <div class="card-footer text-center">{{ copyright }}</div>
-      </div>
-    </div>
-  </div>
-  <!-- /div -->
+{% block left %}
+	<h2>Indledning</h2>
+  <p>Dette er velkomstsiden med en kort beskrivelse af systemet muligheder. 
+  </p>  
+  <p>
+    Siden ejes af systemadministrator
+  </p>  
+  <p>
+    En rullemenu med oversigt over systemets offentligt tilgængelige slægtstræer giver adgang videre ind i systemet...
+  </p>  
 {% endblock %}
+
+
+{% block right %}
+
+  <p>
+Her skal besøgende kunne
+<a href="{{ url('app_user_registration_request') }}">anmode om brugerregistrering</a>
+
+
+  </p>
+
+{% endblock %}
+
+
+

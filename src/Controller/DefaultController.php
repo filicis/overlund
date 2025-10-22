@@ -26,13 +26,26 @@ use       App\Repository\ProjectRepository;
   /**
    *  DefaultController
    *
-   *
+   *  Håndterer systemet velkomstsside med generel information om systemet.
+   *  - Siderne er ejet af systemadministrator
    **/
 
 class DefaultController extends AbstractController
 {
   #[Route('/', name: 'default')]
   public function index(Request $request, ManagerRegistry $doctrine): Response
+  {
+    return $this->render('default/index.html.twig', [
+      'controller_name' => 'DefaultController',
+      'documentTitle' => 'Velkomstside',
+      'formTitle' => 'Default Controller',
+    ]);
+
+
+  }
+
+  #[Route('/mlr', name: 'defaultmlr')]
+  public function indexmlr(Request $request, ManagerRegistry $doctrine): Response
   {
     $cookies= $request->cookies;
     if ($cookies->has('PROJECT'))
@@ -48,7 +61,7 @@ class DefaultController extends AbstractController
       );
     }
 
-    return $this->render('default/index.html.twig', [
+    return $this->render('default/mlr1.html.twig', [
     'controller_name' => 'DefaultController',
     'formTitle' => 'Default Controller',
     'trees' => $projects,

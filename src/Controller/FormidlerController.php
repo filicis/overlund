@@ -47,7 +47,7 @@ class FormidlerController extends AbstractController
    *
    **/
 
-    #[Route('/tree', name: 'notree')]
+    #[Route('/treemlr', name: 'notree')]
     public function index1(): Response
     {
        return $this->render('formidler/index.html.twig', [

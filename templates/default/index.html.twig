@@ -1,33 +1,42 @@
 ﻿{% extends 'formidler.html.twig' %}
 
 {% block title %}
-  Overlund
+	Overlund
 {% endblock %}
 
 
 {% block left %}
 	<h2>Indledning</h2>
-  <p>Dette er velkomstsiden med en kort beskrivelse af systemet muligheder. 
-  </p>  
-  <p>
-    Siden ejes af systemadministrator
-  </p>  
-  <p>
-    En rullemenu med oversigt over systemets offentligt tilgængelige slægtstræer giver adgang videre ind i systemet...
-  </p>  
+	<p>Dette er velkomstsiden med en kort beskrivelse af systemet muligheder.
+	</p>
+	<p>
+		Siden ejes af systemadministrator
+	</p>
+	<p>
+		En rullemenu med oversigt over systemets offentligt tilgængelige slægtstræer giver adgang videre ind i systemet...
+	</p>
 {% endblock %}
 
 
 {% block right %}
 
-  <p>
-Her skal besøgende kunne
-<a href="{{ url('app_user_registration_request') }}">anmode om brugerregistrering</a>
+	<p>
+		Her skal besøgende kunne
+		<a href="{{ url('app_user_registration_request') }}">anmode om brugerregistrering</a>
+	</p>
+
+	<p>
+		Link til
+		<a href="{{ url('app_profile') }}">offentlige bruger (medlem !) profiler</a>
+
+	</p>
+
+	<p>
+		Link til
+<a href="{{ url('app_tree') }}">offentlige slægtstræer</a>
 
 
-  </p>
+	</p>
+
 
 {% endblock %}
-
-
-

@@ -5,14 +5,14 @@
 #}
 
 {% block title %}
-  {{ documentTitle | trans }}
+  {{ trans | documentTitle }}
 {% endblock %}
 
 {% block body %}
 	<div class="container-xl">
 		<div class="card _min-vh-100 shadow col-12" style="min-height: 100px">
 			<div class="card-header h1 text-center">
-					{{ documentTitle | trans }}
+					{{ trans | documentTitle }}
 			</div>
 			<div class="card-body">
 				{% block indhold %}

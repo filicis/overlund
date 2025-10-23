@@ -95,13 +95,14 @@
 		<div
 			class="navbar-expand d-flex flex-row-reverse" id="navbarNavAltMarkup">
 			<!-- div class="navbar-expand justify-content-end" id="navbarNavAltMarkup" -->
-			<div class="navbar-nav mr_auto">
+			<div
+				class="navbar-nav mr_auto">
 
 				{#
-						Næste element er til udvikling af brugerfladen
-				#}
+																		Næste element er til udvikling af brugerfladen
+																#}
 
-			  <div class='nav-item dropdown'>
+				<div class='nav-item dropdown'>
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDev" role="button" data-bs-toggle="dropdown">Udvikling</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDev">
 						<a class="dropdown-item" href="{{ url('app_formidler_type_a') }}">Formidler Type A</a>
@@ -133,10 +134,23 @@
 
 
 				{% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-					<span class="navbar-text">
-						{{ 'User' | trans }}:
-						{{ app.user.username }}
-					</span>
+
+					<div class='nav-item dropdown'>
+						<a class="nav-link dropdown-toggle" href="#" id="navbarUser" role="button" data-bs-toggle="dropdown">
+							{{ 'User' | trans }}:
+							{{ app.user.username }}
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarUser">
+							<a class="dropdown-item" href="{{ url('app_my_page') }}">Min side</a>
+
+							<a class="dropdown-item" href="#">Min konto</a>
+							<!--a class="dropdown-item" href="{{ url('app_form_type_a') }}">Formular Type A</a>
+														<a class="dropdown-item" href="{{ url('app_form_type_b') }}">Formular Type B</a>
+														<a class="dropdown-item" href="{{ url('app_kolofon') }}">Kolofon</a>
+														<hr class="dropdown-divider">
+														<a class="dropdown-item" rel="license" href="{{ path('about') }}">About</a-->
+						</div>
+					</div>
 					<a class="nav-item nav-link" href="{{ path('app_logout') }}">logout</a>
 				{% else %}
 					<a class="nav-item nav-link" href="{{ path('login') }}">Login</a>
